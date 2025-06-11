@@ -45,6 +45,7 @@
 				</div>
 				<div>
 					<a class="btn btn-primary">Primary Button</a>
+					<p class="mb-6"></p>
 					<a class="btn btn-secondary">Secondary Button</a>
 </div>
 </div>
