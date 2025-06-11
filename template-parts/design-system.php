@@ -47,6 +47,7 @@
 					<a class="btn btn-primary">Primary Button</a>
 					<p class="mb-6"></p>
 					<a class="btn btn-secondary">Secondary Button</a>
+					<a class="btn btn-big-button">Big Button</a>
 </div>
 </div>
 </div>
