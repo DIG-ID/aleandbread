@@ -21,7 +21,13 @@ module.exports = {
         //wider: '.06em',
       },
       colors: {
-        
+        dark: '#0D0D0D',
+        accent: '#C93',
+        background: '#E6E6E6',
+        blockText: '#373737',
+        blockTextLight: '#CBCBCB',
+        formFields: '#F6F6F6',
+        importantLinks: '#CC332E',
       },
       transitionTimingFunction: {
         //'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
