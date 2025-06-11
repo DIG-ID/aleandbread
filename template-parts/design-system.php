@@ -33,4 +33,21 @@
 				</div>
 				</div>
 	</div>
+	<div class="theme-container">
+		<div class="theme-grid">
+			<div class="col-span-2 md:col-span-3 xl:col-span-3">
+				<div class="mt-12">
+					<h2 class="text-accent mb-6">Buttons</h2>
+					<div id="main-menu">
+						<div class="menu-item">
+					<a>Menu default</a>
+				</div>
+				</div>
+				<div>
+					<a class="btn btn-primary">Primary Button</a>
+					<a class="btn btn-secondary">Secondary Button</a>
+</div>
+</div>
+</div>
+</div>
 </section>
