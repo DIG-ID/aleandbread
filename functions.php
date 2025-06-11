@@ -2,14 +2,14 @@
 /**
  * Setup theme
  */
-function rochat_theme_setup() {
+function aleandbread_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-menu'      => __( 'Main Menu', 'hotelrochat' ),
-			'main-mega-menu' => __( 'Main Mega Menu', 'hotelrochat' ),
-			'secondary-menu' => __( 'Secondary Menu', 'hotelrochat' ),
-			'copyright-menu' => __( 'Copyright Menu', 'hotelrochat' ),
+			'main-menu'      => __( 'Main Menu', 'aleandbread' ),
+			'main-mega-menu' => __( 'Main Mega Menu', 'aleandbread' ),
+			'secondary-menu' => __( 'Secondary Menu', 'aleandbread' ),
+			'copyright-menu' => __( 'Copyright Menu', 'aleandbread' ),
 		)
 	);
 
@@ -31,12 +31,12 @@ function rochat_theme_setup() {
 
 }
 
-add_action( 'after_setup_theme', 'rochat_theme_setup' );
+add_action( 'after_setup_theme', 'aleandbread_theme_setup' );
 
 /**
  * Register our sidebars and widgetized areas.
  */
-function rochat_theme_footer_widgets_init() {
+function aleandbread_theme_footer_widgets_init() {
 
 	register_sidebar(
 		array(
@@ -62,39 +62,38 @@ function rochat_theme_footer_widgets_init() {
 
 }
 
-add_action( 'widgets_init', 'rochat_theme_footer_widgets_init' );
+add_action( 'widgets_init', 'aleandbread_theme_footer_widgets_init' );
 
-if ( ! function_exists( 'rochat_get_font_face_styles' ) ) :
+if ( ! function_exists( 'aleandbread_get_font_face_styles' ) ) :
 	/**
 	 * Get font face styles.
 	 * This is used by the theme or editor to inject @import for Google Fonts.
 	 */
-	function rochat_get_font_face_styles() {
+	function aleandbread_get_font_face_styles() {
 		return "
-			@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Prata&display=swap');
+			@import url('https://use.typekit.net/ccj8tei.css');
 		";
 	}
 endif;
 
-if ( ! function_exists( 'rochat_preload_webfonts' ) ) :
+if ( ! function_exists( 'aleandbread_preload_webfonts' ) ) :
 	/**
-	 * Preloads Google Fonts to improve performance.
+	 * Preloads the main web font to improve performance.
 	 */
-	function rochat_preload_webfonts() {
+	function aleandbread_preload_webfonts() {
 		?>
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="use.typekit.net" crossorigin>
 		<?php
 	}
 endif;
 
-add_action( 'wp_head', 'rochat_preload_webfonts' );
+add_action( 'wp_head', 'aleandbread_preload_webfonts' );
 
 
 /**
  * Enqueue styles and scripts
  */
-function rochat_theme_enqueue_styles() {
+function aleandbread_theme_enqueue_styles() {
 
 	//Get the theme data
 	$the_theme     = wp_get_theme();
@@ -103,7 +102,7 @@ function rochat_theme_enqueue_styles() {
 	// Register Theme main style.
 	wp_register_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array(), $theme_version );
 	// Add styles inline.
-	wp_add_inline_style( 'theme-styles', rochat_get_font_face_styles() );
+	wp_add_inline_style( 'theme-styles', aleandbread_get_font_face_styles() );
 	// Enqueue theme stylesheet.
 	wp_enqueue_style( 'theme-styles' );
 	//https://use.typekit.net/evg0ous.css first loaded fonts library backup
@@ -113,7 +112,7 @@ function rochat_theme_enqueue_styles() {
 	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
 }
 
-add_action( 'wp_enqueue_scripts', 'rochat_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
 
 
 /**
@@ -128,11 +127,11 @@ add_filter( 'wpcf7_autop_or_not', '__return_false' );
  *
  * @return string $priority The potentially altered priority.
  */
-function rochat_theme_lower_yoast_metabox_priority( $priority ) {
+function aleandbread_theme_lower_yoast_metabox_priority( $priority ) {
 	return 'core';
 }
 
-add_filter( 'wpseo_metabox_prio', 'rochat_theme_lower_yoast_metabox_priority' );
+add_filter( 'wpseo_metabox_prio', 'aleandbread_theme_lower_yoast_metabox_priority' );
 
 
 // Theme custom template tags.

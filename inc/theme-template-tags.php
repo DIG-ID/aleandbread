@@ -56,10 +56,10 @@ function theme_room_features() {
 			<li id="feature-item">
 				<?php
 				$fields = [
-					'bed'      => __( 'Bett:', 'hotelrochat' ),
-					'size'     => __( 'Fläche:', 'hotelrochat' ),
-					'capacity' => __( 'Belegung:', 'hotelrochat' ),
-					'view'     => __( 'Aussicht:', 'hotelrochat' ),
+					'bed'      => __( 'Bett:', 'aleandbread' ),
+					'size'     => __( 'Fläche:', 'aleandbread' ),
+					'capacity' => __( 'Belegung:', 'aleandbread' ),
+					'view'     => __( 'Aussicht:', 'aleandbread' ),
 				];
 				foreach ( $fields as $field_key => $label ) :
 					$field_value = get_sub_field( $field_key );
