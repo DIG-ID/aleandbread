@@ -47,7 +47,12 @@
 					<a class="btn btn-primary">Primary Button</a>
 					<p class="mb-6"></p>
 					<a class="btn btn-secondary">Secondary Button</a>
+					<p class="mb-6"></p>
 					<a class="btn btn-big-button">Big Button</a>
+					<p class="mb-6"></p><p class="mb-6"></p>
+					<a class="btn btn-round-button"></a>
+					<p class="mb-6"></p><p class="mb-6">scroll</p>
+					<a class="btn btn-scroll-button"></a>
 </div>
 </div>
 </div>
