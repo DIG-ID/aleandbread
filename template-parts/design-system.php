@@ -74,28 +74,38 @@
 					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/icon3.svg" alt="Menu" title="Menu burger" />
 					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/sun-and-birds.svg" alt="Phone" title="Phone" />
 				</div>
-				<div class="col-span-2 md:col-span-3 xl:col-span-3 mt-12 border-l border-dark px-8">
+				<div class="col-span-2 md:col-span-3 xl:col-span-6 mt-12 border-l border-dark px-8">
 					<h2 class="text-accent mb-6">Logo</h2>
-					<?php
-					$image = get_field('theme_logo', 'option');
-					$size = 'full'; // (thumbnail, medium, large, full or custom size)
-					$classes = 'W-[200px] h-[57px]'; // Add any custom classes you want
-					if ($image) {
-						echo wp_get_attachment_image($image, $size, false, array('class' => $classes));
-					} ?>
-					<?php
-					$image = get_field('theme_logo', 'option');
-					$size = 'full'; // (thumbnail, medium, large, full or custom size)
-					if ($image) {
-						echo wp_get_attachment_image($image, $size);
-					} ?>
-					<?php
-					$image = get_field('theme_logo', 'option');
-					$size = 'full'; // (thumbnail, medium, large, full or custom size)
-					if ($image) {
-						echo wp_get_attachment_image($image, $size);
-					} ?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						$classes = 'w-[111px] md:w-[200px]'; 
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
+						}?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						$classes = 'w-[184px] md:w-[415px]';
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
+						}?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						$classes = 'w-[149px] md:w-[270px]';
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
+						}?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						$classes = 'w-[207px]';
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
+						}?>
 				</div>
 			</div>
 		</div>
 </section>
+
