@@ -69,10 +69,34 @@
 					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/phone.svg" alt="Phone" title="Phone	"/>
 
 					<br>
-					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/location.svg" alt="Location" title="Location"/>
-					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="User" title="User"/>
-					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/menu-burger.svg" alt="Menu" title="Menu burger"/>
-					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/phone.svg" alt="Phone" title="Phone	"/>
+					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/icon1.svg" alt="Location" title="Location"/>
+					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/icon2.svg" alt="User" title="User"/>
+					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/icon3.svg" alt="Menu" title="Menu burger"/>
+					<img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/sun-and-birds.svg" alt="Phone" title="Phone"/>
+				</div>
+			</div>
+			<div class="col-span-2 md:col-span-3 xl:col-span-3">
+				<div class="mt-12">
+					<h2 class="text-accent mb-6">Logo</h2>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						$classes = 'W-[200px] h-[57px]'; // Add any custom classes you want
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
+						}?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size );
+						}?>
+					<?php 
+						$image = get_field('theme_logo', 'option');
+						$size = 'full'; // (thumbnail, medium, large, full or custom size)
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size );
+						}?>
 				</div>
 			</div>
 		</div>
