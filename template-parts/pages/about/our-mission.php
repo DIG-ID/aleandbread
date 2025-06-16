@@ -2,6 +2,9 @@
     <div class="theme-container">
         <div class="theme-grid">
             <div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4 mt-16 md:mt-14 xl:mt-12 order-2 xl:order-1">
+                <div class="mb-4">
+                    <?php do_action ( 'breadcrumbs' ); ?>
+                </div>
                 <h1 class="text-blockTextLight py-14"><?php echo get_field('unsere_mission_title'); ?></h1>
                 <h3 class="text-blockTextLight pb-9 "><?php echo get_field('unsere_mission_sub-title'); ?></h3>
                 <p class="text-blockTextLight block-text pb-24 xl:pb-56"><?php echo get_field('unsere_mission_description'); ?></p>
