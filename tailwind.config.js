@@ -13,6 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       barlow: ['Barlow', 'sans-serif'],
+      barlowSemiCondensed: ['barlow-semi-condensed', 'sans-serif'],
     },
 
     extend: {
