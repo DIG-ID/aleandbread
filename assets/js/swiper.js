@@ -1,8 +1,11 @@
 import Swiper from 'swiper/bundle';
 
 window.addEventListener("load", () => {
-    if ( $(".page-template-page-home")[0] ) {
-            const swiper = new Swiper('.swiper', {
+
+    // Only run on homepage template
+    if (document.querySelector(".page-template-page-home")) {
+
+        const swiper = new Swiper('.swiper', {
             speed: 500, 
             loop: true,
             autoplay: {
@@ -13,6 +16,7 @@ window.addEventListener("load", () => {
             spaceBetween: 0,
             effect: 'slide',
         });
+
     }
 
 }, false);
