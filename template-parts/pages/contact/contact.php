@@ -1,8 +1,8 @@
 <section id="contact" class="contact bg-background">
     <div class="theme-container pt-[130px] md:pt-[194px] xl:pt-[280px]">
         <div class="theme-grid">
-            <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-4 xl:col-span-3"> 
-                <p class="over-title self-stretch text-accent mb-7 md:mb-14"><?php echo get_field('kontakt_over_title'); ?></p>
+            <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-4 xl:col-span-3 mb-7 md:mb-14">
+                    <?php do_action ( 'breadcrumbs' ); ?>
             </div>
             <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4">
                 <h1 class="text-dark mb-7 md:mb-12 "><?php echo get_field('kontakt_title'); ?></h1>
