@@ -10,6 +10,7 @@ if ( have_posts() ) :
 		do_action( 'before_main_content' );
 			get_template_part( 'template-parts/pages/home/hero' );	
 			get_template_part( 'template-parts/pages/home/mission-and-philosophy' );
+			get_template_part( 'template-parts/pages/home/distellerie' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;
