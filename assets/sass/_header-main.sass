@@ -10,7 +10,7 @@
     transition: background-color 0.3s ease
 
 #header-main
-    @apply fixed
+    @apply relative bg-transparent
     .menu-toggle
         @apply flex items-center gap-x-4
         &__text
@@ -39,16 +39,35 @@
             @apply xl:mr-5
     .header-wrapper
         .wpml-ls-legacy-list-horizontal
-            a
-                @apply px-[10px] py-[5px]
+            .wpml-ls-item
+                @apply text-background text-sm uppercase font-barlow font-semibold tracking-[0.14px]
+            .wpml-ls-link
+                @apply transition-all duration-300 ease-out hover:underline
+            .wpml-ls-current-language
+                .wpml-ls-link
+                    @apply font-bold
         .wpml-ls-statics-shortcode_actions
             @apply border-none p-0
             ul
                 .wpml-ls-current-language
                     .wpml-ls-link
                         font-weight: 700 !important
-                .wpml-ls-first-item
-                    @apply border-l-2 border-accent pl-[10px]
                 .wpml-ls-item
                     .wpml-ls-link
-                        @apply font-barlow font-normal text-[16px] text-accent leading-[16px] uppercase transition-all duration-500 ease-out flex
+                        @apply block-text-bold text-background uppercase transition-all duration-500 ease-out flex
+    .menu-wrapper
+        .wpml-ls-legacy-list-horizontal
+            a
+                @apply px-[10px] py-0
+        .wpml-ls-statics-shortcode_actions
+            @apply border-none px-0 pt-8
+            ul
+                .wpml-ls-current-language
+                    .wpml-ls-link
+                        font-weight: 700 !important
+                .wpml-ls-item:not(.wpml-ls-first-item):not(.wpml-ls-last-item)
+                    @apply border-x-2 border-accent
+                .wpml-ls-item
+                    .wpml-ls-link
+                        @apply font-barlow font-light text-[20px] text-accent tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
+        

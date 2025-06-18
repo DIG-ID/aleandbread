@@ -1,4 +1,4 @@
-<header id="header-main" class="header-main absolute top-0 left-0 w-full z-50 mt-10" itemscope itemtype="http://schema.org/WebSite">
+<header id="header-main" class="header-main relative w-full z-50 mt-10" itemscope itemtype="http://schema.org/WebSite">
   <nav class="navbar relative" role="navigation" aria-label="<?php esc_attr_e( 'Main menu', 'aleandbread' ); ?>">
     <div class="theme-container">
     <div class="header-wrapper grid grid-cols-3 items-center border-b-[3px] border-accent pb-4">
@@ -14,8 +14,8 @@
           </button>
         </div>
         <span class="menu-label block-text-bold mr-10 -ml-2 text-background">MENÜ</span>
-        <span class="language-toggle block-text-bold text-background">EN / DE</span>
-      </div>
+        <?php do_action( 'wpml_add_language_selector' ); ?>
+        </div>
 
       <!-- Center: Logo -->
       <div class="col-start-2 flex justify-center items-center">

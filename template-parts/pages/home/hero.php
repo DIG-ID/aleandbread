@@ -1,4 +1,4 @@
-<section class="section-hero pt-0 pb-0 relative"> <!-- relative added here -->
+<section class="section-hero pt-0 pb-0 relative -mt-28"> <!-- relative added here -->
 
     <?php 
         $section_hero = get_field('section_hero_gallery');
@@ -26,7 +26,7 @@
                 <h1 class="text-blockTextLight pt-5 md:pt-20 "><?php echo get_field('section_hero_title'); ?></h1>
                 <p class="block-text text-blockTextLight pt-10 md:pt-16 md:max-w-[435px]"><?php echo get_field('section_hero_description'); ?></p>
                 <div class="flex items-center gap-9 pt-20">
-                        <a class="btn btn-tertiary mt-20 pb-64 !border-accent "><span>Buche dein Erlebnisse</span></a>
+                        <a class="btn btn-small-button mt-20 pb-64 "><span>Buche dein Erlebnisse</span></a>
                         <a class="btn btn-tertiary mt-20 pb-64 "><span>unsere Produkte</span></a>
                 </div>
             </div>
