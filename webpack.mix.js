@@ -18,6 +18,13 @@ mix
     processCssUrls: false,
   })
 
+  .browserSync({
+    proxy: {
+      target: "http://aleandbread.digid/",
+      ws: true
+    },
+    files: ["./**/*.php", "./dist/js/*.js", "./dist/css/*.css"]
+  })
   .disableNotifications();
   
 
