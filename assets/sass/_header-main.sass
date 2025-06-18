@@ -6,3 +6,49 @@
                 @apply text-accent
             &:active
                 @apply text-accent
+.home #header-main
+    transition: background-color 0.3s ease
+
+#header-main
+    @apply fixed
+    .menu-toggle
+        @apply flex items-center gap-x-4
+        &__text
+            @apply text-accent font-barlow text-[16px] uppercase font-[500] leading-none tracking-[0.32px] transition-all duration-500 ease-out hidden invisible xl:block xl:visible
+        &__bars
+            @apply relative flex flex-col justify-center items-center overflow-hidden w-6 xl:w-8 h-6 xl:h-8
+            .bar
+                @apply block w-6 h-[3px] bg-accent relative opacity-100 rounded-full transition-all duration-500 ease-out
+                &:nth-child(1)
+                    @apply left-0 mb-[6px]
+                    transition: transform 0.5s ease, opacity 0.5s ease
+                &:nth-child(2)
+                    @apply left-0 mb-[6px]
+                    transition: transform 0.5s ease, opacity 0.5s ease
+                &:nth-child(3)
+                    @apply left-0
+                    transition: transform 0.5s ease
+        &-active
+            .bar:nth-child(1)
+                transform: translateY(9px) rotate(45deg)
+            .bar:nth-child(2)
+                opacity: 0
+            .bar:nth-child(3)
+                transform: translateY(-9px) rotate(-45deg)
+        &-wrapper
+            @apply xl:mr-5
+    .header-wrapper
+        .wpml-ls-legacy-list-horizontal
+            a
+                @apply px-[10px] py-[5px]
+        .wpml-ls-statics-shortcode_actions
+            @apply border-none p-0
+            ul
+                .wpml-ls-current-language
+                    .wpml-ls-link
+                        font-weight: 700 !important
+                .wpml-ls-first-item
+                    @apply border-l-2 border-accent pl-[10px]
+                .wpml-ls-item
+                    .wpml-ls-link
+                        @apply font-barlow font-normal text-[16px] text-accent leading-[16px] uppercase transition-all duration-500 ease-out flex
