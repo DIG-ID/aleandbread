@@ -21,6 +21,14 @@ function aleandbread_theme_setup() {
 
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 
+	add_theme_support( 'woocommerce' );
+
+	add_theme_support( 'wc-product-gallery-zoom' );
+
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	
+	add_theme_support( 'wc-product-gallery-slider' );
+
 	//add_image_size( 'zimmer-image', 1400, 770, array( 'center', 'center' ) );
 
 }
@@ -137,7 +145,7 @@ require get_template_directory() . '/inc/theme-admin-settings.php';
 // The theme custom menu walker settings.
 require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 
-function my_console_log(...$data) {
+function console_log(...$data) {
 	$json = json_encode($data);
 	add_action('shutdown', function() use ($json) {
 		 echo "<script>console.log({$json})</script>";

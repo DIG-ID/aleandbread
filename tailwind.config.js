@@ -9,14 +9,14 @@ module.exports = {
     './inc/*.php',
     './page-templates/**/*.php',
     './template-parts/**/*.php',
+    './woocommerce/**/*.php',
   ],
   theme: {
-    fontFamily: {
-      barlow: ['Barlow', 'sans-serif'],
-      barlowSemiCondensed: ['barlow-semi-condensed', 'sans-serif'],
-    },
-
     extend: {
+      fontFamily: {
+        barlow: ['Barlow', 'sans-serif'],
+        barlowSemiCondensed: ['barlow-semi-condensed', 'sans-serif'],
+      },
       letterSpacing: {
         //wide: '.038em',
         //wider: '.06em',
