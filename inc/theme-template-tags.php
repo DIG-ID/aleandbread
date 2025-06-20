@@ -168,7 +168,6 @@ function theme_breadcrumbs() {
 
 add_action( 'breadcrumbs', 'theme_breadcrumbs' );
 
-
 /**
  * Socials for the website.
  */

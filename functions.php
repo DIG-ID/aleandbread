@@ -145,6 +145,9 @@ require get_template_directory() . '/inc/theme-admin-settings.php';
 // The theme custom menu walker settings.
 require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 
+// The theme woocommerce integration.
+require get_template_directory() . '/inc/theme-woocommerce.php';
+
 function console_log(...$data) {
 	$json = json_encode($data);
 	add_action('shutdown', function() use ($json) {
