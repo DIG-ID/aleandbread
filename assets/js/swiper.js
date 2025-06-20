@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
     if (document.querySelector(".page-template-page-home")) {
 
         const swiper = new Swiper('.swiper', {
-            speed: 500, 
+            speed: 900, 
             loop: true,
             autoplay: {
                 delay: 5000, 

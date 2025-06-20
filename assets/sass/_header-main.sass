@@ -10,20 +10,20 @@
     transition: background-color 0.3s ease
 
 #header-main
-    @apply relative bg-transparent
+    @apply absolute
     .menu-toggle
         @apply flex items-center gap-x-4
         &__text
             @apply text-accent font-barlow text-[16px] uppercase font-[500] leading-none tracking-[0.32px] transition-all duration-500 ease-out hidden invisible xl:block xl:visible
         &__bars
-            @apply relative flex flex-col justify-center items-center overflow-hidden w-6 xl:w-8 h-6 xl:h-8
+            @apply relative flex flex-col justify-center items-center overflow-hidden w-[38px] md:w-[38px] md:h-[38px] h-[38px]
             .bar
-                @apply block w-6 h-[3px] bg-accent relative opacity-100 rounded-full transition-all duration-500 ease-out
+                @apply block w-[28px] md:w-[38px] h-[2px] bg-accent relative opacity-100 rounded-full transition-all duration-500 ease-out
                 &:nth-child(1)
-                    @apply left-0 mb-[6px]
+                    @apply left-0 mb-[13px]
                     transition: transform 0.5s ease, opacity 0.5s ease
                 &:nth-child(2)
-                    @apply left-0 mb-[6px]
+                    @apply left-0 mb-[13px]
                     transition: transform 0.5s ease, opacity 0.5s ease
                 &:nth-child(3)
                     @apply left-0

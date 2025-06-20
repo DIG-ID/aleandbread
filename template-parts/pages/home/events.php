@@ -10,19 +10,21 @@ $image_url = wp_get_attachment_image_url($image_id, 'full');
     <div class="theme-grid relative">
         <div class="-mx-6 xl:mx-0 col-span-2 md:col-span-6">
         <?php if ($image_url): ?>
+            <figure class="img-overlay img-overlay--horizontal-right-2 xl:absolute xl:left-0 xl:top-0 inset-0 w-full h-full xl:object-cover xl:z-[-1] pointer-events-none">
                 <img 
                     src="<?php echo esc_url($image_url); ?>" 
                     alt="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>" 
-                    class="xl:absolute xl:left-0 xl:top-0 inset-0 w-full h-full xl:object-cover xl:z-[-1] pointer-events-none"
+                    class=""
                     loading="lazy"
                 />
+            </figure>
             <?php endif; ?>
         </div>
-        <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 pt-1 md:pt-3 xl:pt-[135px]">
-                <p class="over-title text-accent "><?php echo get_field('events_over_title'); ?>
-                <h1 class="text-blockTextLight pt-5 md:pt-20 "><?php echo get_field('events_title'); ?></h1>
-                <p class="block-text text-blockTextLight pt-10 md:pt-16"><?php echo get_field('events_description'); ?></p>
-                <a class="btn btn-tertiary mt-20 mb-64 !border-accent "><span>Mehr erfahren</span></a>
+        <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 pt-1 md:pt-3 xl:pt-[130px]">
+                <p class="over-title text-accent"><?php echo get_field('events_over_title'); ?>
+                <h1 class="text-blockTextLight pt-5 md:pt-14 "><?php echo get_field('events_title'); ?></h1>
+                <p class="block-text text-blockTextLight pt-10 md:pt-14"><?php echo get_field('events_description'); ?></p>
+                <a class="btn btn-tertiary mt-14 !border-accent mb-44"><span>Mehr erfahren</span></a>
         </div>
     </div>
 </div>

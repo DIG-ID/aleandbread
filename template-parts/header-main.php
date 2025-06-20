@@ -1,7 +1,7 @@
-<header id="header-main" class="header-main relative w-full z-50 mt-10" itemscope itemtype="http://schema.org/WebSite">
+<header id="header-main" class="header-main relative w-full z-50 pt-7" itemscope itemtype="http://schema.org/WebSite">
   <nav class="navbar relative" role="navigation" aria-label="<?php esc_attr_e( 'Main menu', 'aleandbread' ); ?>">
     <div class="theme-container">
-    <div class="header-wrapper grid grid-cols-3 items-center border-b-[3px] border-accent pb-4">
+    <div class="header-wrapper grid grid-cols-3 items-center xl:border-b-[3px] xl:border-accent pb-4">
       <!-- Left: Burger + Menü + Language -->
       <div class="flex items-center">
         <div class="menu-toggle-wrapper">
@@ -13,9 +13,11 @@
             </span>
           </button>
         </div>
-        <span class="menu-label block-text-bold mr-10 -ml-2 text-background">MENÜ</span>
-        <?php do_action( 'wpml_add_language_selector' ); ?>
+        <div class="!hidden xl:!flex items-center gap-4">
+            <span class="menu-label block-text-bold mr-10 -ml-2 text-background">MENÜ</span>
+            <?php do_action( 'wpml_add_language_selector' ); ?>
         </div>
+      </div>
 
       <!-- Center: Logo -->
       <div class="col-start-2 flex justify-center items-center">
@@ -33,10 +35,10 @@
       </div>
 
       <!-- Right: Icons + Button -->
-      <div class="flex justify-end items-center gap-6">
+      <div class="flex justify-end items-center gap-6  ">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="User" />
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/cart.svg" alt="Cart" />
-        <a href="#" class="btn btn-secondary ml-2">ZUM SHOP</a>
+        <a href="#" class="btn btn-secondary ml-2 !hidden xl:!flex ">ZUM SHOP</a>
       </div>
 
     </div>

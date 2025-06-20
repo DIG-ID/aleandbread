@@ -1,0 +1,40 @@
+.section-hero
+    @apply min-h-dvh max-h-dvh
+    .swiper
+        .swiper-wrapper
+            .swiper-slide
+                @apply min-h-dvh max-h-dvh
+                &:nth-child(1)
+                    background-position: right 20% bottom 100%
+                    background-repeat: no-repeat
+                    aspect-ratio: 9 / 16
+                    @apply md:bg-center
+                &:nth-child(2)
+                    background-position: right 35% bottom 45%
+                    @apply md:bg-center
+
+.swiper-container-desktop
+  display: block
+
+.swiper-container-mobile
+  display: none
+
+/* Media queries */
+@media (max-width: 768px)
+  .swiper-container-desktop
+    display: none
+
+  .swiper-container-mobile
+    display: block
+
+@media (orientation: portrait) 
+  .swiper-container-desktop  
+    display: none 
+  .swiper-container-mobile  
+    display: block
+
+@media (orientation: landscape) 
+  .swiper-container-desktop  
+    display: block 
+  .swiper-container-mobile 
+    display: none 

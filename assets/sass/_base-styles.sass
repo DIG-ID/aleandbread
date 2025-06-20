@@ -9,3 +9,29 @@ body
 
 .theme-grid
     @apply grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-5
+
+.img-overlay
+    @apply relative
+    &::after
+        content: ''
+        @apply absolute top-0 left-0 w-full h-full z-10
+        opacity: 1
+    &--vertical
+        &::after
+            background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%)
+    &--horizontal-left
+        &::after
+            background: linear-gradient(90deg,#0D0D0D 0%, rgba(13, 13, 13, 1) 46%, rgba(13, 13, 13, 1) 100%)
+    &--horizontal-right
+        &::after
+            background: linear-gradient(90deg,rgba(13, 13, 13, 0) 0%, rgba(13, 13, 13, 1) 75%, #0D0D0D 100%)
+    &--horizontal-right-2
+    &::after
+        background: linear-gradient(90deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.85) 63.99%, rgba(13, 13, 13, 0.90) 100%)
+@media (max-width: 768px)
+    .img-overlay--horizontal-right
+        &::after
+            background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%)
+    .img-overlay--horizontal-right-2
+        &::after
+            background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%)

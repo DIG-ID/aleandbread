@@ -13,6 +13,9 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/home/distellerie' );
 			get_template_part( 'template-parts/pages/home/vineyard' );
 			get_template_part( 'template-parts/pages/home/events' );
+			get_template_part( 'template-parts/pages/home/awards' );
+			get_template_part( 'template-parts/pages/home/newsletter' );
+			get_template_part( 'template-parts/pages/home/outro' );
 		do_action( 'after_main_content' );
 	endwhile;
 endif;
