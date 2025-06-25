@@ -38,7 +38,7 @@
                             <?php echo wp_get_attachment_image( $image1, 'full', false, array('class' => 'w-full h-auto') ); ?>
                         </div>
                     <?php endif; ?>
-                <div>
+                <div class="col-span-2">
                 <h1 class="text-blockTextLight w-[560px]"><?php echo get_field('craftmanship_title'); ?></h1>
                 <h3 class="text-blockTextLight pt-[56px] md:pt-16 xl:pt-14 w-[560px] pb-[56px]"><?php echo get_field('craftmanship_sub_title'); ?></h3>
                 <?php 
@@ -48,7 +48,7 @@
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self';
                         ?>
-                        <a class="btn btn-primary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                        <a class="btn btn-primary !col-span-2" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
                     <?php endif; ?>
                 </div>
                 <div class="col-start-8 col-span-4">
