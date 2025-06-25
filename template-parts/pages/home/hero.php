@@ -1,4 +1,4 @@
-<section class="section-hero pb-0 relative overflow-hidden"> <!-- relative added here -->
+<section  id="hero" class="section-hero pb-0 relative overflow-hidden"> <!-- relative added here -->
 
     <?php 
         $section_hero = get_field('section_hero_gallery');
