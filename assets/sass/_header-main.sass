@@ -6,35 +6,26 @@
                 @apply text-accent
             &:active
                 @apply text-accent
-.home #header-main
-    transition: background-color 0.3s ease
 
 #header-main
-    @apply absolute
+    @apply absolute bg-transparent transition-colors duration-100 ease-in
     .menu-toggle
         @apply flex items-center gap-x-4
         &__text
             @apply text-accent font-barlow text-[16px] uppercase font-[500] leading-none tracking-[0.32px] transition-all duration-500 ease-out hidden invisible xl:block xl:visible
         &__bars
-            @apply relative flex flex-col justify-center items-center overflow-hidden w-[38px] md:w-[38px] md:h-[38px] h-[38px]
+            @apply relative flex flex-col justify-center items-center overflow-hidden w-[38px] h-[38px]
             .bar
-                @apply block w-[28px] md:w-[38px] h-[2px] bg-accent relative opacity-100 rounded-full transition-all duration-500 ease-out
-                &:nth-child(1)
-                    @apply left-0 mb-[13px]
-                    transition: transform 0.5s ease, opacity 0.5s ease
-                &:nth-child(2)
-                    @apply left-0 mb-[13px]
-                    transition: transform 0.5s ease, opacity 0.5s ease
-                &:nth-child(3)
-                    @apply left-0
-                    transition: transform 0.5s ease
-        &-active
-            .bar:nth-child(1)
-                transform: translateY(9px) rotate(45deg)
-            .bar:nth-child(2)
-                opacity: 0
-            .bar:nth-child(3)
-                transform: translateY(-9px) rotate(-45deg)
+                @apply block w-[38px] h-[2px] bg-accent rounded-full transition-all duration-500 ease-out
+                &:not(:last-child)
+                    @apply mb-[13px] // spacing between bars
+            // Spacing: 13px total → 6.5px between each bar
+            & .bar--top
+                @apply translate-y-0 rotate-0 mb-[6.5px]
+            & .bar--middle
+                @apply translate-y-0 rotate-0 mb-[6.5px]
+            & .bar--bottom
+                @apply translate-y-0 rotate-0
         &-wrapper
             @apply xl:mr-5
     .header-wrapper
@@ -70,4 +61,46 @@
                 .wpml-ls-item
                     .wpml-ls-link
                         @apply font-barlow font-light text-[20px] text-accent tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
+
+    #menu-main-menu
+        @apply w-full invisible hidden xl:block xl:visible
+        li.menu-item
+            @apply transition-all duration-500 ease-in-out translate-y-0
+            a
+                @apply font-barlowSemiCondensed text-blockTextLight text-[24px] md:text-[40px] font-bold not-italic uppercase transition-all duration-300 ease-in-out relative
+                &::hover
+                    @apply text-accent
+        li.menu-item.current-menu-item,
+        li.menu-item.current-page-ancestor
+            a
+                @apply font-barlow text-accent font-light text-xl tracking-[1.54px] uppercase transition-all duration-300 ease-in-out relative bg-dark opacity-100 visible
+                &::after
+                    @apply content-[''] block absolute bg-blockTextLight w-[99%] h-[1px] translate-y-0 transition-all duration-300 ease-in-out -z-10
         
+/*Mega Menu*/
+#header-main.sticky
+    @apply drop-shadow-[0_2px_2px_rgba(0,0,0,0.06)]
+
+    nav.navigation-main
+        @apply py-8 xl:py-6
+    .mega-menu-wrapper
+        @apply xl:top-[76px]
+
+#header-main.mega-menu-open
+    @apply bg-dark
+    nav.navigation-main
+        #menu-main-menu
+            li.menu-item
+                @apply translate-y-6 opacity-0 invisible
+    .mega-menu-wrapper
+        @apply visible h-[var(--element-height)]
+    .menu-toggle__bars
+        .bar--top
+             @apply translate-y-[15px] rotate-45
+        .bar--middle
+            @apply opacity-0
+        .bar--bottom
+            @apply -translate-y-[15px] -rotate-45
+
+#header-main.mega-menu-open.sticky
+    @apply filter-none
