@@ -116,6 +116,24 @@ function aleandbread_theme_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
 
+add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
+
+function fix_yoast_page_parent_breadcrumb( $links ) {
+    global $post;
+    if ( is_page() && $post->post_parent ) {
+        $parent = get_post( $post->post_parent );
+        if ( $parent ) {
+            $breadcrumb[] = array(
+                'url' => get_permalink( $parent->ID ),
+                'text' => $parent->post_title,
+            );
+            // Remove default page link
+            array_splice( $links, -1, 0, $breadcrumb );
+        }
+    }
+    return $links;
+}
+
 
 /**
  * Remove <p> Tag From Contact Form 7.
