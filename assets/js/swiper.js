@@ -70,3 +70,15 @@ window.addEventListener("load", () => {
     });
   }
 });
+
+if (document.querySelector(".our-experience-swiper")) {
+  new Swiper(".our-experience-swiper", {
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+  });
+}

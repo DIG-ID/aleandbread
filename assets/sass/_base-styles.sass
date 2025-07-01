@@ -5,13 +5,13 @@ body
     height: auto
 
 .theme-container
-    @apply px-6 2xl:px-0 mx-auto w-full 2xl:max-w-[1720px]
+    @apply px-4 md:px-8 2xl:px-0 mx-auto w-full 2xl:max-w-[1720px]
 
 .theme-grid
     @apply grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-x-5
 
 .img-overlay
-    @apply relative
+    @apply absolute
     &::after
         content: ''
         @apply absolute top-0 left-0 w-full h-full z-10
@@ -42,4 +42,4 @@ body
             background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%)
     .img-overlay--horizontal-right-2
         &::after
-            background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%)
+            background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%) 

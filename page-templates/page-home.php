@@ -12,7 +12,7 @@ if ( have_posts() ) :
 			get_template_part( 'template-parts/pages/home/mission-and-philosophy' );
 			get_template_part( 'template-parts/pages/home/distellerie' );
 			get_template_part( 'template-parts/pages/home/vineyard' );
-			get_template_part( 'template-parts/pages/home/events' );
+			get_template_part( 'template-parts/modules/events' );
 			get_template_part( 'template-parts/pages/home/awards' );
 			get_template_part( 'template-parts/pages/home/newsletter' );
 			get_template_part( 'template-parts/pages/home/outro' );
