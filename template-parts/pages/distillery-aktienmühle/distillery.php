@@ -3,7 +3,7 @@
     <div class="theme-grid">
       
       <!-- Breadcrumb -->
-      <div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-3 pt-[152px] md:pt-[197px] xl:pt-[280px]">
+      <div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-5 pt-[152px] md:pt-[197px] xl:pt-[280px]">
         <?php do_action('breadcrumbs'); ?>
       </div>
 
