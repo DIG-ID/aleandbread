@@ -38,6 +38,45 @@ window.addEventListener("load", () => {
     });
   }
 
+  // Swiper #3 — Events Mobile Swiper (1 slide = 3 events in grid)
+  if (document.querySelector('.mobile-event-swiper')) {
+    new Swiper('.mobile-event-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  }
+
+  // Swiper #4 — Events Tablet Swiper (1.25 cards per slide)
+  if (document.querySelector('.tablet-event-swiper')) {
+    new Swiper('.tablet-event-swiper', {
+      slidesPerView: 1.25,
+      spaceBetween: 24,
+      loop: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }
+
+  // Swiper #5 — Events Desktop Swiper (3 slides per view)
+  if (document.querySelector('.desktop-event-swiper')) {
+    new Swiper('.desktop-event-swiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }
+
   // Interactive Overlay Toggle — Gin Makes History
   const toggleBtn = document.getElementById("gin-toggle-btn");
   const overlay = document.getElementById("gin-overlay");
@@ -70,15 +109,3 @@ window.addEventListener("load", () => {
     });
   }
 });
-
-if (document.querySelector(".our-experience-swiper")) {
-  new Swiper(".our-experience-swiper", {
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    slidesPerView: 1,
-    spaceBetween: 20,
-  });
-}

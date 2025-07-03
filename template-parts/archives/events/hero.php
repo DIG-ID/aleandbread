@@ -18,65 +18,119 @@
           <?php echo get_field('events_description', 'option'); ?>
         </p> 
       </div> 
+    </div>
 
-      <!-- Events Loop -->
-      <?php
-      $args = [
+    <?php
+    $args = array(
         'post_type' => 'event',
         'posts_per_page' => 9,
-        'orderby' => 'date',
-        'order' => 'DESC'
-      ];
-      $event_query = new WP_Query($args);
-      if ($event_query->have_posts()):
-        $index = 0;
-        while ($event_query->have_posts()):
-          $event_query->the_post();
-          $image = get_field('events_cpt_image');
-          $date = get_field('events_cpt_date');
-          $excerpt = get_field('events_cpt_excerpt');
+        'order' => 'ASC',
+        'orderby' => 'date'
+    );
+    $the_query = new WP_Query($args);
+    ?>
 
-          $col_start = 1 + ($index % 3) * 4;
-      ?>
-        <div class="col-span-4 xl:col-span-4 xl:col-start-<?php echo $col_start; ?>">
-          <article class="flex flex-col gap-4">
-            <!-- Image -->
-            <?php if ($image): ?>
-              <div class="w-full h-[300px] overflow-hidden rounded-[12px]">
-                <?php echo wp_get_attachment_image($image, 'full', false, [
-                  'class' => 'w-full h-full object-cover rounded-[12px]'
-                ]); ?>
+    <?php if ($the_query->have_posts()) : ?>
+
+      <!-- Mobile Swiper (grid of 2 cols, 3 items per slide) -->
+      <div class="block md:hidden">
+        <div class="swiper mobile-event-swiper mt-12">
+          <div class="swiper-wrapper px-4">
+            <?php
+            $counter = 0;
+            while ($the_query->have_posts()) : $the_query->the_post();
+              if ($counter % 3 === 0) {
+                if ($counter > 0) echo '</div></div>';
+                echo '<div class="swiper-slide w-full pr-4"><div class="grid grid-cols-2 gap-5">';
+              }
+            ?>
+              <div class="event-item col-span-2 mt-12">
+                <div class="event-meta">
+                  <?php if (get_the_post_thumbnail()) :
+                    the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                  endif; ?>
+                  <h4 class="pt-4"><?php the_title(); ?></h4>
+                  <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
+                  <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
+                  <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
+                  <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6">
+                    <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+                    <span class="ml-1">→</span>
+                  </a>
+                </div>
+                <?php the_content(); ?>
               </div>
-            <?php endif; ?>
-
-            <!-- Title -->
-            <h4 class="text-dark">
-              <?php the_title(); ?>
-            </h4>
-
-            <!-- Date -->
-            <p class="text-dark block-text-bold">
-              <img class="inline-block" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar Icon" />
-              <?php echo $date ?: 'TBA'; ?>
-            </p>
-
-            <!-- Excerpt -->
-            <p class="text-dark text-sm">
-              <?php echo esc_html($excerpt); ?>
-            </p>
-
-            <!-- CTA -->
-            <a href="<?php the_permalink(); ?>" class="text-dark font-semibold text-sm flex items-center gap-2 hover:underline">
-              MEHR ERFAHREN <span class="ml-1">→</span>
-            </a>
-          </article>
+            <?php $counter++; endwhile; ?>
+            </div></div>
+          </div>
         </div>
-      <?php
-        $index++;
-        endwhile;
-        wp_reset_postdata();
-      endif;
-      ?>
-    </div>
+      </div>
+
+      <?php wp_reset_postdata(); ?>
+
+      <!-- Tablet Swiper (1.25 cards per view) -->
+      <div class="hidden md:block xl:hidden">
+        <div class="swiper tablet-event-swiper mt-12">
+          <div class="swiper-wrapper px-4">
+            <?php
+            $the_query = new WP_Query($args);
+            while ($the_query->have_posts()) : $the_query->the_post(); ?>
+              <div class="swiper-slide w-[80%] flex-shrink-0 pr-4">
+                <div class="event-item mt-12">
+                  <div class="event-meta">
+                    <?php if (get_the_post_thumbnail()) :
+                      the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                    endif; ?>
+                    <h4 class="pt-4"><?php the_title(); ?></h4>
+                    <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
+                    <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
+                    <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
+                    <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6">
+                      <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+                      <span class="ml-1">→</span>
+                    </a>
+                  </div>
+                  <?php the_content(); ?>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        </div>
+      </div>
+
+      <?php wp_reset_postdata(); ?>
+
+      <!-- Desktop Swiper (3 items per view) -->
+      <div class="hidden xl:block">
+        <div class="swiper desktop-event-swiper mt-12">
+          <div class="swiper-wrapper px-4">
+            <?php
+            $the_query = new WP_Query($args);
+            while ($the_query->have_posts()) : $the_query->the_post(); ?>
+              <div class="swiper-slide w-[33.33%] flex-shrink-0 pr-4">
+                <div class="event-item mt-12">
+                  <div class="event-meta">
+                    <?php if (get_the_post_thumbnail()) :
+                      the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                    endif; ?>
+                    <h4 class="xl:pt-8 xl:pb-7"><?php the_title(); ?></h4>
+                    <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
+                    <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
+                    <p class="text-dark block-text xl:pt-7 xl:h-[90px] xl:w-[415px]"><?php echo get_field('events_cpt_small_description'); ?></p>
+                    <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 xl:pt-10">
+                      <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+                      <span class="ml-1">→</span>
+                    </a>
+                  </div>
+                  <?php the_content(); ?>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        </div>
+      </div>
+
+      <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
   </div>
 </section>
