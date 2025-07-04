@@ -8,7 +8,7 @@ add_action('woocommerce_before_main_content', 'aleandbread_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'aleandbread_wrapper_end', 10);
 
 function aleandbread_wrapper_start() {
-	echo '<main id="main-content" class="main-content overflow-hidden mt-auto">';
+	echo '<main id="main-content" class="main-content overflow-hidden mt-auto pt-[106px]">';
 }
 
 function aleandbread_wrapper_end() {
