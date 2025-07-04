@@ -7,7 +7,10 @@ function aleandbread_theme_setup() {
 	register_nav_menus(
 		array(
 			'main-menu'      => __( 'Main Menu', 'aleandbread' ),
-			'footer-menu' => __( 'Footer Menu', 'aleandbread' ),
+			'footer-menu-ale' => __( 'Footer Menu Ale and Bread', 'aleandbread' ),
+			'footer-menu-shop' => __( 'Footer Menu Shop', 'aleandbread' ),
+			'footer-menu-experience' => __( 'Footer Menu Experience', 'aleandbread' ),
+			'footer-menu-support' => __( 'Footer Menu Support', 'aleandbread' ),
 		)
 	);
 
