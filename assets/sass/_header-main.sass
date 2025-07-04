@@ -14,6 +14,21 @@ body.archive
         &.mega-menu-open
             .menu-label
                 @apply text-background
+        .menu-wrapper
+            .wpml-ls-legacy-list-horizontal
+                a
+                    @apply px-[10px] py-0 text-dark
+            .wpml-ls-statics-shortcode_actions
+                @apply border-none px-0 pt-8
+                ul
+                    .wpml-ls-current-language
+                        .wpml-ls-link
+                            font-weight: 700 !important
+                    .wpml-ls-item:not(.wpml-ls-first-item):not(.wpml-ls-last-item)
+                        @apply border-x-2 border-accent
+                    .wpml-ls-item
+                        .wpml-ls-link
+                            @apply font-barlow font-light text-[20px] text-dark tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
 
 #header-main
     @apply absolute bg-transparent transition-colors duration-100 ease-in
