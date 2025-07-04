@@ -1,11 +1,11 @@
-<section id="mission-and-philosophy" class="mission-and-philosophy  bg-dark pb-36 md:pb-48 xl:pb-56">
+<section id="mission-and-philosophy" class="mission-and-philosophy  bg-dark pb-[108px] md:pb-[148px] xl:pb-[210px]">
     <div class="theme-container">
         <div class="theme-grid">
             <div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 order-2">
                 <p class="over-title text-accent mt-8 md:mt-20 xl:mt-[270px]"><?php echo get_field('mission_und_philosophie_over_title'); ?></p>
-                <h1 class="text-blockTextLight pt-12 md:pt-20 xl:pt-16 pb-11 md:pb[60px] xl:pb-14"><?php echo get_field('mission_und_philosophie_title'); ?></h1>
-                <h4 class="text-blockTextLight pb-12 md:pb-9 self-stretch font-medium capitalize "><?php echo get_field('mission_und_philosophie_sub_title'); ?></h3>
-                <p class="text-blockTextLight block-text pb-12 md:pb-20"><?php echo get_field('mission_und_philosophie_description'); ?></p>
+                <h1 class="text-blockTextLight pt-12 md:pt-20 xl:pt-16 pb-11 md:pb[60px] xl:pb-14 w-[343px] md:w-[560px] xl:w-full"><?php echo get_field('mission_und_philosophie_title'); ?></h1>
+                <h4 class="text-blockTextLight pb-12 md:pb-9 self-stretch font-medium capitalize w-[343px] md:w-[560px] xl:w-full"><?php echo get_field('mission_und_philosophie_sub_title'); ?></h3>
+                <p class="text-blockTextLight block-text pb-12 md:pb-[141px]  w-[343px] md:w-[560px] xl:w-full"><?php echo get_field('mission_und_philosophie_description'); ?></p>
                 <?php 
                     $link = get_field('mission_und_philosophie_button');
                     if( $link ): 
@@ -27,7 +27,7 @@
                 <?php 
                     $image = get_field('mission_und_philosophie_image_1');
                     $size = 'full'; // (thumbnail, medium, large, full or custom size)
-                    $classes = 'w-[850px]'; 
+                    $classes = ' w-full md:w-[850px] max-w-'; 
                     if( $image ) {
                         echo wp_get_attachment_image( $image, $size, false, array('class' => $classes) );
                     }
