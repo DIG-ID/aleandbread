@@ -7,3 +7,9 @@
         @apply font-barlow inline-block
     span.breadcrumb_last
       @apply text-accent block md:inline
+
+.woocommerce:where(body:not(.woocommerce-uses-block-theme))
+  .woocommerce-breadcrumb
+    @apply inline-block font-barlow text-[20px] leading-[30px] font-medium uppercase text-accent mb-0
+    a
+      @apply text-accent

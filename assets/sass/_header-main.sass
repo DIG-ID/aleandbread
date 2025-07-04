@@ -7,8 +7,18 @@
             &:active
                 @apply text-accent
 
+body.archive
+    #header-main
+        .menu-label
+            @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-dark
+        &.mega-menu-open
+            .menu-label
+                @apply text-background
+
 #header-main
     @apply absolute bg-transparent transition-colors duration-100 ease-in
+    .menu-label
+        @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-background
     .menu-toggle
         @apply flex items-center gap-x-4
         &__text
@@ -73,9 +83,7 @@
         li.menu-item.current-menu-item,
         li.menu-item.current-page-ancestor
             a
-                @apply font-barlow text-accent font-light text-xl tracking-[1.54px] uppercase transition-all duration-300 ease-in-out relative bg-dark opacity-100 visible
-                &::after
-                    @apply content-[''] block absolute bg-blockTextLight w-[99%] h-[1px] translate-y-0 transition-all duration-300 ease-in-out -z-10
+                @apply text-accent
         
 /*Mega Menu*/
 #header-main.sticky
