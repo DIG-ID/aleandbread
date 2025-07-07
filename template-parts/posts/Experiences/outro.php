@@ -1,7 +1,7 @@
 <section id="outro" class="outro relative overflow-hidden">
     <?php
 // Get image ID from ACF
-$image_id = get_field('gin_lab_cpt_outro_image');
+$image_id = get_field('experiences_cpt_outro_image');
 
 // Get image URL from ID
 $image_url = wp_get_attachment_image_url($image_id, 'full');
@@ -20,20 +20,20 @@ $image_url = wp_get_attachment_image_url($image_id, 'full');
     <div class="theme-grid relative z-10">
       <!-- Title -->
       <div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-3">
-        <h1 class="text-background pt-[189px] pb-[156px] w-[355px]"><?php echo get_field('gin_lab_cpt_outro_title'); ?></h1>
+        <h1 class="text-background pt-[189px] pb-[156px] w-[355px]"><?php echo get_field('experiences_cpt_outro_title'); ?></h1>
       </div>
 
       <!-- Description 1 -->
       <div class="col-span-2 md:col-span-6 xl:col-start-6 xl:col-span-3">
         <p class="text-background block-text pt-[189px] pb-[179px] w-[411px]">
-          <?php echo get_field('gin_lab_cpt_outro_description_1'); ?>
+          <?php echo get_field('experiences_cpt_outro_description_1'); ?>
         </p>
       </div>
 
       <!-- Description 2 -->
       <div class="col-span-2 md:col-span-6 xl:col-start-9 xl:col-span-3">
         <p class="text-background block-text pt-[189px] pb-[255px] w-[415px]">
-          <?php echo get_field('gin_lab_cpt_outro_description_2'); ?>
+          <?php echo get_field('experiences_cpt_outro_description_2'); ?>
         </p>
       </div>
 
