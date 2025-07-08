@@ -42,8 +42,8 @@
           <?php echo get_field('section_hero_description'); ?>
         </p>
         <div class="flex flex-col items-start justify-start xl:flex-row xl:items-center gap-8 md:gap-8 xl:gap-6 md:pt-10 col-start-1  pb-[184px] md:pb-[387px] xl:pb-56">                        
-          <a class="btn btn-primary w-1/2"><span>unsere Produkte</span></a>
-          <a class="btn btn-tertiary w-1/2"><span>Buche dein Erlebnisse</span></a>
+          <a class="btn btn-primary w-1/2"><?php esc_html_e( 'unsere Produkte', 'aleandbread' ); ?></a>
+          <a class="btn btn-tertiary w-1/2"><?php esc_html_e( 'Buche dein Erlebnisse', 'aleandbread' ); ?></a>
         </div>
       </div>
     </div>
