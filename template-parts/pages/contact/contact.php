@@ -1,11 +1,10 @@
 <section id="contact" class="contact bg-background">
     <div class="theme-container pt-[130px] md:pt-[194px] xl:pt-[280px]">
         <div class="theme-grid">
-            <div class="col-span-2 md:col-span-6 xl:col-span-12">
-            <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4">
-                 <div class="pb-[30px] md:pb-[56px]"> 
+             <div class="col-span-2 md:col-span-6 xl:col-span-12 xl:col-start-2 pb-[30px] md:pb-[56px]"> 
                     <?php do_action ( 'breadcrumbs' ); ?>
                 </div>
+            <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4">
                 <h1 class="text-dark pb-[28px] md:pb-[38px] "><?php echo get_field('kontakt_title'); ?></h1>
                 <h3 class="text-dark  pb-[28px] md:pb-[38px]"><?php echo get_field('kontakt_sub_title'); ?></h3>
                 <p class="block-text text-blockText  pb-[48px] md:pb-[75px]"><?php echo get_field('kontakt_description'); ?></p>
@@ -35,7 +34,7 @@
                 <?php endif; ?>
             </div>
 
-            <div class="col-start-1 xl:col-start-2 col-span-6 xl:col-span-10 pt-[60px] md:pt-[88px] xl:pt-40 md:mb-52 xl:mb-[283px]">
+            <div class="col-start-1 xl:col-start-2 col-span-6 xl:col-span-10 pt-16 md:pt-[88px] xl:pt-40 md:mb-52 xl:mb-[283px]">
                 <div class=" bg-[#140606] -mx-[16px] md:-mx-0 pr-8 pl-8 md:pl-[60px] md:pr-[60px] xl:pr-16 xl:pl-16 pb-6 pt-1">
                     <div class="w-full mb-10 mt-12">
                         <?php 
