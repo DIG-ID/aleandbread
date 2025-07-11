@@ -3,7 +3,7 @@
     <div class="theme-grid">
 
       <!-- Section Titles -->
-      <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-5 xl:col-span-4 pt-12 xl:mt-56 gap-4 md:pt-28 xl:pt-0 w-[285px] md:w-full">
+      <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-5 xl:col-span-4 pt-[57px] xl:mt-56 gap-4 md:pt-[108px] xl:pt-0 w-[285px] md:w-full">
         <h1 class="text-dark"><?php echo get_field('wine_with_origin_title'); ?></h1>
       </div>
 
