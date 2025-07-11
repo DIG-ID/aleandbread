@@ -6,7 +6,7 @@
                         $image1 = get_field('craftmanship_image_1');
                         if( $image1 ):
                     ?>
-                        <div class="col-span-1 md:col-span-3 xl:col-span-2 pb-14">
+                        <div class="col-span-1 md:col-span-3 xl:col-span-2">
                             <?php echo wp_get_attachment_image( $image1, 'fulil', false, array('class' => 'w-full h-auto') ); ?>
                         </div>
                     <?php endif; ?>
