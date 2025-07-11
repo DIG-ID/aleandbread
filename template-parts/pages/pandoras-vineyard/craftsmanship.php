@@ -1,13 +1,13 @@
-<section id="craftmanship" class="craftmanship  bg-dark pb-14 md:pb-24 xl:pb-56">
+<section id="craftmanship" class="craftmanship  bg-dark pt-[56px] pb-14 md:pb-24 xl:pb-56">
     <div class="theme-container">
         <div class="theme-grid">
-            <div class="col-span-2 md:col-span-6 xl:col-span-12 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 md:pt-[58px] xl:pt-[139px] gap-4">
+            <div class="col-span-2 md:col-span-6 xl:col-span-12 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 md=:pt-[58px] xl:pt-[139px] gap-4">
                     <?php 
                         $image1 = get_field('craftmanship_image_1');
                         if( $image1 ):
                     ?>
                         <div class="col-span-1 md:col-span-3 xl:col-span-2 pb-14">
-                            <?php echo wp_get_attachment_image( $image1, 'full', false, array('class' => 'w-full h-auto') ); ?>
+                            <?php echo wp_get_attachment_image( $image1, 'fulil', false, array('class' => 'w-full h-auto') ); ?>
                         </div>
                     <?php endif; ?>
                 <div class="col-start-1 xl:col-start-4 col-span-2 md:col-span-6 xl:col-span-3">
