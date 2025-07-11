@@ -1,9 +1,9 @@
-<section id="gin-makes-history" class="gin-makes-history bg-background pb-36 md:pb-48 xl:pb-56">
+<section id="gin-makes-history" class="gin-makes-history bg-background pb-36 md:pb-36 xl:pb-56">
   <div class="theme-container">
     <div class="theme-grid">
 
       <!-- Section Titles -->
-      <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-5 pt-12 xl:mt-56 gap-4 md:pt-40 xl:pt-0">
+      <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-5 pt-24 xl:mt-56 gap-4 md:pt-40 xl:pt-0">
         <h1 class="text-dark"><?php echo get_field('gin_makes_history_title'); ?></h1>
       </div>
 
