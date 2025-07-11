@@ -33,7 +33,7 @@
       </div>
 
       <!-- Text Block Row -->
-      <div class="col-span-2 md:col-span-6 xl:col-span-12 xl:pb-56 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-4 md:pt-14">
+      <div class="col-span-2 md:col-span-6 xl:col-span-12 xl:pb-56 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-4 pt-14">
         <?php 
           $image4 = get_field('craftmanship_image_4');
           if( $image4 ):
