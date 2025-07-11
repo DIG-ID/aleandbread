@@ -1,4 +1,4 @@
-<section id="craftmanship" class="craftmanship bg-dark pb-36 md:pb-48 xl:pb-56 md:pt-14">
+<section id="craftmanship" class="craftmanship bg-dark pb-36 md:pb-48 xl:pb-56 pt-14">
   <div class="theme-container">
     <div class="theme-grid">
 
