@@ -146,3 +146,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+console.log("JS loaded"); // This should always show
+
+if (document.querySelector('.our-experience-swiper')) {
+  console.log("Found .our-experience-swiper");
+  new Swiper('.our-experience-swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+}
