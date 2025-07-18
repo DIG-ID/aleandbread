@@ -81,22 +81,22 @@ do_action( 'woocommerce_before_main_content' );
 			 */
 			do_action( 'woocommerce_before_shop_loop' );
 
-			woocommerce_product_loop_start();
+			/*woocommerce_product_loop_start();
 
 			if ( wc_get_loop_prop( 'total' ) ) {
 				while ( have_posts() ) {
-					the_post();
+					the_post();*/
 
 					/**
 					 * Hook: woocommerce_shop_loop.
 					 */
-					do_action( 'woocommerce_shop_loop' );
+					/*do_action( 'woocommerce_shop_loop' );
 
 					wc_get_template_part( 'content', 'product' );
 				}
 			}
 
-			woocommerce_product_loop_end();
+			woocommerce_product_loop_end();*/
 
 			/**
 			 * Hook: woocommerce_after_shop_loop.
@@ -113,6 +113,57 @@ do_action( 'woocommerce_before_main_content' );
 			do_action( 'woocommerce_no_products_found' );
 		}
 		?>
+		</div>
+	</div>
+</section>
+<section class="best-sellers theme-grid pt-20">
+	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
+		<h1 class="text-dark uppercase"><?php esc_html_e( 'Best Sellers','aleandbread' ); ?></h1>
+	</div> 
+	<div class="col-span-2 md:col-span-6 xl:col-span-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<?php
+			$best_sellers = new WP_Query([
+			'post_type' => 'product',
+			'posts_per_page' => 2,
+			'tax_query' => [
+				[
+				'taxonomy' => 'product_tag',
+				'field'    => 'slug',
+				'terms'    => 'best-seller',
+				],
+			],
+			]);
+
+			if ( $best_sellers->have_posts() ) :
+			while ( $best_sellers->have_posts() ) : $best_sellers->the_post();
+				$permalink = get_permalink();
+				$title = get_the_title();
+				$image = get_the_post_thumbnail(null, 'full');
+				?>
+				<div class="card-best-sellers">
+				<a href="<?php echo esc_url($permalink); ?>">
+					<div class="card-best-sellers--image">
+					<?php echo get_the_post_thumbnail(null, 'full', ['class' => 'w-full h-full object-cover']); ?>
+					</div>
+					<div class="card-best-sellers--content">
+						<span class="overlay"></span>
+						<span class="block-text"><?php the_excerpt(); ?></span>
+						<div class="card-best-sellers--footer flex justify-between items-center">
+							<h2 class="card-best-sellers--title"><?php echo esc_html($title); ?></h2>
+							<div class="card-best-sellers--arrow"></div>
+						</div>
+					</div>
+				</a>
+				</div>
+
+				<?php
+			endwhile;
+			wp_reset_postdata();
+			else :
+			echo '<p class="text-gray-600">No best sellers yet.</p>';
+			endif;
+			?>
 		</div>
 	</div>
 </section>
