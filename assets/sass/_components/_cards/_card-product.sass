@@ -1,0 +1,52 @@
+.card-product
+    position: relative
+    overflow: visible
+    @apply bg-slate-200 min-h-[500px] max-h-[500px]
+    &--image
+        @apply absolute top-0 left-0 w-full h-full z-0
+        img
+            @apply w-full h-full object-cover
+    a
+        @apply h-full w-full flex flex-col justify-end
+    &--content
+        @apply px-0 pt-11 bg-dark text-blockTextLight h-[230px] flex flex-col justify-end transition-all duration-700 relative
+        background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.90) 68%, rgba(13, 13, 13, 0.90) 100%)
+        transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+        .overlay
+            @apply absolute top-0 left-0 w-full h-full bg-dark transition-all duration-700 block opacity-0 -z-0
+            transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+    &--title
+        @apply font-barlow text-[30px] font-normal text-blockTextLight leading-[34px] mb-4 text-center z-10
+    &--price
+        @apply font-barlow text-[30px] font-bold text-blockTextLight leading-[34px] mb-7 text-center z-10
+    .button
+        display: inline-block !important
+        background-color: rgb(204 153 51 / var(--tw-bg-opacity, 1)) !important
+        padding-left: 28px !important
+        padding-right: 28px !important
+        padding-top: 10px !important
+        padding-bottom: 10px !important
+        font-size: 0.75rem !important
+        line-height: 1rem !important
+        color: rgb(13 13 13 / var(--tw-text-opacity, 1)) !important
+        border-width: 2px !important
+        border-color: rgb(204 153 51 / var(--tw-border-opacity, 1)) !important
+        font-family: Barlow, sans-serif !important
+        font-size: 18px !important
+        font-weight: 500 !important
+        line-height: 13px !important
+        @apply uppercase text-center w-auto transition-all hover:bg-accent/80
+        &:hover
+            background-color: rgb(13 13 13 / var(--tw-text-opacity, 1)) !important
+            color: rgb(204 153 51 / var(--tw-bg-opacity, 1)) !important
+        &:active
+            background-color: rgb(13 13 13 / var(--tw-text-opacity, 1)) !important
+            color: rgb(204 153 51 / var(--tw-bg-opacity, 1)) !important
+            
+    &:hover
+        .card-product--content
+            @apply h-[320px]
+            .overlay
+                @apply opacity-100
+        .card-product--title
+            @apply text-accent

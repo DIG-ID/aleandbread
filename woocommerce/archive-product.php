@@ -37,29 +37,31 @@ do_action( 'woocommerce_before_main_content' );
 		<div class="col-span-2 md:col-span-6 xl:col-span-12">
 			<?php do_action( 'woocommerce_archive_description' ); ?>
 
-			<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+			<div class="theme-grid">
 			<!-- Sidebar column -->
-			<aside class="md:col-span-1">
+			<aside class="col-span-2 md:col-span-3 xl:col-span-3">
 				<?php if ( is_active_sidebar( 'shop-sidebar' ) ) : ?>
 				<?php dynamic_sidebar( 'shop-sidebar' ); ?>
 				<?php endif; ?>
 			</aside>
 
 			<!-- Product loop -->
-			<main class="md:col-span-3">
+			<main class="col-span-2 md:col-span-3 xl:col-span-9">
+					
 				<?php if ( woocommerce_product_loop() ) : ?>
 
 				<?php
-				do_action( 'woocommerce_before_shop_loop' );
-				woocommerce_product_loop_start();
-
-				while ( have_posts() ) {
-					the_post();
-					do_action( 'woocommerce_shop_loop' );
-					wc_get_template_part( 'content', 'product' );
-				}
-
-				woocommerce_product_loop_end();
+				do_action( 'woocommerce_before_shop_loop' ); ?>
+				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+					<?php
+					while ( have_posts() ) {
+						the_post();
+						do_action( 'woocommerce_shop_loop' );
+						wc_get_template_part( 'content', 'product' );
+					}
+					?>
+				</div>
+				<?php
 				do_action( 'woocommerce_after_shop_loop' );
 				?>
 
