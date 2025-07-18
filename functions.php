@@ -175,3 +175,20 @@ function console_log(...$data) {
 		 echo "<script>console.log({$json})</script>";
 	});
 }
+
+
+/**
+ * Woocommerce customizations.
+ */
+function aleandbread_register_shop_sidebar() {
+  register_sidebar( array(
+    'name'          => __( 'Shop Sidebar', 'aleandbread' ),
+    'id'            => 'shop-sidebar',
+    'description'   => __( 'Widgets shown on WooCommerce product listings (category, search, etc.)', 'aleandbread' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s mb-6">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3 class="text-lg font-bold mb-2">',
+    'after_title'   => '</h3>',
+  ));
+}
+add_action( 'widgets_init', 'aleandbread_register_shop_sidebar' );
