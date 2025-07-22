@@ -3,7 +3,7 @@ get_header();
 do_action( 'before_main_content' );
 get_template_part( 'template-parts/pages/page-header' );
 ?>
-<div class="section-news-content pb-28 lg:pb-16">
+<div class="section-news-content pb-28 lg:pb-16 mb-64">
 	<div class="theme-container">
 		<div class="theme-grid">
 			<?php

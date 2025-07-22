@@ -4,21 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("load", () => {
 
     /* Make header sticky on*/
-    let header = $('#header-main');
-    let lastScroll = 0; 
-  
-    $(window).on( 'scroll', function() {
+    const header = $('#header-main');
+    let lastScroll = 0;
+
+    $(window).on('scroll', function () {
       const currentScroll = window.pageYOffset;
-      if ( currentScroll <= 0 ) {
-        //console.log('current scroll is ' + currentScroll);
-        header.removeClass( 'sticky' );
-        return;
-      } 
-      if ( currentScroll > lastScroll && currentScroll > 0 && ! header.hasClass('sticky') ) {
-        //down
-        header.removeClass( 'sticky' );
-        header.addClass( 'sticky' );
-      } 
+
+      // Blur in on scroll down
+      if (currentScroll > 100 && !header.hasClass('sticky')) {
+        header.addClass('sticky');
+      }
+
+      // Blur out on scroll back up
+      if (currentScroll <= 100 && header.hasClass('sticky')) {
+        header.removeClass('sticky');
+      }
+
       lastScroll = currentScroll;
     });
 
@@ -52,3 +53,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, false);
 });
+

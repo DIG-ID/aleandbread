@@ -9,6 +9,8 @@
 
 body.archive
     #header-main
+        @apply fixed top-0 left-0 right-0 z-50
+        transition: backdrop-filter 0.4s ease, background-color 0.4s ease, fill 0.4s ease
         .menu-label
             @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-dark
         &.mega-menu-open
@@ -31,7 +33,9 @@ body.archive
                             @apply font-barlow font-light text-[20px] text-dark tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
 
 #header-main
-    @apply absolute bg-transparent transition-colors duration-100 ease-in
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
+    backdrop-filter: blur(0px)
+    background-color: rgba(255, 255, 255, 0)
     .menu-label
         @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-background
     .menu-toggle
@@ -102,8 +106,9 @@ body.archive
         
 /*Mega Menu*/
 #header-main.sticky
-    @apply drop-shadow-[0_2px_2px_rgba(0,0,0,0.06)]
-
+    backdrop-filter: blur(15px)
+    background-color: bg-transparent
+    fill: rgba(0, 0, 0, 0.05)
     nav.navigation-main
         @apply py-8 xl:py-6
     .mega-menu-wrapper

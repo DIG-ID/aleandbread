@@ -57,6 +57,10 @@ window.addEventListener("load", () => {
       slidesPerView: 1.25,
       spaceBetween: 24,
       loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -66,16 +70,56 @@ window.addEventListener("load", () => {
 
   // Swiper #5 — Events Desktop Swiper (3 slides per view)
   if (document.querySelector('.desktop-event-swiper')) {
-    new Swiper('.desktop-event-swiper', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      loop: false,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
+  const swiper = new Swiper('.desktop-event-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+    el: '.swiper-pagination-numbers',
+    clickable: true,
+    renderBullet: function (index, className) {
+      const swiper = this;
+      const slidesPerView = swiper.params.slidesPerView || 1;
+      const totalSlides = swiper.slides.length;
+      const totalPages = Math.ceil(totalSlides / slidesPerView);
+
+      const currentPage = Math.floor(swiper.realIndex / slidesPerView);
+      const lastPage = totalPages - 1;
+
+      // Always show current -1, current, current +1, last page, and separator if needed
+      if (
+        index === currentPage - 1 ||
+        index === currentPage ||
+        index === currentPage + 1 ||
+        index === lastPage
+      ) {
+        const num = (index + 1).toString().padStart(2, '0');
+        return `<span class="${className}">${num}</span>`;
+      }
+
+      // Show separator ONLY once between current+1 and lastPage
+      if (
+        index === currentPage + 2 &&
+        lastPage > currentPage + 2 &&
+        swiper.pagination && !swiper._separatorInserted
+      ) {
+        swiper._separatorInserted = true; // Avoid multiple separators
+        return `<span class="pagination-separator" aria-hidden="true"></span>`;
+      }
+
+      return '';
+    },
+    // Reset flag after pagination is rendered
+    renderCustom: function () {
+      this._separatorInserted = false;
+    }
   }
+  });
+}
 
   // Interactive Overlay Toggle — Gin Makes History
   const toggleBtn = document.getElementById("gin-toggle-btn");

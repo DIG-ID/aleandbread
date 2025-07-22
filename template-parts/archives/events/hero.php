@@ -23,7 +23,6 @@
     <?php
     $args = array(
         'post_type' => 'event',
-        'posts_per_page' => 9,
         'order' => 'ASC',
         'orderby' => 'date'
     );
@@ -63,6 +62,7 @@
             <?php $counter++; endwhile; ?>
             </div></div>
           </div>
+          <div class="swiper-pagination pt-52"></div>
         </div>
       </div>
 
@@ -95,6 +95,7 @@
               </div>
             <?php endwhile; ?>
           </div>
+          <div class="swiper-pagination pt-52"></div>
         </div>
       </div>
 
@@ -127,6 +128,11 @@
               </div>
             <?php endwhile; ?>
           </div>
+        </div>
+        <div class="custom-pagination-wrapper flex items-center justify-center gap-4 mt-[110px] ">
+            <div class="swiper-button-prev cursor-pointer"></div>
+            <div class="swiper-pagination-numbers flex items-center justify-center gap-4"></div>
+            <div class="swiper-button-next cursor-pointer"></div>
         </div>
       </div>
 
