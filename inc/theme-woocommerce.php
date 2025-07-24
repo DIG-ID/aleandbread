@@ -70,3 +70,38 @@ function aleandbread_shop_categories() {
 }
 
 add_action( 'shop_categories', 'aleandbread_shop_categories', 10 );
+
+
+
+// Validate custom fields during registration
+add_action('woocommerce_register_post', 'aleandbread_validate_extra_register_fields', 10, 3);
+function aleandbread_validate_extra_register_fields($username, $email, $validation_errors) {
+    if (isset($_POST['first_name']) && empty($_POST['first_name'])) {
+        $validation_errors->add('first_name_error', __('First name is required.', 'woocommerce'));
+    }
+    if (isset($_POST['last_name']) && empty($_POST['last_name'])) {
+        $validation_errors->add('last_name_error', __('Last name is required.', 'woocommerce'));
+    }
+    if (isset($_POST['password']) && isset($_POST['password2']) && $_POST['password'] !== $_POST['password2']) {
+        $validation_errors->add('password_mismatch', __('Passwords do not match.', 'woocommerce'));
+    }
+    if (!isset($_POST['terms'])) {
+        $validation_errors->add('terms_error', __('You must accept the terms and privacy policy.', 'woocommerce'));
+    }
+
+    return $validation_errors;
+}
+
+// Save extra fields to user meta
+add_action('woocommerce_created_customer', 'aleandbread_save_extra_register_fields');
+function aleandbread_save_extra_register_fields($customer_id) {
+    if (isset($_POST['first_name'])) {
+        update_user_meta($customer_id, 'first_name', sanitize_text_field($_POST['first_name']));
+    }
+    if (isset($_POST['last_name'])) {
+        update_user_meta($customer_id, 'last_name', sanitize_text_field($_POST['last_name']));
+    }
+    if (isset($_POST['phone'])) {
+        update_user_meta($customer_id, 'billing_phone', sanitize_text_field($_POST['phone']));
+    }
+}

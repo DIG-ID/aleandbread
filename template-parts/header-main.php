@@ -35,20 +35,71 @@
       </div>
 
       <!-- Right: Icons + Button -->
-      <div class="flex justify-end items-center gap-6  ">
+      <div class="flex justify-end items-center gap-6">
         <?php if ( is_user_logged_in() ) : ?>
-            <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'customer-logout' ) ); ?>"><span class="hidden">Logout</span><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="User" /></a>
+          <!-- Only this wrapper needs to be relative for dropdown positioning -->
+          <div class="relative" x-data="{ open: false }">
+            <!-- User Icon Button -->
+            <button
+              id="user-menu-button"
+              @click="open = !open"
+              class="flex items-center gap-2 focus:outline-none"
+              :aria-expanded="open.toString()"
+              aria-haspopup="true"
+              aria-controls="user-menu"
+            >
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="User Icon" />
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              x-show="open"
+              @click.away="open = false"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-95 -translate-y-2 origin-top"
+              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-150"
+              x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+              x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+              x-cloak
+              id="user-menu"
+              role="menu"
+              aria-labelledby="user-menu-button"
+              class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-black text-yellow-600 p-4 rounded shadow-lg z-50 transform origin-top"
+            >
+              <p class="text-white font-bold mb-2">
+                Hi, <?php echo esc_html( wp_get_current_user()->first_name ); ?>
+              </p>
+              <ul class="space-y-1">
+                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="font-semibold hover:underline">Overview</a></li>
+                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>">Account Details</a></li>
+                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address' ) ); ?>">Address</a></li>
+                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>">Orders</a></li>
+                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'customer-logout' ) ); ?>">Log Out</a></li>
+              </ul>
+            </div>
+          </div>
         <?php else : ?>
-            <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"><span class="hidden">Login</span><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="User" /></a>
+          <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="flex items-center gap-2">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="Login" />
+          </a>
         <?php endif; ?>
-        
+
+        <!-- Cart and Shop -->
         <a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/cart.svg" alt="Cart" />
         </a>
-        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-secondary ml-2 !hidden xl:!flex "><?php esc_html_e( 'ZUM SHOP', 'aleandbread' ); ?></a>
+        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-secondary ml-2 !hidden xl:!flex ">
+          <?php esc_html_e( 'ZUM SHOP', 'aleandbread' ); ?>
+        </a>
       </div>
+
+
 
     </div>
   </nav>
   <?php get_template_part( 'template-parts/mega-menu' ); ?>
 </header>
+
+
+        
