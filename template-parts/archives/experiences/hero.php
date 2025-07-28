@@ -22,7 +22,17 @@
                     <p class="block-text text-dark pt-[30px] md:pt-[56px] xl:pt-[66px] md:w-[444px] xl:w-[555px]"><?php echo get_field('experiences_hero_description', 'option'); ?></p>
                 </div>
                 <div class="flex flex-col items-start justify-start col-start-1 xl:col-start-2 pt-[30px] md:pt-[56px] xl:pt-[66px] pb-[270px] md:pb-[432px] xl:pb-[300px]">                        
-                <a class="btn btn-tertiary w-[160px] md:w-[270px] xl:w-[270px] !border-accent"><?php esc_html_e( 'BUCHE DEIN ERLEBNIS', 'aleandbread' );  ?></a>
+                <?php
+                    $button = get_field('experiences_hero_button', 'option');
+                    if( $button ):
+                    $link_url = $button['url'];
+                    $link_title = $button['title'];
+                    $link_target = $button['target'] ? $button['target'] : '_self';
+                    ?>
+                    <a class="btn btn-tertiary w-[160px] md:w-[270px] xl:w-[270px] !border-accent" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <?php echo esc_html($link_title); ?>
+                    </a>
+                <?php endif; ?>
                 </div>
             </div>
         </div>

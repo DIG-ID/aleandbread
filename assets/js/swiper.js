@@ -68,10 +68,11 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Swiper #5 — Events Desktop Swiper (3 slides per view)
-  if (document.querySelector('.desktop-event-swiper')) {
-  const swiper = new Swiper('.desktop-event-swiper', {
+// Swiper #5 — Events Desktop Swiper (3 slides per view)
+if (document.querySelector('.desktop-event-swiper')) {
+  new Swiper('.desktop-event-swiper', {
     slidesPerView: 3,
+    slidesPerGroup: 3,
     spaceBetween: 30,
     loop: false,
     navigation: {
@@ -79,46 +80,44 @@ window.addEventListener("load", () => {
       prevEl: '.swiper-button-prev',
     },
     pagination: {
-    el: '.swiper-pagination-numbers',
-    clickable: true,
-    renderBullet: function (index, className) {
-      const swiper = this;
-      const slidesPerView = swiper.params.slidesPerView || 1;
-      const totalSlides = swiper.slides.length;
-      const totalPages = Math.ceil(totalSlides / slidesPerView);
+      el: '.swiper-pagination-numbers',
+      type: 'custom',
+      clickable: true,
+      renderCustom: function (swiper, current, total) {
+        let output = '';
 
-      const currentPage = Math.floor(swiper.realIndex / slidesPerView);
-      const lastPage = totalPages - 1;
+        // Show previous page
+        if (current > 1) {
+          output += pageButton(current - 1, current);
+        }
 
-      // Always show current -1, current, current +1, last page, and separator if needed
-      if (
-        index === currentPage - 1 ||
-        index === currentPage ||
-        index === currentPage + 1 ||
-        index === lastPage
-      ) {
-        const num = (index + 1).toString().padStart(2, '0');
-        return `<span class="${className}">${num}</span>`;
+        // Show current page
+        output += pageButton(current, current);
+
+        // Show next page
+        if (current < total) {
+          output += pageButton(current + 1, current);
+        }
+
+        // Separator and last page
+        if (current < total - 1) {
+          output += `<span class="pagination-separator" aria-hidden="true"></span>`;
+          output += pageButton(total, current);
+        }
+
+        return output;
       }
-
-      // Show separator ONLY once between current+1 and lastPage
-      if (
-        index === currentPage + 2 &&
-        lastPage > currentPage + 2 &&
-        swiper.pagination && !swiper._separatorInserted
-      ) {
-        swiper._separatorInserted = true; // Avoid multiple separators
-        return `<span class="pagination-separator" aria-hidden="true"></span>`;
-      }
-
-      return '';
-    },
-    // Reset flag after pagination is rendered
-    renderCustom: function () {
-      this._separatorInserted = false;
     }
-  }
   });
+
+  // Define pageButton helper
+  function pageButton(index, current) {
+    const padded = index.toString().padStart(2, '0');
+    const isActive = index === current;
+    const baseClass = 'swiper-pagination-bullet';
+    const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
+    return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
+  }
 }
 
   // Interactive Overlay Toggle — Gin Makes History

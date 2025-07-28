@@ -47,15 +47,15 @@
           <h1 class="text-blockTextLight xl:w-[560px] md:w-[470px]"><?php echo get_field('craftmanship_title'); ?></h1>
           <h3 class="text-blockTextLight pt-5 md:pt-12 xl:pt-14 xl:w-[560px] pb-9 md:pb-12 "><?php echo get_field('craftmanship_sub_title'); ?>
           </h3>
-          <?php 
-            $link = get_field('craftmanship_button');
-            if( $link ): 
-              $link_url = $link['url'];
-              $link_title = $link['title'];
-              $link_target = $link['target'] ? $link['target'] : '_self';
-          ?>
-            <a class="btn btn-primary col-span-1 md:col-span-3 xl:col-span-2" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
-              <?php echo esc_html( $link_title ); ?>
+          <?php
+            $button = get_field('craftmanship_button');
+            if( $button ):
+            $link_url = $button['url'];
+            $link_title = $button['title'];
+            $link_target = $button['target'] ? $button['target'] : '_self';
+            ?>
+            <a class="btn btn-primary col-span-1 md:col-span-3 xl:col-span-2" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+            <?php echo esc_html($link_title); ?>
             </a>
           <?php endif; ?>
         </div>

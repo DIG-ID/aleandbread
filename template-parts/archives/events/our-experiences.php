@@ -24,7 +24,17 @@ $image_url = wp_get_attachment_image_url($image_id, 'full');
                 <p class="over-title text-accent"><?php echo get_field('our_experience_over_title', 'option'); ?>
                 <h1 class="text-blockTextLight pt-5 md:pt-14 "><?php echo get_field('our_experience_title', 'option'); ?></h1>
                 <p class="block-text text-blockTextLight pt-10 md:pt-14"><?php echo get_field('our_experience_description', 'option'); ?></p>
-                <a class="btn btn-tertiary mt-14 !border-accent mb-44"><span>Mehr erfahren</span></a>
+                <?php
+                    $button = get_field('our_experience_button', 'option');
+                    if( $button ):
+                    $link_url = $button['url'];
+                    $link_title = $button['title'];
+                    $link_target = $button['target'] ? $button['target'] : '_self';
+                    ?>
+                    <a class="btn btn-tertiary mt-14 !border-accent mb-44" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <?php echo esc_html($link_title); ?>
+                    </a>
+                <?php endif; ?>
         </div>
     </div>
 </div>

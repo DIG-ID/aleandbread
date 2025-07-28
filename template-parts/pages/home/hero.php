@@ -32,7 +32,7 @@
   <?php endif; ?>
 
   <!-- Content always visible -->
-  <div class="theme-container !max-w-full relative z-10">
+  <div class="theme-container relative z-10">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-4 xl:col-span-6 xl:col-start-2 pt-40 md:pt-60 xl:pt-[320px] md:min-h-full xl:min-h-0">
         <h1 class="text-blockTextLight w-[240px] md:w-full">
@@ -41,10 +41,33 @@
         <p class="block-text text-blockTextLight pt-[52px] md:pt-16 xl:pt-14 w-[290px] md:w-[375px] xl:w-[415px] pb-[38px]">
           <?php echo get_field('section_hero_description'); ?>
         </p>
-        <div class="flex flex-col items-start justify-start xl:flex-row xl:items-center gap-8 md:gap-8 xl:gap-6 md:pt-10 col-start-1  pb-[184px] md:pb-[387px] xl:pb-56">                        
-          <a class="btn btn-primary w-1/2"><?php esc_html_e( 'unsere Produkte', 'aleandbread' ); ?></a>
-          <a class="btn btn-tertiary w-1/2"><?php esc_html_e( 'Buche dein Erlebnisse', 'aleandbread' ); ?></a>
+        <div class="flex flex-col items-start justify-start xl:flex-row xl:items-center gap-8 md:gap-8 xl:gap-6 md:pt-10 col-start-1  pb-[184px] md:pb-[387px] xl:pb-0">                        
+          <?php
+            $button = get_field('section_hero_products_button');
+            if( $button ):
+            $link_url = $button['url'];
+            $link_title = $button['title'];
+            $link_target = $button['target'] ? $button['target'] : '_self';
+            ?>
+            <a class="btn btn-primary w-1/2" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+              <?php echo esc_html($link_title); ?>
+            </a>
+            <?php endif; ?>
+          <?php
+            $button = get_field('section_hero_booking_button');
+            if( $button ):
+            $link_url = $button['url'];
+            $link_title = $button['title'];
+            $link_target = $button['target'] ? $button['target'] : '_self';
+            ?>
+            <a class="btn btn-tertiary w-1/2" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+              <?php echo esc_html($link_title); ?>
+            </a>
+          <?php endif; ?>
         </div>
+      </div>
+      <div class="hidden col-span-1 xl:col-start-1 xl:flex items-end justify-center -mb-[165px]">
+        <a class="btn btn-scroll absolute"></a>
       </div>
     </div>
   </div>

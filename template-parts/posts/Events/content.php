@@ -41,9 +41,17 @@
         </div>
 
         <div>
-          <a class="btn btn-tertiary mt-4 w-[260px] !inline pr-12">
-            <span>ZUR FLANEUR WEBSEITE</span>
-          </a>
+          <?php
+            $button = get_field('events_cpt_button');
+            if( $button ):
+            $link_url = $button['url'];
+            $link_title = $button['title'];
+            $link_target = $button['target'] ? $button['target'] : '_self';
+            ?>
+            <a class="btn btn-tertiary mt-4 w-[260px] !inline pr-12" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+            <?php echo esc_html($link_title); ?>
+            </a>
+          <?php endif; ?>
         </div>
 
       </div>

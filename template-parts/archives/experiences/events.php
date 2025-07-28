@@ -27,9 +27,17 @@
         <p class="block-text text-blockTextLight pt-10 md:pt-14 w-[276px] md:w-[547px] xl:w-full pb-[27px] md:pb-[53px]">
           <?php echo get_field('experiences_events_description', 'option'); ?>
         </p>
-        <a class="btn btn-tertiary !border-accent mb-[108px] md:mb-[165px] xl:mb-[223px]">
-          <span>Mehr erfahren</span>
-        </a>
+        <?php
+            $button = get_field('experiences_events_button', 'option');
+            if( $button ):
+            $link_url = $button['url'];
+            $link_title = $button['title'];
+            $link_target = $button['target'] ? $button['target'] : '_self';
+            ?>
+            <a class="btn btn-tertiary !border-accent mb-[108px] md:mb-[165px] xl:mb-[223px]" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+            <?php echo esc_html($link_title); ?>
+            </a>
+        <?php endif; ?>
       </div>
     </div>
   </div>

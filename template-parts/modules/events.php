@@ -66,8 +66,17 @@
         <p class="block-text text-blockTextLight pb-[26px] md:pb-[53px] pt-[26px] md:pt-[53px] w-[282.7px] md:w-[561px] xl:w-full">
           <?php echo get_field('events_description'); ?>
         </p>
-        <a class="btn btn-tertiary !border-accent">
-          <span>Mehr erfahren</span>
+        <?php
+          $button = get_field('events_button');
+          if( $button ):
+          $link_url = $button['url'];
+          $link_title = $button['title'];
+          $link_target = $button['target'] ? $button['target'] : '_self';
+          ?>
+          <a class="btn btn-tertiary !border-accent" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <?php echo esc_html($link_title); ?>
+          </a>
+        <?php endif; ?>
         </a>
       </div>
     </div>

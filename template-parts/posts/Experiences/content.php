@@ -105,9 +105,17 @@
 
     <!-- CTA Button -->
     <div class="align-items-center justify-center text-center pt-[50px] md:pt-[80px] pb-[69px] md:pb-[105px] xl:pt-[94px] xl:pb-[92px] mb[120px]">
-      <a class="btn btn-tertiary !border-accent md:w-[250px]">
-        <?php esc_html_e( 'see all experiences', 'aleandbread' ); ?>
-      </a>
+      <?php
+          $button = get_field('experiences_cpt_button');
+          if( $button ):
+          $link_url = $button['url'];
+          $link_title = $button['title'];
+          $link_target = $button['target'] ? $button['target'] : '_self';
+          ?>
+          <a class="btn btn-tertiary !border-accent md:w-[250px]" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <?php echo esc_html($link_title); ?>
+          </a>
+        <?php endif; ?>
     </div>
   </div>
 </section>

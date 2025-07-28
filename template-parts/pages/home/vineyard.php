@@ -57,10 +57,18 @@
             <?php echo get_field('vineyard_block_text_2'); ?>
           </p>
         </div>
-
-        <a class="btn btn-big-button pt-[29.5px] md:pt-[58px] xl:pt-16 pb-[83px] md:pb-[143px] xl:pb-64">MEHR ERFAHREN</a>
+        <?php
+          $button = get_field('vineyard_button');
+          if( $button ):
+          $link_url = $button['url'];
+          $link_title = $button['title'];
+          $link_target = $button['target'] ? $button['target'] : '_self';
+          ?>
+          <a class="btn btn-big-button pt-[29.5px] md:pt-[58px] xl:pt-16 pb-[83px] md:pb-[143px] xl:pb-64" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <?php echo esc_html($link_title); ?>
+          </a>
+        <?php endif; ?>
       </div>
-
     </div>
   </div>
 </section>
