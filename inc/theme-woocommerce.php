@@ -11,6 +11,8 @@ remove_action( 'woocommerce_shop_loop_header', 'woocommerce_product_taxonomy_arc
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
+// Add Account Default Content
+add_action( 'woocommerce_account_content', 'woocommerce_account_content' );
 
 // Add custom wrappers.
 add_action( 'woocommerce_before_main_content', 'aleandbread_wrapper_start', 10 );
