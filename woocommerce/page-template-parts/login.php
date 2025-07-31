@@ -29,7 +29,7 @@
                     <?php if ( function_exists( 'nextend_social_login_buttons' ) ) : ?>
                     <div class="my-6">
                         <div class="flex items-center justify-center gap-4">
-                        <?php echo do_shortcode( '[nextend_social_login provider="google" style="icon"]' ); ?>
+                        <?php echo do_shortcode( '[nextend_social_login provider="google"]' ); ?>
                         </div>
                     </div>
                     <?php endif; ?>
