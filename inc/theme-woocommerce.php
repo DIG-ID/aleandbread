@@ -24,6 +24,16 @@ function aleandbread_wrapper_start() {
 	echo '<div class="theme-container pb-[55px] md:pb-[92px] xl:pb-[192px] pt-[152px] md:pt-[194px] xl:pt-[170px]">';
 }
 
+//Make sure the user is logged in
+add_action( 'template_redirect', function() {
+    if ( is_account_page() && ! is_user_logged_in() && ! is_page( 'login' ) ) {
+        wp_redirect( site_url( '/login/' ) );
+        exit;
+    }
+});
+
+
+
 /**
  * Customized WooCommerce breadcrumbs function.
  *
