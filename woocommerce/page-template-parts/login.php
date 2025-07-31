@@ -28,6 +28,16 @@
                     </form>
                 </div>
             </div>
+            <?php if ( function_exists( 'nextend_social_login_buttons' ) ) : ?>
+            <div class="my-6">
+                <div class="flex items-center justify-center gap-4">
+                <?php echo do_shortcode( '[nextend_social_login provider="facebook"]' ); ?>
+                <?php echo do_shortcode( '[nextend_social_login provider="google"]' ); ?>
+                <?php echo do_shortcode( '[nextend_social_login provider="twitter" style="icon"]' ); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-8 hidden xl:block">
                 <div class="flex justify-center items-center">
                     <?php if (has_post_thumbnail()) : ?>
