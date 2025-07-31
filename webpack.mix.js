@@ -20,9 +20,10 @@ mix
 
   .browserSync({
     proxy: {
-      target: "http://aleandbread.digid/",
-      ws: true
+      target: "https://aleandbread.digid/",
+      ws: true,
     },
+    https: true,
     files: ["./**/*.php", "./dist/js/*.js", "./dist/css/*.css"]
   })
   .disableNotifications();

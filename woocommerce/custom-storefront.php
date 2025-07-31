@@ -1,3 +1,5 @@
+<?php do_action( 'aleandbread_shop_breadcrumbs' ); ?>
+
 <section class="shop-intro relative overflow-hidden">
 	<div class="theme-grid pb-14 xl:pb-60">
 		<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4">
@@ -49,7 +51,7 @@
 			 * @hooked woocommerce_result_count - 20
 			 * @hooked woocommerce_catalog_ordering - 30
 			 */
-			do_action( 'woocommerce_before_shop_loop' );
+			//do_action( 'woocommerce_before_shop_loop' );
 
 			/*woocommerce_product_loop_start();
 

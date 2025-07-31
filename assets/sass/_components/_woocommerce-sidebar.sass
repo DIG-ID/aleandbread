@@ -1,0 +1,78 @@
+.woocommerce-sidebar
+
+  .wp-block-heading
+    @apply mb-0
+
+  form.wp-block-search
+    @apply w-full
+    .wp-block-search__inside-wrapper
+      @apply border border-black items-center py-[5px] px-0
+      input.wp-block-search__input
+        @apply border-none pl-4 font-barlow text-base py-[1px]
+        &::placeholder
+          @apply font-barlow text-xs md:text-sm font-normal capitalize text-[#222222]
+      button.wp-block-search__button
+        @apply relative w-5 h-5 mr-2 ml-0
+        .search-icon
+          @apply hidden invisible
+        &::after
+          content: ''
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23c93' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 19-4.343-4.343m0 0A8 8 0 1 0 3.345 3.344a8 8 0 0 0 11.312 11.313'/%3E%3C/svg%3E")
+          @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-no-repeat bg-center
+
+  .wp-block-woocommerce-product-categories
+    @apply w-full mt-5
+    ul.wc-block-product-categories-list
+      @apply w-full
+      li.wc-block-product-categories-list-item
+        @apply flex justify-between items-center w-full border-b border-accent pb-3
+        &:not(:last-child)
+          @apply mb-4
+        a
+          .wc-block-product-categories-list-item__name
+            @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-bold
+        span.wc-block-product-categories-list-item-count
+          @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-normal text-dark
+          &::after,
+          &::before
+            @apply content-[''] hidden
+
+  .wp-block-woocommerce-product-filters
+    ul.wc-block-product-filter-removable-chips__items
+      @apply w-full
+      li.wc-block-product-filter-removable-chips__item
+        @apply border border-dark w-full 
+        span.wc-block-product-filter-removable-chips__label
+          @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-normal text-dark
+
+    .wp-block-woocommerce-product-filter-active
+      .wp-block-woocommerce-product-filter-clear-button
+        .wp-block-button
+          button.wp-block-button__link
+            @apply bg-transparent border-2 border-transparent text-dark font-barlow text-[12px] md:text-[18px] font-[700] leading-[8.8px] md:leading-[13px] uppercase text-center tracking-[0.54px] border-none max-w-[auto] w-[auto] p-0 flex items-center justify-center gap-x-1 mt-8
+            &::before
+              content: 'X'
+              display: inline-block
+              @apply text-[0.8rem]
+            &:hover
+              span
+                @apply border-b border-accent
+            &:active
+              span
+                @apply border-b-0
+
+  .wc-block-product-filter-price-slider__range
+    height: 1px
+    .range-bar
+      height: 1px
+
+    input[type=range]
+      &:focus
+        &::-webkit-slider-thumb
+          @apply bg-dark
+      &::-webkit-slider-thumb
+        @apply bg-accent border-white -mt-[7px]
+
+  .wc-block-product-filter-price-slider__left,
+  .wc-block-product-filter-price-slider__right
+    @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-bold

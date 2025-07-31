@@ -6,13 +6,15 @@ function aleandbread_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-menu'      => __( 'Main Menu', 'aleandbread' ),
-			'footer-menu-ale' => __( 'Footer Menu Ale and Bread', 'aleandbread' ),
-			'footer-menu-shop' => __( 'Footer Menu Shop', 'aleandbread' ),
+			'main-menu'              => __( 'Main Menu', 'aleandbread' ),
+			'footer-menu-ale'        => __( 'Footer Menu Ale and Bread', 'aleandbread' ),
+			'footer-menu-shop'       => __( 'Footer Menu Shop', 'aleandbread' ),
 			'footer-menu-experience' => __( 'Footer Menu Experience', 'aleandbread' ),
-			'footer-menu-support' => __( 'Footer Menu Support', 'aleandbread' ),
+			'footer-menu-support'    => __( 'Footer Menu Support', 'aleandbread' ),
 		)
 	);
+
+	add_theme_support( 'widgets' );
 
 	add_theme_support( 'menus' );
 
@@ -24,12 +26,26 @@ function aleandbread_theme_setup() {
 
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 
-	add_theme_support( 'woocommerce' );
+	add_theme_support(
+		'woocommerce',
+		array(
+			'thumbnail_image_width' => 150,
+			'single_image_width'    => 300,
+			'product_grid'          => array(
+				'default_rows'    => 3,
+				'min_rows'        => 2,
+				'max_rows'        => 8,
+				'default_columns' => 4,
+				'min_columns'     => 2,
+				'max_columns'     => 4,
+			),
+		)
+	);
 
 	add_theme_support( 'wc-product-gallery-zoom' );
 
 	add_theme_support( 'wc-product-gallery-lightbox' );
-	
+
 	add_theme_support( 'wc-product-gallery-slider' );
 
 	//add_image_size( 'zimmer-image', 1400, 770, array( 'center', 'center' ) );
@@ -65,6 +81,17 @@ function aleandbread_theme_footer_widgets_init() {
 		)
 	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Shop Sidebar', 'aleandbread' ),
+			'id'            => 'shop-sidebar',
+			'description'   => __( 'Widgets shown on WooCommerce product listings (category, search, etc.)', 'aleandbread' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s mb-14">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="text-lg font-bold mb-2">',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 
 add_action( 'widgets_init', 'aleandbread_theme_footer_widgets_init' );
@@ -100,7 +127,7 @@ add_action( 'wp_head', 'aleandbread_preload_webfonts' );
  */
 function aleandbread_theme_enqueue_styles() {
 
-	//Get the theme data
+	// Get the theme data.
 	$the_theme     = wp_get_theme();
 	$theme_version = $the_theme->get( 'Version' );
 
@@ -119,24 +146,31 @@ function aleandbread_theme_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
 
-add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
 
+/**
+ * Fixes Yoast breadcrumb for pages with a parent.
+ * It adds the parent page to the breadcrumb trail.
+ *
+ * @param array $links The breadcrumb links.
+ * @return array The modified breadcrumb links.
+ */
 function fix_yoast_page_parent_breadcrumb( $links ) {
-    global $post;
-    if ( is_page() && $post->post_parent ) {
-        $parent = get_post( $post->post_parent );
-        if ( $parent ) {
-            $breadcrumb[] = array(
-                'url' => get_permalink( $parent->ID ),
-                'text' => $parent->post_title,
-            );
-            // Remove default page link
-            array_splice( $links, -1, 0, $breadcrumb );
-        }
-    }
-    return $links;
+	global $post;
+	if ( is_page() && $post->post_parent ) {
+		$parent = get_post( $post->post_parent );
+		if ( $parent ) {
+			$breadcrumb[] = array(
+				'url' => get_permalink( $parent->ID ),
+				'text' => $parent->post_title,
+			);
+			// Remove default page link.
+			array_splice( $links, -1, 0, $breadcrumb );
+		}
+	}
+	return $links;
 }
 
+add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
 
 /**
  * Remove <p> Tag From Contact Form 7.
@@ -169,26 +203,19 @@ require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 // The theme woocommerce integration.
 require get_template_directory() . '/inc/theme-woocommerce.php';
 
-function console_log(...$data) {
-	$json = json_encode($data);
-	add_action('shutdown', function() use ($json) {
-		 echo "<script>console.log({$json})</script>";
-	});
-}
-
 
 /**
- * Woocommerce customizations.
+ * Console log function for debugging.
+ * Outputs data to the browser console.
+ *
+ * @param mixed ...$data Data to log to the console.
  */
-function aleandbread_register_shop_sidebar() {
-  register_sidebar( array(
-    'name'          => __( 'Shop Sidebar', 'aleandbread' ),
-    'id'            => 'shop-sidebar',
-    'description'   => __( 'Widgets shown on WooCommerce product listings (category, search, etc.)', 'aleandbread' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s mb-6">',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h3 class="text-lg font-bold mb-2">',
-    'after_title'   => '</h3>',
-  ));
+function console_log( ...$data ) {
+	$json = wp_json_encode( $data );
+	add_action(
+		'shutdown',
+		function () use ( $json ) {
+			echo "<script>console.log( {$json} )</script>";
+		}
+	);
 }
-add_action( 'widgets_init', 'aleandbread_register_shop_sidebar' );
