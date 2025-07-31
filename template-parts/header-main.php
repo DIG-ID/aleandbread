@@ -67,17 +67,31 @@
               aria-labelledby="user-menu-button"
               class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-black text-yellow-600 p-4 rounded shadow-lg z-50 transform origin-top"
             >
-              <p class="text-white font-bold mb-2">
-                Hi, <?php echo esc_html( wp_get_current_user()->first_name ); ?>
-              </p>
-              <ul class="space-y-1">
-                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="font-semibold hover:underline">Overview</a></li>
-                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>">Account Details</a></li>
-                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address' ) ); ?>">Address</a></li>
-                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>">Orders</a></li>
-                <li role="menuitem"><a href="<?php echo esc_url( wc_get_account_endpoint_url( 'customer-logout' ) ); ?>">Log Out</a></li>
-              </ul>
+              <?php
+              $current_user = wp_get_current_user();
+              if ( is_user_logged_in() && function_exists( 'wc_get_account_menu_items' ) ) :
+                $endpoints = wc_get_account_menu_items();
+              ?>
+                <p class="text-white font-bold mb-2">
+                  Hi, <?php echo esc_html( $current_user->first_name ); ?>
+                </p>
+                <ul class="space-y-1">
+                  <?php foreach ( $endpoints as $endpoint => $label ) : ?>
+                    <li role="menuitem">
+                      <a
+                        href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"
+                        class="block text-sm font-semibold hover:underline"
+                      >
+                        <?php echo esc_html( $label ); ?>
+                      </a>
+                    </li>
+                  <?php endforeach; ?>
+                </ul>
+              <?php else : ?>
+                <p class="text-white">Account menu unavailable.</p>
+              <?php endif; ?>
             </div>
+
           </div>
         <?php else : ?>
           <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="flex items-center gap-2">
