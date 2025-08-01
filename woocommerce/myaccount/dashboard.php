@@ -3,30 +3,31 @@ defined( 'ABSPATH' ) || exit;
 $current_user = wp_get_current_user();
 ?>
 
-<div class="mb-10">
-  <h2 class="text-2xl font-bold">Welcome, <?php echo esc_html( $current_user->display_name ); ?></h2>
-  <p class="text-sm text-gray-500">This is your account dashboard where you can check your recent account activity.</p>
+<div class="mb-6">
+  <p class="text-dark faq-question">Welcome, <?php echo esc_html( $current_user->display_name ); ?></p>
+  <p class="font-barlow text-blockText text-[18px] leading-[28px] font-normal">This is your account dashboard where you can check your recent account activity.</p>
 </div>
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-5">
   
   <!-- Account Details -->
-  <div class="bg-white border border-gray-200 p-6 rounded-md shadow text-sm space-y-1">
+  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="font-semibold text-sm">Account Details</h3>
-      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>" class="text-xs text-gray-500">✎ Edit</a>
+      <p class="block-text !font-semibold text-dark">Account Details</p>
+      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>
     </div>
-    <p><?php echo esc_html( $current_user->display_name ); ?></p>
-    <p><?php echo esc_html( get_user_meta( $current_user->ID, 'billing_phone', true ) ); ?></p>
-    <p><?php echo esc_html( get_user_meta( $current_user->ID, 'billing_address_1', true ) ); ?>, <?php echo esc_html( get_user_meta( $current_user->ID, 'billing_city', true ) ); ?>, <?php echo esc_html( get_user_meta( $current_user->ID, 'billing_country', true ) ); ?></p>
+    <p class="block-text text-dark"><?php echo esc_html( $current_user->display_name ); ?></p>
+    <p class="block-text text-dark"><?php echo esc_html( get_user_meta( $current_user->ID, 'billing_phone', true ) ); ?></p>
+    <p class="block-text text-dark"><?php echo esc_html( get_user_meta( $current_user->ID, 'billing_address_1', true ) ); ?>, <?php echo esc_html( get_user_meta( $current_user->ID, 'billing_city', true ) ); ?>, <?php echo esc_html( get_user_meta( $current_user->ID, 'billing_country', true ) ); ?></p>
   </div>
-
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-5">
   <!-- Shipping Address -->
- <div class="bg-white border border-gray-200 p-6 rounded-md shadow text-sm space-y-1">
+ <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="font-semibold text-sm">Shipping Address</h3>
-      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address' ) ); ?>" class="text-xs text-gray-500">✎ Edit</a>
+      <h3 class="block-text !font-semibold text-dark">Shipping Address</h3>
+      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>
     </div>
     <?php
     $shipping = array(
@@ -45,12 +46,12 @@ $current_user = wp_get_current_user();
   </div>
 
   <!-- Billing Address -->
-  <div class="bg-white border border-gray-200 p-6 rounded-md shadow text-sm space-y-1">
+  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="font-semibold text-sm">Billing Address</h3>
-      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address/billing' ) ); ?>" class="text-xs text-gray-500">✎ Edit</a>
+      <h3 class="block-text !font-semibold text-dark">Billing Address</h3>
+      <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address/billing' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>
     </div>
-    <p>Equal to the shipping address</p>
+    <p class="block-text text-dark">Equal to the shipping address</p>
   </div>
 
 </div>

@@ -5,19 +5,19 @@ get_header( 'shop' );
 
 <?php do_action( 'woocommerce_before_main_content' ); ?>
 
-<div class="theme-container py-16">
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-    
+<div class="theme-container">
+  <div class="theme-grid">
+    <div class="col-span-2 md:col-span-4 xl:col-span-9 col-start-1 md:col-start-2 xl:col-start-2">
+      <h1 class="text-dark mb-16"><?php esc_html_e('MY ACCOUNT','aleandbread') ?></h1>
+    </div>
     <!-- Sidebar -->
-    <aside class="lg:col-span-1">
+    <aside class="col-span-2 md:col-span-4 xl:col-span-2 col-start-1 md:col-start-2 xl:col-start-2 hidden xl:block">
       <?php wc_get_template( 'myaccount/navigation.php' ); ?>
     </aside>
 
     <!-- Main content -->
-    <section class="lg:col-span-3">
-      <div class="mb-10">
-        <h1 class="text-3xl font-extrabold mb-4">MY ACCOUNT</h1>
-      </div>
+    <section class="col-span-2 md:col-span-4 xl:col-span-6 col-start-1 md:col-start-2 xl:col-start-5">
+      
       <?php
       $current_endpoint = WC()->query->get_current_endpoint();
       if ( $current_endpoint ) {
