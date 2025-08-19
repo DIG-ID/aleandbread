@@ -26,3 +26,16 @@ gsap.ticker.add((time) => {
 });
 
 gsap.ticker.lagSmoothing(0);
+
+
+// Smooth scroll for scroll down button
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('.btn-scroll')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    // scroll one viewport down with Lenis
+    lenis.scrollTo(window.scrollY + window.innerHeight, {
+      duration: 0.5, // seconds
+      easing: (t) => t, // linear easing (can use easeInOutQuad, etc.)
+    })
+  });
+});

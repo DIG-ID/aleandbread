@@ -178,6 +178,13 @@ add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**
+ * Prevent popups showing when loading a page
+ */
+add_action('wp_head', function () {
+  echo '<style>[x-cloak]{display:none !important;}</style>';
+}, 0);
+
+/**
  * Lowers the metabox priority to 'core' for Yoast SEO's metabox.
  *
  * @param string $priority The current priority.

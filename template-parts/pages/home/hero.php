@@ -69,6 +69,20 @@
       <div class="hidden col-span-1 xl:col-start-1 xl:flex items-end justify-center -mb-[165px]">
         <a class="btn btn-scroll absolute"></a>
       </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelector('.btn-scroll')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            // scroll one viewport down with Lenis
+            lenis.scrollTo(window.scrollY + window.innerHeight, {
+              duration: 2, // seconds
+              easing: (t) => t, // linear easing (can use easeInOutQuad, etc.)
+            })
+          });
+        });
+      </script>
+
     </div>
   </div>
 </section>

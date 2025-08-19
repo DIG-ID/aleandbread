@@ -38,12 +38,12 @@
       <div class="flex justify-end items-center gap-6">
         <?php if ( is_user_logged_in() ) : ?>
           <!-- Only this wrapper needs to be relative for dropdown positioning -->
-          <div class="relative" x-data="{ open: false }">
+          <div class="relative min-h-[37px] flex items-end" x-data="{ open: false }">
             <!-- User Icon Button -->
             <button
               id="user-menu-button"
               @click="open = !open"
-              class="flex items-center gap-2 focus:outline-none"
+              class="flex items-center gap-2 z-40 relative focus:outline-none"
               :aria-expanded="open.toString()"
               aria-haspopup="true"
               aria-controls="user-menu"
@@ -56,31 +56,32 @@
               x-show="open"
               @click.away="open = false"
               x-transition:enter="transition ease-out duration-200"
-              x-transition:enter-start="opacity-0 scale-95 -translate-y-2 origin-top"
-              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
               x-transition:leave="transition ease-in duration-150"
-              x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-              x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
               x-cloak
               id="user-menu"
               role="menu"
               aria-labelledby="user-menu-button"
-              class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-black text-yellow-600 p-4 rounded shadow-lg z-50 transform origin-top"
+              class="absolute left-1/2 -translate-x-[90%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-30 origin-top"
             >
+
               <?php
               $current_user = wp_get_current_user();
               if ( is_user_logged_in() && function_exists( 'wc_get_account_menu_items' ) ) :
                 $endpoints = wc_get_account_menu_items();
               ?>
-                <p class="text-white font-bold mb-2">
+                <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6 border-b-[3px] border-accent">
                   Hi, <?php echo esc_html( $current_user->first_name ); ?>
                 </p>
-                <ul class="space-y-1">
+                <ul class="space-y-1 pb-5">
                   <?php foreach ( $endpoints as $endpoint => $label ) : ?>
                     <li role="menuitem">
                       <a
                         href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"
-                        class="block text-sm font-semibold hover:underline"
+                        class="block font-barlow text-[20px] leading-[28px] text-accent font-normal hover:underline px-5 py-2"
                       >
                         <?php echo esc_html( $label ); ?>
                       </a>
@@ -94,26 +95,54 @@
 
           </div>
         <?php else : ?>
-          <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="flex items-center gap-2">
+          <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="flex items-end gap-2 min-h-[37px] z-40 relative focus:outline-none">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/user.svg" alt="Login" />
           </a>
         <?php endif; ?>
 
         <!-- Cart and Shop -->
-        <a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/cart.svg" alt="Cart" />
-        </a>
-        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-secondary ml-2 !hidden xl:!flex ">
+        <div class="relative min-h-[37px] flex items-end" x-data="{ cartOpen: false }" id="header-cart-area">
+          <button
+            type="button"
+            id="cart-toggle"
+            class="z-50 relative"
+            @click="cartOpen = !cartOpen"
+            aria-label="Toggle cart"
+          >
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/cart.svg" alt="Cart" />
+          </button>
+
+          <!-- Wrap dropdown in a container to manage @click.outside -->
+          <div
+            x-show="cartOpen"
+            @click.outside="cartOpen = false"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            x-cloak
+            class="absolute left-1/2 -translate-x-[87%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-40 origin-top"
+          >
+            <div class="bg-dark text-yellow-600 shadow-lg">
+              <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6 border-b-[3px] border-accent">
+                Your Cart
+              </p>
+              <div class="px-5 pt-0 pb-5">
+                <?php woocommerce_mini_cart(); ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-secondary ml-2 !hidden xl:!flex">
           <?php esc_html_e( 'ZUM SHOP', 'aleandbread' ); ?>
         </a>
-      </div>
-
-
 
     </div>
   </nav>
   <?php get_template_part( 'template-parts/mega-menu' ); ?>
 </header>
-
-
-        
