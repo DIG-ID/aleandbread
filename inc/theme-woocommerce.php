@@ -51,7 +51,7 @@ function aleandbread_shop_custom_breadcrumbs() {
 		woocommerce_breadcrumb(
 			array(
 				'delimiter'   => ' &raquo; ',
-				'wrap_before' => '<div class="theme-grid"><div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-2 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
+				'wrap_before' => '<div class="theme-grid"><div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-4 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
 				'wrap_after'  => '</nav></div></div>',
 				'before'      => '',
 				'after'       => '',
@@ -144,3 +144,28 @@ function aleandbread_save_extra_register_fields( $customer_id ) {
 }
 
 add_action( 'woocommerce_created_customer', 'aleandbread_save_extra_register_fields' );
+
+
+
+
+/**
+ * Function for `woocommerce_before_shop_loop` action-hook.
+ * 
+ * @return void
+ */
+function aleandbread_woocommerce_before_shop_loop_action(){
+	woocommerce_output_all_notices();
+	?>
+	<div class="flex w-full justify-between items-center">
+		<?php
+		woocommerce_result_count();
+		woocommerce_catalog_ordering();
+		?>
+	</div>
+	<?php
+}
+
+add_action( 'aleandbread_before_shop_loop_action', 'aleandbread_woocommerce_before_shop_loop_action' );
+
+
+

@@ -1,10 +1,10 @@
 .archive.tax-product_cat
   
   .woocommerce-result-count
-  @apply font-barlow text-dark text-[0.9375rem] md:text-[1.5rem] font-normal leading-[1.4063rem] md:leading-[1.75rem] md:tracking-[0.015rem]
+    @apply font-barlow text-[0.9375rem] md:text-[1.5rem] font-normal leading-[1.4063rem] md:leading-[1.75rem] md:tracking-[0.015rem] m-0
 
   .woocommerce-ordering
-    @apply relative grid items-center font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-normal text-dark border border-dark cursor-pointer bg-background
+    @apply relative grid items-center font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-normal text-dark border border-dark cursor-pointer bg-background m-0
     grid-template-areas: "select"
 
     select.orderby
@@ -23,3 +23,9 @@
       @apply content-[''] w-3 h-2 block bg-dark justify-self-end mr-3 transition-all duration-300 ease-out rotate-0
       clip-path: polygon(100% 0%, 0 0%, 50% 100%)
       grid-area: select
+
+  .products
+    @apply mb-28
+
+  .woocommerce-pagination
+    

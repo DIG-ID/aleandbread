@@ -29,15 +29,15 @@ function aleandbread_theme_setup() {
 	add_theme_support(
 		'woocommerce',
 		array(
-			'thumbnail_image_width' => 150,
-			'single_image_width'    => 300,
+			'thumbnail_image_width' => 415,
+			'single_image_width'    => 680,
 			'product_grid'          => array(
-				'default_rows'    => 3,
-				'min_rows'        => 2,
-				'max_rows'        => 8,
-				'default_columns' => 4,
+				'default_rows'    => 2,
+				'min_rows'        => 1,
+				'max_rows'        => 2,
+				'default_columns' => 3,
 				'min_columns'     => 2,
-				'max_columns'     => 4,
+				'max_columns'     => 3,
 			),
 		)
 	);
@@ -209,6 +209,30 @@ require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 
 // The theme woocommerce integration.
 require get_template_directory() . '/inc/theme-woocommerce.php';
+
+
+/**
+ * Modify the archive title.
+ *
+ * @param string $title The original title.
+ * @return string The modified title.
+ */
+function aleandbread_archive_title( $title ) {
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( '', false );
+	} elseif ( is_author() ) {
+		$title = '<span class="vcard">' . get_the_author() . '</span>';
+	} elseif ( is_post_type_archive() ) {
+		$title = post_type_archive_title( '', false );
+	} elseif ( is_tax() ) {
+		$title = single_term_title( '', false );
+	}
+	return $title;
+}
+
+add_filter( 'get_the_archive_title', 'aleandbread_archive_title' );
 
 
 /**

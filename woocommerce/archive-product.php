@@ -31,8 +31,26 @@ do_action( 'woocommerce_before_main_content' );
 if ( is_shop() && ! is_product_category() && ! is_search() ) :
 	get_template_part( 'woocommerce/custom-storefront' );
 else :
+	do_action( 'aleandbread_shop_breadcrumbs' );
 	?>
-	<div class="theme-grid">
+	<section class="shop-intro relative overflow-hidden">
+		<div class="theme-grid pb-14 xl:pb-48">
+			<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4">
+				<?php
+				$term_id      = get_queried_object_id();
+				$custom_field = get_field( 'custom_title', 'product_cat_' . $term_id );
+				if ( $custom_field ) :
+					echo '<h1 class="page-title text-dark">' . wp_kses_post( $custom_field ) . '</h1>';
+				endif;
+				?>
+			</div>
+			<div class="col-start-1 col-span-2 md:col-span-4 xl:col-start-8 xl:col-span-4 pt-[48px] md:pt-[56px] xl:pt-0">
+				<p class="text-dark block-text w-[342px] md:w-[438px] xl:w-full"><?php do_action( 'woocommerce_archive_description' ); ?></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="theme-grid">
 		<div class="col-span-2 md:col-span-6 xl:col-span-12">
 			<div class="theme-grid">
 				<!-- Sidebar column -->
@@ -51,10 +69,11 @@ else :
 				<div class="col-span-2 md:col-span-3 xl:col-span-9">
 					<?php
 					if ( woocommerce_product_loop() ) :
-						do_action( 'woocommerce_before_shop_loop' );
+						//do_action( 'woocommerce_before_shop_loop' );
+						do_action( 'aleandbread_before_shop_loop_action' );
 						woocommerce_product_loop_start();
 						?>
-						<hr class="border-t border-dark mt-2 mb-32" />
+						<hr class="border-t border-dark mt-7 mb-32" />
 						<?php
 						if ( wc_get_loop_prop( 'total' ) ) {
 							?><div class="grid grid-cols-2 xl:grid-cols-3 gap-6"><?php
@@ -80,7 +99,7 @@ else :
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<?php
 endif;
 
