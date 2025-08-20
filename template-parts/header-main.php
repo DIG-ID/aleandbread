@@ -127,7 +127,7 @@
           >
             <div class="bg-dark text-yellow-600 shadow-lg">
               <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6 border-b-[3px] border-accent">
-                Your Cart
+                <?php esc_html_e('Ihr Warenkorb','aleandbread') ?>
               </p>
               <div class="px-5 pt-0 pb-5">
                 <?php woocommerce_mini_cart(); ?>

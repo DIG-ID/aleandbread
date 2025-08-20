@@ -1,3 +1,5 @@
+body.woocommerce-cart
+    @apply bg-background
 .woocommerce-mini-cart__empty-message
     @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
 
@@ -12,3 +14,80 @@
                 @apply bg-accent text-dark
     &-item.mini_cart_item
         @apply mb-2
+
+/* Stepper */
+.ab-steps
+    .step-dot
+        display: inline-flex
+        width: 34px
+        height: 34px
+        border-radius: 9999px
+        align-items: center
+        justify-content: center
+        border: 2px solid #c7a04a
+        font-weight: 600
+
+    .step-active
+        .step-dot
+            background: #c7a04a
+            color: #fff
+
+/* Qty */
+.ab-qty
+    background: transparent
+
+.ab-qty__input
+    height: 32px
+
+/* Shipping list in summary */
+.ab-summary
+    .shipping
+        ul
+            margin: 0
+            padding: 0
+
+        li
+            list-style: none
+            border-bottom: 1px solid #eee
+
+        label
+            width: 100%
+            display: flex
+            justify-content: space-between
+            padding: .75rem 1rem
+
+.woocommerce
+    table.shop_table
+        @apply border-0
+        thead
+            @apply border-b border-[#6C7275]
+        th
+            @apply pl-0 pb-6 font-barlow text-[16px] leading-[26px] font-semibold text-dark
+        td
+            @apply border-0
+    &-cart
+        table.cart
+            td
+                @apply px-0 pt-6 pb-6
+            input
+                @apply bg-transparent
+
+#add_payment_method table.cart,
+.woocommerce-cart table.cart,
+.woocommerce-checkout table.cart
+    img
+        width:100%
+        height: 100%
+
+.woocommerce-cart-form__cart-item
+    .product-quantity, .product-price, .product-subtotal
+        @apply font-barlow text-[16px] leading-[26px] font-semibold text-dark
+
+.woocommerce-shipping-methods
+    @apply border border-dark
+    margin-top: 12px !important
+    margin-bottom: 12px !important
+    padding-top: 13px !important
+    padding-bottom: 13px !important
+    li
+        margin: 0 !important
