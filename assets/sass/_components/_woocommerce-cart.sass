@@ -38,6 +38,17 @@ body.woocommerce-cart, body.woocommerce-checkout
                     background: #B1B5C3
                     color: #fff
                     font-weight: 600
+                &-done
+                    display: inline-flex
+                    width: 34px
+                    height: 34px
+                    border-radius: 9999px
+                    align-items: center
+                    justify-content: center
+                    border-color: #38CB89
+                    background: #38CB89
+                    color: #fff
+                    font-weight: 600
             .step-active
                 .step-dot
                     background: #c7a04a
@@ -63,7 +74,7 @@ body.woocommerce-cart, body.woocommerce-checkout
     .woocommerce-cart table.cart,
     .woocommerce-checkout table.cart
         img
-            width:100%
+            width:100% !important
             height: 100%
 
     .woocommerce-cart-form__cart-item
@@ -79,3 +90,4 @@ body.woocommerce-cart, body.woocommerce-checkout
         padding-bottom: 13px !important
         li
             margin: 0 !important
+

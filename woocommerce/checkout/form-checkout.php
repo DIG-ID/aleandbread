@@ -20,11 +20,11 @@ do_action( 'woocommerce_before_main_content' );
 
         <!-- Stepper -->
 			<div class="ab-steps max-w-4xl mx-auto mb-20 flex items-center">
-				<div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-dark w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Shopping cart', 'woocommerce' ); ?></span>
+				<div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-[#38CB89] w-full md:w-[30%] mr-[3.333333%]">
+					<span class="step-dot-done">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e( 'Shopping cart', 'woocommerce' ); ?></span>
 				</div>
-				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot-faded">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Checkout details', 'woocommerce' ); ?></span>
+				<div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-dark w-full md:w-[30%] mr-[3.333333%]">
+					<span class="step-dot">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Checkout details', 'woocommerce' ); ?></span>
 				</div>
 				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
 					<span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Order complete', 'woocommerce' ); ?></span>
