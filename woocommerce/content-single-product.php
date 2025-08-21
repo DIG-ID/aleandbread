@@ -33,6 +33,8 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'theme-container theme-grid', $product ); ?>>
 
+
+	<div class="col-start-1 col-span-4">
 	<?php
 	/**
 	 * Hook: woocommerce_before_single_product_summary.
@@ -42,8 +44,9 @@ if ( post_password_required() ) {
 	 */
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
+	</div>
 
-	<div class="summary entry-summary col-span-6 col-start-6">
+	<div class="summary entry-summary col-span-8 col-start-6">
 		<?php
 		/**
 		 * Hook: woocommerce_single_product_summary.
@@ -60,6 +63,7 @@ if ( post_password_required() ) {
 		do_action( 'woocommerce_single_product_summary' );
 		?>
 	</div>
+  </div>
 
 	<?php
 	/**

@@ -250,3 +250,124 @@ function console_log( ...$data ) {
 		}
 	);
 }
+
+add_action('after_setup_theme', function () {
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40); 
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
+
+    add_action('woocommerce_single_product_summary', 'mytheme_product_sku_under_title', 12);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
+    // Keep the add to cart at 30 (default includes quantity input for simple products)
+    add_action('woocommerce_single_product_summary', 'mytheme_shipping_note', 35);
+});
+/**
+ * Output SKU below the title only (without categories/tags).
+ */
+function mytheme_product_sku_under_title() {
+    global $product;
+    if ( ! $product ) return;
+
+    $sku = $product->get_sku();
+    if ( ! $sku ) return;
+
+    echo '<p class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">'
+        . esc_html($sku) .
+        '</span></p>';
+}
+
+/**
+ * Simple shipping note after the Add to Cart area.
+ */
+function mytheme_shipping_note() {
+    echo '<p class="ship-note">Orders ship within 5 to 10 Business Days</p>';
+}
+
+// Use WooCommerce’s built-in gallery slider with arrows, no thumbs.
+add_action('after_setup_theme', function () {
+  // (Optional but recommended) make sure gallery features are on
+  add_theme_support('wc-product-gallery-zoom');
+  add_theme_support('wc-product-gallery-lightbox');
+  add_theme_support('wc-product-gallery-slider');
+});
+
+add_filter('woocommerce_single_product_carousel_options', function ($opts) {
+  // Hide thumbnail strip
+  $opts['controlNav'] = false;
+
+  // Show direction arrows
+  $opts['directionNav'] = true;
+
+  // Smooth slide
+  $opts['animation']   = 'slide';
+
+  // Optional: remove default arrow text; you’ll style with CSS
+  $opts['prevText'] = '';
+  $opts['nextText'] = '';
+
+  return $opts;
+});
+
+/**
+ * Keep/rename/order product tabs:
+ * 1) Beschreibung (Description)
+ * 2) Additional information
+ * 3) Reviews
+ */
+add_filter('woocommerce_product_tabs', function ($tabs) {
+    global $product;
+
+    // --- Description tab ---
+    $tabs['description'] = [
+        'title'    => __('Beschreibung', 'your-textdomain'), // label
+        'priority' => 10,
+        'callback' => 'woocommerce_product_description_tab', // default renderer
+    ];
+
+    // --- Additional information tab (only if product has attributes) ---
+    if ($product instanceof WC_Product && $product->has_attributes()) {
+        $tabs['additional_information'] = [
+            'title'    => __('Additional information', 'your-textdomain'),
+            'priority' => 20,
+            'callback' => 'woocommerce_product_additional_information_tab',
+        ];
+    } else {
+        unset($tabs['additional_information']);
+    }
+
+    // --- Reviews tab (only if reviews are enabled) ---
+    if ('yes' === get_option('woocommerce_enable_reviews')) {
+        $count = $product ? (int) $product->get_review_count() : 0;
+        $tabs['reviews'] = [
+            'title'    => sprintf(__('Reviews (%d)', 'your-textdomain'), $count),
+            'priority' => 30,
+            'callback' => 'comments_template', // default renderer
+        ];
+    } else {
+        unset($tabs['reviews']);
+    }
+
+    return $tabs;
+}, 99);
+
+// Always enable reviews for products
+add_filter( 'woocommerce_product_tabs', function( $tabs ) {
+    global $product;
+    if ( ! empty( $tabs['reviews'] ) ) {
+        $tabs['reviews']['title'] = __( 'Reviews', 'woocommerce' );
+    } else {
+        $tabs['reviews'] = array(
+            'title'    => __( 'Reviews', 'woocommerce' ),
+            'priority' => 50,
+            'callback' => 'comments_template',
+        );
+    }
+    return $tabs;
+}, 98 );
+
+// Ensure products accept comments (reviews use comments system)
+add_action( 'init', function() {
+    add_post_type_support( 'product', 'comments' );
+});
+

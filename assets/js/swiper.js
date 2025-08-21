@@ -190,8 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-console.log("JS loaded"); // This should always show
-
 if (document.querySelector('.our-experience-swiper')) {
   console.log("Found .our-experience-swiper");
   new Swiper('.our-experience-swiper', {
@@ -199,8 +197,8 @@ if (document.querySelector('.our-experience-swiper')) {
     slidesPerView: 1,
     spaceBetween: 20,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next-2',
+      prevEl: '.swiper-button-prev-2',
     },
   });
 }

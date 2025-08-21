@@ -9,7 +9,7 @@ $product_title = get_the_title();
 $product_price = $product->get_price_html();
 ?>
 
-<div <?php wc_product_class( 'card-product', $product ); ?>>
+<div <?php wc_product_class( 'card-produc', $product ); ?>>
     <a href="<?php echo esc_url( $product_link ); ?>">
         <div class="card-product--image">
             <?php echo get_the_post_thumbnail( $product->get_id(), 'full', ['class' => 'w-full h-full object-cover'] ); ?>
