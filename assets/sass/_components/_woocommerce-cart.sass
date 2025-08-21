@@ -1,20 +1,20 @@
+.woocommerce-mini-cart__empty-message
+    @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
+
+.woocommerce-mini-cart
+    &__buttons
+        @apply cursor-pointer transition-colors duration-300 ease-in-out
+        .button.wc-forward, .button.checkout
+            @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] mt-4 block font-bold leading-[8.811px] md:leading-[13px] uppercase text-center py-[6.5px] md:py-[16.5px]
+            &:hover
+                @apply bg-dark text-accent
+            &:active
+                @apply bg-accent text-dark
+    &-item.mini_cart_item
+        @apply mb-2
 body.woocommerce-cart, body.woocommerce-checkout
     @apply bg-background
-    .woocommerce-mini-cart__empty-message
-        @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
-
-    .woocommerce-mini-cart
-        &__buttons
-            @apply cursor-pointer transition-colors duration-300 ease-in-out
-            .button.wc-forward, .button.checkout
-                @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] mt-4 block font-bold leading-[8.811px] md:leading-[13px] uppercase text-center py-[6.5px] md:py-[16.5px]
-                &:hover
-                    @apply bg-dark text-accent
-                &:active
-                    @apply bg-accent text-dark
-        &-item.mini_cart_item
-            @apply mb-2
-
+    
     /* Stepper */
     .ab-cart, .ab-checkout
         .ab-steps
