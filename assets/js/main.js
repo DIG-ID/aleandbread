@@ -3,3 +3,4 @@ import './navigation';
 import './swiper';
 import './woocommerce-cart';
 import './woocommerce';
+import './woocommerce';
