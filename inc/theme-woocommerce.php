@@ -12,12 +12,11 @@ remove_action( 'woocommerce_shop_loop_header', 'woocommerce_product_taxonomy_arc
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 //remove default notices from login form
-add_action( 'after_setup_theme', function () {
-    remove_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 10 );
-    remove_action( 'woocommerce_before_customer_login_form', 'wc_print_notices', 10 );
-    remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 );
-    remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 );
-}, 20 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 10 );
+remove_action( 'woocommerce_before_customer_login_form', 'wc_print_notices', 10 );
+remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 );
+remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 );
+
 
 
 
