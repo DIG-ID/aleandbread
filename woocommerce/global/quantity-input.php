@@ -18,7 +18,7 @@
  * @var string $type     The input type attribute.
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 // Keep WooCommerce variables intact
 $input_id    = $args['input_id'];
