@@ -130,7 +130,9 @@
                 <?php esc_html_e('Ihr Warenkorb','aleandbread') ?>
               </p>
               <div class="px-5 pt-0 pb-5">
-                <?php woocommerce_mini_cart(); ?>
+                <div class="widget_shopping_cart_content">
+                  <?php woocommerce_mini_cart(); ?>
+                </div>
               </div>
             </div>
           </div>
