@@ -57,7 +57,8 @@ $current_user = wp_get_current_user();
       href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', 'billing', wc_get_page_permalink( 'myaccount' ) ) ); ?>"
       class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]"
     >✎ Edit</a>
-      <?php
+    </div>
+    <?php
       $billing = array(
         'first_name' => get_user_meta( $current_user->ID, 'billing_first_name', true ),
         'last_name'  => get_user_meta( $current_user->ID, 'billing_last_name', true ),
@@ -71,8 +72,6 @@ $current_user = wp_get_current_user();
       );
       echo wp_kses_post( WC()->countries->get_formatted_address( $billing ) );
       ?>
-
-    </div>
     <p class="block-text text-dark">Equal to the shipping address</p>
   </div>
 
