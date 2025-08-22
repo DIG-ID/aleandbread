@@ -7,25 +7,43 @@
                     <?php wc_print_notices(); ?>
                     <form method="post" class="space-y-4">
                         <?php do_action('woocommerce_login_form_start'); ?>
-                        <input type="text" name="username" placeholder="Email" class="w-full border p-2 rounded" value="<?php echo (!empty($_POST['username']) ? esc_attr($_POST['username']) : ''); ?>" required>
-                        <input type="password" name="password" placeholder="Password" class="w-full border p-2 rounded" required>
 
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="rememberme" value="forever" <?php checked(!empty($_POST['rememberme'])); ?>>
-                            <span>Remember me</span> <a href="<?php echo esc_url(wp_lostpassword_url()); ?>" class="text-sm text-red-500">Forgot Password?</a>
-                        </label>
+                        <div class="flex flex-col">
+                            <label for="username" class="mb-3">Email</label>
+                            <input type="text" id="username" name="username" placeholder="Email"
+                                class="w-full border p-2 rounded"
+                                value="<?php echo (!empty($_POST['username']) ? esc_attr($_POST['username']) : ''); ?>" required>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <label for="password" class="mb-3">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Password"
+                                class="w-full border p-2 rounded" required>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" name="rememberme" value="forever" <?php checked(!empty($_POST['rememberme'])); ?>>
+                                <span>Remember me</span>
+                            </label>
+                            <a href="<?php echo esc_url(wp_lostpassword_url()); ?>" class="text-sm text-[#CC332E] hover:underline">
+                                Forgot Password?
+                            </a>
+                        </div>
 
                         <?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
                         <input type="hidden" name="redirect" value="<?php echo esc_url(home_url()); ?>" />
+
                         <button type="submit" class="btn btn-secondary mb-6 w-full" name="login">Login</button>
+
                         <p class="text-center text-sm">
-                        Don’t have an account?
-                        <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-red-500 font-medium hover:underline">Sign up</a>
+                            Don’t have an account?
+                            <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-[#CC332E] font-medium hover:underline">Sign up</a>
                         </p>
 
-                        
                         <?php do_action('woocommerce_login_form_end'); ?>
                     </form>
+
                     <?php if ( function_exists( 'nextend_social_login_buttons' ) ) : ?>
                     <div class="my-6">
                         <div class="flex items-center justify-center gap-4">
