@@ -76,47 +76,14 @@ else :
 	 * @hooked WC_Structured_Data::generate_website_data() - 30
 	 */
 	do_action( 'woocommerce_before_main_content' );
-	?>
-	<section class="theme-grid">
-		<div class="col-span-2 md:col-span-6 xl:col-span-12">
-			<div class="theme-grid">
 
-				<!-- Product loop -->
-				<div class="col-span-2 md:col-span-3 xl:col-span-9">
-					<?php
-					if ( woocommerce_product_loop() ) :
-						//do_action( 'woocommerce_before_shop_loop' );
-						do_action( 'aleandbread_before_shop_loop_action' );
-						woocommerce_product_loop_start();
-						?>
-						<hr class="border-t border-dark mt-7 mb-32" />
-						<?php
-						if ( wc_get_loop_prop( 'total' ) ) {
-							?><div class="grid grid-cols-2 xl:grid-cols-3 gap-6"><?php
-							while ( have_posts() ) {
-								the_post();
+	/**
+	 * Hook: aleandbread_shop_categories.
+	 * 
+	 * @hooked aleandbread_shop_categories - 10
+	 */
+	do_action( 'shop_experiences_categories' );
 
-								/**
-								 * Hook: woocommerce_shop_loop.
-								 */
-								do_action( 'woocommerce_shop_loop' );
-
-								wc_get_template_part( 'content', 'product' );
-							}
-							?></div><?php
-						}
-
-						woocommerce_product_loop_end();
-						do_action( 'woocommerce_after_shop_loop' );
-					else :
-						do_action( 'woocommerce_no_products_found' );
-					endif;
-					?>
-				</div>
-			</div>
-		</div>
-	</section>
-	<?php
 	/**
 	 * Hook: woocommerce_after_main_content.
 	 *
