@@ -67,3 +67,10 @@
         </div>
     </div>
 </section>
+<?php if ( isset($_GET['check-email']) ) : ?>
+  <div class="woocommerce-info">
+    <?php esc_html_e('Thanks! We’ve emailed you a confirmation link. Please check your inbox (and spam).', 'your-textdomain'); ?>
+  </div>
+<?php endif; ?>
+
+<?php echo do_shortcode('[ab_resend_verification]'); // optional resend form ?>
