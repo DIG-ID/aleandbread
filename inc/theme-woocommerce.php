@@ -175,7 +175,6 @@ function aleandbread_shop_experiences_categories() {
 add_action( 'shop_experiences_categories', 'aleandbread_shop_experiences_categories', 10 );
 
 
-
 // ---------- Email verification settings ----------
 const AB_VERIFY_META_KEY      = 'ab_email_verified';
 const AB_VERIFY_TOKEN_HASH    = 'ab_email_verify_hash';
