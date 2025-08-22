@@ -24,26 +24,6 @@ $order    = $order_id ? wc_get_order($order_id) : false;
           <?php echo esc_html( get_the_title( wc_get_page_id( 'cart' ) ) ); ?>
         </h1>
 
-        <div class="ab-steps max-w-4xl mx-auto mb-16 flex items-center justify-between">
-          <div class="step flex items-center gap-3 w-full mr-[3.333333%]">
-            <span class="step-dot-done">✓</span>
-            <span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]">
-              <?php esc_html_e('Shopping cart','woocommerce'); ?>
-            </span>
-          </div>
-          <div class="step step-active flex items-center gap-3 w-full mr-[3.333333%]">
-            <span class="step-dot">2</span>
-            <span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark">
-              <?php esc_html_e('Checkout details','woocommerce'); ?>
-            </span>
-          </div>
-          <div class="step flex items-center gap-3 w-full">
-            <span class="step-dot">3</span>
-            <span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">
-              <?php esc_html_e('Order complete','woocommerce'); ?>
-            </span>
-          </div>
-        </div>
 
         <div class="max-w-3xl mx-auto">
           <div class="ab-card bg-white rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] p-8">

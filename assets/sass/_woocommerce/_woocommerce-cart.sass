@@ -15,44 +15,42 @@
 body.woocommerce-cart, body.woocommerce-checkout
     @apply bg-background
     
-    /* Stepper */
-    .ab-cart, .ab-checkout, .ab-thankyou
-        .ab-steps
-            .step-dot
+    .ab-steps
+        .step-dot
+            display: inline-flex
+            width: 34px
+            height: 34px
+            border-radius: 9999px
+            align-items: center
+            justify-content: center
+            border: 2px solid #c7a04a
+            font-weight: 600
+            &-faded
                 display: inline-flex
                 width: 34px
                 height: 34px
                 border-radius: 9999px
                 align-items: center
                 justify-content: center
-                border: 2px solid #c7a04a
+                border-color: #B1B5C3
+                background: #B1B5C3
+                color: #fff
                 font-weight: 600
-                &-faded
-                    display: inline-flex
-                    width: 34px
-                    height: 34px
-                    border-radius: 9999px
-                    align-items: center
-                    justify-content: center
-                    border-color: #B1B5C3
-                    background: #B1B5C3
-                    color: #fff
-                    font-weight: 600
-                &-done
-                    display: inline-flex
-                    width: 34px
-                    height: 34px
-                    border-radius: 9999px
-                    align-items: center
-                    justify-content: center
-                    border-color: #38CB89
-                    background: #38CB89
-                    color: #fff
-                    font-weight: 600
-            .step-active
-                .step-dot
-                    background: #c7a04a
-                    color: #fff
+            &-done
+                display: inline-flex
+                width: 34px
+                height: 34px
+                border-radius: 9999px
+                align-items: center
+                justify-content: center
+                border-color: #38CB89
+                background: #38CB89
+                color: #fff
+                font-weight: 600
+        .step-active
+            .step-dot
+                background: #c7a04a
+                color: #fff
 
     .woocommerce
         table.shop_table
