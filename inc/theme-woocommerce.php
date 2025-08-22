@@ -37,8 +37,26 @@ function aleandbread_wrapper_start() {
 
 //Make sure the user is logged in
 add_action( 'template_redirect', function() {
-    if ( is_account_page() && ! is_user_logged_in() && ! is_page( 'login' ) ) {
-        wp_redirect( site_url( '/login/' ) );
+    // Only gatekeep My Account pages for logged-out users
+    if ( is_account_page() && ! is_user_logged_in() ) {
+        // Allow WooCommerce endpoints that must be accessible while logged out
+        $allowed_endpoints = array(
+            'lost-password',
+            'reset-password',
+            'register',
+        );
+        // If we're on any allowed endpoint or on your custom login page, do nothing
+        foreach ( $allowed_endpoints as $ep ) {
+            if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( $ep ) ) {
+                return;
+            }
+        }
+        // Also allow the standalone login page itself
+        if ( is_page( array( 'login', 'signup' ) ) ) {
+            return; // allow
+        }
+        // Otherwise, redirect to your login
+        wp_safe_redirect( site_url( '/login/' ) );
         exit;
     }
 });
