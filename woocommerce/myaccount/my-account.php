@@ -18,16 +18,14 @@ get_header( 'shop' );
     </aside>
 
     <!-- Main content -->
-    <section class="col-span-2 md:col-span-4 xl:col-span-6 col-start-1 md:col-start-2 xl:col-start-5">
+    <section class="account-content col-span-2 md:col-span-4 xl:col-span-6 col-start-1 md:col-start-2 xl:col-start-5">
       
       <?php
-      $current_endpoint = WC()->query->get_current_endpoint();
-      if ( $current_endpoint ) {
-          do_action( 'woocommerce_account_' . $current_endpoint . '_endpoint' );
-      } else {
-          wc_get_template( 'myaccount/dashboard.php' );
-      }
+      // Let WooCommerce handle endpoints (orders, downloads, edit-address, etc.)
+      // This correctly handles nested endpoints like edit-address/billing.
+      do_action( 'woocommerce_account_content' );
       ?>
+
     </section>
     
   </div>
