@@ -91,3 +91,41 @@ body.woocommerce-cart, body.woocommerce-checkout
         li
             margin: 0 !important
 
+    .woocommerce-checkout-fields
+        h3
+            @apply font-barlow text-[20px] leading-[28px] text-black font-medium mb-6
+
+    #payment 
+        #place_order
+            @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[20px] uppercase text-center px-[8.5px] md:px-[62px] py-[6.5px] md:py-[16.5px] float-none mt-4
+            &:hover
+                @apply bg-dark text-accent
+            &:active
+                @apply bg-accent text-dark
+
+//order complete
+.ab-thankyou
+    background: #f2f2f2
+
+.ab-card
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 16px 48px rgba(0,0,0,.08)
+
+.ab-thumb
+    position: relative
+    border-radius: 8px
+    overflow: hidden
+    background: #f3f4f6
+
+.ab-badge
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 26px
+    height: 26px
+    border-radius: 9999px
+    background: #111
+    color: #fff
+    font-weight: 700
+    font-size: 13px
+    line-height: 1
+    box-shadow: 0 0 0 3px #fff
