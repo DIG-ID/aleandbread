@@ -12,7 +12,9 @@ get_header( 'shop' );
     </div>
     <!-- Sidebar -->
     <aside class="col-span-2 md:col-span-4 xl:col-span-2 col-start-1 md:col-start-2 xl:col-start-2 hidden xl:block">
-      <?php wc_get_template( 'myaccount/navigation.php' ); ?>
+      <div class="bg-[#F6F6F6]">
+        <?php wc_get_template( 'myaccount/navigation.php' ); ?>
+      </div>
     </aside>
 
     <!-- Main content -->

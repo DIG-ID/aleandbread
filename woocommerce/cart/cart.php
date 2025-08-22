@@ -178,21 +178,22 @@ do_action( 'woocommerce_before_main_content' );
 
 				<!-- Coupon / Update row (below table like the mock) -->
 				<div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-					<?php if ( wc_coupons_enabled() ) : ?>
 					<div class="flex items-center gap-2">
+						<?php if ( wc_coupons_enabled() ) : ?>
+						
 						<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
 						<input type="text" name="coupon_code" class="input-text border border-[#6C727580] px-4 py-2 text-[#6C7275] bg-transparent font-barlow text-[16px] leading-[26px] font-semibold" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
 						<button type="submit" class="button rounded-xl px-5 py-2" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
 						<?php esc_html_e( 'Apply', 'woocommerce' ); ?>
 						</button>
 						<?php do_action( 'woocommerce_cart_coupon' ); ?>
+						
+						<?php endif; ?>
+
+						<button type="submit" class="button ml-auto rounded-xl px-5 py-2" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
+						<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
+						</button>
 					</div>
-					<?php endif; ?>
-
-					<button type="submit" class="button ml-auto rounded-xl px-5 py-2" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
-					<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
-					</button>
-
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 				</div>
 				</form>

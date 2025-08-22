@@ -12,7 +12,7 @@ $current_user = wp_get_current_user();
 <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-5">
   
   <!-- Account Details -->
-  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
+  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8 bg-[#F6F6F6]">
     <div class="flex justify-between items-center mb-3">
       <p class="block-text !font-semibold text-dark">Account Details</p>
       <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>
@@ -24,7 +24,7 @@ $current_user = wp_get_current_user();
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-5">
   <!-- Shipping Address -->
- <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
+ <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8 bg-[#F6F6F6]">
     <div class="flex justify-between items-center mb-3">
       <h3 class="block-text !font-semibold text-dark">Shipping Address</h3>
       <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>
@@ -46,7 +46,7 @@ $current_user = wp_get_current_user();
   </div>
 
   <!-- Billing Address -->
-  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8">
+  <div class="col-span-2 md:col-span-4 xl:col-span-3 border border-blockTextLight p-5 rounded-sm shadow min-h-40 mb-8 bg-[#F6F6F6]">
     <div class="flex justify-between items-center mb-3">
       <h3 class="block-text !font-semibold text-dark">Billing Address</h3>
       <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-address/billing' ) ); ?>" class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275]">✎ Edit</a>

@@ -72,9 +72,9 @@ function ab_render_order_thumbs( $order ) {
           <div class="max-w-3xl mx-auto">
             <div class="ab-card bg-white rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] p-8 text-center">
 
-              <p class="text-[#6C7275] mb-2"><?php esc_html_e('Thank you! 🎉','woocommerce'); ?></p>
+              <p class="text-[#6C7275] mb-2"><?php esc_html_e('Vielen Dank!','woocommerce'); ?></p>
               <h2 class="text-[28px] md:text-[32px] leading-tight font-extrabold text-dark mb-6">
-                <?php esc_html_e('Your order has been received','woocommerce'); ?>
+                <?php esc_html_e('Ihre Bestellung ist eingegangen','woocommerce'); ?>
               </h2>
 
               <!-- Thumbnails row -->
