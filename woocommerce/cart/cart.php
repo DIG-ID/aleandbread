@@ -1,8 +1,20 @@
 <?php
 /**
- * Cart Page (Ale & Bread layout)
- * Compatible with WooCommerce 10.1.x
+ * Cart Page
+ *
+ * This template can be overridden by copying it to yourtheme/woocommerce/cart/cart.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see     https://woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 10.1.0
  */
+
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_main_content' );
@@ -22,11 +34,11 @@ do_action( 'woocommerce_before_main_content' );
 				<div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-dark w-full md:w-[30%] mr-[3.333333%]">
 					<span class="step-dot">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Shopping cart', 'woocommerce' ); ?></span>
 				</div>
-				<div class="step flex items-center gap-3 pb-6 opacity-30 w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Checkout details', 'woocommerce' ); ?></span>
+				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
+					<span class="step-dot-faded">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Checkout details', 'woocommerce' ); ?></span>
 				</div>
-				<div class="step flex items-center gap-3 pb-6 opacity-30 w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Order complete', 'woocommerce' ); ?></span>
+				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
+					<span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Order complete', 'woocommerce' ); ?></span>
 				</div>
 			</div>
 
@@ -113,36 +125,33 @@ do_action( 'woocommerce_before_main_content' );
 
 							<!-- QUANTITY -->
 							<td class="product-quantity p-4">
-							<div class="ab-qty inline-flex items-center border border-[#6C7275] rounded-[4px] overflow-hidden">
-								<button type="button" class="ab-qty__btn px-3 py-1" aria-label="<?php esc_attr_e( 'Decrease quantity', 'woocommerce' ); ?>">–</button>
-								<?php
-								if ( $_product->is_sold_individually() ) {
+							<?php
+							if ( $_product->is_sold_individually() ) {
 								$min_quantity = 1;
 								$max_quantity = 1;
-								} else {
+							} else {
 								$min_quantity = 0;
 								$max_quantity = $_product->get_max_purchase_quantity();
-								}
-								echo apply_filters(
+							}
+
+							echo apply_filters(
 								'woocommerce_cart_item_quantity',
 								woocommerce_quantity_input(
-									array(
+								array(
 									'input_name'  => "cart[{$cart_item_key}][qty]",
 									'input_value' => $cart_item['quantity'],
 									'min_value'   => $min_quantity,
 									'max_value'   => $max_quantity,
-									'classes'     => array( 'ab-qty__input w-12 text-center border-0' ),
-									),
-									$_product,
-									false
+								),
+								$_product,
+								false // false means "return the markup", true would echo it
 								),
 								$cart_item_key,
 								$cart_item
-								);
-								?>
-								<button type="button" class="ab-qty__btn px-3 py-1" aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">+</button>
-							</div>
+							);
+							?>
 							</td>
+
 
 							<!-- PRICE -->
 							<td class="product-price p-4">
@@ -181,21 +190,22 @@ do_action( 'woocommerce_before_main_content' );
 
 				<!-- Coupon / Update row (below table like the mock) -->
 				<div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-					<?php if ( wc_coupons_enabled() ) : ?>
 					<div class="flex items-center gap-2">
+						<?php if ( wc_coupons_enabled() ) : ?>
+						
 						<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
 						<input type="text" name="coupon_code" class="input-text border border-[#6C727580] px-4 py-2 text-[#6C7275] bg-transparent font-barlow text-[16px] leading-[26px] font-semibold" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
 						<button type="submit" class="button rounded-xl px-5 py-2" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
 						<?php esc_html_e( 'Apply', 'woocommerce' ); ?>
 						</button>
 						<?php do_action( 'woocommerce_cart_coupon' ); ?>
+						
+						<?php endif; ?>
+
+						<button type="submit" class="button ml-auto rounded-xl px-5 py-2" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
+						<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
+						</button>
 					</div>
-					<?php endif; ?>
-
-					<button type="submit" class="button ml-auto rounded-xl px-5 py-2" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
-					<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
-					</button>
-
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 				</div>
 				</form>

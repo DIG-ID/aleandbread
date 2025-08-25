@@ -49,59 +49,99 @@ else :
 			</div>
 		</div>
 	</section>
-
-	<section class="theme-grid">
-		<div class="col-span-2 md:col-span-6 xl:col-span-12">
-			<div class="theme-grid">
-				<!-- Sidebar column -->
-				<aside class="col-span-2 md:col-span-3 xl:col-span-3">
-					<?php
-					/**
-					 * Hook: woocommerce_sidebar.
-					 *
-					 * @hooked woocommerce_get_sidebar - 10
-					 */
-					do_action( 'woocommerce_sidebar' );
-					?>
-				</aside>
-
-				<!-- Product loop -->
-				<div class="col-span-2 md:col-span-3 xl:col-span-9">
-					<?php
-					if ( woocommerce_product_loop() ) :
-						//do_action( 'woocommerce_before_shop_loop' );
-						do_action( 'aleandbread_before_shop_loop_action' );
-						woocommerce_product_loop_start();
-						?>
-						<hr class="border-t border-dark mt-7 mb-32" />
-						<?php
-						if ( wc_get_loop_prop( 'total' ) ) {
-							?><div class="grid grid-cols-2 xl:grid-cols-3 gap-6"><?php
-							while ( have_posts() ) {
-								the_post();
-
-								/**
-								 * Hook: woocommerce_shop_loop.
-								 */
-								do_action( 'woocommerce_shop_loop' );
-
-								wc_get_template_part( 'content', 'product' );
-							}
-							?></div><?php
-						}
-
-						woocommerce_product_loop_end();
-						do_action( 'woocommerce_after_shop_loop' );
-					else :
-						do_action( 'woocommerce_no_products_found' );
+	<?php
+	$catterm    = get_queried_object();
+	$target_top = get_term_by( 'slug', 'erlebnisse', 'product_cat' );
+	$is_desc    = $target_top ? in_array( $target_top->term_id, get_ancestors( $catterm->term_id, 'product_cat' ) ) : false;
+	if ( $is_desc ) :
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+		?>
+		<section class="theme-grid">
+			<!-- Product loop -->
+			<div class="col-span-2 md:col-span-6 xl:col-span-12">
+				<?php
+				if ( woocommerce_product_loop() ) :
+					do_action( 'woocommerce_before_shop_loop' );
+					woocommerce_product_loop_start();
+					if ( wc_get_loop_prop( 'total' ) ) :
+						echo '<div class="grid grid-cols-1">';
+						while ( have_posts() ) :
+							the_post();
+							/**
+							 * Hook: woocommerce_shop_loop.
+							 */
+							do_action( 'woocommerce_shop_loop' );
+							wc_get_template_part( 'content', 'product-experiences' );
+						endwhile;
+						echo '</div>';
 					endif;
-					?>
+					woocommerce_product_loop_end();
+					do_action( 'woocommerce_after_shop_loop' );
+				else :
+					do_action( 'woocommerce_no_products_found' );
+				endif;
+				?>
+			</div>
+		</section>
+		<?php
+	else :
+		?>
+		<section class="theme-grid">
+			<div class="col-span-2 md:col-span-6 xl:col-span-12">
+				<div class="theme-grid">
+					<!-- Sidebar column -->
+					<aside class="col-span-2 md:col-span-3 xl:col-span-3">
+						<?php
+						/**
+						 * Hook: woocommerce_sidebar.
+						 *
+						 * @hooked woocommerce_get_sidebar - 10
+						 */
+						do_action( 'woocommerce_sidebar' );
+						?>
+					</aside>
+
+					<!-- Product loop -->
+					<div class="col-span-2 md:col-span-3 xl:col-span-9">
+						<?php
+						if ( woocommerce_product_loop() ) :
+							//do_action( 'woocommerce_before_shop_loop' );
+							do_action( 'aleandbread_before_shop_loop_action' );
+							woocommerce_product_loop_start();
+							?>
+							<hr class="border-t border-dark mt-7 mb-32" />
+							<?php
+							if ( wc_get_loop_prop( 'total' ) ) {
+								?><div class="grid grid-cols-2 xl:grid-cols-3 gap-6"><?php
+								while ( have_posts() ) {
+									the_post();
+
+									/**
+									 * Hook: woocommerce_shop_loop.
+									 */
+									do_action( 'woocommerce_shop_loop' );
+
+									wc_get_template_part( 'content', 'product' );
+								}
+								?></div><?php
+							}
+
+							woocommerce_product_loop_end();
+							do_action( 'woocommerce_after_shop_loop' );
+						else :
+							do_action( 'woocommerce_no_products_found' );
+						endif;
+						?>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<?php
+		</section>
+		<?php
+	endif;
 endif;
+
+
 
 /**
  * Hook: woocommerce_after_main_content.
@@ -109,6 +149,5 @@ endif;
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 do_action( 'woocommerce_after_main_content' );
-
 
 get_footer( 'shop' );

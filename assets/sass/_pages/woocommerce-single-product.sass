@@ -82,72 +82,72 @@ body.woocommerce.single-product
   text-transform: uppercase
 
 /* === Custom quantity control (wrapper around - [input] +) === */
-.single-product
-  .ab-qty
-    display: flex
-    align-items: stretch
-    height: 36px
-    margin-top: 36px
-    margin-bottom: 29px
-    width: 125px
 
-    /* Buttons */
-    .ab-qty__btn
-      width: 42px
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      color: #000
-      background: transparent
-      font-family: "Barlow"
-      font-size: 12px
-      line-height: 1
-      border: 1px solid var(--Block-text, #CBCBCB)
-      cursor: pointer
-      user-select: none
-      height: 40px
+.ab-qty
+  display: flex
+  align-items: stretch
+  height: 36px
+  margin-top: 36px
+  margin-bottom: 29px
+  width: 125px
 
-      &:focus-visible
-        outline: 2px solid #CC9933
-        outline-offset: 2px
+  /* Buttons */
+  .ab-qty__btn
+    width: 42px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    color: #000
+    background: transparent
+    font-family: "Barlow"
+    font-size: 12px
+    line-height: 1
+    border: 1px solid var(--Block-text, #CBCBCB)
+    cursor: pointer
+    user-select: none
+    height: 40px
 
-      &--minus
-        border-right: 1px solid #D6CDCA
+    &:focus-visible
+      outline: 2px solid #CC9933
+      outline-offset: 2px
 
-      &--plus
-        border-left: 1px solid #D6CDCA
+    &--minus
+      border-right: 1px solid #D6CDCA
 
-      &:disabled
-        opacity: .4
-        cursor: not-allowed
+    &--plus
+      border-left: 1px solid #D6CDCA
 
-    /* Number input */
-    .ab-qty__input
-      width: 41px
-      text-align: center
-      background: transparent
-      border-top: 1px solid var(--Block-text, #CBCBCB)
-      border-bottom: 1px solid var(--Block-text, #CBCBCB)
-      font-family: "Barlow"
-      font-weight: 500
-      font-size: 18px
-      line-height: 1
-      padding: 0
-      appearance: textfield
-      height: 40px
+    &:disabled
+      opacity: .4
+      cursor: not-allowed
 
-      /* remove number spinners (WebKit) */
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button
-        -webkit-appearance: none
-        margin: 0
+  /* Number input */
+  .ab-qty__input
+    width: 41px
+    text-align: center
+    background: transparent
+    border-top: 1px solid var(--Block-text, #CBCBCB)
+    border-bottom: 1px solid var(--Block-text, #CBCBCB)
+    font-family: "Barlow"
+    font-weight: 500
+    font-size: 18px
+    line-height: 1
+    padding: 0
+    appearance: textfield
+    height: 40px
 
-      &:focus
-        outline: none
+    /* remove number spinners (WebKit) */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button
+      -webkit-appearance: none
+      margin: 0
 
-  /* Hide number spinners in Firefox only on single product */
-  input[type="number"]
-    -moz-appearance: textfield
+    &:focus
+      outline: none
+
+/* Hide number spinners in Firefox only on single product */
+input[type="number"]
+  -moz-appearance: textfield
 
 .woocommerce div.product form.cart
   display: flex
