@@ -6,7 +6,10 @@ function aleandbread_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'main-menu'              => __( 'Main Menu', 'aleandbread' ),
+			'main-menu'        => __( 'Main Menu', 'aleandbread' ),
+			'mega-left'        => __( 'Mega Menu Left', 'aleandbread' ),
+			'mega-middle'      => __( 'Mega Menu Middle', 'aleandbread' ),
+			'mega-right'       => __( 'Mega Menu Right', 'aleandbread' ),
 			'footer-menu-ale'        => __( 'Footer Menu Ale and Bread', 'aleandbread' ),
 			'footer-menu-shop'       => __( 'Footer Menu Shop', 'aleandbread' ),
 			'footer-menu-experience' => __( 'Footer Menu Experience', 'aleandbread' ),
@@ -169,6 +172,38 @@ function fix_yoast_page_parent_breadcrumb( $links ) {
 	}
 	return $links;
 }
+
+add_filter('wp_nav_menu_items', function ($items, $args) {
+  if (empty($args->theme_location) || $args->theme_location !== 'mega-right') {
+    return $items;
+  }
+
+  // Build items fresh (ignore any manually added ones to avoid duplicates)
+  $items = '';
+
+  if (is_user_logged_in()) {
+    $account_url = get_permalink(get_option('woocommerce_myaccount_page_id'));
+    $logout_url  = wp_logout_url(home_url('/'));
+    $items      .= '<li class="menu-item"><a href="'.esc_url($account_url).'">My Account</a></li>';
+    $items      .= '<li class="menu-item"><a href="'.esc_url($logout_url).'">Logout</a></li>';
+  } else {
+    $login_url   = get_permalink(get_option('woocommerce_myaccount_page_id'));
+    $items      .= '<li class="menu-item"><a href="'.esc_url($login_url).'">Login</a></li>';
+  }
+
+  return $items;
+}, 10, 2);
+
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
+  if (!empty($args->theme_location) && $args->theme_location === 'mega-right') {
+    // Tailwind-y classes
+    $atts['class'] = trim(
+      ($atts['class'] ?? '') .
+      ' block font-barlow font-semibold uppercase text-[28px] md:text-[34px] leading-none'
+    );
+  }
+  return $atts;
+}, 10, 3);
 
 add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
 
@@ -371,3 +406,7 @@ add_action( 'init', function() {
     add_post_type_support( 'product', 'comments' );
 });
 
+add_action('init', function () {
+  register_taxonomy_for_object_type('category', 'blog');
+  register_taxonomy_for_object_type('post_tag', 'blog');
+});
