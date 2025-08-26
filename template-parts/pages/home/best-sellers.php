@@ -5,10 +5,11 @@
 				<p class="over-title text-accent"><?php echo esc_html( get_field( 'best_sellers_over_title' ) ); ?></p>
 				<h2 class="text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'best_sellers_title' ) ); ?></h2>
 				<?php
-				$btn = wc_get_page_permalink( 'shop' );
+				$btn      = wc_get_page_permalink( 'shop' );
+				$btn_text = get_field( 'best_sellers_button_text' );
 				if ( $btn ) :
 					?>
-					<a class="btn btn-primary" href="<?php echo esc_url( $btn ); ?>" target="_self"><?php esc_html_e( 'zum Shop', 'aleandbread' ); ?></a>
+					<a class="btn btn-primary" href="<?php echo esc_url( $btn ); ?>" target="_self"><?php echo esc_html( ! empty( trim( (string) $btn_text ) ) ? $btn_text : __( 'zum Shop', 'aleandbread' ) ); ?></a>
 					<?php
 				endif;
 				?>
