@@ -29,10 +29,10 @@ $product_title = get_the_title();
 $product_price = $product->get_price_html();
 ?>
 
-<div <?php wc_product_class( 'card-produc', $product ); ?>>
-	<a href="<?php echo esc_url( $product_link ); ?>">
+<div <?php wc_product_class( 'card-produc relative flex flex-col', $product ); ?>>
+	<a href="<?php echo esc_url( $product_link ); ?>" class="relative">
 		<div class="card-product--image">
-			<?php echo get_the_post_thumbnail( $product->get_id(), 'full', ['class' => 'w-full h-full object-cover'] ); ?>
+			<?php echo get_the_post_thumbnail( $product->get_id(), 'full', array( 'class' => 'w-full h-full object-cover' ) ); ?>
 		</div>
 		<div class="card-product--content">
 			<span class="overlay"></span>
