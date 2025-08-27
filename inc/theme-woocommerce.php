@@ -18,9 +18,6 @@ remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 )
 remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 );
 
 
-
-
-
 // Add Account Default Content
 add_action( 'woocommerce_account_content', 'woocommerce_account_content' );
 

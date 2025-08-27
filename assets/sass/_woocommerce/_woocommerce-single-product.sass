@@ -169,9 +169,7 @@ input[type="number"]
     align-items: center
     justify-content: center
     text-align: center
-    height: 39px
     padding: 0 2rem
-    width: 270px
     font-weight: 500
     margin-top: 11px
     margin-left: 20px
@@ -457,120 +455,118 @@ ul.products > li.product
     align-self: flex-start   // remove if you want full-width button
 
 /* The card itself fills the available height in the tile */
-.card-product
+.card-product-bruno
   display: flex
   height: 100%
   position: relative
 
 
-/* Image area is the positioning context for the overlay/content */
-.card-product--image
-  position: relative
-  overflow: hidden
-  /* Optional: keep a consistent thumbnail ratio */
-  img
+  /* Image area is the positioning context for the overlay/content */
+  .card-product--image
+    position: relative
+    overflow: hidden
+    /* Optional: keep a consistent thumbnail ratio */
+    img
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  .card-product--content
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    z-index: 2
+    padding-bottom: 21px !important
+  /* Title */
+  .card-product--title
+    position: relative
+    z-index: 2
     display: block
-    width: 100%
-    height: 100%
-    object-fit: cover
+    color: #fff
+    text-align: center
+    font-family: "Barlow"
+    font-size: 24px
+    font-weight: 500
+    line-height: 1.2
+    text-transform: capitalize
+    margin: 0
 
-.card-product--content
-  position: absolute
-  left: 0
-  right: 0
-  bottom: 0
-  padding: 20px
-  display: flex
-  flex-direction: column
-  justify-content: flex-end
-  z-index: 2
-  padding-bottom: 21px !important
-/* Title */
-.card-product--title
-  position: relative
-  z-index: 2
-  display: block
-  color: #fff
-  text-align: center
-  font-family: "Barlow"
-  font-size: 24px
-  font-weight: 500
-  line-height: 1.2
-  text-transform: capitalize
-  margin: 0
+  .card-product--price
+    margin: 0 !important
+    padding: 0 !important
 
-.card-product--price
-  margin: 0 !important
-  padding: 0 !important
-
-/* Price wrapper (so price + symbol align inline) */
-.card-product--price .price
-  position: relative
-  z-index: 2
-  display: inline-flex
-  align-items: baseline
-  justify-content: center
-  gap: 2px
-  color: #fff
-  text-align: center
-  margin: 0 auto !important
-  padding: 0 !important
-  margin-bottom: 0px !important
+  /* Price wrapper (so price + symbol align inline) */
+  .card-product--price .price
+    position: relative
+    z-index: 2
+    display: inline-flex
+    align-items: baseline
+    justify-content: center
+    gap: 2px
+    color: #fff
+    text-align: center
+    margin: 0 auto !important
+    padding: 0 !important
+    margin-bottom: 0px !important
 
 
-/* Price amount (numbers) */
-.card-product--price .woocommerce-Price-amount
-  font-family: "Barlow" !important
-  color: #fff !important
-  font-size: 24px !important
-  font-weight: 700
-  line-height: 1.2
-  width: 55px !important
-  height:29px !important
+  /* Price amount (numbers) */
+  .card-product--price .woocommerce-Price-amount
+    font-family: "Barlow" !important
+    color: #fff !important
+    font-size: 24px !important
+    font-weight: 700
+    line-height: 1.2
+    width: 55px !important
+    height:29px !important
 
-/* Currency symbol */
-.card-product--price .woocommerce-Price-currencySymbol
-  font-family: "Barlow" !important
-  color: #fff !important
-  font-size: 24px !important
-  font-weight: 400
-  line-height: 1.2
-  margin-left: 2px
-  padding-top: 11px !important
+  /* Currency symbol */
+  .card-product--price .woocommerce-Price-currencySymbol
+    font-family: "Barlow" !important
+    color: #fff !important
+    font-size: 24px !important
+    font-weight: 400
+    line-height: 1.2
+    margin-left: 2px
+    padding-top: 11px !important
 
-// Gradient overlay locked to the bottom half/third
-.card-product--content .overlay
-  position: absolute
-  left: 0
-  right: 0
-  bottom: 0
-  height: 55%              // adjust to taste
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 55%, rgba(0,0,0,.9) 100%)
-  z-index: 1
-  pointer-events: none
+  // Gradient overlay locked to the bottom half/third
+  .card-product--content .overlay
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    height: 55%              // adjust to taste
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 55%, rgba(0,0,0,.9) 100%)
+    z-index: 1
+    pointer-events: none
 
-a.button.product_type_simple.add_to_cart_button.ajax_add_to_cart
-  @extend .btn
-  @extend .btn-secondary
-  border-radius: 0
-  display: flex
-  align-items: center
-  justify-content: center
-  text-align: center
-  padding-left: 28px
-  padding-right: 28px
-  padding-top: 10px
-  padding-bottom: 10px
-  height: 39px
-  width: 200px
-  font-weight: 500 
-  font-size: 16px
-  font-style: normal
-  line-height: normal
-  
-a.button.add_to_cart_button.loading,
-a.button.add_to_cart_button.added
-  @extend .btn-secondary
+  a.button.product_type_simple.add_to_cart_button.ajax_add_to_cart
+    @extend .btn
+    @extend .btn-secondary
+    border-radius: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    padding-left: 28px
+    padding-right: 28px
+    padding-top: 10px
+    padding-bottom: 10px
+    font-weight: 500
+    font-size: 16px
+    font-style: normal
+    line-height: normal
+    
+  a.button.add_to_cart_button.loading,
+  a.button.add_to_cart_button.added
+    @extend .btn-secondary
 
-.woocommerce ul.products li.product a img
-  margin: 0
+  .woocommerce ul.products li.product a img
+    margin: 0

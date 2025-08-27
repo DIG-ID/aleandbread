@@ -216,7 +216,7 @@ add_filter( 'wpcf7_autop_or_not', '__return_false' );
  * Prevent popups showing when loading a page
  */
 add_action('wp_head', function () {
-  echo '<style>[x-cloak]{display:none !important;}</style>';
+	echo '<style>[x-cloak]{display:none !important;}</style>';
 }, 0);
 
 /**
@@ -249,28 +249,28 @@ require get_template_directory() . '/inc/theme-woocommerce.php';
 
 // Admin row action + handler to mark users verified
 add_filter('user_row_actions', function($actions, $user){
-  if ( current_user_can('manage_options') && '1' !== get_user_meta($user->ID, 'ab_email_verified', true) ) {
-    $url = wp_nonce_url(
-      add_query_arg(['action'=>'ab_verify_user','user_id'=>$user->ID], admin_url('users.php')),
-      'ab_verify_user_'.$user->ID
-    );
-    $actions['ab_verify_user'] = '<a href="'.$url.'">'.esc_html__('Verify email','your-textdomain').'</a>';
-  }
-  return $actions;
+	if ( current_user_can('manage_options') && '1' !== get_user_meta($user->ID, 'ab_email_verified', true) ) {
+		$url = wp_nonce_url(
+			add_query_arg(['action'=>'ab_verify_user','user_id'=>$user->ID], admin_url('users.php')),
+			'ab_verify_user_'.$user->ID
+		);
+		$actions['ab_verify_user'] = '<a href="'.$url.'">'.esc_html__('Verify email','your-textdomain').'</a>';
+	}
+	return $actions;
 }, 10, 2);
 
 add_action('admin_init', function(){
-  if ( ! isset($_GET['action'], $_GET['user_id']) || 'ab_verify_user' !== $_GET['action'] ) return;
-  if ( ! current_user_can('manage_options') ) wp_die('Insufficient permissions.');
-  $user_id = absint($_GET['user_id']);
-  check_admin_referer('ab_verify_user_'.$user_id);
+	if ( ! isset($_GET['action'], $_GET['user_id']) || 'ab_verify_user' !== $_GET['action'] ) return;
+	if ( ! current_user_can('manage_options') ) wp_die('Insufficient permissions.');
+	$user_id = absint($_GET['user_id']);
+	check_admin_referer('ab_verify_user_'.$user_id);
 
-  update_user_meta($user_id, 'ab_email_verified', '1');
-  delete_user_meta($user_id, 'ab_email_verify_hash');
-  delete_user_meta($user_id, 'ab_email_verify_expires');
+	update_user_meta($user_id, 'ab_email_verified', '1');
+	delete_user_meta($user_id, 'ab_email_verify_hash');
+	delete_user_meta($user_id, 'ab_email_verify_expires');
 
-  wp_safe_redirect( add_query_arg('ab_verified', 1, admin_url('users.php')) );
-  exit;
+	wp_safe_redirect( add_query_arg('ab_verified', 1, admin_url('users.php')) );
+	exit;
 });
 
 
@@ -315,61 +315,61 @@ function console_log( ...$data ) {
 }
 
 add_action('after_setup_theme', function () {
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40); 
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40); 
+		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
 
-    add_action('woocommerce_single_product_summary', 'mytheme_product_sku_under_title', 12);
-    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
-    // Keep the add to cart at 30 (default includes quantity input for simple products)
-    add_action('woocommerce_single_product_summary', 'mytheme_shipping_note', 35);
+		add_action('woocommerce_single_product_summary', 'mytheme_product_sku_under_title', 12);
+		add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
+		// Keep the add to cart at 30 (default includes quantity input for simple products)
+		add_action('woocommerce_single_product_summary', 'mytheme_shipping_note', 35);
 });
 /**
  * Output SKU below the title only (without categories/tags).
  */
 function mytheme_product_sku_under_title() {
-    global $product;
-    if ( ! $product ) return;
+		global $product;
+		if ( ! $product ) return;
 
-    $sku = $product->get_sku();
-    if ( ! $sku ) return;
+		$sku = $product->get_sku();
+		if ( ! $sku ) return;
 
-    echo '<p class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">'
-        . esc_html($sku) .
-        '</span></p>';
+		echo '<p class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">'
+				. esc_html($sku) .
+				'</span></p>';
 }
 
 /**
  * Simple shipping note after the Add to Cart area.
  */
 function mytheme_shipping_note() {
-    echo '<p class="ship-note">Orders ship within 5 to 10 Business Days</p>';
+		echo '<p class="ship-note">Orders ship within 5 to 10 Business Days</p>';
 }
 
 // Use WooCommerce’s built-in gallery slider with arrows, no thumbs.
 add_action('after_setup_theme', function () {
-  // (Optional but recommended) make sure gallery features are on
-  add_theme_support('wc-product-gallery-zoom');
-  add_theme_support('wc-product-gallery-lightbox');
-  add_theme_support('wc-product-gallery-slider');
+	// (Optional but recommended) make sure gallery features are on
+	add_theme_support('wc-product-gallery-zoom');
+	add_theme_support('wc-product-gallery-lightbox');
+	add_theme_support('wc-product-gallery-slider');
 });
 
 add_filter('woocommerce_single_product_carousel_options', function ($opts) {
-  // Hide thumbnail strip
-  $opts['controlNav'] = false;
+	// Hide thumbnail strip
+	$opts['controlNav'] = false;
 
-  // Show direction arrows
-  $opts['directionNav'] = true;
+	// Show direction arrows
+	$opts['directionNav'] = true;
 
-  // Smooth slide
-  $opts['animation']   = 'slide';
+	// Smooth slide
+	$opts['animation']   = 'slide';
 
-  // Optional: remove default arrow text; you’ll style with CSS
-  $opts['prevText'] = '';
-  $opts['nextText'] = '';
+	// Optional: remove default arrow text; you’ll style with CSS
+	$opts['prevText'] = '';
+	$opts['nextText'] = '';
 
-  return $opts;
+	return $opts;
 });
 
 /**
@@ -379,59 +379,59 @@ add_filter('woocommerce_single_product_carousel_options', function ($opts) {
  * 3) Reviews
  */
 add_filter('woocommerce_product_tabs', function ($tabs) {
-    global $product;
+		global $product;
 
-    // --- Description tab ---
-    $tabs['description'] = [
-        'title'    => __('Beschreibung', 'your-textdomain'), // label
-        'priority' => 10,
-        'callback' => 'woocommerce_product_description_tab', // default renderer
-    ];
+		// --- Description tab ---
+		$tabs['description'] = [
+				'title'    => __('Beschreibung', 'aleandbread'), // label
+				'priority' => 10,
+				'callback' => 'woocommerce_product_description_tab', // default renderer
+		];
 
-    // --- Additional information tab (only if product has attributes) ---
-    if ($product instanceof WC_Product && $product->has_attributes()) {
-        $tabs['additional_information'] = [
-            'title'    => __('Additional information', 'your-textdomain'),
-            'priority' => 20,
-            'callback' => 'woocommerce_product_additional_information_tab',
-        ];
-    } else {
-        unset($tabs['additional_information']);
-    }
+		// --- Additional information tab (only if product has attributes) ---
+		if ($product instanceof WC_Product && $product->has_attributes()) {
+				$tabs['additional_information'] = [
+						'title'    => __('Additional information', 'aleandbread'),
+						'priority' => 20,
+						'callback' => 'woocommerce_product_additional_information_tab',
+				];
+		} else {
+				unset($tabs['additional_information']);
+		}
 
-    // --- Reviews tab (only if reviews are enabled) ---
-    if ('yes' === get_option('woocommerce_enable_reviews')) {
-        $count = $product ? (int) $product->get_review_count() : 0;
-        $tabs['reviews'] = [
-            'title'    => sprintf(__('Reviews (%d)', 'your-textdomain'), $count),
-            'priority' => 30,
-            'callback' => 'comments_template', // default renderer
-        ];
-    } else {
-        unset($tabs['reviews']);
-    }
+		// --- Reviews tab (only if reviews are enabled) ---
+		if ('yes' === get_option('woocommerce_enable_reviews')) {
+				$count = $product ? (int) $product->get_review_count() : 0;
+				$tabs['reviews'] = [
+						'title'    => sprintf(__('Reviews (%d)', 'aleandbread'), $count),
+						'priority' => 30,
+						'callback' => 'comments_template', // default renderer
+				];
+		} else {
+				unset($tabs['reviews']);
+		}
 
-    return $tabs;
+		return $tabs;
 }, 99);
 
 // Always enable reviews for products
 add_filter( 'woocommerce_product_tabs', function( $tabs ) {
-    global $product;
-    if ( ! empty( $tabs['reviews'] ) ) {
-        $tabs['reviews']['title'] = __( 'Reviews', 'woocommerce' );
-    } else {
-        $tabs['reviews'] = array(
-            'title'    => __( 'Reviews', 'woocommerce' ),
-            'priority' => 50,
-            'callback' => 'comments_template',
-        );
-    }
-    return $tabs;
+		global $product;
+		if ( ! empty( $tabs['reviews'] ) ) {
+				$tabs['reviews']['title'] = __( 'Reviews', 'woocommerce' );
+		} else {
+				$tabs['reviews'] = array(
+						'title'    => __( 'Reviews', 'woocommerce' ),
+						'priority' => 50,
+						'callback' => 'comments_template',
+				);
+		}
+		return $tabs;
 }, 98 );
 
 // Ensure products accept comments (reviews use comments system)
 add_action( 'init', function() {
-    add_post_type_support( 'product', 'comments' );
+		add_post_type_support( 'product', 'comments' );
 });
 
 add_action('init', function () {
