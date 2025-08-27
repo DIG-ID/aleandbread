@@ -51,9 +51,9 @@
       <!-- Text -->
       <div class="col-span-2 md:col-span-6 xl:col-span-12 col-start-1 pt-[26px] md:pt-[72px] flex flex-col items-center text-center">
         <h1 class="text-accent w-[375px] md:w-[681px] xl:w-[1137px]"><?php echo get_field('outro_title'); ?></h1>
-        <p class="block-text text-blockTextLight pt-[26px] md:pt-[72px] pb-[57px] md:pb-[114px] xl:pb-[126px] w-[345px] md:w-[501px] xl:w-full">
+        <h3 class="text-blockTextLight pt-[26px] md:pt-[72px] pb-[57px] md:pb-[114px] xl:pb-[126px] w-[345px] md:w-[501px] xl:w-[700px]">
           <?php echo get_field('outro_description'); ?>
-        </p>
+        </h3>
       </div>
 
     </div>

@@ -73,7 +73,7 @@
           $link_title = $button['title'];
           $link_target = $button['target'] ? $button['target'] : '_self';
           ?>
-          <a class="btn btn-tertiary !border-accent" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <a class="btn btn-primary-2" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
           <?php echo esc_html($link_title); ?>
           </a>
         <?php endif; ?>

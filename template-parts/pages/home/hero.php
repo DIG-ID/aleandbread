@@ -76,8 +76,8 @@
             e.preventDefault();
             // scroll one viewport down with Lenis
             lenis.scrollTo(window.scrollY + window.innerHeight, {
-              duration: 2, // seconds
-              easing: (t) => t, // linear easing (can use easeInOutQuad, etc.)
+              duration: 2, 
+              easing: (t) => t, 
             })
           });
         });

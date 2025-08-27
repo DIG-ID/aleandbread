@@ -27,7 +27,7 @@
           <?php echo get_field('mission_und_philosophie_title'); ?>
         </h1>
         
-        <h4 class="text-blockTextLight pb-12 md:pb-9 self-stretch font-medium capitalize w-[343px] md:w-[560px] xl:w-full">
+        <h4 class="text-blockTextLight pb-12 md:pb-9 self-stretch font-medium w-[343px] md:w-[560px] xl:w-full">
           <?php echo get_field('mission_und_philosophie_sub_title'); ?>
         </h4>
         

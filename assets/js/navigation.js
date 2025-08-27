@@ -1,56 +1,47 @@
-// wait until DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  //wait until images, links, fonts, stylesheets, and js is loaded
-  window.addEventListener("load", () => {
+/* globals jQuery */
+(function ($) {
+  document.addEventListener('DOMContentLoaded', function () {
+    const $header = $('#header-main');
+    const $toggle = $('#megaToggle'); 
+    const $menu   = $('.mega-menu-wrapper');
 
-    /* Make header sticky on*/
-    const header = $('#header-main');
-    let lastScroll = 0;
+    if (!$toggle.length || !$menu.length) return;
 
+    // ----- Sticky header  -----
     $(window).on('scroll', function () {
-      const currentScroll = window.pageYOffset;
-
-      // Blur in on scroll down
-      if (currentScroll > 100 && !header.hasClass('sticky')) {
-        header.addClass('sticky');
-      }
-
-      // Blur out on scroll back up
-      if (currentScroll <= 100 && header.hasClass('sticky')) {
-        header.removeClass('sticky');
-      }
-
-      lastScroll = currentScroll;
+      const y = window.pageYOffset || document.documentElement.scrollTop;
+      if (y > 100) $header.addClass('sticky');
+      else $header.removeClass('sticky');
     });
 
-
-    /* Set mega-menu height */
-    const megaMenu = document.querySelector('.mega-menu-wrapper');
-    let navHeight = '';
-
-    if (window.innerWidth > 1280) {
-    navHeight = 0; // Desktop nav height
-    } else {
-    navHeight = 0; // Mobile nav height
-    }
-
-    function setElementHeight() {
-    const fullHeight = window.innerHeight - navHeight;
-    const height = fullHeight * 0.7; // Set % of the original space
-    megaMenu.style.setProperty('--element-height', `${height}px`);
-    }
-
+    // ----- Dynamic mega menu height -----
+    const setElementHeight = () => {
+      const navHeight = 0; 
+      const height = (window.innerHeight - navHeight) * 0.7;
+      $menu[0].style.setProperty('--element-height', `${height}px`);
+    };
     setElementHeight();
     window.addEventListener('resize', setElementHeight);
 
-    /* Hamburger toggle */
-    const $toggleBtn = $('.menu-toggle');
-
-    $toggleBtn.on('click', (e) => {
-        $('#header-main').toggleClass('mega-menu-open');
+    // ----- Open / close -----
+    $toggle.on('click', function (e) {
+      e.stopPropagation();
+      $header.toggleClass('mega-menu-open');
     });
 
+    // clicks inside menu do not close it
+    $menu.on('click', function (e) {
+      e.stopPropagation();
+    });
 
-  }, false);
-});
+    // clicks anywhere else close it
+    $(document).on('click', function () {
+      $header.removeClass('mega-menu-open');
+    });
 
+    // Esc closes it too
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape') $header.removeClass('mega-menu-open');
+    });
+  });
+})(jQuery);

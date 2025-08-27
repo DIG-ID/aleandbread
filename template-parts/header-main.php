@@ -5,7 +5,7 @@
       <!-- Left: Burger + Menü + Language -->
       <div class="flex items-center">
         <div class="menu-toggle-wrapper">
-          <button class="menu-toggle" aria-label="Menu">
+          <button id="megaToggle" class="menu-toggle" aria-label="Menu">
             <span class="menu-toggle__bars">
               <span class="bar bar--top"></span>
               <span class="bar bar--middle"></span>
