@@ -22,20 +22,9 @@ get_header( 'shop' );
 if ( is_shop() && ! is_product_category() && ! is_search() ) :
 	get_template_part( 'woocommerce/custom-storefront' );
 else :
+
 	?>
-	<section  id="hero" class="section-hero pb-0 relative overflow-hidden">
-		<figure class="absolute bg-background xl:left-[420px] xl:top-0 inset-0 xl:w-[1500px] xl:h-[1000px] xl:object-cover xl:z-[-1] pointer-events-none xl:mb-[158px]">
-			<?php
-			$background = get_field( 'experiences_hero_background', 'option' );
-			if ( $background ) :
-				$image_url = wp_get_attachment_image_url( $background, 'full' );
-				?>
-				<!-- Static background image -->
-				<div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
-				<?php
-			endif;
-			?>
-		</figure>
+	<section  id="hero" class="section-hero pb-0 relative overflow-hidden bg-no-repeat bg-center bg-cover mb-14 md:mb-16 xl:mb-32" style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_hero_background', 'option' ), 'full' ) ); ?>');">
 		<!-- Content stays normally positioned with higher z-index -->
 		<div class="theme-container relative z-10">
 			<div class="theme-grid">
@@ -67,30 +56,18 @@ else :
 		</div>
 	</section>
 
-	<?php
-	/**
-	 * Hook: woocommerce_before_main_content.
-	 *
-	 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-	 * @hooked woocommerce_breadcrumb - 20
-	 * @hooked WC_Structured_Data::generate_website_data() - 30
-	 */
-	do_action( 'woocommerce_before_main_content' );
-
-	/**
-	 * Hook: aleandbread_shop_categories.
-	 * 
-	 * @hooked aleandbread_shop_categories - 10
-	 */
-	do_action( 'shop_experiences_categories' );
-
-	/**
-	 * Hook: woocommerce_after_main_content.
-	 *
-	 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-	 */
-	do_action( 'woocommerce_after_main_content' );
-	?>
+	<section id="shop-experiences-categories" class="shop-experiences-categories mb-14 md:mb-32 xl:mb-56">
+		<div class="theme-container">
+			<?php
+			/**
+			 * Hook: aleandbread_shop_categories.
+			 * 
+			 * @hooked aleandbread_shop_categories - 10
+			 */
+			do_action( 'shop_experiences_categories' );
+			?>
+		</div>
+	</section>
 
 	<section id="events" class="events relative overflow-hidden bg-dark xl:bg-transparent">
 		<?php
