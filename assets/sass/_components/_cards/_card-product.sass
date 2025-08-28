@@ -5,26 +5,24 @@ div.card-product.product
   div.card-product--image
     @apply absolute top-0 left-0 w-full z-0
   a.card-product--content-wrapper
-    @apply block w-full h-full min-h-[500px] max-h-[500px] bg-slate-200 relative
+    @apply block w-full h-full min-h-[200px] max-h-[200px] md:min-h-[400px] md:max-h-[400px] xl:min-h-[500px] xl:max-h-[500px] bg-[#C4C4C4] relative
   div.card-product--content
     @apply px-0 pt-11 bg-dark text-blockTextLight h-full flex flex-col justify-end transition-all duration-700 ease-in-out relative 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(13, 13, 13, 0.00) 50%, rgba(13, 13, 13, 0.60) 90%, rgba(13, 13, 13, 0.90) 100%)
-    transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
     .overlay
       @apply absolute top-0 left-0 w-full h-full bg-dark/90 transition-all duration-700 ease-in-out opacity-0 -z-0 flex flex-col justify-center items-center
-      transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
       .icon-circle
-        @apply transition-all duration-700 ease-in-out border border-accent rounded-full w-14 h-14 flex justify-center items-center opacity-0 translate-y-8
+        @apply transition-all duration-700 ease-in-out border-2 border-accent rounded-full w-[36px] h-[36px] md:w-[60px] md:h-[60px] flex justify-center items-center opacity-0 translate-y-8
         svg
           @apply stroke-accent
     h3.card-product--title
-      @apply font-barlow text-[30px] font-normal text-blockTextLight leading-[34px] mb-4 text-center z-10 transition-all duration-500 ease-in-out
+      @apply text-blockTextLight xl:mb-4 text-center z-10 transition-all duration-700 ease-in-out
     p.card-product--price
-      @apply font-barlow text-[30px] font-bold text-blockTextLight leading-[34px] mb-7 text-center z-10
+      @apply font-barlow text-[30px] font-bold text-blockTextLight leading-[34px] xl:mb-7 text-center z-10
       span.woocommerce-Price-amount.amount
-        @apply font-barlow text-2xl font-bold text-white transition-all duration-500 ease-in-out
+        @apply font-barlow text-2xl font-bold text-white transition-all duration-700 ease-in-out
         span.woocommerce-Price-currencySymbol
-          @apply font-barlow text-2xl font-bold text-white transition-all duration-500 ease-in-out
+          @apply font-barlow text-2xl font-bold text-white transition-all duration-700 ease-in-out
     &:hover
       .overlay
         @apply opacity-100
@@ -33,7 +31,7 @@ div.card-product.product
       h3.card-product--title
         @apply text-accent
   a.button.add_to_cart_button
-    @apply inline-block px-7 py-3 text-base leading-4 text-dark bg-accent border-2 border-accent font-barlow font-medium uppercase text-center w-full transition-all hover:bg-accent/80 tracking-wide hover:text-accent hover:bg-dark active:bg-dark active:text-accent
+    @apply inline-block px-7 py-3 text-base leading-4 text-dark bg-accent border-2 border-accent font-barlow font-medium uppercase text-center transition-all hover:bg-accent/80 tracking-wide hover:text-accent hover:bg-dark active:bg-dark active:text-accent
 
   .add-to-cart-wrapper
     @apply w-full flex flex-col justify-center items-center gap-y-2

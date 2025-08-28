@@ -32,7 +32,7 @@ $product_price = $product->get_price_html();
 <div <?php wc_product_class( 'card-product', $product ); ?>>
 	<a class="card-product--content-wrapper" href="<?php echo esc_url( $product_link ); ?>">
 		<div class="card-product--image">
-			<?php echo get_the_post_thumbnail( $product->get_id(), 'full', array( 'class' => 'w-full h-full object-cover min-h-[500px] max-h-[500px]' ) ); ?>
+			<?php echo get_the_post_thumbnail( $product->get_id(), 'full', array( 'class' => 'w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[400px] md:max-h-[400px] xl:min-h-[500px] xl:max-h-[500px]' ) ); ?>
 		</div>
 		<div class="card-product--content">
 			<span class="overlay">
