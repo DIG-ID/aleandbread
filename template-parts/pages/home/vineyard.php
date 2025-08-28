@@ -37,7 +37,7 @@
       <div class="-mx-6 xl:mx-0 col-span-2 md:col-span-6"></div>
 
       <!-- Text Content -->
-      <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 pt-1 md:pt-3 xl:pt-[186px] relative z-10">
+      <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 pt-1 md:pt-3 xl:pt-[186px] relative z-10 pb-[83px] md:pb-[143px] xl:pb-64">
         <p class="over-title text-accent"><?php echo get_field('vineyard_over_title'); ?></p>
         <h1 class="text-blockTextLight pt-[26.5px] md:pt-[53px] xl:pt-20"><?php echo get_field('vineyard_title'); ?></h1>
         <p class="block-text text-blockTextLight pt-[26.5px] md:pt-[53px] xl:pt-16 w-[280px] md:w-[560px] xl:w-full">
@@ -64,7 +64,7 @@
           $link_title = $button['title'];
           $link_target = $button['target'] ? $button['target'] : '_self';
           ?>
-          <a class="btn btn-big-button pt-[29.5px] md:pt-[58px] xl:pt-16 pb-[83px] md:pb-[143px] xl:pb-64" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <a class="btn btn-big-button pt-[29.5px] md:pt-[58px] xl:pt-16" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
           <?php echo esc_html($link_title); ?>
           </a>
         <?php endif; ?>

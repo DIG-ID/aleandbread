@@ -93,7 +93,7 @@
         <?php endif; ?>
         <a href="<?php the_permalink(); ?>" class="group text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase flex items-center gap-2">
           <span class="group-hover:underline">
-            <?php esc_html_e('Read More', 'aleandbread'); ?>
+            <?php esc_html_e('Weiterlesen', 'aleandbread'); ?>
           </span>
           <span class="inline-block w-8 h-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16" fill="none" class="w-full h-full">

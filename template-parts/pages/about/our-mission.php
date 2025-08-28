@@ -5,7 +5,7 @@
                 <div class="pt-[64px] md:pt-[54px] xl:pt-[43px]">
                     <?php do_action ( 'breadcrumbs' ); ?>
                 </div>
-                <h1 class="text-blockTextLight py-14"><?php echo get_field('unsere_mission_title'); ?></h1>
+                <h1 class="text-blockTextLight py-14 m-w-[480px]"><?php echo get_field('unsere_mission_title'); ?></h1>
                 <h3 class="text-blockTextLight "><?php echo get_field('unsere_mission_sub-title'); ?></h3>
                 <p class="text-blockTextLight block-text pt-[32px] pb-[90px] md:pb-[85px] xl:pb-[200px]"><?php echo get_field('unsere_mission_description'); ?></p>
                 <?php 

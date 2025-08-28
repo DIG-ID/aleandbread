@@ -49,7 +49,7 @@
               <?php endif; ?>
 
               <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2">
-                <span class="group-hover:underline"><?php esc_html_e('Read More', 'aleandbread'); ?></span>
+                <span class="group-hover:underline"><?php esc_html_e('Weiterlesen', 'aleandbread'); ?></span>
                 <span class="ml-1">→</span>
               </a>
             </div>

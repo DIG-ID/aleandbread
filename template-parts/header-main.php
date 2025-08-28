@@ -1,7 +1,7 @@
-<header id="header-main" class="header-main transition-all duration-300 relative w-full z-50 pt-7" itemscope itemtype="http://schema.org/WebSite">
+<header id="header-main" class="header-main transition-all duration-300 relative w-full z-50 pt-7 xl:border-b-[3px] xl:border-accent" itemscope itemtype="http://schema.org/WebSite">
   <nav class="navbar relative z-40" role="navigation" aria-label="<?php esc_attr_e( 'Main menu', 'aleandbread' ); ?>">
-    <div class="theme-container">
-    <div class="header-wrapper grid grid-cols-3 items-center xl:border-b-[3px] xl:border-accent pb-4">
+    <div class="theme-container ">
+    <div class="header-wrapper grid grid-cols-3 items-center pb-4">
       <!-- Left: Burger + Menü + Language -->
       <div class="flex items-center">
         <div class="menu-toggle-wrapper">

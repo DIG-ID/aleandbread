@@ -39,7 +39,7 @@
       <div class="-mx-6 xl:mx-0 col-span-2 md:col-span-6"></div>
 
       <!-- Text content -->
-      <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-2 pt-1 md:pt-3 xl:pt-48 relative z-10">
+      <div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-2 pt-1 md:pt-3 xl:pt-48 relative z-10 pb-[77px] md:pb-[69px] xl:pb-64">
         <p class="over-title text-accent">
           <?php echo get_field('distellerie_over_title'); ?>
         </p>
@@ -70,7 +70,7 @@
           $link_title = $button['title'];
           $link_target = $button['target'] ? $button['target'] : '_self';
           ?>
-          <a class="btn btn-big-button pt-[38.5px] pb-[77px] md:pb-[69px] xl:pb-64" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+          <a class="btn btn-big-button pt-[38.5px]" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
           <?php echo esc_html($link_title); ?>
           </a>
         <?php endif; ?>

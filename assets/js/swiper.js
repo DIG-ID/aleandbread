@@ -76,8 +76,8 @@ if (document.querySelector('.desktop-event-swiper')) {
     spaceBetween: 30,
     loop: false,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next-2',
+      prevEl: '.swiper-button-prev-2',
     },
     pagination: {
       el: '.swiper-pagination-numbers',

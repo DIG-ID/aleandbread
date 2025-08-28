@@ -43,11 +43,11 @@
                     <!-- Card content wrapper -->
                     <div class="flex flex-col flex-grow px-[40px]">
                         <!-- Title -->
-                        <h3 class="text-blockText font-bold mb-5 pr-[30px]">
+                        <h4 class="text-blockText text-xl font-semibold mb-5 pr-[30px]">
                             <a href="<?php the_permalink(); ?>">
                                 <?php the_title(); ?>
                             </a>
-                        </h3>
+                        </h4>
 
                         <!-- Date -->
                         <div class="block-text-bold text-accent mb-6 group-hover:text-blockTextLight">
@@ -55,16 +55,16 @@
                         </div>
 
                         <!-- Description -->
-                        <h4 class="text-blockText pr-[30px] mb-6">
+                        <p class="text-blockText block-text pr-[30px] mb-6">
                             <?php if (get_field('blog_cpt_description')) : ?>
                                 <?php echo esc_html(get_field('blog_cpt_description')); ?>
                             <?php endif; ?>
-                        </h4>
+                        </p>
 
                         <!-- Read More bottom -->
                         <div class="mt-auto">
                             <a href="<?php the_permalink(); ?>" class="group block-text text-dark font-semibold text-sm flex items-center">
-                                <span class="hover:underline"><?php esc_html_e('Read More', 'aleandbread'); ?></span>
+                                <span class="hover:underline"><?php esc_html_e('Weiterlesen', 'aleandbread'); ?></span>
                                 <span class="ml-1">→</span>
                             </a>
                         </div>

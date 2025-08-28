@@ -31,7 +31,7 @@ $image_url = wp_get_attachment_image_url($image_id, 'full');
                     $link_title = $button['title'];
                     $link_target = $button['target'] ? $button['target'] : '_self';
                     ?>
-                    <a class="btn btn-tertiary mt-14 !border-accent mb-44" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <a class="btn btn-primary-2 mt-14 !border-accent mb-44" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <?php echo esc_html($link_title); ?>
                     </a>
                 <?php endif; ?>

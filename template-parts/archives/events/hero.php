@@ -130,14 +130,13 @@
             <?php endwhile; ?>
           </div>
         </div>
-        <div class="custom-pagination-wrapper flex items-center justify-center gap-4 mt-[110px]">
-          <div class="custom-pagination-wrapper flex items-center justify-center gap-4 mt-[110px]">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination-numbers flex items-center gap-3"></div>
-            <div class="swiper-button-next"></div>
+        <div class="col-span-12">
+          <div class="events-controls flex items-center justify-center gap-4 mt-[110px]">
+            <button class="swiper-button-prev-2" aria-label="Previous"></button>
+            <div class="events-pagination flex items-center gap-3"></div>
+            <button class="swiper-button-next-2" aria-label="Next"></button>
           </div>
-      </div>
-
+        </div>
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
   </div>
