@@ -80,7 +80,7 @@ if (document.querySelector('.desktop-event-swiper')) {
       prevEl: '.swiper-button-prev-2',
     },
     pagination: {
-      el: '.swiper-pagination-numbers',
+      el: '.events-pagination',
       type: 'custom',
       clickable: true,
       renderCustom: function (swiper, current, total) {
@@ -119,38 +119,6 @@ if (document.querySelector('.desktop-event-swiper')) {
     return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
   }
 }
-
-  // Interactive Overlay Toggle — Gin Makes History
-  const toggleBtn = document.getElementById("gin-toggle-btn");
-  const overlay = document.getElementById("gin-overlay");
-  const popup = document.getElementById("gin-popup");
-  const title = document.getElementById("gin-title");
-
-  if (toggleBtn && overlay && popup && title) {
-    let isOpen = false;
-
-    toggleBtn.addEventListener("click", () => {
-      isOpen = !isOpen;
-
-      if (isOpen) {
-        overlay.style.background = "linear-gradient(0deg, #0D0D0D 0%, rgba(13,13,13,0.85) 50%, rgba(13,13,13,0.0) 65%)";
-
-        popup.classList.remove("opacity-0", "pointer-events-none");
-        popup.classList.add("opacity-100", "pointer-events-auto");
-
-        title.classList.remove("text-background");
-        title.classList.add("text-accent");
-      } else {
-        overlay.style.background = "none";
-
-        popup.classList.add("opacity-0", "pointer-events-none");
-        popup.classList.remove("opacity-100", "pointer-events-auto");
-
-        title.classList.remove("text-accent");
-        title.classList.add("text-background");
-      }
-    });
-  }
 });
 // Accordion functionality for FAQ page 
 document.addEventListener('DOMContentLoaded', function () {

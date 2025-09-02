@@ -45,3 +45,29 @@ body
     .img-overlay--horizontal-right-2
         &::after
             background: linear-gradient(0deg, #0D0D0D 0%, rgba(13, 13, 13, 0.71) 46.15%, rgba(13, 13, 13, 0.00) 100%) 
+
+.cta-overlay
+    @apply bg-dark text-blockTextLight h-full w-full transition-all duration-700 absolute top-0 left-0 z-10 pointer-events-none opacity-80
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.98) 55%, rgba(13, 13, 13, 0.98) 100%)
+    transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+.gin-history-wrapper
+    .gin-history-container
+        @apply relative w-full h-full flex items-end z-20 text-blockTextLight
+        .round-button
+            @apply relative w-[36px] h-[36px] md:w-[60px] md:h-[60px] flex items-center justify-center border-2 border-accent rounded-full bg-transparent transition-all duration-700
+            svg
+                path
+                    @apply transition-colors duration-700
+    &:hover
+        @apply cursor-pointer
+        .cta-overlay
+            @apply opacity-100
+        .gin-popup
+            @apply opacity-100 translate-y-0
+        .gin-title
+            @apply text-accent
+        .round-button
+            @apply rotate-90 bg-accent
+            svg
+                path
+                    @apply fill-dark

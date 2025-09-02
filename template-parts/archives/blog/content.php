@@ -6,7 +6,7 @@
         <div class="col-start-1 col-span-2 md:col-start-1 md:col-span-6 xl:col-start-2 xl:col-span-3 pb-[37px] md:pb-[58px]">
           <?php do_action('breadcrumbs', 'option'); ?>
         </div>
-        <div class="col-start-1 col-span-2 md:col-span-3 xl:col-start-2 xl:col-span-3 pb-[21px] md:pb-[58px] xl:pb-0">
+        <div class="col-start-1 col-span-2 md:col-span-3 xl:col-start-2 xl:col-span-3 pb-[21px] md:pb-[58px] xl:pb-">
           <h1 class="text-dark">
             <?php echo get_field('blog_title', 'option'); ?>
           </h1>
@@ -33,8 +33,8 @@
           <div class="col-span-2 md:col-span-6 xl:col-span-4">
             <div class="flex flex-col">
               <?php if ($image): ?>
-                <div class="rounded-[28px] overflow-hidden pb-[33px]">
-                  <img src="<?= esc_url($image); ?>" alt="<?= esc_attr(get_the_title()); ?>" class="w-full h-auto object-cover" loading="lazy">
+                <div class="overflow-hidden pb-[33px]">
+                  <img src="<?= esc_url($image); ?>" alt="<?= esc_attr(get_the_title()); ?>" class="w-full h-auto object-cover rounded-[20px]" loading="lazy">
                 </div>
               <?php endif; ?>
 
@@ -56,7 +56,6 @@
           </div>
         <?php endwhile; wp_reset_postdata(); ?>
       </div>
-
     </div>
   </div>
 </section>

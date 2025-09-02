@@ -45,7 +45,7 @@
 
         <div class="col-span-2 md:col-span-5 xl:col-span-4 md:pt-14 xl:pt-0">
           <h1 class="text-blockTextLight xl:w-[560px] md:w-[470px]"><?php echo get_field('craftmanship_title'); ?></h1>
-          <h3 class="text-blockTextLight pt-5 md:pt-12 xl:pt-[39px] xl:w-[560px] pb-9 md:pb-12 "><?php echo get_field('craftmanship_sub_title'); ?>
+          <h3 class="text-blockTextLight pt-5 md:pt-12 xl:pt-[39px] xl:w-[560px] pb-9 md:pb-12 xl:pb-[57px]"><?php echo get_field('craftmanship_sub_title'); ?>
           </h3>
           <?php
             $button = get_field('craftmanship_button');

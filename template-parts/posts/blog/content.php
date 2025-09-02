@@ -45,10 +45,10 @@
       </div>
       
       <!-- Blog post content -->
-      <div class="col-span-12 grid grid-cols-12 gap-x-8">
+      <div class="col-span-12 theme-grid gap-x-8">
   
   <!-- LEFT CONTENT -->
-  <div class="col-span-9">
+  <div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-9 order-1 xl:order-none">
     <?php if ( has_post_thumbnail() ) : ?>
       <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-none mb-6']); ?>
     <?php endif; ?>
@@ -66,7 +66,7 @@
   </div>
 
   <!-- RIGHT SIDEBAR -->
-  <aside class="col-span-3 self-start">
+  <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none">
     <p class="text-[#CC9933] font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase pb-[16px]">Related posts</p>
     
     <?php

@@ -8,7 +8,7 @@
       </div>
 
       <!-- Title -->
-      <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4">
+      <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 max-w-[300px] md:max-w-full">
         <h1 class="text-dark"><?php echo get_field('events_title', 'option'); ?></h1>
       </div> 
       
@@ -130,13 +130,13 @@
             <?php endwhile; ?>
           </div>
         </div>
-        <div class="col-span-12">
-          <div class="events-controls flex items-center justify-center gap-4 mt-[110px]">
-            <button class="swiper-button-prev-2" aria-label="Previous"></button>
-            <div class="events-pagination flex items-center gap-3"></div>
-            <button class="swiper-button-next-2" aria-label="Next"></button>
-          </div>
         </div>
+        <div class="col-span-12 flex items-center justify-center">
+          <div class="events-controls gap-4 mt-[110px]">
+            <span class="swiper-button-prev-2" aria-label="Next"></span>
+            <div class="events-pagination "></div>
+            <span class="swiper-button-next-2" aria-label="Next"></span>
+          </div> 
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
   </div>
