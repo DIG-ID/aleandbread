@@ -26,13 +26,13 @@ do_action('woocommerce_before_lost_password_form');
 
       <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
         <div>
-          <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
-            ← Back to login
+          <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
+            ← <?php esc_html_e('Zurück zur Anmeldung', 'aleandbread'); ?>
           </a>
 
-          <h1 class="text-dark mb-4">Forgot your password?</h1>
+          <h1 class="text-dark mb-4"><?php esc_html_e('Passwort vergessen?', 'aleandbread'); ?></h1>
           <p class="block-text text-[#313131] mb-6">
-            Don’t worry, it happens! Enter your email below to reset your password.
+            <?php esc_html_e('Keine Sorge, das kann passieren! Geben Sie unten Ihre E-Mail ein, um Ihr Passwort zurückzusetzen.', 'aleandbread'); ?>
           </p>
 
 
@@ -72,7 +72,7 @@ do_action('woocommerce_before_lost_password_form');
           <?php if ( function_exists( 'nextend_social_login_buttons' ) ) : ?>
             <div class="my-6">
               <div class="relative flex items-center justify-center my-6">
-                <span class="px-3 text-sm text-gray-500">Or login with</span>
+                <span class="px-3 text-sm text-gray-500"><?php esc_html_e('Oder anmelden mit', 'aleandbread'); ?></span>
               </div>
               <div class="flex items-center justify-center gap-4">
                 <?php echo do_shortcode('[nextend_social_login provider="facebook"]'); ?>

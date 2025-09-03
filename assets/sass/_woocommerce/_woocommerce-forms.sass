@@ -1,4 +1,4 @@
-.woocommerce-page, .page-template-page-login, .page-template-page-signup
+.woocommerce-page, .page-template-page-signup
     form
         label
             @apply font-barlow text-[12px] leading-[12px] font-bold text-[#6C7275] uppercase mb-3
@@ -33,6 +33,43 @@
                 border-color: #CBCBCB !important
     .woocommerce-address-fields__field-wrapper
         @apply mb-5 xl:mb-10
+
+.page-template-page-login
+    form
+        label
+            @apply font-barlow text-[12px] leading-[12px] font-bold text-[#6C7275] bg-background px-[5px] py-[3px]
+        fieldset
+            @apply my-5 xl:my-10
+        legend
+            @apply font-barlow text-[20px] leading-[32px] font-semibold text-black uppercase
+        button[type=submit]
+            @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[13px] uppercase text-center py-[6.5px] md:py-[16.5px]
+            &:hover
+                @apply bg-dark text-accent
+            &:active
+                @apply bg-accent text-dark
+        .form-row
+            padding: 0
+            span
+                @apply font-barlow text-[16px] leading-[26px] font-semibold text-dark not-italic
+            .input-text, select
+                border-radius: 0
+                background-color: #F6F6F6
+                padding: .9em .5em
+                color: #6C7275
+                font-size: 16px
+                border-color: #CBCBCB !important
+        .select2-container 
+            .select2-dropdown, .select2-selection
+                border-radius: 0
+                background-color: #F6F6F6
+                padding: .4em
+                color: #6C7275
+                font-size: 16px
+                border-color: #CBCBCB !important
+    .woocommerce-address-fields__field-wrapper
+        @apply mb-5 xl:mb-10
+
 
 /* disabled buttons */
 .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit:disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit:disabled[disabled], .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:disabled[disabled], .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button:disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button:disabled[disabled], .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button:disabled, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button:disabled[disabled], :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit.disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit:disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit:disabled[disabled], :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button.disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button:disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button:disabled[disabled], :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button.disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:disabled[disabled], :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button.disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button:disabled, :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button:disabled[disabled]

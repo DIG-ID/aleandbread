@@ -74,7 +74,7 @@ add_filter('authenticate', function($user){
   if ( is_wp_error($user) || !($user instanceof WP_User) ) return $user;
   if ( user_can($user, 'manage_options') || user_can($user, 'manage_woocommerce') ) return $user;
   if ( '1' !== get_user_meta($user->ID, AB_VERIFY_META_KEY, true) ) {
-    return new WP_Error('ab_email_not_verified', __('Please verify your email to access your account.', 'your-textdomain'));
+    return new WP_Error('ab_email_not_verified', __('Bitte verifizieren Sie Ihre E-Mail, um auf Ihr Konto zuzugreifen.', 'aleandbread'));
   }
   return $user;
 }, 30);
@@ -87,7 +87,7 @@ add_action('init', function(){
 	$uid   = absint($_GET['uid']);
 	$token = sanitize_text_field(wp_unslash($_GET['token']));
 	if ( ! $uid || ! $token ) {
-		wc_add_notice(__('Invalid verification link.', 'your-textdomain'), 'error');
+		wc_add_notice(__('Ungültiger Bestätigungslink.', 'aleandbread'), 'error');
 		wp_safe_redirect( wc_get_page_permalink('myaccount') ); exit;
 	}
 
@@ -95,15 +95,15 @@ add_action('init', function(){
 	$expires = (int) get_user_meta($uid, AB_VERIFY_TOKEN_EXPIRES, true);
 
 	if ( empty($hash) || empty($expires) ) {
-		wc_add_notice(__('This verification link is invalid or has already been used.', 'your-textdomain'), 'error');
+		wc_add_notice(__('Dieser Bestätigungslink ist ungültig oder wurde bereits verwendet.', 'aleandbread'), 'error');
 		wp_safe_redirect( wc_get_page_permalink('myaccount') ); exit;
 	}
 	if ( time() > $expires ) {
-		wc_add_notice(__('Your verification link has expired. Please request a new one.', 'your-textdomain'), 'error');
+		wc_add_notice(__('Ihr Bestätigungslink ist abgelaufen. Bitte fordern Sie einen neuen an.', 'aleandbread'), 'error');
 		wp_safe_redirect( wc_get_page_permalink('myaccount') ); exit;
 	}
 	if ( ! wp_check_password($token, $hash) ) {
-		wc_add_notice(__('Invalid verification token.', 'your-textdomain'), 'error');
+		wc_add_notice(__('Ungültiges Bestätigungstoken.', 'aleandbread'), 'error');
 		wp_safe_redirect( wc_get_page_permalink('myaccount') ); exit;
 	}
 
@@ -111,7 +111,7 @@ add_action('init', function(){
 	delete_user_meta($uid, AB_VERIFY_TOKEN_HASH);
 	delete_user_meta($uid, AB_VERIFY_TOKEN_EXPIRES);
 
-	wc_add_notice(__('Your email is verified. You can now log in.', 'your-textdomain'), 'success');
+	wc_add_notice(__('Ihre E-Mail wurde verifiziert. Sie können sich jetzt anmelden.', 'aleandbread'), 'success');
 	wp_safe_redirect( wc_get_page_permalink('myaccount') ); // or home_url('/login/')
 	exit;
 });
@@ -127,21 +127,22 @@ function ab_send_verification_email($user_id, $raw_token){
 	);
 
 	$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-	$subject  = sprintf( __('Confirm your account on %s', 'your-textdomain'), $blogname );
+	$subject  = sprintf( __('Bestätigen Sie Ihr Konto auf %s', 'aleandbread'), $blogname );
 
 	$first = get_user_meta($user_id, 'first_name', true);
-	$hello = $first ? sprintf(__('Hi %s,', 'your-textdomain'), esc_html($first)) : __('Hi there,', 'your-textdomain');
+	$hello = $first ? sprintf(__('Hi %s,', 'aleandbread'), esc_html($first)) : __('Guten Tag,', 'aleandbread');
 
 	$message  = '
 	<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;">
 	  <p>'.$hello.'</p>
-	  <p>'.esc_html__('Please confirm your email address to activate your account.', 'your-textdomain').'</p>
+	  <p>'.esc_html__('Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr Konto zu aktivieren.', 'aleandbread').'</p>
 	  <p><a href="'.esc_url($confirm_url).'" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#CC332E;color:#fff;">'.
-		esc_html__('Confirm my account', 'your-textdomain').'</a></p>
-	  <p>'.esc_html__('If the button doesn’t work, copy and paste this link:', 'your-textdomain').'<br>
+		esc_html__('Mein Konto bestätigen', 'aleandbread').'</a></p>
+	  <p>'.esc_html__('Falls die Schaltfläche nicht funktioniert, kopieren Sie bitte diesen Link und fügen Sie ihn in Ihren Browser ein:', 'aleandbread').'<br>
 		<span style="word-break:break-all;">'.esc_url($confirm_url).'</span></p>
-	  <p>'.sprintf(esc_html__('This link expires in %d hours.', 'your-textdomain'), AB_VERIFY_EXPIRY_HOURS).'</p>
+	  <p>'.sprintf(esc_html__('Dieser Link läuft in %d Stunden ab.', 'aleandbread'), AB_VERIFY_EXPIRY_HOURS).'</p>
 	</div>';
+
 
 	$mailer  = WC()->mailer();
 	$headers = ['Content-Type: text/html; charset=UTF-8'];
@@ -168,15 +169,15 @@ add_shortcode('ab_resend_verification', function(){
 				}
 			}
 		}
-		return '<div class="woocommerce-message">'.esc_html__('If an account exists for that email, we’ve sent a new confirmation link.', 'your-textdomain').'</div>';
+		return '<div class="woocommerce-message">'.esc_html__('Falls ein Konto für diese E-Mail existiert, haben wir Ihnen einen neuen Bestätigungslink geschickt.', 'aleandbread').'</div>';
 	}
 
 	ob_start(); ?>
 	<form method="post" class="woocommerce-form" style="margin-top:1rem;">
-		<p><?php esc_html_e('Didn’t get the email? Enter your address and we’ll resend the confirmation link.', 'your-textdomain'); ?></p>
-		<p><input type="email" name="ab_resend_email" required placeholder="<?php esc_attr_e('Email address', 'your-textdomain'); ?>"></p>
+		<p><?php esc_html_e('Sie haben die E-Mail nicht erhalten? Geben Sie Ihre Adresse ein und wir senden den Bestätigungslink erneut.', 'aleandbread'); ?></p>
+		<p><input type="email" name="ab_resend_email" required placeholder="<?php esc_attr_e('E-Mail-Adresse', 'aleandbread'); ?>"></p>
 		<?php wp_nonce_field('ab_resend', 'ab_resend_nonce'); ?>
-		<p><button type="submit" class="button"><?php esc_html_e('Resend verification email', 'your-textdomain'); ?></button></p>
+		<p><button type="submit" class="button"><?php esc_html_e('Bestätigungs-E-Mail erneut senden', 'aleandbread'); ?></button></p>
 	</form>
 	<?php return ob_get_clean();
 });
@@ -186,7 +187,7 @@ add_action('template_redirect', function(){
 	if ( is_user_logged_in() && function_exists('is_account_page') && is_account_page() ) {
 		$uid = get_current_user_id();
 		if ( '1' !== get_user_meta($uid, AB_VERIFY_META_KEY, true) ) {
-			wc_add_notice(__('Please verify your email to access your account.', 'your-textdomain'), 'error');
+			wc_add_notice(__('Bitte verifizieren Sie Ihre E-Mail, um auf Ihr Konto zuzugreifen.', 'aleandbread'), 'error');
 			wp_safe_redirect( home_url('/login/') ); exit;
 		}
 	}
@@ -199,7 +200,7 @@ add_filter('user_row_actions', function($actions, $user){
 			add_query_arg(['action'=>'ab_verify_user','user_id'=>$user->ID], admin_url('users.php')),
 			'ab_verify_user_'.$user->ID
 		);
-		$actions['ab_verify_user'] = '<a href="'.$url.'">'.esc_html__('Verify email','your-textdomain').'</a>';
+		$actions['ab_verify_user'] = '<a href="'.$url.'">'.esc_html__('E-Mail verifizieren','aleandbread').'</a>';
 	}
 	return $actions;
 }, 10, 2);
@@ -222,16 +223,16 @@ add_action('admin_init', function(){
 add_action('woocommerce_register_post', 'aleandbread_validate_extra_register_fields', 10, 3);
 function aleandbread_validate_extra_register_fields($username, $email, $validation_errors) {
 	if (isset($_POST['first_name']) && empty($_POST['first_name'])) {
-		$validation_errors->add('first_name_error', __('First name is required.', 'woocommerce'));
+		$validation_errors->add('first_name_error', __('Der Vorname ist erforderlich.', 'aleandbread'));
 	}
 	if (isset($_POST['last_name']) && empty($_POST['last_name'])) {
-		$validation_errors->add('last_name_error', __('Last name is required.', 'woocommerce'));
+		$validation_errors->add('last_name_error', __('Der Nachname ist erforderlich.', 'aleandbread'));
 	}
 	if (isset($_POST['password']) && isset($_POST['password2']) && $_POST['password'] !== $_POST['password2']) {
-		$validation_errors->add('password_mismatch', __('Passwords do not match.', 'woocommerce'));
+		$validation_errors->add('password_mismatch', __('Die Passwörter stimmen nicht überein.', 'aleandbread'));
 	}
 	if (!isset($_POST['terms'])) {
-		$validation_errors->add('terms_error', __('You must accept the terms and privacy policy.', 'woocommerce'));
+		$validation_errors->add('terms_error', __('Sie müssen die Geschäftsbedingungen und die Datenschutzrichtlinie akzeptieren.', 'aleandbread'));
 	}
 
 	return $validation_errors;

@@ -15,17 +15,18 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
 ?>
 
 <section id="login" class="section-login relative overflow-hidden pt-[82px] md:pt-[106px]">
-    <div class="theme-container pt-[100px] pb-[240px] md:pt-[100px] md:pb-[60px] xl:pt-[170px] xl:pb-[114px]">
+    <div class="theme-container pt-24 pb-16 md:pt-24 md:pb-48 xl:pt-40 xl:pb-28">
         <div class="theme-grid">
             <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
                 <div>
-                    <h2 class="text-3xl font-bold mb-4">Login</h2>
+                    <h1 class="font-bold mb-6"><?php esc_html_e('Login', 'aleandbread'); ?></h1>
+                    <p class="font-barlow text-[16px] opacity-75 font-normal text-blockText mb-10"><?php esc_html_e('Login, um auf Ihr Ale & Bread Konto zuzugreifen', 'aleandbread'); ?></p>
 
                     <?php wc_print_notices(); ?>
 
                     <?php if ( isset($_GET['check-email']) ) : ?>
                         <div class="woocommerce-info mb-4">
-                            <?php esc_html_e('Thanks! We’ve emailed you a confirmation link. Please check your inbox (and spam).', 'your-textdomain'); ?>
+                            <?php esc_html_e('Vielen Dank! Wir haben Ihnen einen Bestätigungslink per E-Mail geschickt. Bitte prüfen Sie Ihren Posteingang (und den Spam-Ordner).', 'aleandbread'); ?>
                         </div>
                     <?php endif; ?>
 
@@ -38,26 +39,26 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
                     <form method="post" class="space-y-4">
                         <?php do_action('woocommerce_login_form_start'); ?>
 
-                        <div class="flex flex-col">
-                            <label for="username" class="mb-3">Email</label>
+                        <div class="flex flex-col relative">
+                            <label for="username" class="mb-3 absolute -top-[12px] left-3"><?php esc_html_e('Email', 'aleandbread'); ?></label>
                             <input type="text" id="username" name="username" placeholder="Email"
                                 class="w-full border p-2 rounded"
                                 value="<?php echo (!empty($_POST['username']) ? esc_attr($_POST['username']) : ''); ?>" required>
                         </div>
 
-                        <div class="flex flex-col">
-                            <label for="password" class="mb-3">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password"
+                        <div class="flex flex-col relative !mt-6">
+                            <label for="password" class="mb-3 absolute -top-[12px] left-3"><?php esc_html_e('Passwort', 'aleandbread'); ?></label>
+                            <input type="password" id="password" name="password" placeholder="Passwort"
                                 class="w-full border p-2 rounded" required>
                         </div>
 
                         <div class="flex items-center justify-between">
                             <label class="flex items-center space-x-2">
                                 <input type="checkbox" name="rememberme" value="forever" <?php checked(!empty($_POST['rememberme'])); ?>>
-                                <span>Remember me</span>
+                                <span><?php esc_html_e('Angemeldet bleiben', 'aleandbread'); ?></span>
                             </label>
                             <a href="<?php echo esc_url(wp_lostpassword_url()); ?>" class="text-sm text-[#CC332E] hover:underline">
-                                <?php esc_html_e('Forgot Password?', 'your-textdomain'); ?>
+                                <?php esc_html_e('Passwort vergessen?', 'aleandbread'); ?>
                             </a>
                         </div>
 
@@ -67,8 +68,8 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
                         <button type="submit" class="btn btn-secondary mb-6 w-full" name="login">Login</button>
 
                         <p class="text-center text-sm">
-                            <?php esc_html_e("Don’t have an account?", 'your-textdomain'); ?>
-                            <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-[#CC332E] font-medium hover:underline"><?php esc_html_e('Sign up', 'your-textdomain'); ?></a>
+                            <?php esc_html_e("Sie haben noch kein Konto?", 'aleandbread'); ?>
+                            <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-[#CC332E] font-medium hover:underline"><?php esc_html_e('Registrieren', 'aleandbread'); ?></a>
                         </p>
 
                         <?php do_action('woocommerce_login_form_end'); ?>
