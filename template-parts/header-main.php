@@ -73,7 +73,7 @@
               if ( is_user_logged_in() && function_exists( 'wc_get_account_menu_items' ) ) :
                 $endpoints = wc_get_account_menu_items();
               ?>
-                <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6 border-b-[3px] border-accent">
+                <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6">
                   Hi, <?php echo esc_html( $current_user->first_name ); ?>
                 </p>
                 <ul class="space-y-1 pb-5">
@@ -126,7 +126,7 @@
             class="absolute left-1/2 -translate-x-[87%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-40 origin-top"
           >
             <div class="bg-dark text-yellow-600 shadow-lg">
-              <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6 border-b-[3px] border-accent">
+              <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6">
                 <?php esc_html_e('Ihr Warenkorb','aleandbread') ?>
               </p>
               <div class="px-5 pt-0 pb-5">

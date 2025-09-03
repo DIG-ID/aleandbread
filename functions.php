@@ -245,33 +245,8 @@ require get_template_directory() . '/inc/theme-custom-menu-walker.php';
 // The theme woocommerce integration.
 require get_template_directory() . '/inc/theme-woocommerce.php';
 
-
-
-// Admin row action + handler to mark users verified
-add_filter('user_row_actions', function($actions, $user){
-	if ( current_user_can('manage_options') && '1' !== get_user_meta($user->ID, 'ab_email_verified', true) ) {
-		$url = wp_nonce_url(
-			add_query_arg(['action'=>'ab_verify_user','user_id'=>$user->ID], admin_url('users.php')),
-			'ab_verify_user_'.$user->ID
-		);
-		$actions['ab_verify_user'] = '<a href="'.$url.'">'.esc_html__('Verify email','your-textdomain').'</a>';
-	}
-	return $actions;
-}, 10, 2);
-
-add_action('admin_init', function(){
-	if ( ! isset($_GET['action'], $_GET['user_id']) || 'ab_verify_user' !== $_GET['action'] ) return;
-	if ( ! current_user_can('manage_options') ) wp_die('Insufficient permissions.');
-	$user_id = absint($_GET['user_id']);
-	check_admin_referer('ab_verify_user_'.$user_id);
-
-	update_user_meta($user_id, 'ab_email_verified', '1');
-	delete_user_meta($user_id, 'ab_email_verify_hash');
-	delete_user_meta($user_id, 'ab_email_verify_expires');
-
-	wp_safe_redirect( add_query_arg('ab_verified', 1, admin_url('users.php')) );
-	exit;
-});
+// The user validation settings.
+require get_template_directory() . '/inc/theme-user-validation.php';
 
 
 /**
