@@ -338,17 +338,16 @@ input[type="number"]
     border-collapse: collapse
     background: transparent
     margin: 0
-    // Woo sometimes adds zebra backgrounds; kill them
-    tr.alt
-      background: transparent
 
-    /* Each row becomes a simple two-column line */
-    tr
-      border: 0
-      margin: 0 0 18px
-      display: table-row  // keep table semantics but remove borders
-      &:last-child
-        margin-bottom: 0
+    .woocommerce-product-attributes-item
+      @apply py-2 block w-full
+      &__label
+        @extend .block-text-bold
+        @apply text-left pr-12 min-w-60 bg-transparent
+      &__value
+        @extend .block-text
+        @apply bg-transparent
+
 
     th,
     td
@@ -356,25 +355,6 @@ input[type="number"]
       padding: 0
       vertical-align: top
       background: transparent
-
-    /* Left side: attribute label */
-    th
-      width: 280px  // adjust to match your grid column width
-      color: #0D0D0D
-      font-family: "Barlow"
-      font-size: 24px
-      font-weight: 700
-      line-height: 1.25
-      text-transform: none
-      padding-right: 24px
-
-    /* Right side: attribute value */
-    td
-      color: #0D0D0D
-      font-family: "Barlow"
-      font-size: 24px
-      font-weight: 400
-      line-height: 1.5
 
       /* Woo wraps values in <p> or <span> */
       p,

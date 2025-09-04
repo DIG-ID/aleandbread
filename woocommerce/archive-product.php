@@ -50,7 +50,8 @@ else :
 		</div>
 	</section>
 	<?php
-	$cat_term        = get_queried_object();
+	$is_desc  = false;
+	$cat_term = get_queried_object();
 	if ( ! empty( $cat_term->parent ) ) :
 		$target_top = get_term_by( 'term_id', $cat_term->parent, 'product_cat' );
 		if ( ! empty( $target_top ) ) :
