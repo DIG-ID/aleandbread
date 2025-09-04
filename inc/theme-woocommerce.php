@@ -30,7 +30,7 @@ add_action( 'woocommerce_after_main_content', 'aleandbread_wrapper_end', 10 );
 // Custom wrapper start.
 function aleandbread_wrapper_start() {
 	echo '<main id="main-content" class="main-content overflow-hidden mt-auto pt-[106px]">';
-	echo '<div class="theme-container pb-[55px] md:pb-[92px] xl:pb-[192px] pt-[152px] md:pt-[194px] xl:pt-[170px]">';
+	echo '<div class="theme-container pb-16 md:pb-16 xl:pb-32 pt-12 md:pt-16 xl:pt-24">';
 }
 
 
