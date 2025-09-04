@@ -51,7 +51,7 @@ function ab_render_order_thumbs( $order ) {
         <!-- Title + stepper (step 3 active) -->
         <h1 class="text-center text-dark mb-6"><?php echo esc_html( get_the_title( wc_get_page_id( 'cart' ) ) ); ?></h1>
 
-        <div class="ab-steps max-w-4xl mx-auto mb-16 flex items-center justify-between">
+        <div class="ab-steps max-w-4xl mx-auto mb-16 hidden xl:flex items-center justify-between">
           <div class="step flex items-center gap-3 w-full mr-[3.333333%]">
             <span class="step-dot-done">✓</span>
             <span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e('Shopping cart','woocommerce'); ?></span>

@@ -50,9 +50,15 @@ else :
 		</div>
 	</section>
 	<?php
-	$catterm    = get_queried_object();
-	$target_top = get_term_by( 'slug', 'erlebnisse', 'product_cat' );
-	$is_desc    = $target_top ? in_array( $target_top->term_id, get_ancestors( $catterm->term_id, 'product_cat' ) ) : false;
+	$cat_term        = get_queried_object();
+	if ( ! empty( $cat_term->parent ) ) :
+		$target_top = get_term_by( 'term_id', $cat_term->parent, 'product_cat' );
+		if ( ! empty( $target_top ) ) :
+			$target_top_name = $target_top->name;
+			$target_top_link = get_term_link( (int) $target_top->term_id, 'product_cat' );
+			$is_desc         = $target_top ? in_array( $target_top->term_id, get_ancestors( $cat_term->term_id, 'product_cat' ) ) : false;
+		endif;
+	endif;
 	if ( $is_desc ) :
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
@@ -65,7 +71,7 @@ else :
 
 					woocommerce_product_loop_start();
 					if ( wc_get_loop_prop( 'total' ) ) :
-						echo '<div class="grid grid-cols-1">';
+						echo '<div class="grid grid-cols-1 gap-y-12 xl:gap-y-24 md:gap-y-16">';
 						while ( have_posts() ) :
 							the_post();
 							/**
@@ -82,6 +88,11 @@ else :
 					do_action( 'woocommerce_no_products_found' );
 				endif;
 				?>
+			</div>
+			<div class="col-span-2 md:col-span-6 xl:col-span-12 flex justify-center items-center">
+				<a href="<?php echo esc_url( $target_top_link ); ?>" class="btn btn-primary-2">
+					<?php printf( esc_html__( 'Alle %s anzeigen', 'aleandbread' ), esc_html( $target_top_name ) ); ?>
+				</a>
 			</div>
 		</section>
 		<?php

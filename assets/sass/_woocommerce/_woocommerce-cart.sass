@@ -56,7 +56,9 @@ body.woocommerce-cart, body.woocommerce-checkout
         table.shop_table
             @apply border-0
             thead
-                @apply border-b border-[#6C7275]
+                @apply border-b border-[#E8ECEF]
+                tr > th
+                    @apply border-b border-[#000]
             th
                 @apply pl-0 pb-6 font-barlow text-[16px] leading-[26px] font-semibold text-dark
             td
@@ -67,13 +69,6 @@ body.woocommerce-cart, body.woocommerce-checkout
                     @apply px-0 pt-6 pb-6
                 input
                     @apply bg-transparent
-
-    #add_payment_method table.cart,
-    .woocommerce-cart table.cart,
-    .woocommerce-checkout table.cart
-        img
-            width:100% !important
-            height: 100%
 
     .woocommerce-cart-form__cart-item
         .product-quantity, .product-price, .product-subtotal
@@ -100,6 +95,38 @@ body.woocommerce-cart, body.woocommerce-checkout
                 @apply bg-dark text-accent
             &:active
                 @apply bg-accent text-dark
+
+    .cart-collaterals, .woocommerce-checkout-review-order
+        strong
+            @apply font-semibold
+
+/*Payment boxes*/
+#add_payment_method #payment,
+.woocommerce-cart #payment,
+.woocommerce-checkout #payment
+    @apply bg-background
+
+#add_payment_method #payment div.payment_box,
+.woocommerce-cart #payment div.payment_box,
+.woocommerce-checkout #payment div.payment_box
+    @apply bg-[#E8ECEF]
+    &::before
+        border: 1em solid #E8ECEF
+        border-right-color: transparent
+        border-left-color: transparent
+        border-top-color: transparent
+
+.woocommerce table.shop_table tbody th, 
+.woocommerce table.shop_table tfoot td, 
+.woocommerce table.shop_table tfoot th
+    @apply font-semibold
+
+#add_payment_method table.cart,
+.woocommerce-cart table.cart,
+.woocommerce-checkout table.cart
+    img
+        width:100% !important
+        height: 100%
 
 //order complete
 .ab-thankyou

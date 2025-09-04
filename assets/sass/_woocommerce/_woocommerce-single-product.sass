@@ -263,8 +263,7 @@ input[type="number"]
 /* --- Tabs --- */
 .single-product
   .woocommerce-tabs
-    padding-top: 90px
-    border-bottom: 1px solid #0D0D0D
+    @apply py-24 border-b border-dark
 
   /* wrapper */
   .woocommerce-tabs ul.tabs
@@ -323,15 +322,8 @@ input[type="number"]
 
   /* panel area */
   .woocommerce-Tabs-panel
-    padding-top: 45px           
-    max-width: 563px            
-    color: #373737
-    font-family: "Barlow"
-    font-size: 18px
-    font-style: normal
-    font-weight: 400
-    line-height: 29.7px 
-    height: 315px
+    @apply max-w-[80%] xl:max-w-[50%] py-11 min-h-32 xl:min-h-80 font-barlow
+    @extend .block-text
     
 
     /* Woo prints an H2 inside panels; hide it if you only want the text */

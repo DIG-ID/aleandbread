@@ -32,7 +32,7 @@ do_action( 'woocommerce_before_main_content' );
         </h1>
 
         <!-- Stepper -->
-        <div class="ab-steps max-w-4xl mx-auto mb-20 flex items-center">
+        <div class="ab-steps max-w-4xl mx-auto mb-20 hidden xl:flex items-center">
           <div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-[#38CB89] w-full md:w-[30%] mr-[3.333333%]">
             <span class="step-dot-done">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e( 'Shopping cart', 'woocommerce' ); ?></span>
           </div>

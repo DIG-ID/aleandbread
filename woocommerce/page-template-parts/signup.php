@@ -18,13 +18,13 @@
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="flex flex-col !mt-6">
-                                <label for="first_name" class="mb-3"><?php esc_html_e('Vorname', 'aleandbread'); ?></label>
+                                <label for="first_name" class="mb-3"><?php esc_html_e('Vorname', 'aleandbread'); ?> <span class="required" aria-hidden="true">*</span></label>
                                 <input type="text" id="first_name" name="first_name" placeholder="Vorname"
                                     class="border p-2"
                                     value="<?php echo (!empty($_POST['first_name']) ? esc_attr($_POST['first_name']) : ''); ?>" required>
                             </div>
                             <div class="flex flex-col !mt-6">
-                                <label for="last_name" class="mb-3"><?php esc_html_e('Nachname', 'aleandbread'); ?></label>
+                                <label for="last_name" class="mb-3"><?php esc_html_e('Nachname', 'aleandbread'); ?> <span class="required" aria-hidden="true">*</span></label>
                                 <input type="text" id="last_name" name="last_name" placeholder="Nachname"
                                     class="border p-2"
                                     value="<?php echo (!empty($_POST['last_name']) ? esc_attr($_POST['last_name']) : ''); ?>" required>
@@ -33,7 +33,7 @@
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="flex flex-col !mt-6">
-                                <label for="email" class="mb-3"><?php esc_html_e('Email', 'aleandbread'); ?></label>
+                                <label for="email" class="mb-3"><?php esc_html_e('Email', 'aleandbread'); ?> <span class="required" aria-hidden="true">*</span></label>
                                 <input type="email" id="email" name="email" placeholder="Email"
                                 class="border p-2"
                                 value="<?php echo (!empty($_POST['email']) ? esc_attr($_POST['email']) : ''); ?>" required>
@@ -47,13 +47,13 @@
                         </div>
 
                         <div class="flex flex-col !mt-6">
-                            <label for="password" class="mb-3"><?php esc_html_e('Passwort', 'aleandbread'); ?></label>
+                            <label for="password" class="mb-3"><?php esc_html_e('Passwort', 'aleandbread'); ?> <span class="required" aria-hidden="true">*</span></label>
                             <input type="password" id="password" name="password" placeholder="Passwort"
                                 class="w-full border p-2" required>
                         </div>
 
                         <div class="flex flex-col !mt-6">
-                            <label for="password2" class="mb-3"><?php esc_html_e('Passwort bestätigen', 'aleandbread'); ?></label>
+                            <label for="password2" class="mb-3"><?php esc_html_e('Passwort bestätigen', 'aleandbread'); ?> <span class="required" aria-hidden="true">*</span></label>
                             <input type="password" id="password2" name="password2" placeholder="Passwort bestätigen"
                                 class="w-full border p-2" required>
                         </div>
