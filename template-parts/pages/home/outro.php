@@ -21,7 +21,7 @@
     </div>
   <?php endif; ?>
 
-  <div class="theme-container !max-w-full relative z-10">
+  <div class="theme-container xl:px-0 !max-w-full relative z-10">
     <div class="theme-grid relative">
 
       <!-- Desktop Image -->

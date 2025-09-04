@@ -82,7 +82,7 @@ function aleandbread_shop_categories() {
 			<?php
 			foreach ( $shop_cats as $shop_cat ) :
 				?>
-				<li class="card-category col-span-2 md:col-span-3 xl:col-span-4">
+				<li class="card-category col-span-2 md:col-span-3 xl:col-span-4 overflow-hidden">
 					<a href="<?php echo esc_url( get_term_link( $shop_cat ) ); ?>">
 						<div class="card-category--content">
 							<span class="overlay"></span>

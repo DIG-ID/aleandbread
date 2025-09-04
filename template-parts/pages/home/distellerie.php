@@ -20,7 +20,7 @@
     </div>
   <?php endif; ?>
 
-  <div class="theme-container !max-w-full">
+  <div class="theme-container xl:px-0 !max-w-full">
     <div class="theme-grid relative">
 
       <!-- Desktop background image (positioned absolutely) -->

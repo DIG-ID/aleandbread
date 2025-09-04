@@ -62,7 +62,7 @@ else :
 			<div class="col-span-2 md:col-span-6 xl:col-span-12">
 				<?php
 				if ( woocommerce_product_loop() ) :
-					do_action( 'woocommerce_before_shop_loop' );
+
 					woocommerce_product_loop_start();
 					if ( wc_get_loop_prop( 'total' ) ) :
 						echo '<div class="grid grid-cols-1">';
@@ -77,7 +77,7 @@ else :
 						echo '</div>';
 					endif;
 					woocommerce_product_loop_end();
-					do_action( 'woocommerce_after_shop_loop' );
+
 				else :
 					do_action( 'woocommerce_no_products_found' );
 				endif;

@@ -3,16 +3,16 @@
 <section class="shop-intro relative overflow-hidden">
 	<div class="theme-grid pb-14 xl:pb-60">
 		<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4">
-			<h1 class="text-dark"><?php echo get_field('intro_title', get_option('woocommerce_shop_page_id')); ?></h1>
-		</div> 
+			<h1 class="text-dark"><?php echo get_field( 'intro_title', get_option( 'woocommerce_shop_page_id' ) ); ?></h1>
+		</div>
 
 		<div class="col-start-1 col-span-2 md:col-span-4 xl:col-start-8 xl:col-span-4 pt-[48px] md:pt-[56px] xl:pt-0">
 			<p class="text-dark block-text w-[342px] md:w-[438px] xl:w-full">
-			<?php 
-			echo get_field('intro_description', get_option('woocommerce_shop_page_id')); 
+			<?php
+			echo get_field( 'intro_description', get_option( 'woocommerce_shop_page_id' ) );
 			?>
-			</p> 
-		</div> 
+			</p>
+		</div>
 	</div>
 	<div class="theme-grid">
 		<div class="col-span-2 md:col-span-6 xl:col-span-12">
@@ -75,7 +75,7 @@
 			 *
 			 * @hooked woocommerce_pagination - 10
 			 */
-			do_action( 'woocommerce_after_shop_loop' );
+			//do_action( 'woocommerce_after_shop_loop' );
 		} else {
 			/**
 			 * Hook: woocommerce_no_products_found.
