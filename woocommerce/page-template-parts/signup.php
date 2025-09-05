@@ -58,8 +58,8 @@
                                 class="w-full border p-2" required>
                         </div>
 
-                        <div class="flex items-center !mt-6 space-x-2">
-                            <input type="checkbox" name="terms" required>
+                        <div class="flex items-start lg:items-center !mt-6 space-x-2">
+                            <input type="checkbox" name="terms" class="mt-1 lg:mt-0" required>
                             <span class="text-[14px] text-dark"><?php esc_html_e('Ich stimme allen', 'aleandbread'); ?>&nbsp;<a href="#" class="text-[#CC332E]"><?php esc_html_e('Geschäftsbedingungen', 'aleandbread'); ?></a>&nbsp;<?php esc_html_e('und', 'aleandbread'); ?>&nbsp;<a href="#" class="text-[#CC332E]"><?php esc_html_e('Datenschutzbestimmungen zu', 'aleandbread'); ?></a></span>
                     </div>
 
