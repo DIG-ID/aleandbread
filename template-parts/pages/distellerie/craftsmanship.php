@@ -1,4 +1,4 @@
-<section id="craftmanship" class="craftmanship bg-dark pb-36 md:pb-48 xl:pb-56 pt-14">
+<section id="craftmanship" class="craftmanship bg-dark pt-14">
   <div class="theme-container">
     <div class="theme-grid">
 
@@ -77,13 +77,15 @@
       </div>
 
     </div>
-
+  </div>
     <!-- Swiper Gallery -->
+  <div class="container-wrapper w-full h-auto bg-gradient-to-b from-dark from-50% to-background to-50%">
+  <div class="theme-container">
     <div class="theme-grid">
       <?php 
         $gallery = get_field('craftmanship_gallery');
         if( $gallery ): ?>
-        <div class="col-span-2 md:col-span-6 xl:col-span-12 -mb-20 mt-8 md:mt-20 md:-mb-36">
+        <div class="col-span-2 md:col-span-6 xl:col-span-12  mt-8 md:mt-20">
           <div class="swiper craftmanship-swiper">
             <div class="swiper-wrapper">
               <?php foreach( $gallery as $image_id ): ?>
@@ -101,5 +103,18 @@
         </div>
       <?php endif; ?>
     </div>
+      <div class="mt-14 flex justify-center">
+        <?php
+              $button = get_field('craftmanship_swiper_button');
+              if( $button ):
+              $link_url = $button['url'];
+              $link_title = $button['title'];
+              $link_target = $button['target'] ? $button['target'] : '_self';
+              ?>
+              <a class="btn btn-primary" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+              <?php echo esc_html($link_title); ?>
+              </a>
+            <?php endif; ?>
+      </div>
   </div>
 </section>

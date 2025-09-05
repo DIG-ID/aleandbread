@@ -1,7 +1,7 @@
 <section id="blog" class="blog relative overflow-hidden bg-background pt-[109px] md:pt-[157px] xl:pt-[248px]">
   <div class="theme-container relative z-10">
     <div class="theme-grid">
-      <div class="col-span-12 flex items-center justify-between py-6 pb-[30px] md:pb-[40px] xl:pb-[34px]">
+      <div class="col-span-2 md:col-span-6 xl:col-span-12 flex items-center justify-between py-6 pb-[30px] md:pb-[40px] xl:pb-[34px]">
         <!-- Previous post -->
         <div class="flex items-center gap-3">
           <?php previous_post_link(
@@ -28,24 +28,26 @@
           ); ?>
         </div>
       </div>
-      <div class="xl:col-span-5 xl:col-start-1">
+    </div>
+    <div class="theme-grid">
+      <div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-1">
       <?php do_action('breadcrumbs'); ?>
       </div>
       <!-- Tags -->
-      <div class="xl:col-start-6 xl:col-span-1"> 
+      <div class="col-span-1 md:col-start-5 xl:col-start-6"> 
         <p class="text-accent text-right font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase">
           Tags
         </p>
       </div>
         <!-- Categories -->
-      <div class="xl:col-start-8 xl:col-span-2 pb-[16px] md:pb-[22px] xl:pb-[25px]">
+      <div class="col-start-2 xl:col-start-8 xl:col-span-2 pb-[16px] md:pb-[22px] xl:pb-[25px]">
         <p class="text-accent text-right font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase">
           Categories
         </p>
       </div>
-      
+    </div>
       <!-- Blog post content -->
-      <div class="col-span-12 theme-grid gap-x-8">
+      <div class="theme-grid gap-x-8">
   
   <!-- LEFT CONTENT -->
   <div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-9 order-1 xl:order-none">
@@ -53,20 +55,20 @@
       <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-none mb-6']); ?>
     <?php endif; ?>
 
-    <h1 class="xl:max-w-[706px] xl:pt-[27px]"><?php the_title(); ?></h1>
+    <h1 class="xl:max-w-[706px] pt-[15px] md:pt-[23px] xl:pt-[27px]"><?php the_title(); ?></h1>
 
-    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] xl:pt-[50px]"><?php echo get_the_date(); ?></p>
+    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date(); ?></p>
     <p class="block-text-bold xl:pt-[2px]"><?php echo get_the_author(); ?></p>
 
-    <p class="block-text !font-bold xl:pt-[72px]"><?php echo get_field('blog_cpt_description'); ?></p>
+    <p class="block-text !font-bold pt-[35px] xl:pt-[72px]"><?php echo get_field('blog_cpt_description'); ?></p>
 
-    <div class="xl:pt-[35px] xl:max-w-[1142px] pb-[198px]">
+    <div class="pt-[25px] md:pt-[35px] xl:max-w-[1142px] pb-[66px] md:pb-[117px] xl:pb-[198px]">
       <p class="block-text"><?php echo get_field('blog_cpt_content'); ?></p>
     </div>
   </div>
 
   <!-- RIGHT SIDEBAR -->
-  <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none">
+  <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none pb-[108px] md:pb-[163px] xl:pb-0">
     <p class="text-[#CC9933] font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase pb-[16px]">Related posts</p>
     
     <?php
@@ -80,22 +82,24 @@
       $description = get_field('blog_cpt_description');
       $image       = get_the_post_thumbnail_url(get_the_ID(), 'medium');
     ?>
-      <div class="mb-10">
+      <div class="mb-[54px] md:mb-[84px] xl:mb-10">
         <?php if ($image): ?>
-          <div class="rounded-[28px] overflow-hidden mb-3">
-            <img src="<?= esc_url($image); ?>" alt="<?= esc_attr(get_the_title()); ?>" class="w-full h-auto object-cover">
-          </div>
+          <a href="<?php the_permalink(); ?>" class="overflow-hidden mb-3">
+            <img src="<?= esc_url($image); ?>" alt="<?= esc_attr(get_the_title()); ?>" class="w-full h-auto object-cover rounded-[28px] mb-[33px]">
+        </a>
         <?php endif; ?>
-
-        <h4 class="font-semibold text-xl mb-2"><?php the_title(); ?></h4>
+        <a href="<?php the_permalink(); ?>">
+          <h4 class="font-semibold text-xl mb-[33px] xl:mb-2"><?php the_title(); ?>
+          </h4>
+        </a>
         <?php if ($description): ?>
-          <p class="text-dark block-text mb-4"><?= esc_html($description); ?></p>
+          <p class="text-dark block-text mb-[65px] xl:mb-4"><?= esc_html($description); ?></p>
         <?php endif; ?>
         <a href="<?php the_permalink(); ?>" class="group text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase flex items-center gap-2">
-          <span class="group-hover:underline">
+          <span class="uppercase group-hover:underline">
             <?php esc_html_e('Weiterlesen', 'aleandbread'); ?>
           </span>
-          <span class="inline-block w-8 h-4">
+          <span class="inline-block mt-1 w-8 h-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16" fill="none" class="w-full h-full">
               <path d="M31.7061 8.3741C32.0966 7.98357 32.0966 7.35041 31.7061 6.95989L25.3421 0.595924C24.9516 0.2054 24.3184 0.2054 23.9279 0.595924C23.5374 0.986449 23.5374 1.61961 23.9279 2.01014L29.5848 7.66699L23.9279 13.3238C23.5374 13.7144 23.5374 14.3475 23.9279 14.7381C24.3184 15.1286 24.9516 15.1286 25.3421 14.7381L31.7061 8.3741ZM0.203125 7.66699V8.66699H30.999V7.66699V6.66699H0.203125V7.66699Z" fill="#0D0D0D"/>
             </svg>

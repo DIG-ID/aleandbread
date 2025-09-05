@@ -2,7 +2,7 @@
   <div class="theme-container">
     <div class="theme-grid">
         <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-12 ">
-            <p class="text-accent block-text capitalize pb-[73px] md:pb-[85px] xl:pb-[0px]">
+            <p class="text-accent over-title capitalize pb-[73px] md:pb-[85px] xl:pb-[32px]">
                 <?php echo get_field('blog_breadcrumbs'); ?>
             </p>
         </div>
@@ -18,7 +18,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-span-2 md:col-span-6 xl:col-span-4 pt-[35.5px] md:pt-[58px] xl:pt-[94px] pb-[0px] md:pb-[0px] xl:pb-[70px] ">
+        <div class="col-span-2 md:col-span-6 xl:col-span-4 pt-[35.5px] md:pt-[58px] xl:pt-[94px] pb-[25px] md:pb-[45px] xl:pb-[70px] ">
               <div class="theme-grid gap-6">
             <?php
             $args = array(
@@ -64,7 +64,7 @@
                         <!-- Read More bottom -->
                         <div class="mt-auto">
                             <a href="<?php the_permalink(); ?>" class="group block-text text-dark font-semibold text-sm flex items-center">
-                                <span class="hover:underline"><?php esc_html_e('Weiterlesen', 'aleandbread'); ?></span>
+                                <span class="uppercase hover:underline"><?php esc_html_e('Weiterlesen', 'aleandbread'); ?></span>
                                 <span class="ml-1">→</span>
                             </a>
                         </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="theme-grid">
-            <div class="col-span-2 md:col-span-6 xl:col-span-2 xl:col-start-6 pt-0 md:pt-0">
+            <div class="col-span-2 md:col-span-6 xl:col-span-2 xl:col-start-6 flex justify-center">
             <?php 
             $link = get_field('blog_button');
             if( $link ): 
