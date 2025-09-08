@@ -140,10 +140,10 @@
 	</div>
 </section>
 
-<section class="section-testimonials py-52">
-		<div class="flex justify-between items-center mb-20">
-				<h2 class="h1 text-dark uppercase"><?php the_field( 'testimonials_title', 'options' ); ?></h2>
-			<div class="swiper-navigation-wrapper relative flex gap-x-6">
+<section class="section-testimonials py-12 md:py-16 xl:py-52">
+		<div class="flex justify-between items-center mb-14 md:mb-16 xl:mb-20">
+			<h2 class="h1 text-dark uppercase lg:ml-36"><?php the_field( 'testimonials_title', 'options' ); ?></h2>
+			<div class="swiper-navigation-wrapper relative flex gap-x-4 lg:gap-x-6">
 				<div class="swiper-button-prev testimonials-swiper-button-prev">
 					<svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M0.292893 7.29289C-0.0976314 7.68342 -0.0976315 8.31658 0.292892 8.7071L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34314C8.46159 1.95262 8.46159 1.31946 8.07107 0.928931C7.68054 0.538406 7.04738 0.538406 6.65686 0.928931L0.292893 7.29289ZM25 8L25 7L1 7L1 8L1 9L25 9L25 8Z" fill="#CC9933"/>
@@ -182,9 +182,9 @@
 							<?php endfor; ?>
 							<span class="sr-only"><?php echo esc_html( $rating ); ?>/5</span>
 						</div>
-						<p class="block-text mb-8"><?php the_field( 'description' ); ?></p>
+						<p class="block-text text-blockText mb-8"><?php the_field( 'description' ); ?></p>
 						<p class="h4"><?php the_field( 'name' ); ?></p>
-						<p class="block-text"><?php the_field( 'location' ); ?></p>
+						<p class="block-text text-blockText"><?php the_field( 'location' ); ?></p>
 					</div>
 					<?php
 				endforeach;
