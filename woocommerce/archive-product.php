@@ -64,7 +64,7 @@ else :
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 		?>
-		<section class="theme-grid">
+		<section class="experiences-cards theme-grid">
 			<!-- Product loop -->
 			<div class="col-span-2 md:col-span-6 xl:col-span-12">
 				<?php
@@ -161,5 +161,23 @@ endif;
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 do_action( 'woocommerce_after_main_content' );
-
+if ( $is_desc ) :
+	?>
+	<section class="cenas py-44 bg-dark relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: linear-gradient(rgba(12, 12, 12, 0.86), rgba(12, 12, 12, 0.86)), url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_banner_image', 'option' ), 'full' ) ); ?>');">
+		<div class="theme-container">
+			<div class="theme-grid">
+				<div class="col-span-2 md:col-span-5 xl:col-span-3 xl:col-start-2 xl:self-center">
+					<h2 class="text-neutral-200 text-4xl xl:text-6xl font-bold font-barlowSemiCondensed uppercase xl:leading-[3.625rem] mb-7 xl:mb-0"><?php echo get_field( 'experiences_banner_title', 'option' ); ?></h2>
+				</div>
+				<div class="col-span-2 md:col-span-4 xl:col-span-3 xl:col-start-6">
+					<div class="block-text text-blockTextLight mb-8"><?php echo get_field( 'experiences_banner_p1', 'option' ); ?></div>
+				</div>
+				<div class="col-span-2 md:col-span-4 xl:col-span-3">
+					<div class="block-text text-blockTextLight"><?php echo get_field( 'experiences_banner_p2', 'option' ); ?></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php
+endif;
 get_footer( 'shop' );
