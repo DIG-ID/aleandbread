@@ -90,11 +90,11 @@
                     );
                     ?>
                 </div>
-                <div class="col-span-2 md:col-span-6 xl:col-span-3">
+                <div class="col-span-2 md:col-span-6 xl:col-span-3 mt-14 md:mt-20 xl:mt-0">
                     <h3 class="text-accent mb-9"><?php echo get_field( 'newsletter_title', 'option' ); ?></h3>
-                    <p class="block-text text-accent"><?php echo get_field( 'newsletter_description', 'option' ); ?></p>
+                    <p class="block-text text-accent mb-8 md:mb-14 xl:mb-16"><?php echo get_field( 'newsletter_description', 'option' ); ?></p>
                     <?php 
-                    $form_shortcode = get_field('newsletter_shortcode', 'options');
+                    $form_shortcode = get_field('newsletter_newsletter_shortcode', 'option');
                     echo do_shortcode($form_shortcode);
                     ?>
                 </div>

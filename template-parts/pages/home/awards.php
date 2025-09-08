@@ -1,4 +1,4 @@
-<section id="awards" class="awards bg-dark text-center pt-24 md:pt-52 xl:pt-60">
+<section id="awards" class="awards bg-dark text-center pt-24 md:pt-52 xl:pt-60 pb-[100px] md:pb-[208px] xl:pb-[232px]">
   <div class="theme-container">
     <div class="theme-grid">
       <!-- Title + Description Block -->
@@ -11,7 +11,7 @@
         </p>
 
         <!-- Award Logos -->
-        <div class="flex flex-wrap justify-center items-center gap-14 pb-[100px] md:pb-[208px] xl:pb-[232px]">
+        <div class="flex flex-wrap justify-center items-center gap-14">
         <?php 
             $images = [
             get_field('awards_award_1'),

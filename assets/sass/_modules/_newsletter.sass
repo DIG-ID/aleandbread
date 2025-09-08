@@ -1,0 +1,39 @@
+/* ===== Newsletter (MC4WP) ===== */
+.ab-newsletter
+    @apply w-full bg-dark p-0 text-[#DDDDDD] text-right
+
+.ab-newsletter .fields
+    @apply grid gap-4 md:gap-5
+
+.ab-newsletter input[type="text"],
+.ab-newsletter input[type="email"]
+    @apply font-barlow text-[20px] outline-none w-full bg-transparent px-0 py-2 text-[#DDDDDD] border-0 border-b-[3px] border-accent
+    transition: border-color .2s ease, transform .08s ease
+
+.ab-newsletter input[type="text"]:focus,
+.ab-newsletter input[type="email"]:focus
+    @apply border-b-accent
+
+.ab-newsletter ::placeholder
+    @apply text-[#DDDDDD] opacity-90
+
+.ab-newsletter .ab-btn,
+.ab-newsletter input[type="submit"].ab-btn
+    @apply inline-block cursor-pointer transition-colors duration-300 ease-in-out bg-transparent border-2 border-accent text-accent font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[13px] uppercase text-center w-full max-w-[160px] md:max-w-[270px] py-[10.6px] md:py-[16.5px] mt-7 xl:mt-8
+    &:hover
+        @apply bg-accent text-dark
+    &:active
+        @apply bg-transparent text-accent
+
+.ab-newsletter .mc4wp-response
+    margin-top: 16px
+    font-size: 0.95rem
+
+.ab-newsletter .mc4wp-alert
+    @applt text-accent
+
+.ab-newsletter .mc4wp-success
+    color: #8be28b
+
+.ab-newsletter .sr-only
+    @apply absolute w-1 h-1 p-0 -m-1 hidden
