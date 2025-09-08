@@ -18,9 +18,9 @@ remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 )
 remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 );
 
 
-// Add Account Default Content
+// Add Account Default Content.
 if ( false === has_action( 'woocommerce_account_content', 'woocommerce_account_content' ) ) {
-  add_action( 'woocommerce_account_content', 'woocommerce_account_content' );
+	add_action( 'woocommerce_account_content', 'woocommerce_account_content' );
 }
 
 // Add custom wrappers.
@@ -33,14 +33,11 @@ function aleandbread_wrapper_start() {
 	echo '<div class="theme-container pb-16 md:pb-16 xl:pb-32 pt-12 md:pt-16 xl:pt-24">';
 }
 
-
-
-//edit the Account Menu Items
+// Edit the Account Menu Items.
 add_filter( 'woocommerce_account_menu_items', function( $items ) {
 	unset( $items['downloads'] );
 	return $items;
 } );
-
 
 
 /**
@@ -62,6 +59,7 @@ function aleandbread_shop_custom_breadcrumbs() {
 		);
 	}
 }
+
 add_action( 'aleandbread_shop_breadcrumbs', 'aleandbread_shop_custom_breadcrumbs', 10 );
 
 

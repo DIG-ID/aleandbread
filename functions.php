@@ -319,16 +319,15 @@ function mytheme_product_sku_under_title() {
  * Simple shipping note after the Add to Cart area.
  */
 function mytheme_shipping_note() {
-		echo '<p class="ship-note">Orders ship within 5 to 10 Business Days</p>';
+	global $product;
+
+	// Only show if product is not virtual and not downloadable
+	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() ) {
+		echo '<p class="ship-note">' . esc_html__( 'Bestellungen werden innerhalb von 5 bis 10 Werktagen versendet.', 'aleandbread' ) . '</p>';
+	}
+
 }
 
-// Use WooCommerce’s built-in gallery slider with arrows, no thumbs.
-add_action('after_setup_theme', function () {
-	// (Optional but recommended) make sure gallery features are on
-	add_theme_support('wc-product-gallery-zoom');
-	add_theme_support('wc-product-gallery-lightbox');
-	add_theme_support('wc-product-gallery-slider');
-});
 
 add_filter('woocommerce_single_product_carousel_options', function ($opts) {
 	// Hide thumbnail strip
