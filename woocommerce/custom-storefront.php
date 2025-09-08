@@ -115,7 +115,7 @@
 				?>
 				<div class="card-best-sellers">
 				<a href="<?php echo esc_url($permalink); ?>">
-					<div class="card-best-sellers--image">
+					<div class="card-best-sellers--image bg-[#C4C4C4]">
 					<?php echo get_the_post_thumbnail(null, 'full', ['class' => 'w-full h-full object-cover']); ?>
 					</div>
 					<div class="card-best-sellers--content">

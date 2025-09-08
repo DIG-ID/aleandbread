@@ -41,6 +41,8 @@ else :
 				$custom_field = get_field( 'custom_title', 'product_cat_' . $term_id );
 				if ( $custom_field ) :
 					echo '<h1 class="page-title text-dark">' . wp_kses_post( $custom_field ) . '</h1>';
+				else :
+					?><h1 class="page-title text-dark"><?php woocommerce_page_title( true ); ?></h1><?php
 				endif;
 				?>
 			</div>
