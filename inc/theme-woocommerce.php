@@ -81,8 +81,11 @@ function aleandbread_shop_categories() {
 		<ul class="shop-categories theme-grid">
 			<?php
 			foreach ( $shop_cats as $shop_cat ) :
+				$thumb_id = get_term_meta( $shop_cat->term_id, 'thumbnail_id', true );
+				$img = $thumb_id ? wp_get_attachment_image( $thumb_id, 'medium', false, array( 'class' => 'w-full h-auto' ) ) : '';
+				$img_url = wp_get_attachment_image_url( $thumb_id, 'full' );
 				?>
-				<li class="card-category col-span-2 md:col-span-3 xl:col-span-4 overflow-hidden">
+				<li class="card-category col-span-2 md:col-span-3 xl:col-span-4 overflow-hidden" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
 					<a href="<?php echo esc_url( get_term_link( $shop_cat ) ); ?>">
 						<div class="card-category--content">
 							<span class="overlay"></span>
