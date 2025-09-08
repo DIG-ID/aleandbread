@@ -1,0 +1,22 @@
+.section-testimonials
+  .swiper-navigation-wrapper
+    @apply relative
+    .swiper-button-next,
+    .swiper-button-prev
+      @apply w-16 h-16 rounded-full flex justify-center items-center relative left-[initial] right-[initial] border-2 border-accent px-5 transition-all duration-500 ease-in-out
+      &::after
+        @apply content-[''] hidden invisible
+      svg
+        path
+          @apply transition-all duration-500 ease-in-out
+      &:hover
+        @apply bg-accent
+        svg
+          path
+            @apply fill-dark
+  .testimonialsSwiper
+    @apply overflow-visible
+    .swiper-slide
+      @apply transition-all duration-300 ease-in-out opacity-100
+    .swiper-slide-prev
+      @apply opacity-0

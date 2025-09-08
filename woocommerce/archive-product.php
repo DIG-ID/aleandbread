@@ -161,6 +161,16 @@ endif;
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 do_action( 'woocommerce_after_main_content' );
+$is_desc  = false;
+$cat_term = get_queried_object();
+if ( ! empty( $cat_term->parent ) ) :
+	$target_top = get_term_by( 'term_id', $cat_term->parent, 'product_cat' );
+	if ( ! empty( $target_top ) ) :
+		$target_top_name = $target_top->name;
+		$target_top_link = get_term_link( (int) $target_top->term_id, 'product_cat' );
+		$is_desc         = $target_top ? in_array( $target_top->term_id, get_ancestors( $cat_term->term_id, 'product_cat' ) ) : false;
+	endif;
+endif;
 if ( $is_desc ) :
 	?>
 	<section class="cenas py-44 bg-dark relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: linear-gradient(rgba(12, 12, 12, 0.86), rgba(12, 12, 12, 0.86)), url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_banner_image', 'option' ), 'full' ) ); ?>');">

@@ -90,7 +90,7 @@
 </section>
 <section class="best-sellers theme-grid pt-20">
 	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
-		<h1 class="text-dark uppercase"><?php esc_html_e( 'Best Sellers','aleandbread' ); ?></h1>
+		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Best Sellers','aleandbread' ); ?></h2>
 	</div> 
 	<div class="col-span-2 md:col-span-6 xl:col-span-12">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -122,7 +122,7 @@
 						<span class="overlay"></span>
 						<span class="block-text"><?php the_excerpt(); ?></span>
 						<div class="card-best-sellers--footer flex justify-between items-center">
-							<h2 class="card-best-sellers--title"><?php echo esc_html($title); ?></h2>
+							<h3 class="card-best-sellers--title"><?php echo esc_html($title); ?></h3>
 							<div class="card-best-sellers--arrow"></div>
 						</div>
 					</div>
@@ -137,5 +137,62 @@
 			endif;
 			?>
 		</div>
+	</div>
+</section>
+
+<section class="section-testimonials py-52">
+		<div class="flex justify-between items-center mb-20">
+				<h2 class="h1 text-dark uppercase"><?php the_field( 'testimonials_title', 'options' ); ?></h2>
+			<div class="swiper-navigation-wrapper relative flex gap-x-6">
+				<div class="swiper-button-prev testimonials-swiper-button-prev">
+					<svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.292893 7.29289C-0.0976314 7.68342 -0.0976315 8.31658 0.292892 8.7071L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34314C8.46159 1.95262 8.46159 1.31946 8.07107 0.928931C7.68054 0.538406 7.04738 0.538406 6.65686 0.928931L0.292893 7.29289ZM25 8L25 7L1 7L1 8L1 9L25 9L25 8Z" fill="#CC9933"/>
+					</svg>
+				</div>
+				<div class="swiper-button-next testimonials-swiper-button-next">
+					<svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M24.7071 8.70711C25.0976 8.31658 25.0976 7.68342 24.7071 7.29289L18.3431 0.928932C17.9526 0.538408 17.3195 0.538408 16.9289 0.928932C16.5384 1.31946 16.5384 1.95262 16.9289 2.34315L22.5858 8L16.9289 13.6569C16.5384 14.0474 16.5384 14.6805 16.9289 15.0711C17.3195 15.4616 17.9526 15.4616 18.3431 15.0711L24.7071 8.70711ZM0 8L0 9L24 9V8V7L0 7L0 8Z" fill="#CC9933"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+	<!-- Swiper -->
+	<div class="swiper testimonialsSwiper">
+		<?php
+		$testimonials_posts = get_field( 'testimonials_cards', 'options' );
+		if ( $testimonials_posts ) :
+			?>
+			<div class="swiper-wrapper">
+				<?php
+				foreach ( $testimonials_posts as $post ) :
+					setup_postdata( $post );
+					// $rating: inteiro 1..5 vindo do ACF
+					$rating = (int) ( get_field( 'rating' ) ?: 0 );
+					$rating = max( 0, min( 5, $rating ) );
+					?>
+					<div class="swiper-slide testimonial-card bg-white py-10 pl-12 pr-16">
+						<div class="flex items-center gap-1 mb-5" aria-label="<?php echo esc_attr( $rating ); ?> de 5 estrelas">
+							<?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+								<svg
+									class="h-5 w-5 <?php echo $i <= $rating ? 'fill-[#C93]' : 'fill-gray-300'; ?>"
+									viewBox="0 0 24 24" role="img" aria-hidden="true"
+								>
+									<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+								</svg>
+							<?php endfor; ?>
+							<span class="sr-only"><?php echo esc_html( $rating ); ?>/5</span>
+						</div>
+						<p class="block-text mb-8"><?php the_field( 'description' ); ?></p>
+						<p class="h4"><?php the_field( 'name' ); ?></p>
+						<p class="block-text"><?php the_field( 'location' ); ?></p>
+					</div>
+					<?php
+				endforeach;
+				?>
+			</div>
+			<?php
+			wp_reset_postdata();
+		endif;
+		?>
 	</div>
 </section>

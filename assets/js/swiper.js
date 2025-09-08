@@ -170,3 +170,32 @@ if (document.querySelector('.our-experience-swiper')) {
     },
   });
 }
+
+// Swiper Testimonials
+if (document.querySelector(".post-type-archive-product")) {
+  new Swiper('.testimonialsSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    grabCursor: true,
+    loop: true,
+    navigation: {
+      nextEl: ".testimonials-swiper-button-next",
+      prevEl: ".testimonials-swiper-button-prev",
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 1.15,
+      },
+      1024: {
+        slidesPerView: 3.15,
+      },
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true,
+    },
+  });
+}
