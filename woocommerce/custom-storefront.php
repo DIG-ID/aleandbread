@@ -88,7 +88,7 @@
 		</div>
 	</div>
 </section>
-<section class="best-sellers theme-grid pt-20">
+<section class="best-sellers theme-grid pt-20 xl:pt-36">
 	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
 		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Best Sellers','aleandbread' ); ?></h2>
 	</div> 
