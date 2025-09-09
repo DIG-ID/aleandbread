@@ -175,7 +175,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-<<<<<<< Updated upstream
 });
 
 if (document.querySelector('.our-experience-swiper')) {
@@ -219,6 +218,3 @@ if (document.querySelector(".post-type-archive-product")) {
     },
   });
 }
-=======
-});
->>>>>>> Stashed changes
