@@ -5,7 +5,7 @@
 $image_id = get_field('our_experience_background_image', 'option');
 
 // Get image URL from ID
-$image_url = wp_get_attachment_image_url($image_id, 'full');
+$image_url = wp_get_attachment_image_url($image_id, 'event-thumb');
 ?>
     <div class="theme-grid relative">
         <div class="-mx-6 xl:mx-0 col-span-2 md:col-span-6 order-1">

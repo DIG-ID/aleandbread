@@ -51,7 +51,7 @@ function aleandbread_theme_setup() {
 
 	add_theme_support( 'wc-product-gallery-slider' );
 
-	//add_image_size( 'zimmer-image', 1400, 770, array( 'center', 'center' ) );
+	add_image_size( 'event-thumb', 560, 295, array( 'center', 'center' ) );
 
 }
 
