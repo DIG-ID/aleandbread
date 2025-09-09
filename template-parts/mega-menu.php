@@ -1,6 +1,6 @@
 <div class="mega-menu-wrapper bg-dark absolute top-[82px] md:top-[102px] xl:top-[104px] left-0 bottom-0 z-30 w-full h-0 overflow-scroll xl:overflow-hidden transition-all duration-500 ease-in-out xl:flex xl:justify-center">
   <div class="theme-container pb-12 xl:pb-0">
-    <div class="mega-menu-content theme-grid gap-y-10 pt-12 md:pt-12 xl:pt-40 pb-20 px-[10%]">
+    <div class="mega-menu-content theme-grid gap-y-10 pt-12 md:pt-12 xl:pt-40 pb-20 px-[10%] xl:px-0">
       <!-- LEFT COLUMN -->
       <div class="col-span-2 md:col-span-6 xl:col-span-4 xl:col-start-3">
         <h2 class="text-[#CBCBCB]">
