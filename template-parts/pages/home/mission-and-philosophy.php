@@ -1,4 +1,4 @@
-<section id="mission-and-philosophy" class="mission-and-philosophy bg-dark 2xl:h-screen 2xl:w-screen pt-8 md:pt-0 xl:pt-36 pb-28 md:pb-[148px] xl:pb-36">
+<section id="mission-and-philosophy" class="mission-and-philosophy bg-dark pt-0 xl:pt-36 pb-28 md:pb-[148px] xl:pb-36">
   <?php 
     $image = get_field('mission_und_philosophie_image_1');
     if( $image ): 
@@ -50,7 +50,7 @@
           $logo = get_field('theme_logo', 'option');
           if( $logo ) {
             echo wp_get_attachment_image( $logo, 'full', false, array(
-              'class' => 'hidden w-[184px] md:w-[415px] mt-16 md:mt-[141px] xl:mt-[148px]'
+              'class' => 'w-[184px] md:w-[415px] mt-16 md:mt-[85px]'
             ));
           }
         ?>

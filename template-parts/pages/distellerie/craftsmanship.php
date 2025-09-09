@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-start-1 col-span-2 md:col-start-1 md:col-span-5 xl:col-start-8 xl:col-span-4">
-          <p class="block-text text-blockTextLight pt-9 md:pt-12 xl:pt-[22px] md:w-[550px] pb-28 md:pb-40 xl:pb-32"><?php echo get_field('craftmanship_description'); ?></p>
+          <p class="block-text text-blockTextLight pt-9 md:pt-12 xl:pt-[22px] md:w-[550px] pb-28 md:pb-40 xl:pb-0"><?php echo get_field('craftmanship_description'); ?></p>
         </div>
       </div>
 

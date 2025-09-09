@@ -1,4 +1,4 @@
-<section id="our-brand" class="our-brand bg-dark pb-[136px] md:pb-[200px] xl:pb-[506px]">
+<section id="our-brand" class="our-brand bg-dark pb-[136px] md:pb-[200px] xl:pb-96">
     <div class="theme-container">
         <div class="theme-grid">
             <div class="col-span-2 md:col-span-6 xl:col-span-12 pb-[74px] md:pb-[88px] xl:pb-[156px] text-center">
