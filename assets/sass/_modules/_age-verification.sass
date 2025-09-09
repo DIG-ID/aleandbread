@@ -10,6 +10,10 @@
 
 .age-gate
   @apply bg-dark p-8
+  &__loader
+    svg
+      circle
+        @apply fill-accent
   &__heading-title--logo
     @apply max-w-52 mb-0
   &__challenge
@@ -19,6 +23,10 @@
   &__remember-text
     @extend .block-text
     @apply text-blockTextLight
+
+  &__error
+    @extend .block-text
+    @apply text-red-500
 
 button.age-gate__submit--no,
 button.age-gate__submit--yes
