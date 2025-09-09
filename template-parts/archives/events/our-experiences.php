@@ -1,5 +1,5 @@
 <section id="our-experiences" class="our-experiences bg-dark xl:bg-transparent">
-<div class="theme-container !max-w-full">
+<div class="theme-container !max-w-full !w-full !p-0">
     <?php
 // Get image ID from ACF
 $image_id = get_field('our_experience_background_image', 'option');
@@ -14,7 +14,7 @@ $image_url = wp_get_attachment_image_url($image_id, 'full');
                 <img 
                     src="<?php echo esc_url($image_url); ?>" 
                     alt="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>" 
-                    class=""
+                    class="w-full"
                     loading="lazy"
                 />
             </figure>
