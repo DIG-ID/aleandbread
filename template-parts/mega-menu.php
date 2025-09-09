@@ -35,10 +35,10 @@
 <div class="col-span-2 md:col-span-6 xl:col-span-4 xl:col-start-9 flex">
   
   <!-- Divider -->
-  <div class="hidden xl:block mt-[19px] w-[3px] bg-accent" style="height: 106px;"></div>
+  <div class="block mt-[10px] md:mt-[19px] w-[3px] h-[71px] md:h-[106px] bg-accent"></div>
   
   <!-- Menu content -->
-  <div class="pl-4 border-l-2 border-accent">
+  <div class="pl-4 border-accent">
     <h2 class="text-[#CBCBCB]">
       <?php
       wp_nav_menu([

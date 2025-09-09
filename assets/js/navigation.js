@@ -17,7 +17,7 @@
     // ----- Dynamic mega menu height -----
     const setElementHeight = () => {
       const navHeight = 0; 
-      const height = (window.innerHeight - navHeight) * 0.7;
+      const height = (window.innerHeight - navHeight) * 1;
       $menu[0].style.setProperty('--element-height', `${height}px`);
     };
     setElementHeight();

@@ -14,7 +14,7 @@
             <span class="menu-label ml-1 uppercase hidden md:block"><?php esc_html_e( 'MENÜ', 'aleandbread' ) ?></span>
           </button>
         </div>
-        <div class="!hidden items-center gap-4">
+        <div class="hidden items-center gap-4">
             <?php do_action( 'wpml_add_language_selector' ); ?>
         </div>
       </div>
