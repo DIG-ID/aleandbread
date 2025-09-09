@@ -47,7 +47,7 @@
               <div class="event-item col-span-2 mt-12">
                 <div class="event-meta">
                   <?php if (get_the_post_thumbnail()) :
-                    the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                    the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
                   endif; ?>
                   <h4 class="pt-4"><?php the_title(); ?></h4>
                   <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
@@ -80,7 +80,7 @@
                 <div class="event-item mt-12">
                   <div class="event-meta">
                     <?php if (get_the_post_thumbnail()) :
-                      the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                      the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
                     endif; ?>
                     <h4 class="pt-4"><?php the_title(); ?></h4>
                     <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
@@ -113,7 +113,7 @@
                 <div class="event-item mt-12">
                   <div class="event-meta">
                     <?php if (get_the_post_thumbnail()) :
-                      the_post_thumbnail('full', ['class' => 'rounded-xl w-full h-auto object-cover']);
+                      the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
                     endif; ?>
                     <h4 class="xl:pt-8 xl:pb-7"><?php the_title(); ?></h4>
                     <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
