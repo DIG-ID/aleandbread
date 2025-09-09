@@ -1,0 +1,31 @@
+:root
+  --ag-button-border: solid 2px #C93
+  --ag-button-padding: 0.625rem 1.25rem
+  --ag-button-radius: 0px
+  --ag-button-margin: 0px
+
+  --ag-button-color-hover: #C93
+  --ag-button-hover-border: solid 2px #C93
+  --ag-button-color-text-hover: #0D0D0D
+
+.age-gate
+  @apply bg-dark p-8
+  &__heading-title--logo
+    @apply max-w-52 mb-0
+  &__challenge
+    @extend .block-text
+    @apply mb-6 text-blockTextLight
+
+  &__remember-text
+    @extend .block-text
+    @apply text-blockTextLight
+
+button.age-gate__submit--no,
+button.age-gate__submit--yes
+  @apply w-full inline-block cursor-pointer transition-colors duration-300 ease-in-out font-barlow text-xs md:text-lg font-bold leading-[0.5507rem] md:leading-[0.8125rem] uppercase text-center
+
+button.age-gate__submit--yes
+  @apply bg-transparent border-2 border-accent text-accent
+
+button.age-gate__submit--no
+  @apply bg-dark border-2 border-accent text-accent

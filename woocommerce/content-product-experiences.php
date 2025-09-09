@@ -34,7 +34,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 				<h2 class=" mb-2 transition-all duration-500 ease-in-out group-hover:text-accent"><?php the_title( '', '', true ); ?></h2>
 				<p class="text-blockTextLight mb-12"><?php the_field( 'capacity' ); ?></p>
 				<div class="font-barlow text-[0.9375rem] md:text-[1.5rem] font-normal leading-[1.4063rem] md:leading-[1.75rem] md:tracking-[0.015rem] mb-12">
-					<?php the_content(); ?>
+					<?php the_excerpt(); ?>
 				</div>
 				<div class="icons flex items-center gap-x-16">
 					<div class="duration flex items-center">
