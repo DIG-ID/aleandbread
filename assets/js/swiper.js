@@ -68,6 +68,19 @@ window.addEventListener("load", () => {
     });
   }
 
+  if (document.querySelector('.our-experience-swiper')) {
+  console.log("Found .our-experience-swiper");
+  new Swiper('.our-experience-swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next-3',
+      prevEl: '.swiper-button-prev-3',
+    },
+  });
+}
+
 // Swiper #5 — Events Desktop Swiper (3 slides per view)
 if (document.querySelector('.desktop-event-swiper')) {
   new Swiper('.desktop-event-swiper', {
@@ -142,6 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
         contentEl.classList.add('hidden');
         contentEl.style.maxHeight = null;
         iconEl.textContent = '+';
+        iconEl.classList.remove('text-accent');
+        iconEl.classList.add('text-dark');
+
         textEl.classList.remove('text-accent');
         textEl.classList.add('text-dark');
       });
@@ -151,11 +167,15 @@ document.addEventListener('DOMContentLoaded', function () {
         content.classList.remove('hidden');
         content.style.maxHeight = content.scrollHeight + 'px';
         icon.textContent = '-';
+        icon.classList.remove('text-dark');
+        icon.classList.add('text-accent');
+
         questionText.classList.remove('text-dark');
         questionText.classList.add('text-accent');
       }
     });
   });
+<<<<<<< Updated upstream
 });
 
 if (document.querySelector('.our-experience-swiper')) {
@@ -199,3 +219,6 @@ if (document.querySelector(".post-type-archive-product")) {
     },
   });
 }
+=======
+});
+>>>>>>> Stashed changes
