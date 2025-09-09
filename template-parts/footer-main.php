@@ -2,13 +2,13 @@
     <div class="footer-info-bar bg-accent">
         <div class="theme-container">
             <div class="theme-grid">
-                <div class="col-span-2 md:col-span-5 xl:col-span-12 flex flex-row justify-center">
+                <div class="col-span-2 md:col-span-6 xl:col-span-12 flex flex-row justify-center">
                     <?php 
                     $email = get_field('email', 'option');
                     if ($email): ?>
-                        <a href="mailto:<?php echo esc_html($email); ?>" class="flex items-center py-10">
+                        <a href="mailto:<?php echo esc_html($email); ?>" class="flex items-cente py-7 md:py-10">
                             <img class="w-auto h-auto" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/email.svg" alt="Email" title="Email"/>
-                            <h3 class="text-dark pl-[16px] mb-[4px]"><?php echo esc_html($email); ?></h3>
+                            <h3 class="text-dark pl-[16px] mt-[4px] xl:mt-0 mb-0 xl:mb-[4px]"><?php echo esc_html($email); ?></h3>
                         </a>
                     <?php endif; ?>
                 </div>

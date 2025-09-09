@@ -2,13 +2,13 @@
   <div class="theme-container">
     <div class="theme-grid">
         <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-12 ">
-            <p class="text-accent over-title capitalize pb-[73px] md:pb-[85px] xl:pb-[32px]">
+            <p class="text-accent over-title capitalize pb-5 md:pb-10 xl:pb-[32px]">
                 <?php echo get_field('blog_breadcrumbs'); ?>
             </p>
         </div>
         <div class="col-span-2 md:col-span-6 xl:col-span-12"></div>
             <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-5 xl:col-span-5">
-                <h1 class="text-blockTextLight xl:max-w-[724px]">
+                <h1 class="text-blockTextLight pb-6 md:pb-20 xl:pb-0 xl:max-w-[724px]">
                     <?php echo get_field('blog_title'); ?>
                 </h1>
             </div>

@@ -3,7 +3,7 @@
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-4 xl:col-span-6 flex flex-col items-center gap-y-7 md:gap-y-12 mb-16">
 				<p class="over-title text-accent"><?php echo esc_html( get_field( 'best_sellers_over_title' ) ); ?></p>
-				<h2 class="text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'best_sellers_title' ) ); ?></h2>
+				<h1 class="text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'best_sellers_title' ) ); ?></h1>
 				<?php
 				$btn      = wc_get_page_permalink( 'shop' );
 				$btn_text = get_field( 'best_sellers_button_text' );

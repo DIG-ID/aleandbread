@@ -1,4 +1,4 @@
-<section id="our-values" class="our-values bg-dark pb-[275px] md:pb-[345px] xl:pb-60">
+<section id="our-values" class="our-values bg-dark pb-20 md:pb-28 xl:pb-60">
     <div class="theme-container">
         <div class="theme-grid">
             <div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-6 xl:col-span-4 xl:pt-12 order-1 xl:order-1">
