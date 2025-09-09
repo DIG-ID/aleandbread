@@ -1,4 +1,4 @@
-<section id="awards" class="awards bg-dark text-center pt-24 md:pt-52 xl:pt-60 pb-[100px] md:pb-[208px] xl:pb-[232px]">
+<section id="awards" class="awards bg-dark text-center pt-24 md:pt-36 xl:pt-36 pb-28 md:pb-36 xl:pb-44 -mt-1">
   <div class="theme-container">
     <div class="theme-grid">
       <!-- Title + Description Block -->

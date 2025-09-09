@@ -11,7 +11,7 @@
               <span class="bar bar--middle"></span>
               <span class="bar bar--bottom"></span>
             </span>
-            <span class="menu-label ml-1 uppercase"><?php esc_html_e( 'MENÜ', 'aleandbread' ) ?></span>
+            <span class="menu-label ml-1 uppercase hidden md:block"><?php esc_html_e( 'MENÜ', 'aleandbread' ) ?></span>
           </button>
         </div>
         <div class="!hidden xl:!flex items-center gap-4">

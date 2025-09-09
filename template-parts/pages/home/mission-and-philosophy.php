@@ -1,5 +1,4 @@
-<section id="mission-and-philosophy" class="mission-and-philosophy bg-dark pb-[108px] md:pb-[148px] xl:pb-[210px]">
-
+<section id="mission-and-philosophy" class="mission-and-philosophy bg-dark 2xl:h-screen 2xl:w-screen pt-8 md:pt-0 xl:pt-36 pb-28 md:pb-[148px] xl:pb-36">
   <?php 
     $image = get_field('mission_und_philosophie_image_1');
     if( $image ): 
@@ -16,14 +15,14 @@
     </div>
   <?php endif; ?>
 
-  <div class="theme-container">
+  <div class="theme-container pt-8 md:pt-16 xl:pt-0">
     <div class="theme-grid">
 
       <!-- Text Content -->
       <div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 order-2">
-        <p class="over-title text-accent mt-8 md:mt-20 xl:mt-[270px]"><?php echo get_field('mission_und_philosophie_over_title'); ?></p>
+        <p class="over-title text-accent"><?php echo get_field('mission_und_philosophie_over_title'); ?></p>
         
-        <h1 class="text-blockTextLight pt-12 md:pt-20 xl:pt-16 pb-11 md:pb[60px] xl:pb-14 w-[343px] md:w-[560px] xl:w-full">
+        <h1 class="text-blockTextLight pt-12 md:pt-20 xl:pt-10 pb-11 md:pb[60px] xl:pb-10 w-[343px] md:w-[560px] xl:w-full">
           <?php echo get_field('mission_und_philosophie_title'); ?>
         </h1>
         
@@ -58,7 +57,7 @@
       </div>
 
       <!-- Desktop-only Image -->
-      <div class="hidden xl:block col-start-1 col-span-6 order-1 xl:mt-56">
+      <div class="hidden xl:block col-start-1 col-span-5 order-1">
         <?php 
           echo wp_get_attachment_image( $image, 'full', false, array('class' => 'w-[850px]') );
         ?>

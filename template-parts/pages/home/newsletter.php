@@ -1,4 +1,4 @@
-<section id="newsletter" class="newsletter bg-dark pb-20 md:pb-48 xl:pb-40 -mt-1">
+<section id="newsletter" class="newsletter bg-dark pb-20 md:pb-48 xl:pb-36 -mt-1">
   <div class="theme-container">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-6 xl:col-span-12">

@@ -1,4 +1,4 @@
-<section id="events" class="events bg-dark xl:bg-transparent relative overflow-hidden pb-[91px] md:pb-[180px] xl:pb-[223px]">
+<section id="events" class="events bg-dark xl:bg-transparent relative overflow-hidden pb-[91px] md:pb-36 xl:pb-[223px]">
   <?php
     // ACF image fields
     $desktop_tablet_image_id = get_field('events_background_image'); // Used for desktop and tablet

@@ -30,7 +30,7 @@
                             }?>
                         </a>
                     </div>
-                    <p class="block-text text-accent xl:max-w-52"><?php echo get_field( 'copyright', 'option' ); ?></p>
+                    <p class="block-text text-accent md:max-w-[11rem] xl:max-w-52 mb-11 md:mb-16 xl:mb-0"><?php echo get_field( 'copyright', 'option' ); ?></p>
                     <div class="socials-devs hidden xl:block">
                         <p class="mb-4 block-text-bold text-accent pt-11 md:pt-24"><?php esc_html_e( 'Folgen Sie uns', 'aleandbread' ); ?></p>
                         <?php do_action( 'socials' ); ?>
@@ -51,7 +51,7 @@
                         )
                     );
                     ?>
-                    <p class="mb-2 block-text-bold text-accent xl:pt-11"><?php esc_html_e( 'Shop', 'aleandbread' ); ?></p>
+                    <p class="mb-2 block-text-bold text-accent pt-10 xl:pt-11"><?php esc_html_e( 'Shop', 'aleandbread' ); ?></p>
                     <?php
                     wp_nav_menu(
                         array(
@@ -77,7 +77,7 @@
                         )
                     );
                     ?>
-                    <p class="mb-2 block-text-bold text-accent xl:pt-11"><?php esc_html_e( 'Support', 'aleandbread' ); ?></p>
+                    <p class="mb-2 block-text-bold text-accent pt-10 xl:pt-11"><?php esc_html_e( 'Support', 'aleandbread' ); ?></p>
                     <?php
                     wp_nav_menu(
                         array(

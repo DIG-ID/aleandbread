@@ -1,4 +1,4 @@
-<section id="blog" class="blog bg-dark text-align-none xl:pt-[227px]">
+<section id="blog" class="blog bg-dark text-align-none xl:pt-36">
   <div class="theme-container">
     <div class="theme-grid">
         <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-12 ">
@@ -32,7 +32,7 @@
             if ($latest_posts->have_posts()) :
             while ($latest_posts->have_posts()) : $latest_posts->the_post(); ?>
                 
-                <article class="col-span-2 md:col-span-6 xl:col-span-4 bg-white shadow rounded pb-[30px] group hover:bg-accent transition-all duration-500 ease-in-out flex flex-col">
+                <article class="col-span-2 md:col-span-3 xl:col-span-4 bg-white shadow rounded pb-[30px] group hover:bg-accent transition-all duration-500 ease-in-out flex flex-col">
                     <!-- Featured Image -->
                     <?php if (has_post_thumbnail()) : ?>
                         <a href="<?php the_permalink(); ?>" class="block mb-4">

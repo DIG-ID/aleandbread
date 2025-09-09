@@ -136,7 +136,7 @@ function ab_send_verification_email($user_id, $raw_token){
 	<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;">
 	  <p>'.$hello.'</p>
 	  <p>'.esc_html__('Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr Konto zu aktivieren.', 'aleandbread').'</p>
-	  <p><a href="'.esc_url($confirm_url).'" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#CC332E;color:#fff;">'.
+	  <p><a href="'.esc_url($confirm_url).'" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;">'.
 		esc_html__('Mein Konto bestätigen', 'aleandbread').'</a></p>
 	  <p>'.esc_html__('Falls die Schaltfläche nicht funktioniert, kopieren Sie bitte diesen Link und fügen Sie ihn in Ihren Browser ein:', 'aleandbread').'<br>
 		<span style="word-break:break-all;">'.esc_url($confirm_url).'</span></p>
