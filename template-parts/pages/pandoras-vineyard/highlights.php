@@ -1,6 +1,6 @@
 <section class="wine-highlights highlight theme-container pt-20 xl:pt-28 pb-40">
     <div class="theme-grid">
-        <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
+        <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-6 mb-14 md:mb-16 xl:mb-24">
             <h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Vineyard Highlights','aleandbread' ); ?></h2>
         </div>
 

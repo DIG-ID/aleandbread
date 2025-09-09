@@ -175,7 +175,7 @@ if ( ! empty( $cat_term->parent ) ) :
 endif;
 if ( $is_desc ) :
 	?>
-	<section class="cenas py-44 bg-dark relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: linear-gradient(rgba(12, 12, 12, 0.86), rgba(12, 12, 12, 0.86)), url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_banner_image', 'option' ), 'full' ) ); ?>');">
+	<section class="cenas py-14 md:py-28 xl:py-44 bg-dark relative overflow-hidden bg-no-repeat bg-center bg-cover" style="background-image: linear-gradient(rgba(12, 12, 12, 0.86), rgba(12, 12, 12, 0.86)), url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_banner_image', 'option' ), 'full' ) ); ?>');">
 		<div class="theme-container">
 			<div class="theme-grid">
 				<div class="col-span-2 md:col-span-5 xl:col-span-3 xl:col-start-2 xl:self-center">
