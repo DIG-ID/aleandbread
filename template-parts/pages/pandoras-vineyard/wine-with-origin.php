@@ -7,7 +7,7 @@
         <h1 class="text-dark"><?php echo get_field('wine_with_origin_title'); ?></h1>
       </div>
 
-      <div class="col-start-1 md:col-start-1 xl:col-start-9 col-span-2 md:col-span-5 xl:col-span-4 pt-6 md:pt-11 md:pb-14 pb-2 xl:pb-[145px] xl:pt-56">
+      <div class="col-start-1 md:col-start-1 xl:col-start-9 col-span-2 md:col-span-5 xl:col-span-4 pt-6 md:pt-11 pb-[54px] md:pb-[100px] pb-2 xl:pb-[145px] xl:pt-56">
         <p class="block-text text-dark"><?php echo get_field('wine_with_origin_subtitle'); ?></p>
       </div>
       </div>
@@ -25,11 +25,11 @@
         <div class="inner-content h-[343px] md:h-[672px] relative" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">    
           <span class="cta-overlay">
           </span>
-          <div class="gin-history-container p-16">
+          <div class="gin-history-container p-6 md:p-7 xl:p-16">
             <div class="flex justify-between items-center w-full">
               <div class="">
                 <!-- Description Popup -->
-                <div class="gin-popup w-[645px] mb-[85px] translate-y-[100%] opacity-0 pointer-events-none transition-all duration-700">
+                <div class="gin-popup w-[645px] mb-[5px] md:mb-[55px] translate-y-[100%] opacity-0 pointer-events-none transition-all duration-700 max-w-[300px] md:max-w-[586px] xl:max-w-full">
                   <?php echo get_field('wine_with_origin_image_description'); ?>
                 </div>
                 <h2 class="gin-title transition-all duration-700 max-w-[215px] md:max-w-[350px] xl:max-w-full">

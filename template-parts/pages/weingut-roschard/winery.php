@@ -67,8 +67,8 @@
             </div>
 
             <!-- Navigation buttons -->
-            <div class="swiper-button-prev-2 absolute top-1/2 -translate-y-1/2 left-4 z-10"></div>
-            <div class="swiper-button-next-2 absolute top-1/2 -translate-y-1/2 right-4 z-10"></div>
+            <div class="swiper-button-prev-3 absolute top-1/2 -translate-y-1/2 left-4 z-10"></div>
+            <div class="swiper-button-next-3 absolute top-1/2 -translate-y-1/2 right-4 z-10"></div>
           </div>
         <?php endif; ?>
       </div>

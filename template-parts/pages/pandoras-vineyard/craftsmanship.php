@@ -11,7 +11,7 @@
                         </div>
                     <?php endif; ?>
                 <div class="col-start-1 xl:col-start-4 col-span-2 md:col-span-6 xl:col-span-3">
-                <h1 class="text-blockTextLight w-[305px] md:w-[550px] xl:w-[380px] col-span-2 md:col-span-5 col-start-1 xl:col-start-4 "><?php echo get_field('craftmanship_title'); ?></h1>
+                <h1 class="text-blockTextLight w-[305px] md:w-[550px] xl:w-[380px] col-span-2 md:col-span-5 col-start-1 xl:col-start-4 pt-0 md:pt-[56px] xl:pt-0"><?php echo get_field('craftmanship_title'); ?></h1>
                 <h3 class="text-blockTextLight pt-7 md:pt-12 xl:pt-14 md:w-full w-[300px] xl:w-[365px] pb-7 md:pb-[48px] xl:pb-20"><?php echo get_field('craftmanship_subtitle'); ?></h3>
                 <?php 
                     $link = get_field('craftmanship_button');
@@ -23,7 +23,7 @@
                         <a class="btn btn-primary !col-span-2" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
                     <?php endif; ?>
                 </div>
-                <div class="col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4">
+                <div class="col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 max-w-[353px]">
                 <p class="block-text text-blockTextLight self-stretch pt-4 xl:pt-0 md:pt-12"><?php echo get_field('craftmanship_description_1'); ?></p>
                 <p class="block-text text-blockTextLight pt-7 md:pt-12 xl:pt-24 pb-7 md:pb-0"><?php echo get_field('craftmanship_description_2'); ?></p>
                 </div>

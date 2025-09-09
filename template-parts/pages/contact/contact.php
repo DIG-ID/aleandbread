@@ -7,7 +7,7 @@
             <div class="col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4">
                 <h1 class="text-dark pb-[28px] md:pb-[38px] "><?php echo get_field('kontakt_title'); ?></h1>
                 <h3 class="text-dark  pb-[28px] md:pb-[38px]"><?php echo get_field('kontakt_sub_title'); ?></h3>
-                <p class="block-text text-blockText w-[335px] md:w-[560px] xl:w-full pb-[48px] md:pb-[75px]"><?php echo get_field('kontakt_description'); ?></p>
+                <p class="block-text text-blockText w-[335px] md:w-[560px] xl:w-full pb-[48px] md:pb-[75px] xl:pb-0"><?php echo get_field('kontakt_description'); ?></p>
             </div>
 
             <div class="col-start-1 xl:col-start-8 col-span-2 md:col-span-6 xl:col-span-2 self-start">
@@ -33,8 +33,9 @@
                     </div>
                 <?php endif; ?>
             </div>
-
-            <div class="col-start-1 xl:col-start-2 col-span-6 xl:col-span-10 pt-16 md:pt-[88px] xl:pt-40 md:mb-52 xl:mb-[283px]">
+            </div>
+            <div class="theme-grid">
+            <div class="xl:col-start-2 col-span-2 md:col-span-6 xl:col-span-10 pt-16 md:pt-[88px] xl:pt-44 md:mb-52 xl:mb-[283px]">
                 <div class=" bg-[#140606] -mx-[16px] md:-mx-0 pr-8 pl-8 md:pl-[60px] md:pr-[60px] xl:pr-16 xl:pl-16 pb-6 pt-1">
                     <div class="w-full mb-10 mt-12">
                         <?php 

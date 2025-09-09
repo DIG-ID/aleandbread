@@ -50,6 +50,16 @@ body
     @apply bg-dark text-blockTextLight h-full w-full transition-all duration-700 absolute top-0 left-0 z-10 pointer-events-none opacity-80
     background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.98) 55%, rgba(13, 13, 13, 0.98) 100%)
     transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+@media (max-width: 767px)
+    .cta-overlay
+        @apply bg-dark text-blockTextLight h-full w-full transition-all duration-700 absolute top-0 left-0 z-10 pointer-events-none opacity-80
+        background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.98) 50%, rgba(13, 13, 13, 0.98) 100%)
+        transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+    .gin-history-wrapper
+        &:hover
+            .cta-overlay
+                background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.98) 25%, rgba(13, 13, 13, 0.98) 100%)
+
 .gin-history-wrapper
     .gin-history-container
         @apply relative w-full h-full flex items-end z-20 text-blockTextLight

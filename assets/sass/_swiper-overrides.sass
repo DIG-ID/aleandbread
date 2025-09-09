@@ -1,3 +1,4 @@
+// Events slider navigation controls
 .events-controls
   display: flex
   align-items: center
@@ -36,6 +37,7 @@
 
     &::after
       display: none !important
+
     @media (max-width: 768px)
       display: none
 
@@ -45,7 +47,37 @@
   .swiper-button-next-2
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='22' viewBox='0 0 13 22' fill='none'><path d='M1.15939 0.846469L11.3129 11L1.15939 21.1535' stroke='%230D0D0D' stroke-width='2'/></svg>")
 
-/* Pagination Bullets */
+
+// 🥃 Our Experience Swiper (distillery gallery)
+.our-experience-swiper
+  position: relative
+
+  .swiper-button-prev-3,
+  .swiper-button-next-3
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    z-index: 10
+    width: 59px
+    height: 59px
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+    cursor: pointer
+
+    &::after
+      display: none !important
+
+  .swiper-button-prev-3
+    left: 10px
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'><circle cx='29.5' cy='29.5' r='28.5' transform='rotate(-180 29.5 29.5)' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/><path d='M16.2929 28.2929C15.9024 28.6834 15.9024 29.3166 16.2929 29.7071L22.6569 36.0711C23.0474 36.4616 23.6805 36.4616 24.0711 36.0711C24.4616 35.6805 24.4616 35.0474 24.0711 34.6569L18.4142 29L24.0711 23.3431C24.4616 22.9526 24.4616 22.3195 24.0711 21.9289C23.6805 21.5384 23.0474 21.5384 22.6569 21.9289L16.2929 28.2929ZM41 29L41 28L17 28L17 29L17 30L41 30L41 29Z' fill='%230D0D0D'/></svg>")
+
+  .swiper-button-next-3
+    right: 10px
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'><circle cx='29.5' cy='29.5' r='28.5' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/><path d='M42.7071 30.7071C43.0976 30.3166 43.0976 29.6834 42.7071 29.2929L36.3431 22.9289C35.9526 22.5384 35.3195 22.5384 34.9289 22.9289C34.5384 23.3195 34.5384 23.9526 34.9289 24.3431L40.5858 30L34.9289 35.6569C34.5384 36.0474 34.5384 36.6805 34.9289 37.0711C35.3195 37.4616 35.9526 37.4616 36.3431 37.0711L42.7071 30.7071ZM18 30V31L42 31V30V29L18 29V30Z' fill='%230D0D0D'/></svg>")
+
+
+// 🎯 Pagination Bullets
 .swiper-pagination-bullet
   all: unset
   display: inline-flex
@@ -80,7 +112,8 @@
 .swiper-pagination-bullet-active::before
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='49' height='48' viewBox='0 0 49 48' fill='none'%3E%3Ccircle cx='24.5369' cy='23.6893' r='23.6893' fill='%23CC9933'/%3E%3C/svg%3E")
 
-/* Pagination Separator */
+
+// ─ Pagination Separator (---)
 .pagination-separator
   display: inline-block
   width: 181px

@@ -24,9 +24,9 @@
 
   <div class="theme-container relative z-10">
     <div class="theme-grid">
-      <div class="col-span-2 md:col-span-4 xl:col-span-6 xl:col-start-2 pt-40 md:pt-48 xl:pt-[275px] max-h-dvh min-h-dvh">
+      <div class="col-span-2 md:col-span-6 xl:col-span-6 xl:col-start-2 pt-40 md:pt-48 xl:pt-[275px] h-full">
         <?php do_action('breadcrumbs'); ?>
-        <h1 class="text-blockTextLight pt-[56px] w-[240px] md:w-full"><?php echo get_field('hero_title'); ?></h1>
+        <h1 class="text-blockTextLight pt-[56px] max-w-[240px] md:max-w-none"><?php echo get_field('hero_title'); ?></h1>
         <p class="block-text text-blockTextLight pt-[56px] md:pt-[56px] xl:pt-14 w-[343px] md:w-[560px] pb-[56px]">
           <?php echo get_field('hero_description'); ?>
         </p>

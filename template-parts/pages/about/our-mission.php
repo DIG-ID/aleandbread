@@ -5,9 +5,9 @@
                 <div class="pt-[64px] md:pt-[54px] xl:pt-[43px]">
                     <?php do_action ( 'breadcrumbs' ); ?>
                 </div>
-                <h1 class="text-blockTextLight py-14 m-w-[480px]"><?php echo get_field('unsere_mission_title'); ?></h1>
-                <h3 class="text-blockTextLight "><?php echo get_field('unsere_mission_sub-title'); ?></h3>
-                <p class="text-blockTextLight block-text pt-[32px] pb-[90px] md:pb-[85px] xl:pb-[200px]"><?php echo get_field('unsere_mission_description'); ?></p>
+                <h1 class="text-blockTextLight py-14 max-w-[260px] md:max-w-[460px] xl:max-w-[500px]"><?php echo get_field('unsere_mission_title'); ?></h1>
+                <h3 class="text-blockTextLight !font-medium max-w-[344px] md:max-w-[560px]"><?php echo get_field('unsere_mission_sub-title'); ?></h3>
+                <p class="text-blockTextLight block-text pt-[32px] pb-[90px] md:pb-[85px] xl:pb-[200px] max-w-[344px] md:max-w-[560px]"><?php echo get_field('unsere_mission_description'); ?></p>
                 <?php 
                     $image = get_field('theme_logo', 'option');
                     $size = 'full'; // (thumbnail, medium, large, full or custom size)

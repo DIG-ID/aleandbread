@@ -11,7 +11,7 @@
       <div class="theme-grid col-span-2 md:col-span-6 xl:col-span-12 pt-[144px] xl:pt-[280px] pb-[60px] md:pb-[200px] xl:pb-[133px]">
         <div class="col-start-1 col-span-2  xl:col-start-2 ">
           <?php do_action('breadcrumbs'); ?>
-          <h1 class="text-dark pt-0">
+          <h1 class="text-dark pt-[12px]">
             <?php echo get_field('faq_title'); ?>
           </h1>
         </div>
@@ -27,12 +27,12 @@
             if ($question && $answer): ?>
               <div class="faq-item bg-[#F3F3F3] border border-[#E2E2E2] rounded-none mb-4 px-6 py-5 transition-all duration-300" data-accordion>
                 <div class="flex items-center justify-between cursor-pointer toggle-header">
-                  <p class="faq-question text-dark font-semibold transition-colors duration-300">
+                  <p class="faq-question text-dark block-text !font-bold md:!font-medium transition-colors duration-300 max-w-[292px] md:max-w-[580px] xl:max-w-full !text-sm md:!text-xl">
                     <?php echo esc_html($question); ?>
                   </p>
                   <span class="toggle-icon text-dark text-xl font-bold leading-none transition-all">+</span>
                 </div>
-                <div class="accordion-content max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out text-sm text-dark pt-4 hidden">
+                <div class="accordion-content max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out !text-sm md:!text-base xl:!text-base text-dark pt-4 hidden max-w-[275px] md:max-w-[540px] xl:max-w-[848px]">
                   <p class="block-text"><?php echo esc_html($answer); ?></p>
                 </div>
               </div>
@@ -69,12 +69,12 @@
             if ($question && $answer): ?>
               <div class="faq-item bg-[#F3F3F3] border border-[#E2E2E2] rounded-none mb-4 px-6 py-6 transition-all duration-300" data-accordion>
                 <div class="flex items-center justify-between cursor-pointer toggle-header">
-                  <p class="faq-question text-dark font-semibold transition-colors duration-300">
+                  <p class="faq-question text-dark block-text !font-bold md:!font-medium transition-colors duration-300 max-w-[292px] md:max-w-[580px] xl:max-w-full !text-sm md:!text-xl">
                     <?php echo esc_html($question); ?>
                   </p>
                   <span class="toggle-icon text-dark text-xl font-bold leading-none transition-all">+</span>
                 </div>
-                <div class="accordion-content max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out text-sm text-dark pt-4 hidden">
+                <div class="accordion-content max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out !text-sm md:!text-base xl:!text-base text-dark pt-4 hidden max-w-[275px] md:max-w-[540px] xl:max-w-[848px]">
                   <p><?php echo esc_html($answer); ?></p>
                 </div>
               </div>
