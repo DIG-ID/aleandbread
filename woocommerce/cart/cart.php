@@ -203,8 +203,8 @@ do_action( 'woocommerce_before_main_content' );
 					<p class="font-barlow text-[16px] leading-[26px] font-semibold text-dark mb-2"><?php esc_html_e( 'Haben Sie einen Gutschein?', 'aleandbread' ); ?></p>
 					<p class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275] mb-4"><?php esc_html_e( 'Geben Sie Ihren Code ein, um sofort einen Rabatt auf den Warenkorb zu erhalten.', 'aleandbread' ); ?></p>
 					<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
-					<input type="text" name="coupon_code" class="input-text border border-[#6C727580] px-4 py-2 text-[#6C7275] bg-transparent font-barlow text-[16px] leading-[26px] font-semibold" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
-					<button type="submit" class="button rounded-xl px-5 py-2" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
+					<input type="text" name="coupon_code" class="input-text border border-[#6C727580] px-4 py-[0.6rem] text-[#6C7275] bg-transparent font-barlow text-[16px] leading-[26px] font-semibold mb-4 sm:mb-0" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
+					<button type="submit" class="button rounded-none px-5 py-2" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
 					<?php esc_html_e( 'Apply', 'woocommerce' ); ?>
 					</button>
 					<?php do_action( 'woocommerce_cart_coupon' ); ?>
