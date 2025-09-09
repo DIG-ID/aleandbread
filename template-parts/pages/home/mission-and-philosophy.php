@@ -50,7 +50,7 @@
           $logo = get_field('theme_logo', 'option');
           if( $logo ) {
             echo wp_get_attachment_image( $logo, 'full', false, array(
-              'class' => 'w-[184px] md:w-[415px] mt-16 md:mt-[141px] xl:mt-[148px]'
+              'class' => 'hidden w-[184px] md:w-[415px] mt-16 md:mt-[141px] xl:mt-[148px]'
             ));
           }
         ?>
