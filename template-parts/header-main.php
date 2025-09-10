@@ -81,7 +81,7 @@
                     <li role="menuitem">
                       <a
                         href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"
-                        class="block font-barlow text-[20px] leading-[28px] text-accent font-normal hover:underline px-5 py-2"
+                        class="block font-barlow text-[20px] leading-[28px] text-[#DDDDDD] font-normal hover:underline px-5 py-2"
                       >
                         <?php echo esc_html( $label ); ?>
                       </a>
@@ -114,7 +114,7 @@
             <?php
               $count = ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
             ?>
-            <span id="header-cart-count" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[11px] leading-none font-bold bg-[#7F1D1D] text-[#CC9933] rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>">
+            <span id="header-cart-count" class="absolute -top-2 -right-2 min-w-[19px] h-[19px] px-1 flex items-center justify-center text-[12px] leading-none font-bold bg-accent text-[#DDDDDD] rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>">
               <?php echo esc_html( $count ); ?>
             </span>
           </button>

@@ -2,8 +2,8 @@
     @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
 
 .woocommerce-mini-cart
-    a.remove
-        color: #7F1D1D !important
+    &.cart_list li a.remove
+        color: #C93 !important
         font-size: 12px !important
         height: auto !important
         width: auto !important
@@ -12,8 +12,9 @@
         &:hover
             background: transparent !important
             color:#C93 !important
-    &.cart_list li a, &.product_list_widget li a
+    &.cart_list li a, &.product_list_widget li a, &.product_list_widget li .quantity
         display: block
+        color: #DDDDDD !important
         font-weight: 600 !important
     &.cart_list li img, &.product_list_widget li img
         float: right
@@ -21,6 +22,8 @@
         width: 50px !important
         height: auto
         box-shadow: none
+    &__total
+        color: #DDDDDD !important
     &__buttons
         @apply cursor-pointer transition-colors duration-300 ease-in-out
         .button.wc-forward, .button.checkout
