@@ -13,6 +13,7 @@
                     $title       = get_sub_field( 'title' );
                     $slogan      = get_sub_field( 'slogan' );
                     $description = get_sub_field( 'description' );
+                    $productUrl = get_sub_field( 'product_url' );
 
                     // Build image HTML (supports ID / Array / URL return types)
                     $image_html = '';
@@ -40,7 +41,7 @@
                     }
                 ?>
                 <div class="card-highlight">
-                    <a href="#">
+                    <a href="<?php echo wp_kses_post( $productUrl ); ?>">
                         <div class="card-highlight--image bg-[#C4C4C4]">
                             <?php echo $image_html; ?>
                         </div>
