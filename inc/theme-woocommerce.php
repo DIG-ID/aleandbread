@@ -211,7 +211,7 @@ function aleandbread_shipping_note() {
 	// Only show if product is not virtual and not downloadable.
 	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() ) {
 		?>
-		<div class="flex flex-col my-8">
+		<div class="flex flex-col gap-y-2 my-8">
 			<div class="flex items-center gap-x-2">
 				<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M9.5 5.125V9.5L12.125 12.125M1.625 9.5C1.625 10.5342 1.82869 11.5582 2.22445 12.5136C2.6202 13.4691 3.20027 14.3372 3.93153 15.0685C4.6628 15.7997 5.53093 16.3798 6.48637 16.7756C7.44181 17.1713 8.46584 17.375 9.5 17.375C10.5342 17.375 11.5582 17.1713 12.5136 16.7756C13.4691 16.3798 14.3372 15.7997 15.0685 15.0685C15.7997 14.3372 16.3798 13.4691 16.7756 12.5136C17.1713 11.5582 17.375 10.5342 17.375 9.5C17.375 7.41142 16.5453 5.40838 15.0685 3.93153C13.5916 2.45469 11.5886 1.625 9.5 1.625C7.41142 1.625 5.40838 2.45469 3.93153 3.93153C2.45469 5.40838 1.625 7.41142 1.625 9.5Z" stroke="#6C7275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

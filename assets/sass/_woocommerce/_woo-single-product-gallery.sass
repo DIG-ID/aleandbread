@@ -1,60 +1,58 @@
-/* Make the product gallery a proper positioning context */
-.single-product
-  .woocommerce-product-gallery
-    position: relative
+body.woocommerce.single-product
+  div.product
+    .woocommerce-product-gallery
+      @apply w-full float-none
+      &__wrapper
+        @apply overflow-visible
+      &__image
+        @apply relative
+        .wp-post-image
+          @apply transition-all duration-300 ease-in-out
+        &:hover
+          @apply cursor-zoom-in
+          .wp-post-image
+            @apply opacity-0
+        .zoomImg
+          @apply z-[2] bg-transparent
 
-  /* Reset Flexslider default icon and sizing */
-  .flex-direction-nav a
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
-    width: 59px
-    height: 59px
-    display: block
-    padding: 0
-    margin: 0
-    line-height: 0
-    border: 0
-    box-shadow: none
-    opacity: 1
-    z-index: 5
-    cursor: pointer
-    text-indent: -9999px   // hide link text
-    overflow: hidden
-    background-repeat: no-repeat
-    background-position: center
-    background-size: 100% 100%   // <- fill the whole 59×59
+    /* Woo gallery: hide any leftover thumbnail strip just in case */
+    .flex-control-nav.flex-control-thumbs
+      display: none !important
 
-    // Kill the tiny default icon
-    &::before
-      content: none !important
+    /* Reset Flexslider default icon and sizing */
+    .flex-direction-nav a
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      width: 59px
+      height: 59px
+      display: block
+      padding: 0
+      margin: 0
+      line-height: 0
+      border: 0
+      box-shadow: none
+      opacity: 1
+      z-index: 5
+      cursor: pointer
+      text-indent: -9999px   // hide link text
+      overflow: hidden
+      background-repeat: no-repeat
+      background-position: center
+      background-size: 100% 100%   // <- fill the whole 59×59
 
-  /* Place and skin each arrow */
-  .flex-direction-nav .flex-prev
-    left: 20px
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'%3E%3Ccircle cx='29.5' cy='29.5' r='28.5' transform='rotate(-180 29.5 29.5)' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/%3E%3Cpath d='M16.2929 28.2929C15.9024 28.6834 15.9024 29.3166 16.2929 29.7071L22.6569 36.0711C23.0474 36.4616 23.6805 36.4616 24.0711 36.0711C24.4616 35.6805 24.4616 35.0474 24.0711 34.6569L18.4142 29L24.0711 23.3431C24.4616 22.9526 24.4616 22.3195 24.0711 21.9289C23.6805 21.5384 23.0474 21.5384 22.6569 21.9289L16.2929 28.2929ZM41 29L41 28L17 28L17 29L17 30L41 30L41 29Z' fill='%230D0D0D'/%3E%3C/svg%3E")
+      // Kill the tiny default icon
+      &::before
+        content: none !important
 
-  .flex-direction-nav .flex-next
-    right: 20px
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'%3E%3Ccircle cx='29.5' cy='29.5' r='28.5' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/%3E%3Cpath d='M42.7071 30.7071C43.0976 30.3166 43.0976 29.6834 42.7071 29.2929L36.3431 22.9289C35.9526 22.5384 35.3195 22.5384 34.9289 22.9289C34.5384 23.3195 34.5384 23.9526 34.9289 24.3431L40.5858 30L34.9289 35.6569C34.5384 36.0474 34.5384 36.6805 34.9289 37.0711C35.3195 37.4616 35.9526 37.4616 36.3431 37.0711L42.7071 30.7071ZM18 30V31L42 31V30V29L18 29V30Z' fill='%230D0D0D'/%3E%3C/svg%3E")
+    /* Place and skin each arrow */
+    .flex-direction-nav .flex-prev
+      left: 20px
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'%3E%3Ccircle cx='29.5' cy='29.5' r='28.5' transform='rotate(-180 29.5 29.5)' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/%3E%3Cpath d='M16.2929 28.2929C15.9024 28.6834 15.9024 29.3166 16.2929 29.7071L22.6569 36.0711C23.0474 36.4616 23.6805 36.4616 24.0711 36.0711C24.4616 35.6805 24.4616 35.0474 24.0711 34.6569L18.4142 29L24.0711 23.3431C24.4616 22.9526 24.4616 22.3195 24.0711 21.9289C23.6805 21.5384 23.0474 21.5384 22.6569 21.9289L16.2929 28.2929ZM41 29L41 28L17 28L17 29L17 30L41 30L41 29Z' fill='%230D0D0D'/%3E%3C/svg%3E")
 
-  /* If your gallery clips overflow, let arrows spill outside a bit */
-  .woocommerce-product-gallery__wrapper
-    overflow: visible
+    .flex-direction-nav .flex-next
+      right: 20px
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='59' viewBox='0 0 59 59' fill='none'%3E%3Ccircle cx='29.5' cy='29.5' r='28.5' fill='%23E6E6E6' stroke='%230D0D0D' stroke-width='2'/%3E%3Cpath d='M42.7071 30.7071C43.0976 30.3166 43.0976 29.6834 42.7071 29.2929L36.3431 22.9289C35.9526 22.5384 35.3195 22.5384 34.9289 22.9289C34.5384 23.3195 34.5384 23.9526 34.9289 24.3431L40.5858 30L34.9289 35.6569C34.5384 36.0474 34.5384 36.6805 34.9289 37.0711C35.3195 37.4616 35.9526 37.4616 36.3431 37.0711L42.7071 30.7071ZM18 30V31L42 31V30V29L18 29V30Z' fill='%230D0D0D'/%3E%3C/svg%3E")
 
-/* Woo zoom: keep layer above and hide the base image while zooming */
-.single-product
-  .woocommerce-product-gallery__image
-    position: relative
 
-    .wp-post-image
-      transition: opacity .15s ease
 
-    /* when user hovers (zoom active), hide the base image */
-    &:hover .wp-post-image
-      opacity: 0
-
-  /* make sure the injected zoom image sits on top and is transparent */
-  .woocommerce-product-gallery .zoomImg
-    z-index: 2
-    background: transparent !important

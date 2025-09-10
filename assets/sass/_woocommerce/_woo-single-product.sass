@@ -1,54 +1,4 @@
-/* Page background */
-body.woocommerce.single-product
-  @apply bg-background text-dark
 
-  /* Gallery/Image area */
-  div.product div.images,
-  .woocommerce-product-gallery.images
-    @apply float-none w-full max-w-[initial]
-
-  .woocommerce-product-gallery__wrapper,
-  .woocommerce-product-gallery__image,
-  .woocommerce-product-gallery__image img
-    @apply w-full block
-  
-  div.product
-    /* Image area */
-    div.images
-      @apply float-none w-full max-w-[initial]
-    /* Summary column */
-    div.summary
-      @apply float-none w-full max-w-none
-    /* Title */
-    h1.product_title
-      @extend h2
-      @apply mb-1
-    /* SKU */
-    span.product-sku
-      @apply text-dark font-barlow font-medium text-sm mb-8 block
-    /* Short description */
-    .woocommerce-product-details__short-description
-      @extend .block-text
-      @apply mb-12 text-blockText text-lg font-normal leading-[1.8562rem] xl:max-w-[90%]
-      p
-        @extend .block-text
-        @apply text-blockText text-lg font-normal leading-[1.8562rem] mb-8 last-of-type:mb-0
-    /* Price block spacing (divider) */
-    .price
-      @apply border-t border-t-dark pt-10 text-dark font-barlow font-normal text-4xl uppercase
-    /* Price typography */
-    .woocommerce-Price-currencySymbol
-      @apply font-normal
-    .woocommerce-Price-amount
-      @apply font-bold
-    form.cart
-      @apply flex items-center
-      .quantity
-        @apply flex items-stretch
-      .single_add_to_cart_button
-        @extend .btn
-        @extend .btn-secondary
-        @apply rounded-none flex items-center justify-center text-center px-8 font-medium text-base
 
 
 
@@ -59,9 +9,7 @@ body.woocommerce.single-product
 input[type="number"]
   -moz-appearance: textfield
 
-/* Woo gallery: hide any leftover thumbnail strip just in case */
-.single-product .flex-control-nav.flex-control-thumbs
-  display: none !important
+
 
 
 

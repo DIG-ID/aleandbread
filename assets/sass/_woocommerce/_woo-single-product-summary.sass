@@ -1,0 +1,37 @@
+/* Page background */
+body.woocommerce.single-product
+  @apply bg-background
+  div.product
+    /* Summary column */
+    div.summary
+      @apply float-none w-full max-w-full
+    /* Title */
+    h1.product_title
+      @extend h2
+      @apply mb-1
+    /* SKU */
+    span.product-sku
+      @apply text-dark font-barlow font-medium text-sm mb-8 block
+    /* Short description */
+    .woocommerce-product-details__short-description
+      @extend .block-text
+      @apply mb-12 text-blockText text-lg font-normal leading-[1.8562rem] xl:max-w-[90%]
+      p
+        @extend .block-text
+        @apply text-blockText text-lg font-normal leading-[1.8562rem] mb-8 last-of-type:mb-0
+    /* Price block spacing (divider) */
+    .price
+      @apply border-t border-t-dark pt-10 text-dark font-barlow font-normal text-4xl uppercase mb-9
+    /* Price typography */
+    .woocommerce-Price-currencySymbol
+      @apply font-normal
+    .woocommerce-Price-amount
+      @apply font-bold
+    form.cart
+      @apply flex items-center
+      .quantity
+        @apply flex items-stretch
+      .single_add_to_cart_button
+        @extend .btn
+        @extend .btn-secondary
+        @apply rounded-none flex items-center justify-center text-center px-16 py-[0.375rem] font-medium text-base ml-5
