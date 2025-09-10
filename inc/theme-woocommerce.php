@@ -209,7 +209,8 @@ function aleandbread_product_sku_under_title() {
 function aleandbread_shipping_note() {
 	global $product;
 	// Only show if product is not virtual and not downloadable.
-	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() ) {
+	console_log( $product );
+	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() && ! $product->is_type( 'wgm_gift_card' ) ) {
 		?>
 		<div class="flex flex-col gap-y-2 my-8">
 			<div class="flex items-center gap-x-2">

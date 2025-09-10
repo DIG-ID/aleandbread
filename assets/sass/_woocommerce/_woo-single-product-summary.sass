@@ -22,6 +22,9 @@ body.woocommerce.single-product
     /* Price block spacing (divider) */
     .price
       @apply border-t border-t-dark pt-10 text-dark font-barlow font-normal text-4xl uppercase mb-9
+    .stock.out-of-stock
+      @extend .block-text
+      @apply text-red-700 font-semibold mt-4
     /* Price typography */
     .woocommerce-Price-currencySymbol
       @apply font-normal
@@ -35,3 +38,43 @@ body.woocommerce.single-product
         @extend .btn
         @extend .btn-secondary
         @apply rounded-none flex items-center justify-center text-center px-16 py-[0.375rem] font-medium text-base ml-5
+
+
+  div.product-type-wgm_gift_card
+    form.cart
+      @apply grid grid-cols-4
+      .wps_wgm_added_wrapper
+        @apply col-span-4 my-9
+        .wps_wgm_section
+          @extend .block-text
+          @apply text-dark mb-4
+          input,
+          textarea,
+          select
+            @apply px-3 py-4 font-barlow
+          .wps_wgc_label
+            @apply font-barlowSemiCondensed font-medium text-base mb-2 inline-block
+          .wps_wgm_message_length
+            @extend .block-text
+            @apply text-dark text-sm
+        .wps_delivery_method
+          .wps_wgm_delivery_method
+            @apply border-none shadow bg-gray-300
+          .wps_wgm_method
+            @extend .block-text
+          .wps_wgm_delivery_via_buyer
+            @apply my-2
+            .wps_wgm_msg_info
+              @extend .block-text
+              @apply text-dark text-sm
+        .mwg_wgm_preview_email
+          @apply text-dark font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[13px]
+      .price
+        ins
+          @apply no-underline
+        .woocommerce-Price-amount .amount
+          @apply flex gap-x-4 block
+      .ab-qty
+        @apply col-span-1
+      .single_add_to_cart_button
+        @apply col-span-3 w-full ml-0 font-medium text-base
