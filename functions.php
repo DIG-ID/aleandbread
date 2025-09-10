@@ -53,6 +53,8 @@ function aleandbread_theme_setup() {
 
 	add_image_size( 'event-thumb', 560, 295, array( 'center', 'center' ) );
 
+	add_image_size( 'highlights-size', 1600, 1040, array( 'center', 'center' ) );
+
 }
 
 add_action( 'after_setup_theme', 'aleandbread_theme_setup' );

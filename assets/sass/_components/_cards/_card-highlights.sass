@@ -9,9 +9,10 @@
     a
         @apply h-full w-full flex flex-col justify-end
     &--content
-        @apply p-14 pt-11 bg-dark text-blockTextLight h-[230px] flex flex-col justify-end transition-all duration-700 relative
+        @apply p-14 pt-11 text-blockTextLight h-[230px] flex flex-col justify-end transition-all duration-700 relative
         background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, rgba(13, 13, 13, 0.90) 68%, rgba(13, 13, 13, 0.90) 100%)
         transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
+        background: rgba(13, 13, 13, 0.90)
         .block-text
             @apply translate-y-full opacity-0 transition-all duration-700 absolute left-0 top-0 px-14 pt-11
             transition-timing-function: cubic-bezier(.47,1.64,.41,.8)
@@ -33,7 +34,6 @@
         .card-highlight--content
             @apply h-[320px]
             .overlay
-                @apply opacity-100
             .block-text
                 @apply translate-y-0 opacity-100
         .card-highlight--arrow

@@ -122,7 +122,7 @@
 						<span class="overlay"></span>
 						<span class="block-text"><?php the_excerpt(); ?></span>
 						<div class="card-best-sellers--footer flex justify-between items-center">
-							<h3 class="card-best-sellers--title"><?php echo esc_html($title); ?></h3>
+							<h2 class="card-best-sellers--title uppercase"><?php echo esc_html($title); ?></h2>
 							<div class="card-best-sellers--arrow"></div>
 						</div>
 					</div>
