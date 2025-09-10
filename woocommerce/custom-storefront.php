@@ -112,6 +112,7 @@
 			while ( $best_sellers->have_posts() ) : $best_sellers->the_post();
 				$permalink = get_permalink();
 				$title = get_the_title();
+				$slogan = get_field( 'highlight_content_slogan' ); 
 				$image = get_the_post_thumbnail(null, 'full');
 				?>
 				<div class="card-best-sellers">
@@ -121,12 +122,22 @@
 					</div>
 					<div class="card-best-sellers--content">
 						<span class="overlay"></span>
+
 						<span class="block-text"><?php the_excerpt(); ?></span>
+
 						<div class="card-best-sellers--footer flex justify-between items-center">
-							<h2 class="card-best-sellers--title uppercase"><?php echo esc_html($title); ?></h2>
+							<div>
+							<?php if ( $title ) : ?>
+								<h2 class="card-best-sellers--title uppercase"><?php echo esc_html( $title ); ?></h2>
+							<?php endif; ?>
+
+							<?php if ( ! empty( $slogan ) ) : ?>
+								<h3 class="card-best-sellers--slogan"><?php echo esc_html( $slogan ); ?></h3>
+							<?php endif; ?>
+							</div>
 							<div class="card-best-sellers--arrow"></div>
 						</div>
-					</div>
+						</div>
 				</a>
 				</div>
 
