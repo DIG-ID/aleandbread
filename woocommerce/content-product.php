@@ -24,8 +24,8 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
 
-$product_link = get_permalink();
-$product_title = get_the_title();
+$product_link  = $product->get_permalink();
+$product_title = $product->get_name();
 $product_price = $product->get_price_html();
 ?>
 

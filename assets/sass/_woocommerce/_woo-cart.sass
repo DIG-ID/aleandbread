@@ -2,6 +2,16 @@
     @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
 
 .woocommerce-mini-cart
+    a.remove
+        @apply text-red-900
+        &:hover
+            @apply text-accent
+    &.cart_list li img, &.product_list_widget li img
+        float: right
+        margin-left: 4px
+        width: 50px
+        height: auto
+        box-shadow: none
     &__buttons
         @apply cursor-pointer transition-colors duration-300 ease-in-out
         .button.wc-forward, .button.checkout
