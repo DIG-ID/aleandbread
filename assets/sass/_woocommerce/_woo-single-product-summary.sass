@@ -80,10 +80,28 @@ body.woocommerce.single-product
         @apply col-span-3 w-full ml-0 font-medium text-base
 
   div.product-type-variable
+    .price
+      span
+        @apply hidden
     form.variations_form.cart
       @apply grid grid-cols-4
-      .variations
-        @apply col-span-4
+      table.variations
+        @apply col-span-4 w-full
+        tr
+          @apply flex flex-col
+          th.label
+            @apply flex
+            label
+              @apply font-barlow font-medium text-dark
+          td.value
+            @apply flex items-center
+            select
+              @apply px-3 py-4 font-barlow bg-white
+            a.reset_variations
+              @apply font-barlow text-xs text-dark uppercase font-medium
       .single_variation_wrap
+        @apply col-span-4 grid grid-cols-4
+        .single_variation
+          @apply mb-4
         .variations_button
           @apply col-span-4 flex

@@ -261,3 +261,27 @@ add_action( 'woocommerce_single_product_summary', 'aleandbread_product_sku_under
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 // Keep the add to cart at 30 (default includes quantity input for simple products).
 add_action( 'woocommerce_single_product_summary', 'aleandbread_shipping_note', 35 );
+
+
+/**
+ * Show "From {min variation price}" instead of "CHF 79.00 – CHF 119.00"
+ *
+ * @param [type] $price_html
+ * @param [type] $product
+ * @return void
+ */
+function aleandbread_lid_from_price_only( $price_html, $product ) {
+	if ( ! $product || ! $product->is_type( 'variable' ) ) {
+		return $price_html;
+	}
+	// Get the lowest variation price (respect WooCommerce tax display setting).
+	$min = $product->get_variation_price( 'min', true );
+	// Translate/change "From" to your language if needed (e.g., "Ab").
+	return sprintf(
+		'<span class="from-label">%s</span> %s',
+		__( 'Von', 'aleandbread' ),
+		wc_price( $min )
+	);
+}
+add_filter( 'woocommerce_variable_price_html', 'aleandbread_lid_from_price_only', 10, 2 );
+add_filter( 'woocommerce_variable_sale_price_html', 'aleandbread_lid_from_price_only', 10, 2 );
