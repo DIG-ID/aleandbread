@@ -11,7 +11,7 @@
               </svg>
               %link
             </span>',
-            esc_html__('Previous post', 'ale')
+            esc_html__('Letzter Beitragt', 'ale')
           ); ?>
         </div>
 
@@ -24,7 +24,7 @@
                 <path d="M31.503 8.3741C31.8935 7.98357 31.8935 7.35041 31.503 6.95989L25.139 0.595924C24.7485 0.2054 24.1153 0.2054 23.7248 0.595924C23.3343 0.986449 23.3343 1.61961 23.7248 2.01014L29.3816 7.66699L23.7248 13.3238C23.3343 13.7144 23.3343 14.3475 23.7248 14.7381C24.1153 15.1286 24.7485 15.1286 25.139 14.7381L31.503 8.3741ZM0 7.66699L0 8.66699L30.7958 8.66699V7.66699V6.66699L0 6.66699L0 7.66699Z" fill="#0D0D0D"/>
               </svg>
             </span>',
-            esc_html__('Next post', 'ale')
+            esc_html__('Nächster Beitrag', 'ale')
           ); ?>
         </div>
       </div>
@@ -57,10 +57,7 @@
 
     <h1 class="xl:max-w-[706px] pt-[15px] md:pt-[23px] xl:pt-[27px]"><?php the_title(); ?></h1>
 
-    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date(); ?></p>
-    <p class="block-text-bold xl:pt-[2px]"><?php echo get_the_author(); ?></p>
-
-    <p class="block-text !font-bold pt-[35px] xl:pt-[72px]"><?php echo get_field('blog_cpt_description'); ?></p>
+    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date('d M Y'); ?></p>
 
     <div class="pt-[25px] md:pt-[35px] xl:max-w-[1142px] pb-[66px] md:pb-[117px] xl:pb-[198px]">
       <div class="blog-content max-w-[1142px]"><?php the_content(); ?></div>
@@ -69,7 +66,7 @@
 
   <!-- RIGHT SIDEBAR -->
   <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none pb-[4px] md:pb-[113px] xl:pb-0">
-    <p class="text-[#CC9933] font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase pb-[16px]">Related posts</p>
+    <p class="text-[#CC9933] font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase pb-[16px]">Letzte Beiträge</p>
     
     <?php
     $args = [
