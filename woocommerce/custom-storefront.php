@@ -112,7 +112,7 @@
 			while ( $best_sellers->have_posts() ) : $best_sellers->the_post();
 				$permalink = get_permalink();
 				$title = get_the_title();
-				$slogan = get_field( 'highlight_content_slogan' ); 
+				$slogan = get_field( 'slogan' ); 
 				$image = get_the_post_thumbnail(null, 'full');
 				?>
 				<div class="card-best-sellers">

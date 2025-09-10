@@ -44,7 +44,7 @@
             ) : '';
 
             $title       = get_the_title();
-            $slogan      = get_field( 'highlight_content_slogan' ); 
+            $slogan      = get_field( 'slogan' ); 
             $description = $product ? $product->get_short_description() : get_the_excerpt();
             $permalink   = get_permalink();
             ?>
