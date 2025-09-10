@@ -3,32 +3,24 @@
  * Setup theme
  */
 function aleandbread_theme_setup() {
-
 	register_nav_menus(
 		array(
-			'main-menu'        => __( 'Main Menu', 'aleandbread' ),
-			'mega-left'        => __( 'Mega Menu Left', 'aleandbread' ),
-			'mega-middle'      => __( 'Mega Menu Middle', 'aleandbread' ),
-			'mega-right'       => __( 'Mega Menu Right', 'aleandbread' ),
+			'main-menu'              => __( 'Main Menu', 'aleandbread' ),
+			'mega-left'              => __( 'Mega Menu Left', 'aleandbread' ),
+			'mega-middle'            => __( 'Mega Menu Middle', 'aleandbread' ),
+			'mega-right'             => __( 'Mega Menu Right', 'aleandbread' ),
 			'footer-menu-ale'        => __( 'Footer Menu Ale and Bread', 'aleandbread' ),
 			'footer-menu-shop'       => __( 'Footer Menu Shop', 'aleandbread' ),
 			'footer-menu-experience' => __( 'Footer Menu Experience', 'aleandbread' ),
 			'footer-menu-support'    => __( 'Footer Menu Support', 'aleandbread' ),
 		)
 	);
-
 	add_theme_support( 'widgets' );
-
 	add_theme_support( 'menus' );
-
 	add_theme_support( 'custom-logo' );
-
 	add_theme_support( 'title-tag' );
-
 	add_theme_support( 'post-thumbnails' );
-
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
-
 	add_theme_support(
 		'woocommerce',
 		array(
@@ -44,26 +36,20 @@ function aleandbread_theme_setup() {
 			),
 		)
 	);
-
 	add_theme_support( 'wc-product-gallery-zoom' );
-
 	add_theme_support( 'wc-product-gallery-lightbox' );
-
 	add_theme_support( 'wc-product-gallery-slider' );
-
 	add_image_size( 'event-thumb', 560, 295, array( 'center', 'center' ) );
 
 	add_image_size( 'highlights-size', 1600, 1040, array( 'center', 'center' ) );
 
 }
-
 add_action( 'after_setup_theme', 'aleandbread_theme_setup' );
 
 /**
  * Register our sidebars and widgetized areas.
  */
 function aleandbread_theme_footer_widgets_init() {
-
 	register_sidebar(
 		array(
 			'name'          => 'Footer',
@@ -74,7 +60,6 @@ function aleandbread_theme_footer_widgets_init() {
 			'after_title'   => '</h3>',
 		),
 	);
-
 	register_sidebar(
 		array(
 			'name'          => 'Header Language Switcher',
@@ -85,7 +70,6 @@ function aleandbread_theme_footer_widgets_init() {
 			'after_title'   => '',
 		)
 	);
-
 	register_sidebar(
 		array(
 			'name'          => __( 'Shop Sidebar', 'aleandbread' ),
@@ -98,7 +82,6 @@ function aleandbread_theme_footer_widgets_init() {
 		)
 	);
 }
-
 add_action( 'widgets_init', 'aleandbread_theme_footer_widgets_init' );
 
 if ( ! function_exists( 'aleandbread_get_font_face_styles' ) ) :
@@ -123,9 +106,7 @@ if ( ! function_exists( 'aleandbread_preload_webfonts' ) ) :
 		<?php
 	}
 endif;
-
 add_action( 'wp_head', 'aleandbread_preload_webfonts' );
-
 
 /**
  * Enqueue styles and scripts
@@ -148,9 +129,7 @@ function aleandbread_theme_enqueue_styles() {
 	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
 	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
 }
-
 add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
-
 
 /**
  * Fixes Yoast breadcrumb for pages with a parent.
@@ -174,40 +153,50 @@ function fix_yoast_page_parent_breadcrumb( $links ) {
 	}
 	return $links;
 }
-
-add_filter('wp_nav_menu_items', function ($items, $args) {
-  if (empty($args->theme_location) || $args->theme_location !== 'mega-right') {
-    return $items;
-  }
-
-  // Build items fresh (ignore any manually added ones to avoid duplicates)
-  $items = '';
-
-  if (is_user_logged_in()) {
-    $account_url = get_permalink(get_option('woocommerce_myaccount_page_id'));
-    $logout_url  = wp_logout_url(home_url('/'));
-    $items      .= '<li class="menu-item"><a href="'.esc_url($account_url).'">My Account</a></li>';
-    $items      .= '<li class="menu-item"><a href="'.esc_url($logout_url).'">Logout</a></li>';
-  } else {
-    $login_url   = get_permalink(get_option('woocommerce_myaccount_page_id'));
-    $items      .= '<li class="menu-item"><a href="'.esc_url($login_url).'">Login</a></li>';
-  }
-
-  return $items;
-}, 10, 2);
-
-add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
-  if (!empty($args->theme_location) && $args->theme_location === 'mega-right') {
-    // Tailwind-y classes
-    $atts['class'] = trim(
-      ($atts['class'] ?? '') .
-      ' block font-barlow font-semibold uppercase text-[28px] md:text-[34px] leading-none'
-    );
-  }
-  return $atts;
-}, 10, 3);
-
 add_filter( 'wpseo_breadcrumb_links', 'fix_yoast_page_parent_breadcrumb' );
+
+/**
+ * This function adds a custom loop with chosen categories through ACF.
+ *
+ * @param string $items The HTML list items for the menu.
+ * @param object $args  An object containing wp_nav_menu() arguments.
+ * @return string Modified menu items.
+ */
+function aleandbread_custom_menu( $items, $args ) {
+	if ( empty( $args->theme_location ) || 'mega-right' !== $args->theme_location ) {
+		return $items;
+	}
+	// Build items fresh (ignore any manually added ones to avoid duplicates).
+	$items = '';
+	if ( is_user_logged_in() ) {
+		$account_url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+		$logout_url  = wp_logout_url( home_url( '/' ) );
+		$items      .= '<li class="menu-item"><a href="' . esc_url( $account_url ) . '">My Account</a></li>';
+		$items      .= '<li class="menu-item"><a href="' . esc_url( $logout_url ) . '">Logout</a></li>';
+	} else {
+		$login_url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+		$items    .= '<li class="menu-item"><a href="' . esc_url( $login_url ) . '">Login</a></li>';
+	}
+	return $items;
+}
+add_filter( 'wp_nav_menu_items', 'aleandbread_custom_menu', 10, 2 );
+
+/**
+ * Adds custom classes to menu link attributes for the 'mega-right' menu location.
+ *
+ * @param array  $atts The HTML attributes applied to the menu item's <a> element.
+ * @param object $item The current menu item.
+ * @param object $args An object of wp_nav_menu() arguments.
+ * @return array Modified attributes.
+ */
+function aleandbread_add_menu_link_attributes( $atts, $item, $args ) {
+	if ( ! empty( $args->theme_location ) && 'mega-right' === $args->theme_location ) {
+		// Tailwind-y classes.
+		$atts['class'] = trim( ( $atts['class'] ?? '' ) . ' block font-barlow font-semibold uppercase text-[28px] md:text-[34px] leading-none' );
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'aleandbread_add_menu_link_attributes', 10, 3 );
 
 /**
  * Remove <p> Tag From Contact Form 7.
@@ -217,9 +206,9 @@ add_filter( 'wpcf7_autop_or_not', '__return_false' );
 /**
  * Prevent popups showing when loading a page
  */
-add_action('wp_head', function () {
+add_action( 'wp_head', function () {
 	echo '<style>[x-cloak]{display:none !important;}</style>';
-}, 0);
+}, 0 );
 
 /**
  * Lowers the metabox priority to 'core' for Yoast SEO's metabox.
@@ -231,25 +220,7 @@ add_action('wp_head', function () {
 function aleandbread_theme_lower_yoast_metabox_priority( $priority ) {
 	return 'core';
 }
-
 add_filter( 'wpseo_metabox_prio', 'aleandbread_theme_lower_yoast_metabox_priority' );
-
-
-// Theme custom template tags.
-require get_template_directory() . '/inc/theme-template-tags.php';
-
-// The theme admin settings.
-require get_template_directory() . '/inc/theme-admin-settings.php';
-
-// The theme custom menu walker settings.
-require get_template_directory() . '/inc/theme-custom-menu-walker.php';
-
-// The theme woocommerce integration.
-require get_template_directory() . '/inc/theme-woocommerce.php';
-
-// The user validation settings.
-require get_template_directory() . '/inc/theme-user-validation.php';
-
 
 /**
  * Modify the archive title.
@@ -275,6 +246,25 @@ function aleandbread_archive_title( $title ) {
 add_filter( 'get_the_archive_title', 'aleandbread_archive_title' );
 
 
+// Theme custom template tags.
+require get_template_directory() . '/inc/theme-template-tags.php';
+
+// The theme admin settings.
+require get_template_directory() . '/inc/theme-admin-settings.php';
+
+// The theme custom menu walker settings.
+require get_template_directory() . '/inc/theme-custom-menu-walker.php';
+
+// The theme woocommerce integration.
+require get_template_directory() . '/inc/theme-woocommerce.php';
+
+// The user validation settings.
+require get_template_directory() . '/inc/theme-user-validation.php';
+
+
+
+
+
 /**
  * Console log function for debugging.
  * Outputs data to the browser console.
@@ -291,62 +281,10 @@ function console_log( ...$data ) {
 	);
 }
 
-add_action('after_setup_theme', function () {
-		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
-		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
-		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40); 
-		remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-
-		add_action('woocommerce_single_product_summary', 'mytheme_product_sku_under_title', 12);
-		add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
-		// Keep the add to cart at 30 (default includes quantity input for simple products)
-		add_action('woocommerce_single_product_summary', 'mytheme_shipping_note', 35);
-});
-/**
- * Output SKU below the title only (without categories/tags).
- */
-function mytheme_product_sku_under_title() {
-		global $product;
-		if ( ! $product ) return;
-
-		$sku = $product->get_sku();
-		if ( ! $sku ) return;
-
-		echo '<p class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">'
-				. esc_html($sku) .
-				'</span></p>';
-}
-
-/**
- * Simple shipping note after the Add to Cart area.
- */
-function mytheme_shipping_note() {
-	global $product;
-
-	// Only show if product is not virtual and not downloadable
-	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() ) {
-		echo '<p class="ship-note">' . esc_html__( 'Bestellungen werden innerhalb von 5 bis 10 Werktagen versendet.', 'aleandbread' ) . '</p>';
-	}
-
-}
 
 
-add_filter('woocommerce_single_product_carousel_options', function ($opts) {
-	// Hide thumbnail strip
-	$opts['controlNav'] = false;
 
-	// Show direction arrows
-	$opts['directionNav'] = true;
 
-	// Smooth slide
-	$opts['animation']   = 'slide';
-
-	// Optional: remove default arrow text; you’ll style with CSS
-	$opts['prevText'] = '';
-	$opts['nextText'] = '';
-
-	return $opts;
-});
 
 /**
  * Keep/rename/order product tabs:
@@ -359,17 +297,17 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
 
 		// --- Description tab ---
 		$tabs['description'] = [
-				'title'    => __('Beschreibung', 'aleandbread'), // label
-				'priority' => 10,
-				'callback' => 'woocommerce_product_description_tab', // default renderer
+			'title'    => __('Beschreibung', 'aleandbread'), // label
+			'priority' => 10,
+			'callback' => 'woocommerce_product_description_tab', // default renderer
 		];
 
 		// --- Additional information tab (only if product has attributes) ---
 		if ($product instanceof WC_Product && $product->has_attributes()) {
 				$tabs['additional_information'] = [
-						'title'    => __('Additional information', 'aleandbread'),
-						'priority' => 20,
-						'callback' => 'woocommerce_product_additional_information_tab',
+					'title'    => __('Additional information', 'aleandbread'),
+					'priority' => 20,
+					'callback' => 'woocommerce_product_additional_information_tab',
 				];
 		} else {
 				unset($tabs['additional_information']);
@@ -377,14 +315,14 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
 
 		// --- Reviews tab (only if reviews are enabled) ---
 		if ('yes' === get_option('woocommerce_enable_reviews')) {
-				$count = $product ? (int) $product->get_review_count() : 0;
-				$tabs['reviews'] = [
-						'title'    => sprintf(__('Reviews (%d)', 'aleandbread'), $count),
-						'priority' => 30,
-						'callback' => 'comments_template', // default renderer
-				];
+			$count = $product ? (int) $product->get_review_count() : 0;
+			$tabs['reviews'] = [
+				'title'    => sprintf(__('Reviews (%d)', 'aleandbread'), $count),
+				'priority' => 30,
+				'callback' => 'comments_template', // default renderer.
+			];
 		} else {
-				unset($tabs['reviews']);
+			unset($tabs['reviews']);
 		}
 
 		return $tabs;
@@ -392,25 +330,25 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
 
 // Always enable reviews for products
 add_filter( 'woocommerce_product_tabs', function( $tabs ) {
-		global $product;
-		if ( ! empty( $tabs['reviews'] ) ) {
-				$tabs['reviews']['title'] = __( 'Reviews', 'woocommerce' );
-		} else {
-				$tabs['reviews'] = array(
-						'title'    => __( 'Reviews', 'woocommerce' ),
-						'priority' => 50,
-						'callback' => 'comments_template',
-				);
-		}
-		return $tabs;
+	global $product;
+	if ( ! empty( $tabs['reviews'] ) ) {
+		$tabs['reviews']['title'] = __( 'Reviews', 'woocommerce' );
+	} else {
+		$tabs['reviews'] = array(
+			'title'    => __( 'Reviews', 'woocommerce' ),
+			'priority' => 50,
+			'callback' => 'comments_template',
+		);
+	}
+	return $tabs;
 }, 98 );
 
 // Ensure products accept comments (reviews use comments system)
 add_action( 'init', function() {
-		add_post_type_support( 'product', 'comments' );
+	add_post_type_support( 'product', 'comments' );
 });
 
-add_action('init', function () {
-  register_taxonomy_for_object_type('category', 'blog');
-  register_taxonomy_for_object_type('post_tag', 'blog');
+add_action( 'init', function () {
+	register_taxonomy_for_object_type( 'category', 'blog' );
+	register_taxonomy_for_object_type( 'post_tag', 'blog' );
 });

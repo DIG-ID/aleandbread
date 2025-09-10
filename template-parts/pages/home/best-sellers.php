@@ -1,5 +1,5 @@
 <section id="best-sellers" class="best-sellers bg-dark pt-0 md:pt-0 xl:pt-36 pb-28 -mt-1">
-	<div class="theme-container">
+	<div class="theme-container woocommerce">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-4 xl:col-span-6 flex flex-col items-center gap-y-7 md:gap-y-12 mb-16">
 				<p class="over-title text-accent"><?php echo esc_html( get_field( 'best_sellers_over_title' ) ); ?></p>
@@ -15,28 +15,32 @@
 				?>
 			</div>
 		</div>
-		<div class="grid grid-cols-2 xl:grid-cols-4 gap-6">
+		<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
 			<?php
 			$args = array(
-				'limit'        => 4,
-				'status'       => 'publish',
-				'meta_key'     => 'total_sales',
-				'orderby'      => 'meta_value_num',
-				'order'        => 'DESC',
-				'stock_status' => 'instock',
+				'post_type'      => 'product',
+				'posts_per_page' => 2,
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'product_tag',
+						'field'    => 'slug',
+						'terms'    => 'best-seller',
+					),
+				),
 			);
-
 			$best_sellers = wc_get_products( $args );
-
 			if ( ! empty( $best_sellers ) ) :
 				foreach ( $best_sellers as $product ) :
 					$post_object = get_post( $product->get_id() );
-					setup_postdata( $GLOBALS['post'] =& $post_object );
+					setup_postdata( $post_object );
+					wc_setup_product_data( $post_object );
+
 					wc_get_template_part( 'content', 'product' );
 				endforeach;
 				wp_reset_postdata();
+				wc_reset_loop();
 			else :
-				echo '<p class="text-gray-600">No best sellers yet.</p>';
+				echo '<p class="text-gray-600">' . esc_html__( 'No best sellers yet.', 'aleandbread' ) . '</p>';
 			endif;
 			?>
 		</div>

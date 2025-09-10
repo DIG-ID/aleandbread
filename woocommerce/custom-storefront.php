@@ -90,23 +90,24 @@
 </section>
 <section class="best-sellers theme-grid pt-20 xl:pt-36">
 	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
-		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller','aleandbread' ); ?></h2>
+		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller', 'aleandbread' ); ?></h2>
 	</div> 
 	<div class="col-span-2 md:col-span-6 xl:col-span-12">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			<?php
-			$best_sellers = new WP_Query([
-			'post_type' => 'product',
-			'posts_per_page' => 2,
-			'tax_query' => [
-				[
-				'taxonomy' => 'product_tag',
-				'field'    => 'slug',
-				'terms'    => 'best-seller',
-				],
-			],
-			]);
-
+			$best_sellers = new WP_Query(
+				array(
+					'post_type'      => 'product',
+					'posts_per_page' => 2,
+					'tax_query'      => array(
+						array(
+							'taxonomy' => 'product_tag',
+							'field'    => 'slug',
+							'terms'    => 'best-seller',
+						),
+					),
+				)
+			);
 			if ( $best_sellers->have_posts() ) :
 			while ( $best_sellers->have_posts() ) : $best_sellers->the_post();
 				$permalink = get_permalink();
@@ -133,7 +134,7 @@
 			endwhile;
 			wp_reset_postdata();
 			else :
-			echo '<p class="text-gray-600">No best sellers yet.</p>';
+				echo '<p class="text-gray-600">' . esc_html__( 'No best sellers yet.', 'aleandbread' ) . '</p>';
 			endif;
 			?>
 		</div>
