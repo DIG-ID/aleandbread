@@ -110,7 +110,15 @@
             aria-label="Toggle cart"
           >
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/cart.svg" alt="Cart" />
+
+            <?php
+              $count = ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
+            ?>
+            <span id="header-cart-count" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[11px] leading-none font-bold bg-[#7F1D1D] text-[#CC9933] rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>">
+              <?php echo esc_html( $count ); ?>
+            </span>
           </button>
+
 
           <!-- Wrap dropdown in a container to manage @click.outside -->
           <div
@@ -125,7 +133,7 @@
             x-cloak
             class="absolute left-1/2 -translate-x-[87%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-40 origin-top"
           >
-            <div class="bg-dark text-yellow-600 shadow-lg">
+            <div class="bg-dark text-accent shadow-lg">
               <p class="font-barlow text-[20px] leading-[28px] bg-dark text-accent font-bold text-left mb-2 pl-5 pr-16 pt-5 pb-6">
                 <?php esc_html_e('Ihr Warenkorb','aleandbread') ?>
               </p>

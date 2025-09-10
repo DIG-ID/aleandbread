@@ -3,13 +3,22 @@
 
 .woocommerce-mini-cart
     a.remove
-        @apply text-red-900
+        color: #7F1D1D !important
+        font-size: 12px !important
+        height: auto !important
+        width: auto !important
+        text-align: left !important
+        @apply font-barlow
         &:hover
-            @apply text-accent
+            background: transparent !important
+            color:#C93 !important
+    &.cart_list li a, &.product_list_widget li a
+        display: block
+        font-weight: 600 !important
     &.cart_list li img, &.product_list_widget li img
         float: right
         margin-left: 4px
-        width: 50px
+        width: 50px !important
         height: auto
         box-shadow: none
     &__buttons

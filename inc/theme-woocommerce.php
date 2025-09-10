@@ -204,6 +204,28 @@ function aleandbread_product_sku_under_title() {
 }
 
 /**
+ * Refresh the header cart count badge when the cart updates via AJAX
+ */
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) {
+    ob_start();
+    $count = ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
+    ?>
+    <span
+      id="header-cart-count"
+      class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[11px] leading-none font-bold
+             bg-[#7F1D1D] text-[#CC9933]
+             rounded-full <?php echo $count ? '' : 'hidden'; ?>"
+      aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>"
+    >
+      <?php echo esc_html( $count ); ?>
+    </span>
+    <?php
+    $fragments['#header-cart-count'] = ob_get_clean();
+    return $fragments;
+});
+
+
+/**
  * Simple shipping note after the Add to Cart area.
  */
 function aleandbread_shipping_note() {
