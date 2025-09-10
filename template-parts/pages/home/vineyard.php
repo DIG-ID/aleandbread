@@ -6,7 +6,7 @@
 
   <!-- Mobile/Tablet full-width image with vertical overlay -->
   <?php if ($image_url): ?>
-    <div class="block xl:hidden w-full relative">
+    <div class="block xl:hidden w-full h-full relative">
       <figure class="img-overlay img-overlay--vertical">
         <img 
           src="<?php echo esc_url($image_url); ?>" 
@@ -18,8 +18,8 @@
     </div>
   <?php endif; ?>
 
-  <div class="theme-container xl:px-0 !max-w-full">
-    <div class="theme-grid relative">
+  <div class="theme-container xl:px-0 !max-w-full h-full">
+    <div class="theme-grid relative h-full">
 
       <!-- Desktop absolute image with horizontal overlay -->
       <?php if ($image_url): ?>

@@ -10,7 +10,7 @@
 
   <!-- Tablet/Mobile full-width background image -->
   <?php if ($tablet_image_url): ?>
-    <div class="block xl:hidden w-full">
+    <div class="block xl:hidden w-full h-full">
       <img 
         src="<?php echo esc_url($tablet_image_url); ?>" 
         alt="<?php echo esc_attr(get_post_meta($tablet_image_id, '_wp_attachment_image_alt', true)); ?>"
@@ -20,8 +20,8 @@
     </div>
   <?php endif; ?>
 
-  <div class="theme-container xl:px-0 !max-w-full">
-    <div class="theme-grid relative">
+  <div class="theme-container xl:px-0 !max-w-full h-full">
+    <div class="theme-grid relative h-full">
 
       <!-- Desktop background image (positioned absolutely) -->
       <?php if ($desktop_image_url): ?>
