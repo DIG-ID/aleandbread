@@ -1,66 +1,47 @@
 /* Page background */
 body.woocommerce.single-product
-  background: var(--Background, #E6E6E6)
-
-/* Single product: let the grid control the layout */
-.single-product
+  @apply bg-background
 
   /* Gallery/Image area */
-  .woocommerce div.product div.images,
+  div.product div.images,
   .woocommerce-product-gallery.images
-    float: none
-    width: 100% !important
-    max-width: none
+    @apply float-none w-full max-w-[initial]
 
   .woocommerce-product-gallery__wrapper,
   .woocommerce-product-gallery__image,
   .woocommerce-product-gallery__image img
-    width: 100%
     max-width: 560px
     height: 695px
-    display: block
+    @apply w-full block
+  
+  div.product
+    /* Image area */
+    div.images
+      @apply float-none w-full max-w-[initial]
+    /* Summary column */
+    div.summary
+      @apply float-none w-full max-w-none
 
-  /* Summary column */
-  .woocommerce div.product div.summary
-    float: none
-    width: 100%
-    max-width: none
+    /* Title */
+    h1.product_title
+      @extend h2
+      @apply mb-1
 
-/* Title */
-.woocommerce div.product .product_title
-  font-family: "Barlow"
-  font-size: 40px
-  font-style: normal
-  font-weight: 700
-  line-height: normal
-  text-transform: uppercase
-  padding-bottom: 5px
+    /* SKU */
+    span.product-sku
+      @apply text-dark font-barlow font-medium text-sm mb-8 block
 
-/* SKU */
-.woocommerce div.product .product-sku
-  color: #0D0D0D
-  font-family: "Barlow"
-  font-size: 14px
-  font-style: normal
-  font-weight: 500
-  line-height: 140.625%
-  padding-bottom: 32px
+    /* Short description */
+    .woocommerce-product-details__short-description
+      @extend .block-text
+      @apply mb-14 text-blockText text-lg font-normal leading-[1.8562rem] xl:max-w-[90%]
+      p
+        @extend .block-text
+        @apply text-blockText text-lg font-normal leading-[1.8562rem] mb-8 last-of-type:mb-0
 
-/* Short description */
-.woocommerce div.product .woocommerce-product-details__short-description
-  color: #373737
-  font-family: "Barlow"
-  font-size: 18px
-  font-style: normal
-  font-weight: 400
-  line-height: 165%
-  padding-bottom: 55px
-
-/* Price block spacing (divider) */
-.woocommerce div.product .price
-  border-top: 1px solid #0D0D0D
-  padding-top: 1rem
-  margin-top: 1.5rem
+    /* Price block spacing (divider) */
+    .price
+      @apply border-t border-t-dark pt-4 mt-6
 
 /* Price typography */
 .woocommerce div.product .woocommerce-Price-currencySymbol

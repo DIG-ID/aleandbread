@@ -200,7 +200,7 @@ function aleandbread_product_sku_under_title() {
 	if ( ! $sku ) {
 		return;
 	}
-	echo '<p class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">' . esc_html( $sku ) . '</span></p>';
+	echo '<span class="product-sku"><span class="label">Art-Nr.:</span> <span class="value">' . esc_html( $sku ) . '</span></span>';
 }
 
 /**
@@ -211,6 +211,7 @@ function aleandbread_shipping_note() {
 	// Only show if product is not virtual and not downloadable.
 	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() ) {
 		echo '<p class="ship-note">' . esc_html__( 'Bestellungen werden innerhalb von 5 bis 10 Werktagen versendet.', 'aleandbread' ) . '</p>';
+		echo '<p class="taxes-note">' . esc_html__( 'inkl. MwSt. Versand wird beim Checkout berechnet', 'aleandbread' ) . '</p>';
 	}
 }
 
