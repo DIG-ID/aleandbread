@@ -13,7 +13,7 @@
       </div> 
       
       <!-- Description -->
-      <div class="col-start-1 col-span-2 md:col-span-4 xl:col-start-8 xl:col-span-4 pt-[48px] md:pt-[56px] xl:pt-0 xl:pb-[192px]">
+      <div class="col-start-1 col-span-2 md:col-span-4 xl:col-start-8 xl:col-span-4 pt-[48px] md:pt-[56px] xl:pt-0">
         <p class="text-dark block-text w-[342px] md:w-[438px] xl:w-full">
           <?php echo get_field('events_description', 'option'); ?>
         </p> 
