@@ -6,58 +6,55 @@
 
         <div class="col-span-2 md:col-span-6 xl:col-span-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <?php
-            $wine_highlights = new WP_Query([
-            'post_type'      => 'product',
-            'posts_per_page' => 2,
-            'tax_query'      => [
-                'relation' => 'AND',
-                [
-                'taxonomy' => 'product_cat',
-                'field'    => 'slug',
-                'terms'    => ['wines'],          // category filter
-                ],
-                [
-                'taxonomy' => 'product_tag',
-                'field'    => 'slug',
-                'terms'    => ['Highlight'],      // tag filter
-                ],
-                [
-                'taxonomy' => 'product_visibility',
-                'field'    => 'name',
-                'terms'    => ['outofstock', 'exclude-from-catalog'],
-                'operator' => 'NOT IN',
-                ],
-            ],
-            ]);
-
-            if ( $wine_highlights->have_posts() ) :
-                while ( $wine_highlights->have_posts() ) : $wine_highlights->the_post();
-                $permalink = get_permalink();
-                $title     = get_the_title();
+            <?php if ( have_rows( 'highlights' ) ) : ?>
+                <?php while ( have_rows( 'highlights' ) ) : the_row();
+                    // Sub fields
+                    $image_id    = get_sub_field( 'image' );
+                    $title       = get_sub_field( 'title' );
+                    $slogan      = get_sub_field( 'slogan' );
+                    $description = get_sub_field( 'description' );
+                    $productUrl = get_sub_field( 'product_url' );
                 ?>
                 <div class="card-highlight">
-                    <a href="<?php echo esc_url( $permalink ); ?>">
-                    <div class="card-highlight--image bg-[#C4C4C4]">
-                        <?php echo get_the_post_thumbnail( null, 'full', ['class' => 'w-full h-full object-cover'] ); ?>
-                    </div>
-                    <div class="card-highlight--content">
-                        <span class="overlay"></span>
-                        <span class="block-text"><?php the_excerpt(); ?></span>
-                        <div class="card-highlight--footer flex justify-between items-center">
-                        <h3 class="card-highlight--title"><?php echo esc_html( $title ); ?></h3>
-                        <div class="card-highlight--arrow"></div>
+                    <a href="<?php echo wp_kses_post( $productUrl ); ?>">
+                        <div class="card-highlight--image bg-[#C4C4C4]">
+                            <?php 
+                            if ( $image_id ) {
+                                echo wp_get_attachment_image(
+                                    $image_id,
+                                    'highlights-size', 
+                                    false,
+                                    ['class' => 'w-full h-full object-cover', 'loading' => 'lazy']
+                                );
+                            }
+                            ?>
                         </div>
-                    </div>
+
+                        <div class="card-highlight--content">
+                            <span class="overlay"></span>
+
+                            <?php if ( $description ) : ?>
+                                <span class="block-text"><?php echo wp_kses_post( $description ); ?></span>
+                            <?php endif; ?>
+
+                            <div class="card-highlight--footer flex justify-between items-center">
+                                <div>
+                                    <?php if ( $title ) : ?>
+                                        <h2 class="card-highlight--title uppercase"><?php echo esc_html( $title ); ?></h2>
+                                    <?php endif; ?>
+                                    <?php if ( $slogan ) : ?>
+                                        <h3 class="card-highlight--slogan"><?php echo esc_html( $slogan ); ?></h3>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="card-highlight--arrow"></div>
+                            </div>
+                        </div>
                     </a>
                 </div>
-                <?php
-                endwhile;
-                wp_reset_postdata();
-            else :
-                echo '<p class="text-gray-600">'.esc_html__( 'No wines to highlight yet.', 'aleandbread' ).'</p>';
-            endif;
-            ?>
+                <?php endwhile; ?>
+            <?php else : ?>
+                <p class="text-gray-600"><?php echo esc_html__( 'No highlights yet.', 'aleandbread' ); ?></p>
+            <?php endif; ?>
             </div>
         </div>
     </div>

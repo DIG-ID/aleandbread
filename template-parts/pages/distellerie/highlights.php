@@ -9,41 +9,25 @@
             <?php if ( have_rows( 'highlights' ) ) : ?>
                 <?php while ( have_rows( 'highlights' ) ) : the_row();
                     // Sub fields
-                    $image       = get_sub_field( 'image' );
+                    $image_id    = get_sub_field( 'image' );
                     $title       = get_sub_field( 'title' );
                     $slogan      = get_sub_field( 'slogan' );
                     $description = get_sub_field( 'description' );
                     $productUrl = get_sub_field( 'product_url' );
-
-                    // Build image HTML (supports ID / Array / URL return types)
-                    $image_html = '';
-                    if ( $image ) {
-                        if ( is_array( $image ) && ! empty( $image['ID'] ) ) {
-                            $image_html = wp_get_attachment_image(
-                                $image['ID'],
-                                'highlights-size',
-                                false,
-                                ['class' => 'w-full h-full object-cover', 'loading' => 'lazy']
-                            );
-                        } elseif ( is_numeric( $image ) ) {
-                            $image_html = wp_get_attachment_image(
-                                $image,
-                                'highlights-size',
-                                false,
-                                ['class' => 'w-full h-full object-cover', 'loading' => 'lazy']
-                            );
-                        } elseif ( is_string( $image ) ) {
-                            $image_html = sprintf(
-                                '<img src="%s" alt="" class="w-full h-full object-cover" loading="lazy" />',
-                                esc_url( $image )
-                            );
-                        }
-                    }
                 ?>
                 <div class="card-highlight">
                     <a href="<?php echo wp_kses_post( $productUrl ); ?>">
                         <div class="card-highlight--image bg-[#C4C4C4]">
-                            <?php echo $image_html; ?>
+                            <?php 
+                            if ( $image_id ) {
+                                echo wp_get_attachment_image(
+                                    $image_id,
+                                    'highlights-size', 
+                                    false,
+                                    ['class' => 'w-full h-full object-cover', 'loading' => 'lazy']
+                                );
+                            }
+                            ?>
                         </div>
 
                         <div class="card-highlight--content">
