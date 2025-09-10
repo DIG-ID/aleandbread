@@ -66,14 +66,9 @@
       </div>
 
       <!-- Gallery Title Row -->
-      <div class="col-span-2 md:col-span-6 xl:col-span-12 grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12 gap-4">
-
-        <h2 class="text-blockTextLight w-[280px]"><?php echo get_field('craftmanship_gallery_title'); ?></h2>
-
-            <p class="hidden xl:block block-text text-blockTextLight xl:ml-[140px] w-[800px] mt-5"><?php echo get_field('craftmanship_gallery_title_2'); ?></p>
-
-            <h3 class="block xl:hidden text-blockTextLight w-[465px] -ml-[205px] md:-ml-[120px] pt-14"><?php echo get_field('craftmanship_gallery_title_2'); ?></h3>
-
+      <div class="col-span-2 md:col-span-6 xl:col-span-12 gap-4 xl:flex items-center">
+        <h2 class="text-blockTextLight xl:inline-block"><?php echo get_field('craftmanship_gallery_title'); ?></h2>
+        <p class="xl:inline-block block-text text-blockTextLight mt-[10px] md:mt-0 xl:mt-2 "><?php echo get_field('craftmanship_gallery_title_2'); ?></p>
       </div>
 
     </div>
@@ -85,7 +80,7 @@
       <?php 
         $gallery = get_field('craftmanship_gallery');
         if( $gallery ): ?>
-        <div class="col-span-2 md:col-span-6 xl:col-span-12  mt-8 md:mt-20">
+        <div class="col-span-2 md:col-span-6 xl:col-span-12 mt-[32px] md:mt-[52px] xl:mt-[42px]">
           <div class="swiper craftmanship-swiper">
             <div class="swiper-wrapper">
               <?php foreach( $gallery as $image_id ): ?>

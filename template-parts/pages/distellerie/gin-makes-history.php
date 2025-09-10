@@ -24,9 +24,9 @@
         <div class="inner-content h-[343px] md:h-[672px] relative" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;"  data-link="/pandoras-vineyard/">    
           <span class="cta-overlay">
           </span>
-          <div class="gin-history-container p-6 md:p-7 xl:p-16">
+          <div class="gin-history-container p-7 md:p-7 xl:p-16">
             <div class="flex justify-between items-center w-full">
-              <div class="">
+              <div class="max-w-[250px] md:max-w-[500px] xl:max-w-[645px]">
                 <!-- Description Popup -->
                 <div class="gin-popup w-[645px] mb-[5px] md:mb-[55px] translate-y-[100%] opacity-0 pointer-events-none transition-all duration-700 max-w-[300px] md:max-w-[586px] xl:max-w-full">
                   <?php echo get_field('gin_makes_history_image_description'); ?>

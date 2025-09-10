@@ -1,4 +1,4 @@
-<section id="blog" class="blog relative overflow-hidden bg-background pt-[109px] md:pt-[157px] xl:pt-[248px]">
+<section id="blog" class="blog relative overflow-hidden bg-background pt-[109px] md:pt-[157px] xl:pt-[195px]">
   <div class="theme-container relative z-10">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-6 xl:col-span-12 flex items-center justify-between py-6 pb-[30px] md:pb-[40px] xl:pb-[34px]">
@@ -29,22 +29,22 @@
         </div>
       </div>
     </div>
-    <div class="theme-grid">
+    <div class="theme-grid pb-[16px] md:pb-[25px]">
       <div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-1">
       <?php do_action('breadcrumbs'); ?>
       </div>
-      <!-- Tags -->
-      <div class="col-span-1 md:col-start-5 xl:col-start-6"> 
-        <p class="text-accent text-right font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase">
+      <!-- Tags 
+      <div class="col-span-1 md:col-start-1 xl:col-start-6 pt-3"> 
+        <p class="text-accent text-left xl:text-right font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase">
           Tags
         </p>
-      </div>
-        <!-- Categories -->
-      <div class="col-start-2 xl:col-start-8 xl:col-span-2 pb-[16px] md:pb-[22px] xl:pb-[25px]">
+      </div>  -->
+        <!-- Categories 
+      <div class="col-start-2 md:col-start-5 xl:col-start-8 xl:col-span-2 pb-[16px] md:pb-[22px] xl:pb-[25px] pt-3">
         <p class="text-accent text-right font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase">
           Categories
         </p>
-      </div>
+      </div> -->
     </div>
       <!-- Blog post content -->
       <div class="theme-grid gap-x-8">
@@ -52,7 +52,7 @@
   <!-- LEFT CONTENT -->
   <div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-9 order-1 xl:order-none">
     <?php if ( has_post_thumbnail() ) : ?>
-      <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-none mb-6']); ?>
+      <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-none']); ?>
     <?php endif; ?>
 
     <h1 class="xl:max-w-[706px] pt-[15px] md:pt-[23px] xl:pt-[27px]"><?php the_title(); ?></h1>
@@ -63,12 +63,12 @@
     <p class="block-text !font-bold pt-[35px] xl:pt-[72px]"><?php echo get_field('blog_cpt_description'); ?></p>
 
     <div class="pt-[25px] md:pt-[35px] xl:max-w-[1142px] pb-[66px] md:pb-[117px] xl:pb-[198px]">
-      <p class="block-text"><?php echo get_field('blog_cpt_content'); ?></p>
+      <div class="blog-content max-w-[1142px]"><?php the_content(); ?></div>
     </div>
   </div>
 
   <!-- RIGHT SIDEBAR -->
-  <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none pb-[108px] md:pb-[163px] xl:pb-0">
+  <aside class="col-start-1 xl:col-start-10 col-span-2 md:col-span-6 xl:col-span-3 self-start order-2 xl:order-none pb-[4px] md:pb-[113px] xl:pb-0">
     <p class="text-[#CC9933] font-barlow text-[20px] not-italic font-medium leading-[30px] uppercase pb-[16px]">Related posts</p>
     
     <?php
@@ -82,18 +82,18 @@
       $description = get_field('blog_cpt_description');
       $image       = get_the_post_thumbnail_url(get_the_ID(), 'medium');
     ?>
-      <div class="mb-[54px] md:mb-[84px] xl:mb-10">
+      <div class="mb-[54px] md:mb-[60px] xl:mb-[72px]">
         <?php if ($image): ?>
           <a href="<?php the_permalink(); ?>" class="overflow-hidden mb-3">
             <img src="<?= esc_url($image); ?>" alt="<?= esc_attr(get_the_title()); ?>" class="w-full h-auto object-cover rounded-[28px] mb-[33px]">
         </a>
         <?php endif; ?>
         <a href="<?php the_permalink(); ?>">
-          <h4 class="font-semibold text-xl mb-[33px] xl:mb-2"><?php the_title(); ?>
+          <h4 class="font-semibold text-xl mb-[22px] xl:mb-5"><?php the_title(); ?>
           </h4>
         </a>
         <?php if ($description): ?>
-          <p class="text-dark block-text mb-[65px] xl:mb-4"><?= esc_html($description); ?></p>
+          <p class="text-dark block-text mb-[65px] xl:mb-5"><?= esc_html($description); ?></p>
         <?php endif; ?>
         <a href="<?php the_permalink(); ?>" class="group text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase flex items-center gap-2">
           <span class="uppercase group-hover:underline">

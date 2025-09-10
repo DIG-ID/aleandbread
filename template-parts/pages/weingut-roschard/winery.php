@@ -1,7 +1,31 @@
-<section id="weingut_roschard" class="weingut_roschard pb-[94px] md:pb-[145px] xl:pb-[261px] relative overflow-hidden bg-background">
+<section id="weingut_roschard" class="weingut_roschard pb-[94px] md:pb-[145px] xl:pb-[261px] pt-[92px] md:pt-[128px] relative overflow-hidden bg-background">
+
+  <!-- Fullscreen Swiper for mobile and tablet -->
+  <?php if ($gallery = get_field('weingut_roschard_swiper')): ?>
+    <div class="block xl:hidden w-full">
+      <div class="swiper our-experience-swiper w-full">
+        <div class="swiper-wrapper">
+          <?php foreach ($gallery as $image_id):
+            $image_url = wp_get_attachment_image_url($image_id, 'full');
+            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+          ?>
+            <div class="swiper-slide">
+              <img 
+                src="<?php echo esc_url($image_url); ?>" 
+                alt="<?php echo esc_attr($image_alt); ?>" 
+                class="w-full h-[488px] md:h-[976px] xl:h-full object-cover"
+              />
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <!-- Content + Desktop Swiper in Grid -->
   <div class="theme-container relative z-10">
     <div class="theme-grid">
-      
+
       <!-- Text Content Block -->
       <div class="col-span-2 md:col-span-6 xl:col-span-6 xl:col-start-2 order-2 xl:order-none">
         <!-- Breadcrumb -->
@@ -45,32 +69,28 @@
         </p>
       </div>
 
-      <!--  Swiper  -->
-      <div class="col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 pt-[72px] md:pt-[128px] xl:pt-[280px] order-1 xl:order-none">
-        <?php 
-        $gallery = get_field('weingut_roschard_swiper'); 
-        if( $gallery ): ?>
-          <div class="swiper our-experience-swiper relative">
-            <div class="swiper-wrapper">
-              <?php foreach( $gallery as $image_id ): 
-                $image_url = wp_get_attachment_image_url($image_id, 'full');
-                $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
-              ?>
-                <div class="swiper-slide">
-                  <img 
-                    src="<?php echo esc_url($image_url); ?>" 
-                    alt="<?php echo esc_attr($image_alt); ?>" 
-                    class="w-full h-[488px] md:w-[744px] md:h-[976px] xl:w-[705px] xl:h-[928px] object-cover"
-                  />
-                </div>
-              <?php endforeach; ?>
-            </div>
-
-            <!-- Navigation buttons -->
-            <div class="swiper-button-prev-3 absolute top-1/2 -translate-y-1/2 left-4 z-10"></div>
-            <div class="swiper-button-next-3 absolute top-1/2 -translate-y-1/2 right-4 z-10"></div>
+      <!-- Desktop Swiper -->
+      <div class="hidden xl:block col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 pt-[280px] order-1">
+        <div class="swiper our-experience-swiper relative">
+          <div class="swiper-wrapper">
+            <?php foreach ($gallery as $image_id):
+              $image_url = wp_get_attachment_image_url($image_id, 'full');
+              $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+            ?>
+              <div class="swiper-slide">
+                <img 
+                  src="<?php echo esc_url($image_url); ?>" 
+                  alt="<?php echo esc_attr($image_alt); ?>" 
+                  class="w-full h-[928px] object-cover"
+                />
+              </div>
+            <?php endforeach; ?>
           </div>
-        <?php endif; ?>
+
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev-3 absolute top-1/2 -translate-y-1/2 left-4 z-10"></div>
+          <div class="swiper-button-next-3 absolute top-1/2 -translate-y-1/2 right-4 z-10"></div>
+        </div>
       </div>
 
     </div>

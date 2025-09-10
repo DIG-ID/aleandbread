@@ -32,106 +32,49 @@
 
     <?php if ($the_query->have_posts()) : ?>
 
-      <!-- Mobile Swiper (grid of 2 cols, 3 items per slide) -->
-      <div class="block md:hidden">
-        <div class="swiper mobile-event-swiper mt-12">
-          <div class="swiper-wrapper px-4">
-            <?php
-            $counter = 0;
-            while ($the_query->have_posts()) : $the_query->the_post();
-              if ($counter % 3 === 0) {
-                if ($counter > 0) echo '</div></div>';
-                echo '<div class="swiper-slide w-full pr-4"><div class="grid grid-cols-2 gap-5">';
-              }
-            ?>
-              <div class="event-item col-span-2 mt-12">
-                <div class="event-meta">
-                  <?php if (get_the_post_thumbnail()) :
-                    the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
-                  endif; ?>
-                  <h4 class="pt-4"><?php the_title(); ?></h4>
-                  <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
-                  <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
-                  <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
-                  <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6">
-                    <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
-                    <span class="ml-1">→</span>
-                  </a>
-                </div>
-                <?php the_content(); ?>
-              </div>
-            <?php $counter++; endwhile; ?>
-            </div></div>
+     <div class="swiper events-unified-swiper mt-[55px] md:mt-[92px] xl:mt-[195px]">
+  <div class="swiper-wrapper px-4">
+    <?php
+    $the_query = new WP_Query($args);
+    while ($the_query->have_posts()) : $the_query->the_post(); ?>
+      <div class="swiper-slide w-full md:w-full xl:w-[33.33%] flex-shrink-0 md:pr-4">
+        <div class="event-item">
+          <!-- Thumbnail -->
+          <?php if (get_the_post_thumbnail()) :
+            the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
+          endif; ?>
+
+          <!-- Title -->
+          <h4 class="pt-4"><?php the_title(); ?></h4>
+
+          <!-- Date -->
+          <div class="flex items-center gap-2 pt-2">
+          <img class="inline-block w-[20px] md:w-[24px] h-auto pt-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
+          <span class="block-text-bold pt-[5px] md:pt-1"><?php echo get_field('events_cpt_date'); ?></span>
           </div>
-          <div class="swiper-pagination pt-52"></div>
+          <!-- Short description -->
+          <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
+
+          <!-- Link -->
+          <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6 md:pt-12">
+            <span class="block-text-bold !text-xs md:!text-[18px] !font-semibold md:!font-bold uppercase group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+            <div class="ml-1 mt-[2px] md:mt-1 w-3 md:w-6">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 25 16" 
+                fill="none"
+                class="w-full h-auto"
+              >
+                <path d="M24.7071 8.70711C25.0976 8.31658 25.0976 7.68342 24.7071 7.29289L18.3431 0.928932C17.9526 0.538408 17.3195 0.538408 16.9289 0.928932C16.5384 1.31946 16.5384 1.95262 16.9289 2.34315L22.5858 8L16.9289 13.6569C16.5384 14.0474 16.5384 14.6805 16.9289 15.0711C17.3195 15.4616 17.9526 15.4616 18.3431 15.0711L24.7071 8.70711ZM0 8V9H24V8V7H0V8Z" fill="#0D0D0D"/>
+              </svg>
+            </div>
+          </a>
         </div>
+        <?php the_content(); ?>
       </div>
-
-      <?php wp_reset_postdata(); ?>
-
-      <!-- Tablet Swiper (1.25 cards per view) -->
-      <div class="hidden md:block xl:hidden">
-        <div class="swiper tablet-event-swiper mt-12">
-          <div class="swiper-wrapper px-4">
-            <?php
-            $the_query = new WP_Query($args);
-            while ($the_query->have_posts()) : $the_query->the_post(); ?>
-              <div class="swiper-slide w-[80%] flex-shrink-0 pr-4">
-                <div class="event-item mt-12">
-                  <div class="event-meta">
-                    <?php if (get_the_post_thumbnail()) :
-                      the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
-                    endif; ?>
-                    <h4 class="pt-4"><?php the_title(); ?></h4>
-                    <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
-                    <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
-                    <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
-                    <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6">
-                      <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
-                      <span class="ml-1">→</span>
-                    </a>
-                  </div>
-                  <?php the_content(); ?>
-                </div>
-              </div>
-            <?php endwhile; ?>
-          </div>
-          <div class="swiper-pagination pt-52"></div>
-        </div>
-      </div>
-
-      <?php wp_reset_postdata(); ?>
-
-      <!-- Desktop Swiper (3 items per view) -->
-      <div class="hidden xl:block">
-        <div class="swiper desktop-event-swiper mt-12">
-          <div class="swiper-wrapper px-4">
-            <?php
-            $the_query = new WP_Query($args);
-            while ($the_query->have_posts()) : $the_query->the_post(); ?>
-              <div class="swiper-slide w-[33.33%] flex-shrink-0 pr-4">
-                <div class="event-item mt-12">
-                  <div class="event-meta">
-                    <?php if (get_the_post_thumbnail()) :
-                      the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
-                    endif; ?>
-                    <h4 class="xl:pt-8 xl:pb-7"><?php the_title(); ?></h4>
-                    <img class="inline-block w-4 h-4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/svgs/calendar.svg" alt="Calendar" />
-                    <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
-                    <p class="text-dark block-text xl:pt-7 xl:h-[90px] xl:w-[415px]"><?php echo get_field('events_cpt_small_description'); ?></p>
-                    <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 xl:pt-10">
-                      <span class="group-hover:underline"><?php esc_html_e('Mehr erfahren', 'aleandbread'); ?></span>
-                      <span class="ml-1">→</span>
-                    </a>
-                  </div>
-                  <?php the_content(); ?>
-                </div>
-              </div>
-            <?php endwhile; ?>
-          </div>
-        </div>
-        </div>
-        <div class="col-span-12 flex items-center justify-center">
+    <?php endwhile; ?>
+  </div>
+ <div class="cmd:col-span-6 xl:col-span-12 flex items-center justify-center">
           <div class="events-controls gap-4 mt-[110px]">
             <span class="swiper-button-prev-2" aria-label="Next"></span>
             <div class="events-pagination "></div>
