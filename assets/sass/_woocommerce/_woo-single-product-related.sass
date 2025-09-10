@@ -1,0 +1,41 @@
+/* === Related products === */
+body.woocommerce.single-product
+  .related.products
+    > h2
+      font-family: "Barlow" !important
+      font-size: 30px 
+      font-style: normal
+      font-weight: 400
+      line-height: 34px
+      text-transform: uppercase
+      padding-bottom: 53px
+      padding-top: 45px
+
+  // The products UL inside "Related products"
+  ul.products
+    @extend .theme-grid
+    display: grid !important
+    list-style: none
+    margin: 0
+    padding: 0
+
+    // Kill Woo’s clearfix pseudo-elements
+    &::before, &::after
+      display: none !important
+      content: none !important
+
+    // Kill Woo’s float-based widths/margins for any columns-N list
+    &.columns-1 > .product,
+    &.columns-2 > .product,
+    &.columns-3 > .product,
+    &.columns-4 > .product,
+    &.columns-5 > .product,
+    &.columns-6 > .product
+      float: none !important
+      width: auto !important
+      margin: 0 !important
+      height: 500px !important
+
+    // Each product takes 3 columns in your 12-col grid
+    > .product
+      grid-column: span 3
