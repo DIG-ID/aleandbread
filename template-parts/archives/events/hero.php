@@ -120,7 +120,7 @@
                     <span class="block-text-bold"><?php echo get_field('events_cpt_date'); ?></span>
                     <p class="text-dark block-text xl:pt-7 xl:h-[90px] xl:w-[415px]"><?php echo get_field('events_cpt_small_description'); ?></p>
                     <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 xl:pt-10">
-                      <span class="group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+                      <span class="group-hover:underline"><?php esc_html_e('Mehr erfahren', 'aleandbread'); ?></span>
                       <span class="ml-1">→</span>
                     </a>
                   </div>

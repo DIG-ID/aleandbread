@@ -20,7 +20,7 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
             <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
                 <div>
                     <h1 class="font-bold mb-6"><?php esc_html_e('Login', 'aleandbread'); ?></h1>
-                    <p class="font-barlow text-[16px] opacity-75 font-normal text-blockText mb-10"><?php esc_html_e('Login, um auf Ihr Ale & Bread Konto zuzugreifen', 'aleandbread'); ?></p>
+                    <p class="font-barlow text-[16px] opacity-75 font-normal text-blockText mb-10"><?php esc_html_e('Login, um auf dein Ale & Bread Konto zuzugreifen.', 'aleandbread'); ?></p>
 
                     <?php wc_print_notices(); ?>
 
@@ -40,14 +40,14 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
                         <?php do_action('woocommerce_login_form_start'); ?>
 
                         <div class="flex flex-col relative">
-                            <label for="username" class="mb-3 absolute -top-[12px] left-3"><?php esc_html_e('Email', 'aleandbread'); ?></label>
+                            <label for="username" class="mb-2"><?php esc_html_e('Email', 'aleandbread'); ?></label>
                             <input type="text" id="username" name="username" placeholder="Email"
                                 class="w-full border p-2 rounded"
                                 value="<?php echo (!empty($_POST['username']) ? esc_attr($_POST['username']) : ''); ?>" required>
                         </div>
 
                         <div class="flex flex-col relative !mt-6">
-                            <label for="password" class="mb-3 absolute -top-[12px] left-3"><?php esc_html_e('Passwort', 'aleandbread'); ?></label>
+                            <label for="password" class="mb-2"><?php esc_html_e('Passwort', 'aleandbread'); ?></label>
                             <input type="password" id="password" name="password" placeholder="Passwort"
                                 class="w-full border p-2 rounded" required>
                         </div>
@@ -68,7 +68,7 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
                         <button type="submit" class="btn btn-secondary mb-6 w-full" name="login">Login</button>
 
                         <p class="text-center text-sm">
-                            <?php esc_html_e("Sie haben noch kein Konto?", 'aleandbread'); ?>
+                            <?php esc_html_e("Sie haben noch kein Konto?", 'aleandbread'); ?>&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-[#CC332E] font-medium hover:underline"><?php esc_html_e('Registrieren', 'aleandbread'); ?></a>
                         </p>
 

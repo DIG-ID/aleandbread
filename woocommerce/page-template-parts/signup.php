@@ -10,8 +10,8 @@
             </div>
             <div class="col-span-2 md:col-span-4 xl:col-span-5 md:col-start-2 xl:col-start-7">
                 <div>
-                    <h1 class="font-bold mb-6"><?php esc_html_e('Sign Up', 'aleandbread'); ?></h1>
-                    <p class="font-barlow text-[16px] opacity-75 font-normal text-blockText mb-4"><?php esc_html_e('Bitte registrieren Sie sich, um Ihr Ale & Bread Konto zu erstellen.', 'aleandbread'); ?></p>
+                    <h1 class="font-bold mb-6"><?php esc_html_e('Ich bin Neukunde', 'aleandbread'); ?></h1>
+                    <p class="font-barlow text-[16px] opacity-75 font-normal text-blockText mb-4"><?php esc_html_e('Registriere dich hier, um ein Ale & Bread Konto zu erstellen.', 'aleandbread'); ?></p>
                     <?php wc_print_notices(); ?>
                     <form method="post" class="space-y-4">
                         <?php do_action('woocommerce_register_form_start'); ?>
