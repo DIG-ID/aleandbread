@@ -1,4 +1,4 @@
-<section id="return-policy" class="return-policy bg-background pb-36">
+<section id="return-policy" class="return-policy bg-background pb-12 md:pb-28 xl:pb-36">
   <div class="theme-container">
     <div class="theme-grid">
 

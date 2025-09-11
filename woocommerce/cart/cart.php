@@ -20,9 +20,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_main_content' );
 ?>
 
-<section class="ab-cart relative py-10 md:py-16 bg-background">
-  <div class="theme-container">
-	<div class="theme-grid">
+<section class="ab-cart relative theme-grid py-10 md:py-16 bg-background">
 		<div class="col-span-2 md:col-span-6 xl:col-span-8 col-start-1 md:col-start-1 xl:col-start-3">
 			<!-- Title (use page title; style in CSS to uppercase like the mock) -->
 			<h1 class="text-center text-dark mb-14">
@@ -32,18 +30,18 @@ do_action( 'woocommerce_before_main_content' );
 			<!-- Stepper -->
 			<div class="ab-steps max-w-4xl mx-auto mb-20 hidden xl:flex items-center">
 				<div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-dark w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Shopping cart', 'woocommerce' ); ?></span>
+					<span class="step-dot">1</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Warenkorb', 'aleandbread' ); ?></span>
 				</div>
 				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot-faded">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Checkout details', 'woocommerce' ); ?></span>
+					<span class="step-dot-faded">2</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Bestelldetails', 'aleandbread' ); ?></span>
 				</div>
 				<div class="step flex items-center gap-3 pb-6 w-full md:w-[30%] mr-[3.333333%]">
-					<span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Order complete', 'woocommerce' ); ?></span>
+					<span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Bestellung abgeschlossen', 'aleandbread' ); ?></span>
 				</div>
 			</div>
 
 			<!-- 2‑column layout -->
-			<div class="grid grid-cols-2 md:grid-cols-6 xl:grid-cols-8 gap-6 items-start">
+			<div class="grid xl:flex grid-cols-2 md:grid-cols-6 gap-6 items-start">
 
 			<!-- LEFT: table -->
 			<div class="col-span-2 md:col-span-6 xl:col-span-5">
@@ -86,7 +84,7 @@ do_action( 'woocommerce_before_main_content' );
 							<!-- PRODUCT -->
 							<td class="product-name p-4">
 							<div class="flex items-center gap-4">
-								<a class="block w-20 h-24 overflow-hidden bg-gray-100" href="<?php echo esc_url( $product_permalink ?: '#' ); ?>">
+								<a class="block w-20 h-24 overflow-hidden bg-formFields p-1 min-w-20" href="<?php echo esc_url( $product_permalink ?: '#' ); ?>">
 								<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image( 'woocommerce_thumbnail', ['class' => 'w-full h-full object-cover'] ), $cart_item, $cart_item_key ); ?>
 								</a>
 								<div class="leading-tight">
@@ -227,9 +225,7 @@ do_action( 'woocommerce_before_main_content' );
 				</div>
 			</aside>
 			</div>
-			</div>
 		</div>
-	</div>
 </section>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>

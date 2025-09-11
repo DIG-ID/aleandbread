@@ -352,3 +352,14 @@ add_action( 'init', function () {
 	register_taxonomy_for_object_type( 'category', 'blog' );
 	register_taxonomy_for_object_type( 'post_tag', 'blog' );
 });
+
+
+function ale_thankyou_url( $order_id ) {
+  $order = wc_get_order( $order_id );
+  if ( ! $order ) return '';
+  return wc_get_endpoint_url(
+    'order-received',
+    $order->get_id(),
+    wc_get_page_permalink( 'checkout' )
+  ) . '?key=' . $order->get_order_key();
+}

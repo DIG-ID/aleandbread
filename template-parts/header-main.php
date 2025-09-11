@@ -65,7 +65,7 @@
               id="user-menu"
               role="menu"
               aria-labelledby="user-menu-button"
-              class="absolute left-1/2 -translate-x-[90%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-30 origin-top"
+              class="user-account-popup absolute left-1/2 -translate-x-[90%] -top-2 mt-0 w-[270px] bg-dark text-accent shadow-lg z-30 origin-top"
             >
 
               <?php
@@ -81,7 +81,7 @@
                     <li role="menuitem">
                       <a
                         href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"
-                        class="block font-barlow text-[20px] leading-[28px] text-[#DDDDDD] font-normal hover:underline px-5 py-2"
+                        class="block font-barlow text-[20px] leading-[28px] text-[#DDDDDD] font-normal px-5 py-2"
                       >
                         <?php echo esc_html( $label ); ?>
                       </a>
