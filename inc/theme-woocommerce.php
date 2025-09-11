@@ -212,10 +212,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) {
     ?>
     <span
       id="header-cart-count"
-      class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[11px] leading-none font-bold
-             bg-[#7F1D1D] text-[#CC9933]
-             rounded-full <?php echo $count ? '' : 'hidden'; ?>"
-      aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>"
+      class="absolute -top-2 -right-2 min-w-[22px] h-[22px] px-1 flex items-center justify-center text-[12px] leading-none font-bold bg-accent text-dark rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>"
     >
       <?php echo esc_html( $count ); ?>
     </span>
