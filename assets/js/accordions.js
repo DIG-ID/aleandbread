@@ -1,18 +1,18 @@
-// Accordion FAQ functionality
+// Accordion functionality
 document.addEventListener('DOMContentLoaded', function () {
 const accordionItems = document.querySelectorAll('[data-accordion]');
 accordionItems.forEach((item) => {
     const header = item.querySelector('.toggle-header');
     const content = item.querySelector('.accordion-content');
     const icon = item.querySelector('.toggle-icon');
-    const questionText = item.querySelector('.faq-question');
+    const questionText = item.querySelector('.accordion-question');
 
     header.addEventListener('click', () => {
     const isOpen = !content.classList.contains('hidden');
     accordionItems.forEach((el) => {
         const contentEl = el.querySelector('.accordion-content');
         const iconEl = el.querySelector('.toggle-icon');
-        const textEl = el.querySelector('.faq-question');
+        const textEl = el.querySelector('.accordion-question');
         contentEl.classList.add('hidden');
         contentEl.style.maxHeight = null;
         iconEl.textContent = '+';

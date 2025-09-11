@@ -1,4 +1,4 @@
-<section id="shopping-policy" class="shopping-policy bg-background pb-[136px] pt-[125px] md:pb-[200px] md:pt-[180px] xl:pb-[119px] xl:pt-[280px]">
+<section id="shopping-policy" class="shopping-policy bg-background pb-[136px] md:pb-[200px] xl:pb-[119px] pt-36 md:pt-44 xl:pt-52">
   <div class="theme-container">
     <div class="theme-grid">
       
