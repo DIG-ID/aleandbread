@@ -37,7 +37,10 @@ body.woocommerce.single-product
       .single_add_to_cart_button
         @extend .btn
         @extend .btn-secondary
-        @apply rounded-none flex items-center justify-center text-center px-16 py-[0.375rem] font-medium text-base ml-5
+        @apply rounded-none flex items-center justify-center text-center px-16 py-[0.375rem] text-base ml-5 font-semibold
+      .button.button.disabled
+        @extend .single_add_to_cart_button
+        @apply py-[0.375rem] !important
 
 
   div.product-type-wgm_gift_card
@@ -80,28 +83,41 @@ body.woocommerce.single-product
         @apply col-span-3 w-full ml-0 font-medium text-base
 
   div.product-type-variable
-    .price
-      span
-        @apply hidden
+    div.summary
+      > .price
+        @apply hidden invisible
+        .from-label
+          @apply text-sm
+        .woocommerce-Price-amount
+          @apply text-base
     form.variations_form.cart
-      @apply grid grid-cols-4
+      @apply border-t border-t-dark pt-10
       table.variations
-        @apply col-span-4 w-full
-        tr
-          @apply flex flex-col
-          th.label
-            @apply flex
-            label
-              @apply font-barlow font-medium text-dark
-          td.value
-            @apply flex items-center
-            select
-              @apply px-3 py-4 font-barlow bg-white
-            a.reset_variations
-              @apply font-barlow text-xs text-dark uppercase font-medium
-      .single_variation_wrap
-        @apply col-span-4 grid grid-cols-4
-        .single_variation
-          @apply mb-4
+        @apply m-0
+        th.label
+          @apply text-base font-barlow text-blockText
+          label
+            @apply text-base font-normal font-barlow text-blockText
+          span.woo-selected-variation-item-name
+            @apply font-semibold
+        td.woo-variation-items-wrapper
+          @apply flex items-center gap-x-4 mb-9
+          ul.variable-items-wrapper
+            @apply gap-x-1
+            li.variable-item
+              @apply  bg-formFields w-12 h-12 border-red-500
+              .variable-item-contents
+                @apply w-11 h-11 
+                .variable-item-span-button
+                  @apply h-10 w-10 flex justify-center items-center font-barlow font-medium
+          a.reset_variations
+            @apply font-barlow text-base font-normal text-blockText
+      div.single_variation_wrap
+        @apply flex flex-col
+        .woocommerce-variation.single_variation
+          @apply mb-9
         .variations_button
-          @apply col-span-4 flex
+          @apply flex
+        .woocommerce-variation-price
+          .price
+            @apply border-none pt-0 
