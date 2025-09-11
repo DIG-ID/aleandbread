@@ -1,8 +1,6 @@
 <section id="faq" class="faq bg-background pb-6">
   <div class="theme-container">
     <div class="theme-grid">
-
-      <!-- Breadcrumbs + Title -->
       <div class="theme-grid col-span-2 md:col-span-6 xl:col-span-12 pt-36 md:pt-44 xl:pt-52 pb-12 md:pb-16 xl:pb-20">
         <div class="col-start-1 col-span-2 xl:col-start-2">
           <?php do_action('breadcrumbs'); ?>
@@ -13,7 +11,6 @@
       </div>
 
       <div class="theme-grid col-span-2 md:col-span-6 xl:col-span-12">
-        <!-- Accordion -->
         <div class="xl:col-start-1 xl:col-span-7 col-span-full">
 
           <?php if ( have_rows('faq') ) : $group_i = 0; ?>
@@ -37,7 +34,6 @@
                       continue;
                     }
 
-                    // Unique IDs help a11y and JS targeting if needed
                     $uid = 'faq-' . $group_i . '-' . $item_i;
                   ?>
 
@@ -56,8 +52,6 @@
                     >
                       <p class="block-text">
                         <?php
-                          // Use wp_kses_post + wpautop to allow basic formatting in responses.
-                          // If you want plain text only, swap for esc_html( $answer ).
                           echo wp_kses_post( wpautop( $answer ) );
                         ?>
                       </p>
@@ -69,7 +63,6 @@
             <?php endwhile; ?>
 
           <?php else : ?>
-            <!-- Optional: fallback if no FAQ rows -->
             <p class="text-dark"><?php esc_html_e( 'No FAQs found.', 'aleandbread' ); ?></p>
           <?php endif; ?>
 

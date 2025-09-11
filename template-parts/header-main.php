@@ -114,7 +114,7 @@
             <?php
               $count = ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
             ?>
-            <span id="header-cart-count" class="absolute -top-2 -right-2 min-w-[19px] h-[19px] px-1 flex items-center justify-center text-[12px] leading-none font-bold bg-accent text-[#DDDDDD] rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>">
+            <span id="header-cart-count" class="absolute -top-2 -right-2 min-w-[22px] h-[22px] px-1 flex items-center justify-center text-[12px] leading-none font-bold bg-accent text-[#0D0D0D] rounded-full <?php echo $count ? '' : 'hidden'; ?>" aria-label="<?php echo esc_attr( $count . ' items in cart' ); ?>">
               <?php echo esc_html( $count ); ?>
             </span>
           </button>
