@@ -69,7 +69,6 @@ if (document.querySelector('.events-unified-swiper')) {
         output += pageButton(currentPage, currentPage);
         if (currentPage < totalPages) output += pageButton(currentPage + 1, currentPage);
         if (currentPage < totalPages - 1) {
-          output += `<span class="pagination-separator">---</span>`;
           output += pageButton(totalPages, currentPage);
         }
 
@@ -86,6 +85,7 @@ if (document.querySelector('.events-unified-swiper')) {
       },
       768: {
         slidesPerView: 1.25,
+        slidesPerGroup: 1,
         grid: {
           rows: 1,
         },
