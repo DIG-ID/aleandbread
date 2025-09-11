@@ -39,68 +39,67 @@ window.addEventListener("load", () => {
   }
 
   // Events Swiper (mobile, tablet, desktop)
-  if (document.querySelector('.events-unified-swiper')) {
-    new Swiper('.events-unified-swiper', {
-      loop: false,
-      spaceBetween: 20,
-      navigation: {
-        nextEl: '.swiper-button-next-2',
-        prevEl: '.swiper-button-prev-2',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-          grid: {
-            rows: 3,
-            fill: 'row',
-          },
-        },
-        768: {
-          slidesPerView: 1.25,
-          grid: {
-            rows: 1,
-          },
-        },
-        1280: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-          grid: {
-            rows: 1,
-          },
-          pagination: {
-            el: '.events-pagination',
-            type: 'custom',
-            clickable: true,
-            renderCustom: function (swiper, current, total) {
-              let output = '';
-              if (current > 1) output += pageButton(current - 1, current);
-              output += pageButton(current, current);
-              if (current < total) output += pageButton(current + 1, current);
-              if (current < total - 1) {
-                output += `<span class="pagination-separator" aria-hidden="true"></span>`;
-                output += pageButton(total, current);
-              }
-              return output;
-            }
-          }
-        }
-      }
-    });
-
-    // Pagination bullet helper
-    function pageButton(index, current) {
-      const padded = index.toString().padStart(2, '0');
-      const isActive = index === current;
-      const baseClass = 'swiper-pagination-bullet';
-      const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
-      return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
-    }
+if (document.querySelector('.events-unified-swiper')) {
+  function pageButton(index, current) {
+    const padded = index.toString().padStart(2, '0');
+    const isActive = index === current;
+    const baseClass = 'swiper-pagination-bullet';
+    const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
+    return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
   }
 
+  new Swiper('.events-unified-swiper', {
+    loop: false,
+    spaceBetween: 20,
+    slidesPerGroup: 1, 
+    navigation: {
+      nextEl: '.swiper-button-next-2',
+      prevEl: '.swiper-button-prev-2',
+    },
+    pagination: {
+      el: '.events-pagination',
+      type: 'custom',
+      clickable: true,
+      renderCustom: function (swiper, current, total) {
+        const totalPages = Math.ceil(total / swiper.params.slidesPerGroup);
+        const currentPage = Math.ceil(current / swiper.params.slidesPerGroup);
+
+        let output = '';
+        if (currentPage > 1) output += pageButton(currentPage - 1, currentPage);
+        output += pageButton(currentPage, currentPage);
+        if (currentPage < totalPages) output += pageButton(currentPage + 1, currentPage);
+        if (currentPage < totalPages - 1) {
+          output += `<span class="pagination-separator">---</span>`;
+          output += pageButton(totalPages, currentPage);
+        }
+
+        return output;
+      }
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        grid: {
+          rows: 3,
+          fill: 'row',
+        },
+      },
+      768: {
+        slidesPerView: 1.25,
+        grid: {
+          rows: 1,
+        },
+      },
+      1280: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        grid: {
+          rows: 1,
+        },
+      },
+    }
+  });
+}
   // Our Experience Swiper
   if (document.querySelector('.our-experience-swiper')) {
     new Swiper('.our-experience-swiper', {

@@ -1,4 +1,4 @@
-<section id="events" class="events relative overflow-hidden bg-background pb-[55px] md:pb-[92px] xl:pb-[192px] xl:pt-[280px] md:pt-[194px] pt-[152px]">
+<section id="events" class="events relative overflow-hidden bg-background pb-[55px] md:pb-[92px] xl:pb-[150px] xl:pt-[280px] md:pt-[194px] pt-[152px]">
   <div class="theme-container relative z-10">
     <div class="theme-grid">
       
@@ -33,12 +33,12 @@
     <?php if ($the_query->have_posts()) : ?>
 
      <div class="swiper events-unified-swiper mt-[55px] md:mt-[92px] xl:mt-[195px]">
-  <div class="swiper-wrapper px-4">
+  <div class="swiper-wrapper">
     <?php
     $the_query = new WP_Query($args);
     while ($the_query->have_posts()) : $the_query->the_post(); ?>
       <div class="swiper-slide w-full md:w-full xl:w-[33.33%] flex-shrink-0 md:pr-4">
-        <div class="event-item">
+        <div class="event-item pb-7 md:pb-0">
           <!-- Thumbnail -->
           <?php if (get_the_post_thumbnail()) :
             the_post_thumbnail('event-thumb', ['class' => 'rounded-xl w-full h-auto object-cover']);
@@ -75,8 +75,8 @@
     <?php endwhile; ?>
   </div>
  <div class="cmd:col-span-6 xl:col-span-12 flex items-center justify-center">
-          <div class="events-controls gap-4 mt-[110px]">
-            <span class="swiper-button-prev-2" aria-label="Next"></span>
+          <div class="events-controls gap-4 mt-[50px] md:mt-[75px] xl:mt-[90px]">
+            <span class="swiper-button-prev-2" aria-label="Previous"></span>
             <div class="events-pagination "></div>
             <span class="swiper-button-next-2" aria-label="Next"></span>
           </div> 
