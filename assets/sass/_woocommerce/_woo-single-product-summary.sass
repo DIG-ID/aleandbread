@@ -81,8 +81,7 @@ body.woocommerce.single-product
         @apply col-span-1
       .single_add_to_cart_button
         @apply col-span-3 w-full ml-0 font-medium text-base
-
-  div.product-type-variable
+  div.product-type-variable.product_cat-acessories
     div.summary
       > .price
         @apply hidden invisible
@@ -118,6 +117,35 @@ body.woocommerce.single-product
           @apply mb-9
         .variations_button
           @apply flex
+        .woocommerce-variation-price
+          .price
+            @apply border-none pt-0 
+
+  div.product-type-variable:not(.product_cat-accessories)
+    form.variations_form.cart
+      table.variations
+        @apply m-0
+        th.label
+          @apply text-base font-barlow text-blockText mb-2
+          label
+            @apply text-base font-normal font-barlow text-blockText
+          span.woo-selected-variation-item-name
+            @apply font-semibold
+        td.value
+          @apply flex items-center gap-x-2 mb-2
+          select
+            @apply bg-formFields px-4 py-2 font-barlow
+
+          a.reset_variations
+            @apply font-barlow text-base font-normal text-blockText
+      div.single_variation_wrap
+        @apply flex flex-col
+        .woocommerce-variation.single_variation
+          .woocommerce-variation-availability
+            .stock
+              @apply font-barlow
+        .variations_button
+          @apply flex mt-3
         .woocommerce-variation-price
           .price
             @apply border-none pt-0 
