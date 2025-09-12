@@ -354,6 +354,7 @@ add_action( 'init', function () {
 });
 
 
+/*TO REMOVE TO REMOVE TO REMOVE - Test the thank you page after a purchase*/
 function ale_thankyou_url( $order_id ) {
   $order = wc_get_order( $order_id );
   if ( ! $order ) return '';

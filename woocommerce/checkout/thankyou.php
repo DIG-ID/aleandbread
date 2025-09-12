@@ -21,8 +21,14 @@ defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_main_content');
 
-$order_id = isset($order_id) ? $order_id : 0;
-$order    = $order_id ? wc_get_order($order_id) : false;
+// Keep the $order WooCommerce passes in, or fetch it from the URL if needed.
+if ( empty( $order ) || ! is_a( $order, 'WC_Order' ) ) {
+    $received_id = absint( get_query_var( 'order-received' ) );
+    if ( $received_id ) {
+        $order = wc_get_order( $received_id );
+    }
+}
+
 
 // Helper: small function to render item thumbnails with qty badges.
 function ab_render_order_thumbs( $order ) {
@@ -125,23 +131,19 @@ function ab_render_order_thumbs( $order ) {
                   <?php esc_html_e('Continue shopping','woocommerce'); ?>
                 </a>
               <?php endif; ?>
+              <?php
+              //do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+              //do_action( 'woocommerce_thankyou', $order->get_id() );
+              ?>
             </div>
           <?php else : ?>
             <p class="text-[#6C7275]"><?php esc_html_e('Thank you. Your order has been received.','woocommerce'); ?></p>
+            <?php //do_action( 'woocommerce_thankyou', 0 ); ?>
           <?php endif; ?>
 
         </div>
       </div>
 
-      <?php
-        // Gateway-specific thankyou hooks (e.g., instructions).
-        if ( $order ) {
-          do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
-          do_action( 'woocommerce_thankyou', $order->get_id() );
-        } else {
-          do_action( 'woocommerce_thankyou', 0 );
-        }
-      ?>
 
     <?php endif; ?>
 
