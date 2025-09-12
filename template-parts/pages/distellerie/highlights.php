@@ -15,7 +15,7 @@
             array(
               'taxonomy' => 'product_cat',
               'field'    => 'slug',
-              'terms'    => array( 'distilleries' ),
+              'terms'    => array( 'spirituosen' ),
             ),
           ),
           'meta_query'     => array(

@@ -14,7 +14,7 @@
                 array(
                 'taxonomy' => 'product_cat',
                 'field'    => 'slug',
-                'terms'    => array( 'wines' ), 
+                'terms'    => array( 'weine' ), 
                 ),
             ),
             'meta_query'     => array(

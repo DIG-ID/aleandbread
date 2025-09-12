@@ -52,7 +52,7 @@ add_action( 'woocommerce_after_main_content', 'aleandbread_wrapper_end', 10 );
 function aleandbread_woocommerce_before_shop_loop_action(){
 	woocommerce_output_all_notices();
 	?>
-	<div class="flex w-full justify-between items-center">
+	<div class="flex w-full justify-between items-end">
 		<?php
 		woocommerce_result_count();
 		woocommerce_catalog_ordering();
