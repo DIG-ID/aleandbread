@@ -37,7 +37,7 @@ else :
 				<div class=" col-start-1 col-span-2 md:col-start-1 md:col-span-4 xl:col-start-2 xl:col-span-4">
 						<p class="block-text text-dark pt-[30px] md:pt-[56px] xl:pt-[66px] md:w-[444px] xl:w-[555px]"><?php echo get_field('experiences_hero_description', 'option'); ?></p>
 				</div>
-				<div class="flex flex-col items-start justify-start col-start-1 xl:col-start-2 pt-[30px] md:pt-[56px] xl:pt-[66px] pb-[270px] md:pb-[432px] xl:pb-[300px]">
+				<div class="flex flex-col items-start justify-start col-start-1 xl:col-start-2 pt-[30px] md:pt-[56px] xl:pt-[66px] pb-[270px] md:pb-[432px] xl:pb-[300px] hidden invisible">
 					<?php
 					$button = get_field( 'experiences_hero_button', 'option' );
 					if ( $button ) :

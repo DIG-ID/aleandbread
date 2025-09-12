@@ -146,7 +146,7 @@ function aleandbread_shop_experiences_categories() {
 				$img = $thumb_id ? wp_get_attachment_image( $thumb_id, 'medium', false, array( 'class' => 'w-full h-auto' ) ) : '';
 				$img_url = wp_get_attachment_image_url( $thumb_id, 'full' );
 				?>
-				<li class="card-category card-category--experiences col-span-2 md:col-span-3 xl:col-span-4 mb-5 xl:mb-0" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+				<li class="card-category card-category--experiences col-span-2 md:col-span-3 xl:col-span-4 mb-5 xl:mb-0 overflow-hidden" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
 					<a href="<?php echo esc_url( get_term_link( $cc ) ); ?>">
 						<div class="card-category--content">
 							<span class="overlay"></span>

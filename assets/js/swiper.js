@@ -116,6 +116,7 @@ window.addEventListener("load", () => {
       slidesPerView: 1,
       spaceBetween: 20,
       grabCursor: true,
+      speed: 1200,
       loop: true,
       navigation: {
         nextEl: ".testimonials-swiper-button-next",
@@ -126,47 +127,10 @@ window.addEventListener("load", () => {
         768: { slidesPerView: 1.15 },
         1024: { slidesPerView: 3.15 },
       },
-      autoplay: {
-        delay: 2500,
+      /*autoplay: {
+        delay: 3000,
         disableOnInteraction: true,
-      },
+      },*/
     });
   }
-});
-
-// Accordion FAQ functionality
-document.addEventListener('DOMContentLoaded', function () {
-  const accordionItems = document.querySelectorAll('[data-accordion]');
-  accordionItems.forEach((item) => {
-    const header = item.querySelector('.toggle-header');
-    const content = item.querySelector('.accordion-content');
-    const icon = item.querySelector('.toggle-icon');
-    const questionText = item.querySelector('.faq-question');
-
-    header.addEventListener('click', () => {
-      const isOpen = !content.classList.contains('hidden');
-      accordionItems.forEach((el) => {
-        const contentEl = el.querySelector('.accordion-content');
-        const iconEl = el.querySelector('.toggle-icon');
-        const textEl = el.querySelector('.faq-question');
-        contentEl.classList.add('hidden');
-        contentEl.style.maxHeight = null;
-        iconEl.textContent = '+';
-        iconEl.classList.remove('text-accent');
-        iconEl.classList.add('text-dark');
-        textEl.classList.remove('text-accent');
-        textEl.classList.add('text-dark');
-      });
-
-      if (!isOpen) {
-        content.classList.remove('hidden');
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.textContent = '-';
-        icon.classList.remove('text-dark');
-        icon.classList.add('text-accent');
-        questionText.classList.remove('text-dark');
-        questionText.classList.add('text-accent');
-      }
-    });
-  });
 });
