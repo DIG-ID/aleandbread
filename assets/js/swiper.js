@@ -127,10 +127,10 @@ window.addEventListener("load", () => {
         768: { slidesPerView: 1.15 },
         1024: { slidesPerView: 3.15 },
       },
-      /*autoplay: {
+      autoplay: {
         delay: 3000,
         disableOnInteraction: true,
-      },*/
+      },
     });
   }
 });
