@@ -163,14 +163,15 @@
 				while ( $best_sellers->have_posts() ) :
 					$best_sellers->the_post();
 					$slogan          = get_field( 'slogan' );
-					$image_highlight = get_field( 'alternate_image' );
+					$image_highlight_id = get_field( 'alternate_image', false, false ); // returns ID
+
 					?>
 					<div class="card-best-sellers">
 						<a href="<?php the_permalink(); ?>">
 							<div class="card-best-sellers--image bg-[#C4C4C4]">
 								<?php
 								if ( $image_highlight ) :
-									echo get_the_post_thumbnail( $image_highlight, 'full', array( 'class' => 'w-full h-full object-cover' ) );
+									echo wp_get_attachment_image( $image_highlight_id, 'full', false, ['class' => 'w-full h-full object-cover'] );
 								else :
 									echo get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'w-full h-full object-cover' ) );
 								endif;
