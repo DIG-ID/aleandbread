@@ -76,3 +76,21 @@
   .wc-block-product-filter-price-slider__left,
   .wc-block-product-filter-price-slider__right
     @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-bold
+    input[type=text]
+      @apply text-center
+      max-width: 86px !important
+  .widget.widget_nav_menu
+    .widgettitle
+      @extend .h3
+      text-transform: none
+    .menu-categories-menu-container
+      @apply w-full mt-5
+      & > ul
+        @apply w-full
+        & > li
+          @apply flex justify-between items-center w-full border-b border-accent pb-3
+          &:not(:last-child)
+            @apply mb-4
+          a
+            @apply font-barlow text-[0.875rem] md:text-[1.125rem] leading-[1.3125rem] md:leading-[1.6875rem] font-bold
+

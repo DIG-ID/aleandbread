@@ -17,7 +17,7 @@
 
 if ( is_active_sidebar( 'shop-sidebar' ) ) :
 	?>
-	<div class="woocommerce-sidebar w-full bg-white border border-black px-14 pt-12">
+	<div class="woocommerce-sidebar w-full bg-white border border-black px-14 md:px-14 xl:px-8 2xl:px-14 pt-12">
 		<?php dynamic_sidebar( 'shop-sidebar' ); ?>
 	</div>
 	<?php

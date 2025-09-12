@@ -49,7 +49,7 @@ function ab_render_order_thumbs( $order ) {
 }
 ?>
 
-<section class="ab-thankyou theme-grid relative py-10 md:py-16">
+<section class="ab-thankyou theme-grid relative py-10 md:pb-16 md:pt-0">
   <div class="col-span-2 md:col-span-6 xl:col-span-8 col-start-1 md:col-start-1 xl:col-start-3">
 
     <!-- Title + stepper (step 3 active) -->

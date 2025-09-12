@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_main_content' );
 ?>
 
-<section class="ab-cart relative theme-grid py-10 md:py-16 bg-background">
+<section class="ab-cart relative theme-grid py-10 md:pb-16 md:pt-0 bg-background">
 		<div class="col-span-2 md:col-span-6 xl:col-span-8 col-start-1 md:col-start-1 xl:col-start-3">
 			<!-- Title (use page title; style in CSS to uppercase like the mock) -->
 			<h1 class="text-center text-dark mb-14">

@@ -34,7 +34,7 @@ else :
 	do_action( 'aleandbread_shop_breadcrumbs' );
 	?>
 	<section class="shop-intro relative overflow-hidden">
-		<div class="theme-grid pb-14 xl:pb-48">
+		<div class="theme-grid pb-14 md:pb-16 xl:pb-32">
 			<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4">
 				<?php
 				$term_id      = get_queried_object_id();
@@ -124,10 +124,10 @@ else :
 							do_action( 'aleandbread_before_shop_loop_action' );
 							woocommerce_product_loop_start();
 							?>
-							<hr class="border-t border-dark mt-7 mb-32" />
+							<hr class="border-t border-dark mt-7 mb-7" />
 							<?php
 							if ( wc_get_loop_prop( 'total' ) ) {
-								?><div class="grid grid-cols-2 xl:grid-cols-3 gap-6"><?php
+								?><div class="grid grid-cols-1 xl:grid-cols-3 gap-6"><?php
 								while ( have_posts() ) {
 									the_post();
 
