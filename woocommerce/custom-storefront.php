@@ -89,17 +89,18 @@
 	</div>
 </section>
 
-<section class="experiences-overview bg-background">
-	<div class="theme-grid">
+<section class="experiences-overview bg-background pt-20 xl:pt-40">
+	<div class="theme-grid mb-14 xl:mb-24">
 		<!-- Section Titles -->
-		<div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-5 xl:mt-56 gap-4 md:pt-[108px] xl:pt-0">
+		<div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-5 gap-4 mb-6 md:mb-10 xl:mb-0W">
 			<h2 class="h1 text-dark"><?php the_field( 'experiences_overview_title', 'options' ); ?></h2>
 		</div>
 
-		<div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 pt-6 md:pt-11 md:pb-[100px] pb-2 xl:pb-[145px] xl:pt-56">
+		<div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4	">
 			<p class="block-text text-dark"><?php the_field( 'experiences_overview_subtitle', 'options' ); ?></p>
 		</div>
-
+	</div>
+	<div class="theme-grid">
 		<?php
 		$image    = get_field( 'experiences_overview_image', 'options' );
 		$img_url  = wp_get_attachment_image_url( $image, 'full', array( 'class' => 'object-cover md:mx-auto' ) );
@@ -138,7 +139,7 @@
 
 </section>
 
-<section class="best-sellers theme-grid pt-20 xl:pt-36">
+<section class="best-sellers theme-grid pt-20 xl:pt-40">
 	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
 		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller', 'aleandbread' ); ?></h2>
 	</div> 
@@ -203,7 +204,7 @@
 	</div>
 </section>
 
-<section class="section-testimonials py-12 md:py-16 xl:py-52">
+<section class="section-testimonials py-12 md:py-16 xl:py-40">
 	<div class="flex justify-between items-center mb-14 md:mb-16 xl:mb-20">
 		<h2 class="h1 text-dark uppercase lg:ml-36"><?php the_field( 'testimonials_title', 'options' ); ?></h2>
 		<div class="swiper-navigation-wrapper relative flex gap-x-4 lg:gap-x-6">
