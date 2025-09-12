@@ -66,7 +66,7 @@
                         <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
                         <button type="submit" class="btn btn-secondary mb-6 w-full" name="register"><?php esc_html_e('Konto erstellen', 'aleandbread'); ?></button>
                         <p class="text-center text-sm">
-                            <?php esc_html_e("Sie haben bereits ein Konto?", 'aleandbread'); ?>
+                            <?php esc_html_e("Du hast bereits ein Konto?", 'aleandbread'); ?>
                             <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="text-[#CC332E] font-medium hover:underline"><?php esc_html_e('Login', 'aleandbread'); ?></a>
                         </p>
                         <?php do_action('woocommerce_register_form_end'); ?>

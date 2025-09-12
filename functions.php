@@ -355,12 +355,19 @@ add_action( 'init', function () {
 
 
 /*TO REMOVE TO REMOVE TO REMOVE - Test the thank you page after a purchase*/
-function ale_thankyou_url( $order_id ) {
-  $order = wc_get_order( $order_id );
-  if ( ! $order ) return '';
-  return wc_get_endpoint_url(
-    'order-received',
-    $order->get_id(),
-    wc_get_page_permalink( 'checkout' )
-  ) . '?key=' . $order->get_order_key();
-}
+/*add_action('admin_notices', function(){
+    if (! current_user_can('manage_woocommerce')) return;
+
+    $order_id = 1238; // change this to your test order ID
+    $order    = wc_get_order($order_id);
+
+    if ($order) {
+        $url = wc_get_endpoint_url(
+            'order-received',
+            $order->get_id(),
+            wc_get_page_permalink('checkout')
+        ) . '?key=' . $order->get_order_key();
+
+        echo '<div class="notice notice-info"><p>Thank You URL: <a href="'.esc_url($url).'" target="_blank">'.$url.'</a></p></div>';
+    }
+});*/

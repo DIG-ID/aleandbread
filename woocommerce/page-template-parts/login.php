@@ -68,7 +68,7 @@ if ( function_exists('WC') && WC()->session && WC()->session->get('ab_show_resen
                         <button type="submit" class="btn btn-secondary mb-6 w-full" name="login">Login</button>
 
                         <p class="text-center text-sm">
-                            <?php esc_html_e("Sie haben noch kein Konto?", 'aleandbread'); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <?php esc_html_e("Du hast noch kein Konto?", 'aleandbread'); ?>&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="<?php echo esc_url( home_url( '/sign-up' ) ); ?>" class="text-[#CC332E] font-medium hover:underline"><?php esc_html_e('Registrieren', 'aleandbread'); ?></a>
                         </p>
 

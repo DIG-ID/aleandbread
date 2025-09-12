@@ -34,7 +34,7 @@
 
                 $product = function_exists( 'wc_get_product' ) ? wc_get_product( get_the_ID() ) : null;
 
-                $image_id   = get_field( 'highlight_content_image' );
+                $image_id   = get_field( 'alternate_image' );
                 $image_html = $image_id ? wp_get_attachment_image(
                     $image_id,
                     'highlights-size',

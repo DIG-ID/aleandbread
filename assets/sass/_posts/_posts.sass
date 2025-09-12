@@ -20,3 +20,11 @@
         @apply font-bold
     h1, h2, h3, h4, h5, h6
         @apply mb-6
+    .wp-block-button__link
+        @extend .btn
+        @apply btn-primary rounded-none
+        &:hover
+            @apply bg-accent
+            color: #0D0D0D !important
+        &:active
+            @apply bg-dark text-accent

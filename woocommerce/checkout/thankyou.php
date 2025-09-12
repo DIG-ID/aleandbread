@@ -39,7 +39,7 @@ function ab_render_order_thumbs( $order ) {
     if ( ! $product ) continue;
     $thumb = $product->get_image( 'woocommerce_thumbnail', [ 'class' => 'w-full h-full object-cover' ] );
     $qty   = $item->get_quantity();
-    echo '<div class="ab-thumb relative w-[72px] h-[96px] rounded-[6px] overflow-hidden bg-[#F3F4F6] flex items-center justify-center">';
+    echo '<div class="ab-thumb relative w-[80px] h-[96px] overflow-hidden bg-[#F3F4F6] flex items-center justify-center">';
     echo $thumb ?: '<span class="block w-[40px] h-[40px] bg-[#e5e7eb]"></span>';
     echo '<span class="ab-badge absolute -top-2 -right-2">' . esc_html( $qty ) . '</span>';
     echo '</div>';
@@ -73,7 +73,7 @@ function ab_render_order_thumbs( $order ) {
     <?php if ( $order && $order->has_status('failed') ) : ?>
 
       <div class="max-w-3xl mx-auto">
-        <div class="ab-card bg-white rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
+        <div class="ab-card bg-white shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
           <h2 class="text-[22px] font-semibold mb-2"><?php esc_html_e( 'Payment failed', 'woocommerce' ); ?></h2>
           <p class="text-[#6C7275] mb-6"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction.', 'woocommerce' ); ?></p>
           <div class="flex items-center justify-center gap-3">
@@ -89,46 +89,58 @@ function ab_render_order_thumbs( $order ) {
 
       <!-- Centered success card -->
       <div class="max-w-3xl mx-auto">
-        <div class="ab-card bg-white rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
+        <div class="ab-card bg-white shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
 
-          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mb-2"><?php esc_html_e('Thank you! 🎉','aleandbread'); ?></p>
-          <p class="text-[22px] md:text-[40px] leading-tight font-medium text-dark mb-6 max-w-[492px] mx-auto"><?php esc_html_e('Ihre Bestellung ist eingegangen','aleandbread'); ?></p>
+          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mb-7"><?php esc_html_e('Thank you! 🎉','aleandbread'); ?></p>
+          <p class="text-[22px] md:text-[40px] leading-tight font-medium text-dark mb-12 max-w-[492px] mx-auto"><?php esc_html_e('Ihre Bestellung ist eingegangen','aleandbread'); ?></p>
 
           <!-- Thumbnails row -->
-          <div class="flex items-center justify-center gap-6 mb-8">
+          <div class="flex items-center justify-center gap-14 mb-12">
             <?php if ( $order ) { ab_render_order_thumbs( $order ); } ?>
           </div>
 
           <?php if ( $order ) : ?>
-            <div class="ab-meta grid gap-2 justify-center text-left max-w-sm mx-auto mb-6 text-[14px]">
-              <div class="flex justify-between gap-6">
-                <span class="text-[#6C7275] text-base"><?php esc_html_e('Order code:','woocommerce'); ?></span>
-                <span class="font-semibold text-base text-dark">#<?php echo esc_html( $order->get_order_number() ); ?></span>
-              </div>
-              <div class="flex justify-between gap-6">
-                <span class="text-[#6C7275] text-base"><?php esc_html_e('Date:','woocommerce'); ?></span>
-                <span class="font-semibold text-base text-dark"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></span>
-              </div>
-              <div class="flex justify-between gap-6">
-                <span class="text-[#6C7275] text-base"><?php esc_html_e('Total:','woocommerce'); ?></span>
-                <span class="font-semibold text-base text-dark"><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></span>
-              </div>
+            <div class="ab-meta grid grid-cols-[100px_1fr] gap-y-2 justify-center text-left max-w-60 mx-auto mb-6 text-[14px]">
+              <span class="text-[#6C7275] text-base">
+                <?php esc_html_e('Order code:', 'woocommerce'); ?>
+              </span>
+              <span class="font-semibold text-base text-dark">
+                #<?php echo esc_html( $order->get_order_number() ); ?>
+              </span>
+
+              <span class="text-[#6C7275] text-base">
+                <?php esc_html_e('Date:', 'woocommerce'); ?>
+              </span>
+              <span class="font-semibold text-base text-dark">
+                <?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?>
+              </span>
+
+              <span class="text-[#6C7275] text-base">
+                <?php esc_html_e('Total:', 'woocommerce'); ?>
+              </span>
+              <span class="font-semibold text-base text-dark">
+                <?php echo wp_kses_post( $order->get_formatted_order_total() ); ?>
+              </span>
+
               <?php if ( $order->get_payment_method_title() ) : ?>
-                <div class="flex justify-between gap-6">
-                  <span class="text-[#6C7275] text-base"><?php esc_html_e('Payment method:','woocommerce'); ?></span>
-                  <span class="font-semibold text-base text-dark"><?php echo esc_html( $order->get_payment_method_title() ); ?></span>
-                </div>
+                <span class="text-[#6C7275] text-base">
+                  <?php esc_html_e('Payment method:', 'woocommerce'); ?>
+                </span>
+                <span class="font-semibold text-base text-dark">
+                  <?php echo esc_html( $order->get_payment_method_title() ); ?>
+                </span>
               <?php endif; ?>
             </div>
 
-            <div class="mt-6">
+
+            <div class="mt-12">
               <?php if ( is_user_logged_in() ) : ?>
-                <a href="<?php echo esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ); ?>" class="button rounded-full px-6 py-3">
-                  <?php esc_html_e('Purchase history','woocommerce'); ?>
+                <a href="<?php echo esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ); ?>" class="btn btn-primary px-6 py-3">
+                  <?php esc_html_e('Bestellverlauf','aleandbread'); ?>
                 </a>
               <?php else : ?>
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="button rounded-full px-6 py-3">
-                  <?php esc_html_e('Continue shopping','woocommerce'); ?>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-primary px-6 py-3">
+                  <?php esc_html_e('Weiter einkaufen','aleandbread'); ?>
                 </a>
               <?php endif; ?>
               <?php
@@ -137,7 +149,7 @@ function ab_render_order_thumbs( $order ) {
               ?>
             </div>
           <?php else : ?>
-            <p class="text-[#6C7275]"><?php esc_html_e('Thank you. Your order has been received.','woocommerce'); ?></p>
+            <p class="text-[#6C7275]"><?php esc_html_e('Vielen Dank. Ihre Bestellung ist eingegangen.','aleandbread'); ?></p>
             <?php //do_action( 'woocommerce_thankyou', 0 ); ?>
           <?php endif; ?>
 
