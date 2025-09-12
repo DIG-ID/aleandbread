@@ -105,7 +105,7 @@ else :
 			<div class="col-span-2 md:col-span-6 xl:col-span-12">
 				<div class="theme-grid">
 					<!-- Sidebar column -->
-					<aside class="col-span-2 md:col-span-3 xl:col-span-3">
+					<aside class="col-span-2 md:col-span-3 xl:col-span-3 mb-10 md:mb-0">
 						<?php
 						/**
 						 * Hook: woocommerce_sidebar.

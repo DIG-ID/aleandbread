@@ -355,34 +355,3 @@ add_filter('wp_nav_menu_objects', function($items, $args){
   return $filtered;
 }, 10, 2);
 
-
-// Hide the entire Navigation Menu widget if it has no items that are children of the current parent category.
-add_filter('widget_display_callback', function ($instance, $widget) {
-  // Affect only Navigation Menu widgets
-  if ($widget->id_base !== 'nav_menu') return $instance;
-
-  // Only on product category archives
-  if (!is_product_category()) return $instance;
-
-  $term = get_queried_object();
-  // Show only on *parent* category pages; hide elsewhere (removes title + wrapper)
-  if (!$term || is_wp_error($term) || $term->parent) return false;
-
-  // Check if this widget's menu has at least one item that is a child of current parent
-  $menu_id = isset($instance['nav_menu']) ? (int) $instance['nav_menu'] : 0;
-  if (!$menu_id) return false;
-
-  $items = wp_get_nav_menu_items($menu_id, ['update_post_term_cache' => false]);
-  if (!$items) return false;
-
-  $parent_id = (int) $term->term_id;
-  foreach ($items as $item) {
-    if ($item->object === 'product_cat') {
-      $cat = get_term($item->object_id, 'product_cat');
-      if ($cat && !is_wp_error($cat) && (int) $cat->parent === $parent_id) {
-        return $instance; // keep widget
-      }
-    }
-  }
-  return false; // hide widget if no matching children
-}, 10, 2);
