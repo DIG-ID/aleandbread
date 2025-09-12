@@ -1,4 +1,4 @@
-<section id="events" class="events relative overflow-hidden bg-background pb-[55px] md:pb-[92px] xl:pb-[150px] xl:pt-[280px] md:pt-[194px] pt-[152px]">
+<section id="events" class="events relative overflow-hidden bg-background pb-[55px] md:pb-[92px] xl:pb-[100px] xl:pt-[280px] md:pt-[194px] pt-[152px]">
   <div class="theme-container relative z-10">
     <div class="theme-grid">
       

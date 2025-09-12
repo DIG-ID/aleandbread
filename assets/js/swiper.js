@@ -39,67 +39,64 @@ window.addEventListener("load", () => {
   }
 
   // Events Swiper (mobile, tablet, desktop)
-if (document.querySelector('.events-unified-swiper')) {
-  function pageButton(index, current) {
-    const padded = index.toString().padStart(2, '0');
-    const isActive = index === current;
-    const baseClass = 'swiper-pagination-bullet';
-    const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
-    return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
+  if (document.querySelector('.events-unified-swiper')) {
+    new Swiper('.events-unified-swiper', {
+      loop: false,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next-2',
+        prevEl: '.swiper-button-prev-2',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          grid: {
+            rows: 3,
+            fill: 'row',
+          },
+        },
+        768: {
+          slidesPerView: 1.25,
+          grid: {
+            rows: 1,
+          },
+        },
+        1280: {
+          slidesPerView: 3,
+          slidesPerGroup: 3,
+          grid: {
+            rows: 1,
+          },
+          pagination: {
+            el: '.events-pagination',
+            type: 'custom',
+            clickable: true,
+            renderCustom: function (swiper, current, total) {
+              let output = '';
+              if (current > 1) output += pageButton(current - 1, current);
+              output += pageButton(current, current);
+              if (current < total) output += pageButton(current + 1, current);
+              return output;
+            }
+          }
+        }
+      }
+    });
+
+    // Pagination bullet helper
+    function pageButton(index, current) {
+      const padded = index.toString().padStart(2, '0');
+      const isActive = index === current;
+      const baseClass = 'swiper-pagination-bullet';
+      const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
+      return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
+    }
   }
 
-  new Swiper('.events-unified-swiper', {
-    loop: false,
-    spaceBetween: 20,
-    slidesPerGroup: 1, 
-    navigation: {
-      nextEl: '.swiper-button-next-2',
-      prevEl: '.swiper-button-prev-2',
-    },
-    pagination: {
-      el: '.events-pagination',
-      type: 'custom',
-      clickable: true,
-      renderCustom: function (swiper, current, total) {
-        const totalPages = Math.ceil(total / swiper.params.slidesPerGroup);
-        const currentPage = Math.ceil(current / swiper.params.slidesPerGroup);
-
-        let output = '';
-        if (currentPage > 1) output += pageButton(currentPage - 1, currentPage);
-        output += pageButton(currentPage, currentPage);
-        if (currentPage < totalPages) output += pageButton(currentPage + 1, currentPage);
-        if (currentPage < totalPages - 1) {
-          output += pageButton(totalPages, currentPage);
-        }
-
-        return output;
-      }
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        grid: {
-          rows: 3,
-          fill: 'row',
-        },
-      },
-      768: {
-        slidesPerView: 1.25,
-        slidesPerGroup: 1,
-        grid: {
-          rows: 1,
-        },
-      },
-      1280: {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        grid: {
-          rows: 1,
-        },
-      },
-    }
-  });
-}
   // Our Experience Swiper
   if (document.querySelector('.our-experience-swiper')) {
     new Swiper('.our-experience-swiper', {
@@ -135,4 +132,41 @@ if (document.querySelector('.events-unified-swiper')) {
       },
     });
   }
+});
+
+// Accordion FAQ functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionItems = document.querySelectorAll('[data-accordion]');
+  accordionItems.forEach((item) => {
+    const header = item.querySelector('.toggle-header');
+    const content = item.querySelector('.accordion-content');
+    const icon = item.querySelector('.toggle-icon');
+    const questionText = item.querySelector('.faq-question');
+
+    header.addEventListener('click', () => {
+      const isOpen = !content.classList.contains('hidden');
+      accordionItems.forEach((el) => {
+        const contentEl = el.querySelector('.accordion-content');
+        const iconEl = el.querySelector('.toggle-icon');
+        const textEl = el.querySelector('.faq-question');
+        contentEl.classList.add('hidden');
+        contentEl.style.maxHeight = null;
+        iconEl.textContent = '+';
+        iconEl.classList.remove('text-accent');
+        iconEl.classList.add('text-dark');
+        textEl.classList.remove('text-accent');
+        textEl.classList.add('text-dark');
+      });
+
+      if (!isOpen) {
+        content.classList.remove('hidden');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.textContent = '-';
+        icon.classList.remove('text-dark');
+        icon.classList.add('text-accent');
+        questionText.classList.remove('text-dark');
+        questionText.classList.add('text-accent');
+      }
+    });
+  });
 });

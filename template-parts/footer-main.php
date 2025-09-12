@@ -32,7 +32,7 @@
                     </div>
                     <p class="block-text text-accent md:max-w-[11rem] xl:max-w-52 mb-11 md:mb-16 xl:mb-0"><?php echo get_field( 'copyright', 'option' ); ?></p>
                     <div class="socials-devs hidden xl:block">
-                        <p class="mb-4 block-text-bold text-accent pt-11 md:pt-24"><?php esc_html_e( 'Folgen uns', 'aleandbread' ); ?></p>
+                        <p class="mb-4 block-text-bold text-accent pt-11 md:pt-24"><?php esc_html_e( 'Folge uns', 'aleandbread' ); ?></p>
                         <?php do_action( 'socials' ); ?>
                         <p class="mb-3 pt-11 md:pt-28 block-text-bold text-accent"><?php esc_html_e( 'Developed by:', 'aleandbread' ); ?></p>
                         <a href="https://dig.id" class="block-text text-accent underline"><?php esc_html_e( 'dig.id', 'aleandbread' ); ?></a>

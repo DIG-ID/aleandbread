@@ -1,4 +1,4 @@
-<section id="weingut_roschard" class="weingut_roschard pb-[94px] md:pb-[145px] xl:pb-[261px] pt-[92px] md:pt-[128px] relative overflow-hidden bg-background">
+<section id="weingut_roschard" class="weingut_roschard pb-[94px] md:pb-[145px] xl:pb-[261px] relative overflow-hidden bg-background">
 
   <!-- Fullscreen Swiper for mobile and tablet -->
   <?php if ($gallery = get_field('weingut_roschard_swiper')): ?>

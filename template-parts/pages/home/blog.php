@@ -51,7 +51,7 @@
 
                         <!-- Date -->
                         <div class="block-text-bold text-accent mb-6 group-hover:text-blockTextLight">
-                            <?php echo get_the_date(); ?>
+                            <?php echo get_the_date('d M Y'); ?> 
                         </div>
 
                         <!-- Description -->

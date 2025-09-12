@@ -23,9 +23,9 @@
                         <a class="btn btn-primary !col-span-2" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
                     <?php endif; ?>
                 </div>
-                <div class="col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 max-w-[353px]">
+                <div class="col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4 max-w-[343px] md:max-w-[560px] xl:max-w-full">
                 <p class="block-text text-blockTextLight self-stretch pt-4 xl:pt-0 md:pt-12"><?php echo get_field('craftmanship_description_1'); ?></p>
-                <p class="block-text text-blockTextLight pt-7 md:pt-12 xl:pt-24 pb-7 md:pb-0"><?php echo get_field('craftmanship_description_2'); ?></p>
+                <p class="block-text text-blockTextLight pt-7 md:pt-12 pb-7 md:pb-0"><?php echo get_field('craftmanship_description_2'); ?></p>
                 </div>
             </div>
             <div class="col-start-1 md:col-start-1 xl:col-start-1 col-span-2 md:col-span-6 xl:col-span-12 xl:mt-24 grid xl:grid-cols-12 gap-4 md:pt-14">
