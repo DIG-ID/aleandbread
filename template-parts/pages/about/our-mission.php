@@ -1,4 +1,4 @@
-<section id="our-mission" class="our-mission bg-dark pt-[82px] md:pt-[128px] xl:pt-[280px] pb-20 md:pb-28 xl:pb-48">
+<section id="our-mission" class="our-mission bg-dark pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl pb-20 md:pb-28 xl:pb-48">
     <div class="theme-container">
         <div class="theme-grid">
             <div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-4 order-2 xl:order-1">

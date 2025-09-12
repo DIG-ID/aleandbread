@@ -1,4 +1,4 @@
-<section id="blog" class="blog relative overflow-hidden bg-background pb-[110px] md:pb-[134px] xl:pb-[243px] pt-[152px] md:pt-[192px] xl:pt-[264px]">
+<section id="blog" class="blog relative overflow-hidden bg-background pb-[110px] md:pb-[134px] xl:pb-[243px] pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl">
   <div class="theme-container relative z-10">
     <div class="theme-grid grid-cols-2 md:grid-cols-6 xl:grid-cols-12">
       

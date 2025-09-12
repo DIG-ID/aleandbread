@@ -79,8 +79,8 @@ function aleandbread_shop_custom_breadcrumbs() {
 		woocommerce_breadcrumb(
 			array(
 				'delimiter'   => ' / ',
-				'wrap_before' => '<div class="theme-container"><div class="theme-grid"><div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-4 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
-				'wrap_after'  => '</nav></div></div></div>',
+				'wrap_before' => '<div class="theme-grid"><div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-4 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
+				'wrap_after'  => '</nav></div></div>',
 				'before'      => '',
 				'after'       => '',
 			)

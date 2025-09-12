@@ -24,7 +24,7 @@ if ( is_shop() && ! is_product_category() && ! is_search() ) :
 else :
 
 	?>
-	<section  id="hero" class="section-hero pb-0 relative overflow-hidden bg-no-repeat bg-center bg-cover mb-14 md:mb-16 xl:mb-32  pt-[152px] md:pt-[197px] xl:pt-[200px]" style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_hero_background', 'option' ), 'full' ) ); ?>');">
+	<section  id="hero" class="section-hero pb-0 relative overflow-hidden bg-no-repeat bg-center bg-cover mb-14 md:mb-16 xl:mb-32 pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl" style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url( get_field( 'experiences_hero_background', 'option' ), 'full' ) ); ?>');">
 		<!-- Content stays normally positioned with higher z-index -->
 		<div class="theme-container relative z-10">
 			<div class="theme-grid">

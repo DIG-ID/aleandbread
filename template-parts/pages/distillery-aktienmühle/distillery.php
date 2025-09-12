@@ -1,11 +1,11 @@
-<section id="distillery" class="distillery pb-[94px] md:pb-[222px] xl:pb-[261px] relative overflow-hidden bg-background">
+<section id="distillery" class="distillery pb-16 md:pb-24 xl:pb-44 pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl relative overflow-hidden bg-background">
   <div class="theme-container relative z-10">
     <div class="theme-grid">
       
       <!-- Text Content Block -->
       <div class="col-span-2 md:col-span-6 xl:col-span-6 xl:col-start-2 order-2 xl:order-none">
         <!-- Breadcrumb -->
-        <div class="pt-[60px] md:pt-[54px] xl:pt-[280px]">
+        <div>
           <?php do_action('breadcrumbs'); ?>
         </div>
 
@@ -46,7 +46,7 @@
       </div>
 
       <!--  Swiper  -->
-      <div class="col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 pt-[72px] md:pt-[128px] xl:pt-[280px] order-1 xl:order-none">
+      <div class="col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 order-1 xl:order-none">
         <?php 
         $gallery = get_field('distillery_aktienmuhle_swiper'); 
         if( $gallery ): ?>

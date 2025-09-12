@@ -132,6 +132,37 @@ function theme_breadcrumbs() {
 
 add_action( 'breadcrumbs', 'theme_breadcrumbs' );
 
+
+// Remove duplicate entries in Yoast breadcrumbs (same label or same URL)
+add_filter('wpseo_breadcrumb_links', function ($links) {
+  if (!is_array($links) || count($links) < 2) return $links;
+
+  $clean = [];
+  $prev_text_key = null;
+  $prev_url_key  = null;
+
+  foreach ($links as $link) {
+    $text = isset($link['text']) ? wp_strip_all_tags($link['text']) : '';
+    $url  = isset($link['url'])  ? $link['url'] : '';
+
+    // Normalize for comparison
+    $text_key = function_exists('mb_strtolower') ? mb_strtolower(trim($text)) : strtolower(trim($text));
+    $url_key  = rtrim($url, "/");
+
+    // If the previous item has the same label OR the same normalized URL, skip this one.
+    if ($text_key === $prev_text_key || ($url && $url_key === $prev_url_key)) {
+      continue;
+    }
+
+    $clean[]       = $link;
+    $prev_text_key = $text_key;
+    $prev_url_key  = $url_key;
+  }
+
+  return $clean;
+});
+
+
 /**
  * Socials for the website.
  */

@@ -1,4 +1,4 @@
-<section id="weingut_roschard" class="weingut_roschard pb-[94px] md:pb-[145px] xl:pb-[261px] relative overflow-hidden bg-background">
+<section id="weingut_roschard" class="weingut_roschard pb-16 md:pb-24 xl:pb-44 pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl relative overflow-hidden bg-background">
 
   <!-- Fullscreen Swiper for mobile and tablet -->
   <?php if ($gallery = get_field('weingut_roschard_swiper')): ?>
@@ -29,7 +29,7 @@
       <!-- Text Content Block -->
       <div class="col-span-2 md:col-span-6 xl:col-span-6 xl:col-start-2 order-2 xl:order-none">
         <!-- Breadcrumb -->
-        <div class="pt-[24px] md:pt-[54px] xl:pt-[280px]">
+        <div>
           <?php do_action('breadcrumbs'); ?>
         </div>
 
@@ -70,7 +70,7 @@
       </div>
 
       <!-- Desktop Swiper -->
-      <div class="hidden xl:block col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 pt-[280px] order-1">
+      <div class="hidden xl:block col-span-2 md:col-span-6 xl:col-span-5 xl:col-start-8 order-1">
         <div class="swiper our-experience-swiper relative">
           <div class="swiper-wrapper">
             <?php foreach ($gallery as $image_id):

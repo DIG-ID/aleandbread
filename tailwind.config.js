@@ -17,9 +17,10 @@ module.exports = {
         barlow: ['Barlow', 'sans-serif'],
         barlowSemiCondensed: ['barlow-semi-condensed', 'sans-serif'],
       },
-      letterSpacing: {
-        //wide: '.038em',
-        //wider: '.06em',
+      spacing: {
+        'pt-combo-sm': '130px', // 48 + 82
+        'pt-combo-md': '168px', // 64 + 104
+        'pt-combo-xl': '202px', // 96 + 106
       },
       colors: {
         dark: '#0D0D0D',

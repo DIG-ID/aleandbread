@@ -31,6 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
+<?php do_action( 'aleandbread_shop_breadcrumbs' ); ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'theme-grid', $product ); ?>>
 
 	<?php

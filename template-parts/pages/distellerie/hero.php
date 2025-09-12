@@ -25,7 +25,7 @@
   <!-- Content Container -->
   <div class="theme-container relative z-10 h-full md:h-auto">
     <div class="theme-grid h-full md:h-auto items-end pb-[155px] md:pb-[377px]">
-      <div class="col-span-2 md:col-span-4 xl:col-span-6 col-start-1 xl:col-start-2 h-full pt-[152px] md:pt-[197px] xl:pt-[275px]">
+      <div class="col-span-2 md:col-span-4 xl:col-span-6 col-start-1 xl:col-start-2 h-full pt-pt-combo-sm md:pt-pt-combo-md xl:pt-pt-combo-xl">
         <?php do_action('breadcrumbs'); ?>
 
         <h1 class="text-blockTextLight pt-[30px] md:pt-[56px] w-[300px] md:w-full xl:w-auto">
