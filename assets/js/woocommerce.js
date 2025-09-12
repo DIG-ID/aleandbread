@@ -44,3 +44,19 @@ document.addEventListener('input', (e) => {
     }
   }
 });
+
+// On page load, hide any nav menu widgets that have no list items
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.body.classList.contains('tax-product_cat')) {
+    return;
+  }
+
+  document.querySelectorAll('.widget.widget_block').forEach(function (block) {
+    const nav = block.querySelector('.widget_nav_menu');
+    if (!nav) return;
+
+    if (!nav.querySelector('ul li')) {
+      block.remove(); 
+    }
+  });
+});
