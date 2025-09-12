@@ -32,7 +32,7 @@
   <?php endif; ?>
 
   <!-- Content always visible -->
-  <div class="theme-container relative z-10">
+  <div class="theme-container relative z-10 h-screen">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-4 xl:col-span-6 xl:col-start-2 pt-40 md:pt-60 xl:pt-[320px] md:min-h-full xl:min-h-0">
         <h1 class="text-blockTextLight w-[240px] md:w-full">
@@ -66,23 +66,19 @@
           <?php endif; ?>
         </div>
       </div>
-      <div class="hidden col-span-1 xl:col-start-1 xl:flex items-end justify-center -mb-[150px]">
-        <a class="btn btn-scroll absolute"></a>
-      </div>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          document.querySelector('.btn-scroll')?.addEventListener('click', function (e) {
-            e.preventDefault();
-            // scroll one viewport down with Lenis
-            lenis.scrollTo(window.scrollY + window.innerHeight, {
-              duration: 2, 
-              easing: (t) => t, 
-            })
-          });
-        });
-      </script>
-
+      <a class="btn btn-scroll absolute bottom-16 right-8"></a>
     </div>
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.btn-scroll')?.addEventListener('click', function (e) {
+      e.preventDefault();
+      // scroll one viewport down with Lenis
+      lenis.scrollTo(window.scrollY + window.innerHeight, {
+        duration: 2, 
+        easing: (t) => t, 
+      })
+    });
+  });
+</script>
