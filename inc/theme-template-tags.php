@@ -44,42 +44,6 @@ function theme_after_post_content() {
 
 add_action( 'after_post_content', 'theme_after_post_content' );
 
-/**
- * This function gest the rooms features.
- */
-function theme_room_features() {
-	if ( have_rows( 'features' ) ) :
-		echo '<ul class="features">';
-		while ( have_rows( 'features' ) ) :
-			the_row();
-			?>
-			<li id="feature-item">
-				<?php
-				$fields = [
-					'bed'      => __( 'Bett:', 'aleandbread' ),
-					'size'     => __( 'Fläche:', 'aleandbread' ),
-					'capacity' => __( 'Belegung:', 'aleandbread' ),
-					'view'     => __( 'Aussicht:', 'aleandbread' ),
-				];
-				foreach ( $fields as $field_key => $label ) :
-					$field_value = get_sub_field( $field_key );
-					if ( $field_value ) :
-						?>
-						<p class="font-poppins font-normal text-sm text-blue-shade-5 tracking-[0.14px]">
-							<span class="font-bold"><?php echo $label; ?></span> <?php echo esc_html( $field_value ); ?>
-						</p>
-						<?php
-					endif;
-				endforeach;
-				?>
-			</li>
-			<?php
-		endwhile;
-		echo '</ul>';
-	endif;
-}
-
-add_action( 'room_features', 'theme_room_features' );
 
 /**
  * This theme logo.
