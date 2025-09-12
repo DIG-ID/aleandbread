@@ -322,3 +322,35 @@ function aleandbread_lid_from_price_only( $price_html, $product ) {
 }
 add_filter( 'woocommerce_variable_price_html', 'aleandbread_lid_from_price_only', 10, 2 );
 add_filter( 'woocommerce_variable_sale_price_html', 'aleandbread_lid_from_price_only', 10, 2 );
+
+
+
+// Filter menu items to show only child categories of current parent category on product category archive pages.
+add_filter('wp_nav_menu_objects', function($items, $args){
+  // Limit to product category archives
+  if ( ! is_product_category() ) return $items;
+
+  // Only on parent category pages
+  $current = get_queried_object();
+  if ( ! $current || $current->parent ) return [];
+
+  // Target a specific menu by name (adjust to your menu name)
+  $target_menu_names = ['Product Series Menu', 'Produkt-Serie'];
+  $menu_name = is_object($args->menu) ? $args->menu->name : (is_string($args->menu) ? $args->menu : '');
+  if ( ! in_array( $menu_name, $target_menu_names, true ) ) return $items;
+
+  $parent_id = (int) $current->term_id;
+  $filtered = [];
+
+  foreach ( $items as $item ) {
+    // Keep only menu items that are product_cat terms whose parent is the current term
+    if ( $item->object === 'product_cat' ) {
+      $term = get_term( $item->object_id, 'product_cat' );
+      if ( $term && ! is_wp_error($term) && (int) $term->parent === $parent_id ) {
+        $filtered[] = $item;
+      }
+    }
+  }
+
+  return $filtered;
+}, 10, 2);

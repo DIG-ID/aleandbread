@@ -66,7 +66,7 @@
           <?php endif; ?>
         </div>
       </div>
-      <a class="btn btn-scroll absolute bottom-16 right-8"></a>
+      <a class="btn btn-scroll !hidden xl:block absolute bottom-16 right-8"></a>
     </div>
   </div>
 </section>
