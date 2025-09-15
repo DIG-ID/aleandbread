@@ -41,7 +41,6 @@ do_action( 'woocommerce_before_main_content' );
         <span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Bestellung abgeschlossen', 'aleandbread' ); ?></span>
       </div>
     </div>
-
     <?php
     // Standard Woo pre-checkout hook and auth checks
     do_action( 'woocommerce_before_checkout_form', $checkout );
@@ -52,19 +51,24 @@ do_action( 'woocommerce_before_main_content' );
       return;
     }
     ?>
-
+    <div class="grid xl:flex grid-cols-2 md:grid-cols-6 xl:grid-cols-8">
+      <div class="col-span-2 md:col-span-6 xl:col-span-8 w-full">
+        <div id="checkout-notices" class="woocommerce-notices-wrapper mb-8"></div>
+      </div>
+    </div>
     <!-- OPEN FORM: wraps BOTH columns -->
     <form name="checkout"
           method="post"
           class="checkout woocommerce-checkout"
           action="<?php echo esc_url( wc_get_checkout_url() ); ?>"
           enctype="multipart/form-data">
-
+      
+      
       <!-- Two-column layout -->
-      <div class="grid grid-cols-2 md:grid-cols-6 xl:grid-cols-8 gap-6 items-start">
+      <div class="grid xl:flex grid-cols-2 md:grid-cols-6 gap-6 items-start">
 
         <!-- LEFT: customer details -->
-        <div class="col-span-2 md:col-span-6 xl:col-span-5">
+        <div class="col-span-2 md:col-span-6 xl:col-span-5 xl:w-3/5">
           <div class="woocommerce-checkout-fields">
             <?php if ( $checkout->get_checkout_fields() ) : ?>
               <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
@@ -84,7 +88,7 @@ do_action( 'woocommerce_before_main_content' );
         </div>
 
         <!-- RIGHT: order summary + payment (includes Place Order button & nonce) -->
-        <aside class="col-span-2 md:col-span-6 xl:col-span-3">
+        <aside class="col-span-2 md:col-span-6 xl:col-span-3 xl:w-2/5">
           <div class="woocommerce-checkout-review-order bg-white py-4 px-6">
             <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
             <h3 id="order_review_heading" class="mb-4 font-semibold"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>

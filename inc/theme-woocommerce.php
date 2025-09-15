@@ -11,7 +11,10 @@ remove_action( 'woocommerce_shop_loop_header', 'woocommerce_product_taxonomy_arc
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
-// Remove default notices from login form.
+// Remove default notices.
+remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notices', 10 );
+remove_action( 'woocommerce_checkout_before_customer_details', 'woocommerce_output_all_notices', 10 );
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 10 );
 remove_action( 'woocommerce_before_customer_login_form', 'wc_print_notices', 10 );
 remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 );
@@ -21,6 +24,28 @@ remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 
 if ( false === has_action( 'woocommerce_account_content', 'woocommerce_account_content' ) ) {
 	add_action( 'woocommerce_account_content', 'woocommerce_account_content' );
 }
+
+// Enqueue once (theme or plugin); or inline this <script> on the checkout page.
+add_action( 'wp_footer', function () {
+  if ( ! is_checkout() ) return; ?>
+  <script>
+  jQuery(function($){
+    var $target = $('#checkout-notices'); // your desired container
+    if (!$target.length) return;
+
+    function moveNotices(){
+      var $first = $('.woocommerce .woocommerce-NoticeGroup-checkout, .woocommerce .woocommerce-notices-wrapper').first();
+      if ($first.length && !$first.is($target)) {
+        // Move all notice content into your container
+        $target.empty().append($first.contents());
+      }
+    }
+    // On initial load and whenever Woo fires an error
+    moveNotices();
+    $(document.body).on('checkout_error', moveNotices);
+  });
+  </script>
+<?php });
 
 
 /**

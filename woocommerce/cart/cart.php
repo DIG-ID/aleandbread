@@ -39,12 +39,16 @@ do_action( 'woocommerce_before_main_content' );
 					<span class="step-dot-faded">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#B1B5C3]"><?php esc_html_e( 'Bestellung abgeschlossen', 'aleandbread' ); ?></span>
 				</div>
 			</div>
-
+			<div class="grid xl:flex grid-cols-2 md:grid-cols-6 xl:grid-cols-8">
+				<div class="col-span-2 md:col-span-6 xl:col-span-8 w-full">
+					<?php woocommerce_output_all_notices(); ?>
+					<!-- Alternatively: wc_print_notices(); -->
+				</div>
+			</div>
 			<!-- 2‑column layout -->
 			<div class="grid xl:flex grid-cols-2 md:grid-cols-6 gap-6 items-start">
-
 			<!-- LEFT: table -->
-			<div class="col-span-2 md:col-span-6 xl:col-span-5">
+			<div class="col-span-2 md:col-span-6 xl:col-span-5 xl:w-3/4">
 				<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 				<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -196,15 +200,17 @@ do_action( 'woocommerce_before_main_content' );
 					
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 				</div>
-				<div class="woocommerce-form-coupon mt-6 xl:mt-20">
+				<div class="woocommerce-form-coupon form-row !mt-6 xl:!mt-20">
 					<?php if ( wc_coupons_enabled() ) : ?>
 					<p class="font-barlow text-[16px] leading-[26px] font-semibold text-dark mb-2"><?php esc_html_e( 'Haben Sie einen Gutschein?', 'aleandbread' ); ?></p>
 					<p class="font-barlow text-[16px] leading-[26px] font-semibold text-[#6C7275] mb-4"><?php esc_html_e( 'Geben Sie Ihren Code ein, um sofort einen Rabatt auf den Warenkorb zu erhalten.', 'aleandbread' ); ?></p>
-					<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
-					<input type="text" name="coupon_code" class="input-text border border-[#6C727580] bg-formFields px-4 py-[0.9rem] text-[#6C7275] font-barlow text-[16px] leading-none font-semibold mb-4 sm:mb-0" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
-					<button type="submit" class="button rounded-none px-5" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
-					<?php esc_html_e( 'Apply', 'woocommerce' ); ?>
-					</button>
+					<div class="coupon-wrapper flex flex-row items-center gap-5">
+						<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
+						<input type="text" name="coupon_code" class="input-text px-4 py-[0.85rem] mb-4 sm:mb-0 !w-auto" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" />
+						<button type="submit" class="button rounded-none px-5" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
+						<?php esc_html_e( 'Apply', 'woocommerce' ); ?>
+						</button>
+					</div>
 					<?php do_action( 'woocommerce_cart_coupon' ); ?>
 					
 					<?php endif; ?>
