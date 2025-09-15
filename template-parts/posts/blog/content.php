@@ -68,7 +68,7 @@
 
     <h1 class="xl:max-w-[706px] pt-[15px] md:pt-[23px] xl:pt-[27px]"><?php the_title(); ?></h1>
 
-    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date('d M Y'); ?></p>
+    <p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date('d. M Y'); ?></p>
 
     <div class="pt-[25px] md:pt-[35px] xl:max-w-[1142px] pb-[66px] md:pb-[117px] xl:pb-[198px]">
       <div class="blog-content max-w-[1142px]"><?php the_content(); ?></div>

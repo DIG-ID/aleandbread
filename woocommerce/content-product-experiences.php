@@ -27,9 +27,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 <div <?php wc_product_class( 'card-product--experiences group', $product ); ?>>
 	<a href="<?php echo esc_url( get_permalink() ); ?>" class="flex flex-col xl:flex-row xl:justify-center xl:items-stretch w-full">
 		<figure class="max-w-full xl:max-w-[704px]">
-			<?php echo get_the_post_thumbnail( $product->get_id(), 'full', array( 'class' => 'w-full lg:max-w-[704px] h-full max-h-[216px] md:max-h-[416px] lg:max-h-full object-cover' ) ); ?>
+			<?php echo get_the_post_thumbnail( $product->get_id(), 'full' ); ?>
 		</figure>
-		<div class="bg-dark text-white w-full px-8 pt-7 pb-12 md:px-9 md:py-14 xl:px-24 xl:py-16 flex justify-between items-start">
+		<div class="bg-dark text-white w-full px-8 pt-7 pb-12 md:px-9 md:py-14 xl:px-24 xl:py-16 flex justify-between items-start gap-6">
 			<div class="card-content flex flex-col">
 				<h2 class=" mb-2 transition-all duration-500 ease-in-out group-hover:text-accent"><?php the_title( '', '', true ); ?></h2>
 				<p class="text-blockTextLight mb-12"><?php the_field( 'capacity' ); ?></p>
