@@ -325,33 +325,38 @@ add_filter( 'woocommerce_variable_sale_price_html', 'aleandbread_lid_from_price_
 
 
 
-// Filter menu items to show only child categories of current parent category on product category archive pages.
-add_filter('wp_nav_menu_objects', function($items, $args){
-  // Limit to product category archives
-  if ( ! is_product_category() ) return $items;
+add_filter('widget_display_callback', function ($instance, $widget) {
+  if ($widget->id_base !== 'nav_menu' || ! is_product_category()) return $instance;
 
-  // Only on parent category pages
-  $current = get_queried_object();
-  if ( ! $current || $current->parent ) return [];
+  $term = get_queried_object();
+  if ( ! $term || is_wp_error($term) ) return $instance;
 
-  // Target a specific menu by name (adjust to your menu name)
-  $target_menu_names = ['Product Series Menu', 'Produkt-Serie'];
-  $menu_name = is_object($args->menu) ? $args->menu->name : (is_string($args->menu) ? $args->menu : '');
-  if ( ! in_array( $menu_name, $target_menu_names, true ) ) return $items;
+   $TARGET_MENU_NAMES = ['Product Series Menu', 'Produkt-Serie'];
 
-  $parent_id = (int) $current->term_id;
-  $filtered = [];
+  $menu_id = isset($instance['nav_menu']) ? (int) $instance['nav_menu'] : 0;
+  if ( ! $menu_id ) return $instance;
 
-  foreach ( $items as $item ) {
-    // Keep only menu items that are product_cat terms whose parent is the current term
-    if ( $item->object === 'product_cat' ) {
-      $term = get_term( $item->object_id, 'product_cat' );
-      if ( $term && ! is_wp_error($term) && (int) $term->parent === $parent_id ) {
-        $filtered[] = $item;
+  $menu_obj = wp_get_nav_menu_object($menu_id);
+  if ( ! $menu_obj || ! in_array($menu_obj->name, $TARGET_MENU_NAMES, true) ) {
+    return $instance;
+  }
+
+  if ($term->parent) return false;
+
+  $items = wp_get_nav_menu_items($menu_id, ['update_post_term_cache' => false]);
+  if ( ! $items ) return false;
+
+  $parent_id = (int) $term->term_id;
+  foreach ($items as $item) {
+    if ($item->object === 'product_cat') {
+      $cat = get_term($item->object_id, 'product_cat');
+      if ($cat && ! is_wp_error($cat) && (int) $cat->parent === $parent_id) {
+        return $instance; // keep widget
       }
     }
   }
-
-  return $filtered;
+  return false;
 }, 10, 2);
+
+
 
