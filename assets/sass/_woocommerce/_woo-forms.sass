@@ -2,6 +2,8 @@
     form
         label
             @apply font-barlow text-[12px] leading-[12px] font-bold text-[#6C7275] uppercase mb-3
+            & > span.optional
+                @apply hidden
         fieldset
             @apply my-5 xl:my-10
         legend
@@ -18,12 +20,14 @@
             span
                 @apply font-barlow text-[16px] leading-[26px] font-semibold text-dark not-italic
             .input-text, select
-                border-radius: 0
+                border-radius: 0 !important
                 background-color: #F6F6F6
                 padding: .9em .5em
                 color: #6C7275
                 font-size: 16px
                 border-color: #CBCBCB !important
+                &:focus-visible
+                    @apply outline-none ring-1 ring-accent
         .select2-container 
             .select2-dropdown, .select2-selection
                 border-radius: 0

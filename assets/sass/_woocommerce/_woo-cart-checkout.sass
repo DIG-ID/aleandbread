@@ -1,3 +1,4 @@
+/*Mini-cart*/
 .woocommerce-mini-cart__empty-message
     @apply font-barlow text-[20px] leading-[28px] text-accent font-normal
 
@@ -111,17 +112,28 @@ body.woocommerce-cart, body.woocommerce-checkout
         h3
             @apply font-barlow text-[20px] leading-[28px] text-black font-medium mb-6
 
-    #payment 
+    .woocommerce-checkout-payment
+        @apply rounded-none
         #place_order
-            @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[20px] uppercase text-center px-[8.5px] md:px-[8px] py-[6.5px] md:py-[16.5px] float-none mt-4
+            @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[18px] font-bold leading-[8.811px] md:leading-[20px] uppercase text-center px-[8.5px] md:px-[8px] py-[6.5px] md:py-[16.5px] float-none mt-4 rounded-none
             &:hover
                 @apply bg-dark text-accent
             &:active
                 @apply bg-accent text-dark
+        button[type=submit]
+            @apply rounded-none w-full
 
     .cart-collaterals, .woocommerce-checkout-review-order
         strong
             @apply font-semibold
+/*Coupon*/
+.woocommerce-form-coupon
+    padding: 0 !important
+    border: 0 !important
+    button[type=submit]
+        padding-top: 16.9px !important
+        padding-bottom: 16.9px !important
+        @apply rounded-none
 
 /*Payment boxes*/
 #add_payment_method #payment,
