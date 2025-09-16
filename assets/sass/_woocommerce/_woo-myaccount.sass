@@ -7,7 +7,7 @@ body.woocommerce-account, body.woocommerce-cart
         &:active
             @apply bg-accent text-dark
     a.button
-        @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[16px] font-bold leading-[8.811px] md:leading-[13px] capitalize text-center py-[6.5px] md:py-[12.5px]
+        @apply text-dark border-2 border-accent bg-accent font-barlow text-[12px] md:text-[16px] font-medium leading-[8.811px] md:leading-[13px] capitalize text-center py-[6.5px] md:py-[12.5px]
         border-radius: 0 !important
         &:hover
             @apply bg-dark text-accent
@@ -30,13 +30,17 @@ body.woocommerce-edit-address
     .woocommerce
         &-Address-title
             h2
-                @apply font-barlow text-[16px] font-semibold leading-[26px] mb-6 capitalize
+                @apply font-barlow text-[16px] font-semibold leading-[26px] mb-3 capitalize
             a
-                @apply font-barlow text-[14px] font-semibold leading-[22px] mb-6 text-black not-italic underline
+                @apply font-barlow text-[14px] font-medium leading-[22px] mb-6 text-black not-italic underline
         &-Address
             @apply bg-[#F6F6F6] px-6 py-4
             address
                 @apply font-barlow text-[14px] font-normal leading-[22px] mb-6 text-black not-italic
-
+        div.footer-address
+            a
+                @apply font-barlow text-[14px] font-medium leading-[22px] text-black not-italic underline
+                &:hover
+                    @apply text-accent
     .account-content > p
-        @apply font-barlow text-[20px] font-semibold leading-[32px] mb-6 text-black
+        @apply font-barlow text-[20px] font-medium leading-[32px] mb-6 text-black
