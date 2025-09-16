@@ -55,18 +55,15 @@ function ab_render_order_thumbs( $order ) {
     <!-- Title + stepper (step 3 active) -->
     <h1 class="text-center text-dark mb-14"><?php echo esc_html( get_the_title( wc_get_page_id( 'cart' ) ) ); ?></h1>
 
-    <div class="ab-steps max-w-4xl mx-auto mb-16 hidden xl:flex items-center justify-between">
-      <div class="step flex items-center gap-3 w-full mr-[3.333333%]">
-        <span class="step-dot-done">✓</span>
-        <span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e('Warenkorb','aleandbread'); ?></span>
+    <div class="ab-steps max-w-4xl mx-auto mb-20 hidden xl:flex items-center justify-between">
+      <div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-[#38CB89] w-full md:w-[30%] mr-[3.333333%]">
+        <span class="step-dot-done">✓</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e( 'Warenkorb', 'aleandbread' ); ?></span>
       </div>
-      <div class="step flex items-center gap-3 w-full mr-[3.333333%]">
-        <span class="step-dot-done">✓</span>
-        <span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e('Bestelldetails','aleandbread'); ?></span>
+      <div class="step step-active flex items-center gap-3 pb-6 border-b-2 border-[#38CB89] w-full md:w-[30%] mr-[3.333333%]">
+        <span class="step-dot-done">✓</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-[#38CB89]"><?php esc_html_e( 'Bestelldetails', 'aleandbread' ); ?></span>
       </div>
-      <div class="step step-active flex items-center gap-3 w-full">
-        <span class="step-dot">3</span>
-        <span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e('Bestellung abgeschlossen','aleandbread'); ?></span>
+      <div class="step step-active flex items-center gap-3 pb-6 w-full border-b-2 border-dark md:w-[30%] mr-[3.333333%]">
+        <span class="step-dot">3</span><span class="font-barlow text-[16px] leading-[26px] font-semibold text-dark"><?php esc_html_e( 'Bestellung abgeschlossen', 'aleandbread' ); ?></span>
       </div>
     </div>
 
@@ -90,8 +87,10 @@ function ab_render_order_thumbs( $order ) {
       <!-- Centered success card -->
       <div class="max-w-3xl mx-auto">
         <div class="ab-card bg-white shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
-
-          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mb-7"><?php esc_html_e('Thank you! 🎉','aleandbread'); ?></p>
+          <div class="ty-msg-wrapper mb-7 flex flex-row items-center justify-center">
+          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mr-1"><?php esc_html_e('Thank you!','aleandbread'); ?></p>
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/imgs/ty.png" alt="Visual" title="Visual" />
+          </div>
           <p class="text-[22px] md:text-[40px] leading-tight font-medium text-dark mb-12 max-w-[492px] mx-auto"><?php esc_html_e('Ihre Bestellung ist eingegangen','aleandbread'); ?></p>
 
           <!-- Thumbnails row -->
@@ -100,46 +99,46 @@ function ab_render_order_thumbs( $order ) {
           </div>
 
           <?php if ( $order ) : ?>
-            <div class="ab-meta grid grid-cols-[100px_1fr] gap-y-2 justify-center text-left max-w-60 mx-auto mb-6 text-[14px]">
-              <span class="text-[#6C7275] text-base">
-                <?php esc_html_e('Order code:', 'woocommerce'); ?>
-              </span>
-              <span class="font-semibold text-base text-dark">
-                #<?php echo esc_html( $order->get_order_number() ); ?>
-              </span>
+            <?php
+              $rows = [
+                [
+                  'label' => __( 'Order code:', 'woocommerce' ),
+                  'value' => '#' . $order->get_order_number(),
+                ],
+                [
+                  'label' => __( 'Date:', 'woocommerce' ),
+                  'value' => wc_format_datetime( $order->get_date_created() ),
+                ],
+                [
+                  'label' => __( 'Total:', 'woocommerce' ),
+                  'value' => wp_kses_post( $order->get_formatted_order_total() ),
+                ],
+              ];
 
-              <span class="text-[#6C7275] text-base">
-                <?php esc_html_e('Date:', 'woocommerce'); ?>
-              </span>
-              <span class="font-semibold text-base text-dark">
-                <?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?>
-              </span>
+              if ( $order->get_payment_method_title() ) {
+                $rows[] = [
+                  'label' => __( 'Payment method:', 'woocommerce' ),
+                  'value' => esc_html( $order->get_payment_method_title() ),
+                ];
+              }
+            ?>
 
-              <span class="text-[#6C7275] text-base">
-                <?php esc_html_e('Total:', 'woocommerce'); ?>
-              </span>
-              <span class="font-semibold text-base text-dark">
-                <?php echo wp_kses_post( $order->get_formatted_order_total() ); ?>
-              </span>
+            <dl class="ab-meta mx-auto w-full max-w-xl grid grid-cols-2 gap-x-8 gap-y-3 items-start text-[14px] md:text-base leading-6">
+              <?php foreach ( $rows as $r ) : ?>
+                <dt class="text-[#6C7275] whitespace-nowrap"><?php echo esc_html( $r['label'] ); ?></dt>
+                <dd class="font-semibold text-dark break-words"><?php echo $r['value']; ?></dd>
+              <?php endforeach; ?>
+            </dl>
 
-              <?php if ( $order->get_payment_method_title() ) : ?>
-                <span class="text-[#6C7275] text-base">
-                  <?php esc_html_e('Payment method:', 'woocommerce'); ?>
-                </span>
-                <span class="font-semibold text-base text-dark">
-                  <?php echo esc_html( $order->get_payment_method_title() ); ?>
-                </span>
-              <?php endif; ?>
-            </div>
 
 
             <div class="mt-12">
               <?php if ( is_user_logged_in() ) : ?>
-                <a href="<?php echo esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ); ?>" class="btn btn-primary px-6 py-3">
+                <a href="<?php echo esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ); ?>" class="btn btn-secondary !font-semibold px-6 py-3">
                   <?php esc_html_e('Bestellverlauf','aleandbread'); ?>
                 </a>
               <?php else : ?>
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-primary px-6 py-3">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-secondary !font-semibold px-6 py-3">
                   <?php esc_html_e('Weiter einkaufen','aleandbread'); ?>
                 </a>
               <?php endif; ?>
