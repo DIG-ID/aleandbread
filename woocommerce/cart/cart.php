@@ -48,7 +48,7 @@ do_action( 'woocommerce_before_main_content' );
 			<!-- 2‑column layout -->
 			<div class="grid xl:flex grid-cols-2 md:grid-cols-6 gap-6 items-start">
 			<!-- LEFT: table -->
-			<div class="col-span-2 md:col-span-6 xl:col-span-5 xl:w-3/4">
+			<div class="col-span-2 md:col-span-6 xl:col-span-5 xl:w-4/6">
 				<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 				<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -219,7 +219,7 @@ do_action( 'woocommerce_before_main_content' );
 			</div>
 
 			<!-- RIGHT: summary -->
-			<aside class="col-span-2 md:col-span-6 xl:col-span-3">
+			<aside class="col-span-2 md:col-span-6 xl:col-span-3 xl:w-2/6">
 				<div class="cart-collaterals">
 				<?php
 				/**
