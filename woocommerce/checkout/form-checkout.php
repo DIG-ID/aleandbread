@@ -91,7 +91,7 @@ do_action( 'woocommerce_before_main_content' );
         <aside class="col-span-2 md:col-span-6 xl:col-span-3 xl:w-2/5">
           <div class="woocommerce-checkout-review-order bg-white py-4 px-6">
             <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-            <h3 id="order_review_heading" class="mb-4 font-semibold"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+            <h3 id="order_review_heading" class="mb-4 font-barlow !text-[28px] font-medium md:leading-[2.125rem]"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
             <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
             <div id="order_review" class="woocommerce-checkout-review-order">
