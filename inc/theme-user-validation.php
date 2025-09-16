@@ -117,36 +117,61 @@ add_action('init', function(){
 });
 
 // Send the email
-function ab_send_verification_email($user_id, $raw_token){
-	$user = get_user_by('id', $user_id);
-	if ( ! $user ) return;
+function ab_send_verification_email( $user_id, $raw_token ) {
+    $user = get_user_by( 'id', $user_id );
+    if ( ! $user ) return;
 
-	$confirm_url = add_query_arg(
-		['ab_verify'=>1, 'uid'=>$user_id, 'token'=>rawurlencode($raw_token)],
-		home_url('/') // works across languages; adjust if you prefer language-specific
-	);
+    // Build confirm URL
+    $confirm_url = add_query_arg(
+        array(
+            'ab_verify' => 1,
+            'uid'       => $user_id,
+            'token'     => rawurlencode( $raw_token ),
+        ),
+        home_url( '/' )
+    );
 
-	$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-	$subject  = sprintf( __('Bestätigen Sie Ihr Konto auf %s', 'aleandbread'), $blogname );
+    $blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 
-	$first = get_user_meta($user_id, 'first_name', true);
-	$hello = $first ? sprintf(__('Hi %s,', 'aleandbread'), esc_html($first)) : __('Guten Tag,', 'aleandbread');
+    // Subject = what appears in the mailbox list
+    $subject = sprintf(
+        /* translators: %s: site name */
+        __( 'Bestätigen Sie Ihr Konto auf %s', 'aleandbread' ),
+        $blogname
+    );
 
-	$message  = '
-	<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;">
-	  <p>'.$hello.'</p>
-	  <p>'.esc_html__('Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr Konto zu aktivieren.', 'aleandbread').'</p>
-	  <p><a href="'.esc_url($confirm_url).'" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;">'.
-		esc_html__('Mein Konto bestätigen', 'aleandbread').'</a></p>
-	  <p>'.esc_html__('Falls die Schaltfläche nicht funktioniert, kopieren Sie bitte diesen Link und fügen Sie ihn in Ihren Browser ein:', 'aleandbread').'<br>
-		<span style="word-break:break-all;">'.esc_url($confirm_url).'</span></p>
-	  <p>'.sprintf(esc_html__('Dieser Link läuft in %d Stunden ab.', 'aleandbread'), AB_VERIFY_EXPIRY_HOURS).'</p>
-	</div>';
+    // Heading = large H1 inside the Woo email template
+    $heading = __( 'E-Mail-Adresse bestätigen', 'aleandbread' );
 
+    $first = get_user_meta( $user_id, 'first_name', true );
+    $hello = $first
+        ? sprintf( __( 'Hi %s,', 'aleandbread' ), esc_html( $first ) )
+        : __( 'Guten Tag,', 'aleandbread' );
 
-	$mailer  = WC()->mailer();
-	$headers = ['Content-Type: text/html; charset=UTF-8'];
-	$mailer->send($user->user_email, $subject, $mailer->wrap_message($subject, $message), $headers);
+    // Body (will be wrapped by Woo header/footer + styles)
+    $message = '
+    <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;">
+        <p>' . esc_html( $hello ) . '</p>
+        <p>' . esc_html__( 'Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr Konto zu aktivieren.', 'aleandbread' ) . '</p>
+        <p><a href="' . esc_url( $confirm_url ) . '" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;">' .
+            esc_html__( 'Mein Konto bestätigen', 'aleandbread' ) . '</a></p>
+        <p>' . esc_html__( 'Falls die Schaltfläche nicht funktioniert, kopieren Sie bitte diesen Link und fügen Sie ihn in Ihren Browser ein:', 'aleandbread' ) . '<br>
+            <span style="word-break:break-all;">' . esc_url( $confirm_url ) . '</span></p>
+        <p>' . sprintf(
+            /* translators: %d: hours */
+            esc_html__( 'Dieser Link läuft in %d Stunden ab.', 'aleandbread' ),
+            (int) AB_VERIFY_EXPIRY_HOURS
+        ) . '</p>
+    </div>';
+
+    $mailer  = WC()->mailer();
+    $headers = array( 'Content-Type: text/html; charset=UTF-8' );
+
+    // Wrap with Woo header/footer (uses your overridden emails/email-header.php with ACF PNG logo)
+    $wrapped = $mailer->wrap_message( $heading, $message );
+
+    // Send
+    $mailer->send( $user->user_email, $subject, $wrapped, $headers );
 }
 
 // Optional: Resend verification shortcode
