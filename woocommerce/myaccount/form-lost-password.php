@@ -61,7 +61,7 @@ do_action('woocommerce_before_lost_password_form');
             <?php wp_nonce_field('lost_password', 'woocommerce-lost-password-nonce'); ?>
 
             <button type="submit" class="btn btn-secondary mb-6 w-full">
-              <?php esc_html_e( 'Einreichen', 'aleandbread' ); ?>
+              <?php esc_html_e( 'Senden', 'aleandbread' ); ?>
             </button>
 
             <?php do_action('woocommerce_lostpassword_form_end'); ?>
