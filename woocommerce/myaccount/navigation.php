@@ -62,7 +62,7 @@ $endpoints = function_exists( 'wc_get_account_menu_items' ) ? wc_get_account_men
 
 <?php if ( ! empty( $endpoints ) ) : ?>
   <div class="border border-blockTextLight px-5 py-3 rounded-t-sm shadow-sm w-full">
-    <p class="block-text-bold">Hi, <?php echo esc_html( $current_user->first_name ); ?></p>
+    <p class="block-text-bold"><?php esc_html_e( 'Hallo,', 'aleandbread' ); ?> <?php echo esc_html( $current_user->first_name ); ?></p>
   </div>
   <div class="border border-blockTextLight px-5 py-3 rounded-b-sm shadow-sm w-full">
     <nav class="flex flex-col gap-3">

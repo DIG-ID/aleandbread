@@ -23,7 +23,7 @@ $current_user_name = $current_user->display_name;
 ?>
 
 <div class="mb-6">
-  <p class="text-dark faq-question"><?php esc_html_e( 'Willkommen,', 'aleandbread'  ); ?> <?php esc_html( $current_user_name ); ?></p>
+  <p class="text-dark faq-question"><?php esc_html_e( 'Willkommen,', 'aleandbread'  ); ?> <?php echo esc_html( $current_user_name ); ?></p>
   <p class="font-barlow text-blockText text-[18px] leading-[28px] font-normal"><?php esc_html_e( 'Dies ist dein Konto-Dashboard, in dem du deine letzten Kontoaktivitäten einsehen kannst.', 'aleandbread'  ); ?></p>
 </div>
 
