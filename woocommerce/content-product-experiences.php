@@ -52,7 +52,10 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 					</div>
 				</div>
 			</div>
-			<i class="card-product--experiences__arrow self-center"></i>
+			<div class="self-center">
+				<i class="card-product--experiences__arrow"></i>
+			</div>
+			
 		</div>
 	</a>
 </div>

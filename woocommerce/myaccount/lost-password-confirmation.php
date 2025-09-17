@@ -27,7 +27,7 @@ defined('ABSPATH') || exit;
       <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
         <div>
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
-            ← Back to login
+            <?php esc_html_e( '← Zurück zur Login', 'aleandbread' ); ?>
           </a>
 
           <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Überprüfen Sie Ihre E-Mails.', 'aleandbread' ); ?></h2>
