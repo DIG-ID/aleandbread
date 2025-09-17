@@ -27,7 +27,7 @@ do_action('woocommerce_before_lost_password_form');
       <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
         <div>
           <a href="<?php echo esc_url( home_url( '/login' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
-            ← <?php esc_html_e('Zurück zur Anmeldung', 'aleandbread'); ?>
+            ← <?php esc_html_e('Zurück zur Login', 'aleandbread'); ?>
           </a>
 
           <h1 class="text-dark mb-4"><?php esc_html_e('Passwort vergessen?', 'aleandbread'); ?></h1>

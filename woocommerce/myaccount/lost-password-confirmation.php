@@ -55,7 +55,7 @@ defined('ABSPATH') || exit;
           ?>
 
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="btn btn-secondary mt-6 inline-flex">
-            <?php esc_html_e( 'Zurück zur Anmeldung', 'aleandbread' ); ?>
+            <?php esc_html_e( 'Zurück zur Login', 'aleandbread' ); ?>
           </a>
         </div>
       </div>

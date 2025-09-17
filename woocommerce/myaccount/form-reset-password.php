@@ -27,10 +27,10 @@ do_action('woocommerce_before_reset_password_form');
       <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
         <div>
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
-            <?php esc_html_e( '← Zurück zur Anmeldung', 'aleandbread' ); ?>
+            <?php esc_html_e( '← Zurück zur Login', 'aleandbread' ); ?>
           </a>
 
-          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Set a new password', 'aleandbread' ); ?></h2>
+          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Neues Passwort festlegen', 'aleandbread' ); ?></h2>
           <p class="text-sm text-gray-500 mb-6">
             <?php echo esc_html__( 'Geben Sie unten ein neues Passwort ein.', 'aleandbread' ); ?>
           </p>

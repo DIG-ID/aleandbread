@@ -24,7 +24,7 @@ get_header( 'shop' );
 <div class="theme-container">
   <div class="theme-grid">
     <div class="col-span-2 md:col-span-4 xl:col-span-9 col-start-1 md:col-start-2 xl:col-start-2">
-      <h1 class="text-dark mb-16"><?php esc_html_e('MY ACCOUNT','aleandbread') ?></h1>
+      <h1 class="text-dark mb-16"><?php esc_html_e('Mein Konto','aleandbread') ?></h1>
     </div>
     <!-- Sidebar -->
     <aside class="col-span-2 md:col-span-4 xl:col-span-2 col-start-1 md:col-start-2 xl:col-start-2 hidden xl:block">
