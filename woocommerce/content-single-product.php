@@ -73,7 +73,7 @@ if ( post_password_required() ) {
 			if ( empty( $target_url ) ) {
 				// Fallback to Shop page.
 				$target_url = wc_get_page_permalink( 'shop' );
-				$label      = esc_html__( 'Zum Shop', 'ale' );
+				$label      = esc_html__( 'Zum Shop', 'aleandbread' );
 			}
 			?>
 			<a href="<?php echo esc_url( $target_url ); ?>" class="flex items-center gap-2 text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase">

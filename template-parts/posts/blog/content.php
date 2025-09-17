@@ -26,7 +26,7 @@
             // NEXT
             $next_link = get_next_post_link(
               '%link',
-              esc_html__('Nächster Beitrag', 'ale')
+              esc_html__('Nächster Beitrag', 'aleandbread')
             );
             if ( $next_link ) : ?>
               <div class="flex items-center gap-2 text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase">
