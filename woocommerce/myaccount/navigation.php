@@ -81,6 +81,6 @@ $endpoints = function_exists( 'wc_get_account_menu_items' ) ? wc_get_account_men
   </div>
 <?php else : ?>
   <div class="p-4 border">
-    <p class="text-red-500">Account navigation is unavailable. WooCommerce may not be fully initialized.</p>
+    <p class="text-red-500"><?php esc_html_e( 'Die Kontonavigation ist nicht verfügbar. WooCommerce ist möglicherweise nicht vollständig initialisiert.', 'aleandbread' ); ?></p>
   </div>
 <?php endif; ?>

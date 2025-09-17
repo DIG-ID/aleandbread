@@ -152,10 +152,10 @@ function ab_send_verification_email( $user_id, $raw_token ) {
     $message = '
     <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;">
         <p>' . esc_html( $hello ) . '</p>
-        <p>' . esc_html__( 'Bitte bestätigen Sie Ihre E-Mail-Adresse, um Ihr Konto zu aktivieren.', 'aleandbread' ) . '</p>
-        <p><a href="' . esc_url( $confirm_url ) . '" style="display:inline-block;padding:10px 16px;text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;">' .
+        <p>' . esc_html__( 'Bitte bestätige deine E-Mail-Adresse, um dein Konto zu aktivieren.', 'aleandbread' ) . '</p>
+        <p><a href="' . esc_url( $confirm_url ) . '" style="display:inline-block;padding-top:10px; padding-bottom:10px; padding-left:16px; padding-right:16px; text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;margim-bottom:24px;">' .
             esc_html__( 'Mein Konto bestätigen', 'aleandbread' ) . '</a></p>
-        <p>' . esc_html__( 'Falls die Schaltfläche nicht funktioniert, kopieren Sie bitte diesen Link und fügen Sie ihn in Ihren Browser ein:', 'aleandbread' ) . '<br>
+        <p>' . esc_html__( 'Falls die Schaltfläche nicht funktioniert, kopiere bitte diesen Link und füge ihn in deinen Browser ein:', 'aleandbread' ) . '<br>
             <span style="word-break:break-all;">' . esc_url( $confirm_url ) . '</span></p>
         <p>' . sprintf(
             /* translators: %d: hours */

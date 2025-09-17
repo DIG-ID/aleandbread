@@ -30,9 +30,9 @@ defined('ABSPATH') || exit;
             ← Back to login
           </a>
 
-          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Check your email', 'woocommerce' ); ?></h2>
+          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Überprüfen Sie Ihre E-Mails.', 'aleandbread' ); ?></h2>
           <p class="text-sm text-gray-500 mb-6">
-            <?php echo esc_html__( "If that email address is registered, we’ve sent you a link to reset your password. It can take a few minutes to arrive.", 'woocommerce' ); ?>
+            <?php echo esc_html__( "Sofern diese E-Mail-Adresse registriert ist, haben wir Ihnen einen Link zum Zurücksetzen Ihres Passworts zugesandt. Es kann einige Minuten dauern, bis die E-Mail eintrifft.", 'aleandbread' ); ?>
           </p>
 
           <?php
@@ -46,7 +46,7 @@ defined('ABSPATH') || exit;
           wc_print_notice(
             apply_filters(
               'woocommerce_lost_password_confirmation_message',
-              __( 'An email has been sent to your address with a link to reset your password.', 'woocommerce' )
+              __( 'Eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts wurde an Ihre Adresse gesendet.', 'aleandbread' )
             ),
             'success'
           );
@@ -55,7 +55,7 @@ defined('ABSPATH') || exit;
           ?>
 
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="btn btn-secondary mt-6 inline-flex">
-            <?php esc_html_e( 'Back to Login', 'woocommerce' ); ?>
+            <?php esc_html_e( 'Zurück zur Anmeldung', 'aleandbread' ); ?>
           </a>
         </div>
       </div>

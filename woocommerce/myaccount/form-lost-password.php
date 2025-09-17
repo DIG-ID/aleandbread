@@ -32,7 +32,7 @@ do_action('woocommerce_before_lost_password_form');
 
           <h1 class="text-dark mb-4"><?php esc_html_e('Passwort vergessen?', 'aleandbread'); ?></h1>
           <p class="block-text text-[#313131] mb-6">
-            <?php esc_html_e('Keine Sorge, das kann passieren! Geben Sie unten Ihre E-Mail ein, um Ihr Passwort zurückzusetzen.', 'aleandbread'); ?>
+            <?php esc_html_e('Keine Sorge, das kann passieren! Gebe unten deine Email an, um dein Passwort zurückzusetzen.', 'aleandbread'); ?>
           </p>
 
 
@@ -41,7 +41,7 @@ do_action('woocommerce_before_lost_password_form');
 
             <div class="flex flex-col">
               <label for="user_login" class="mb-3">
-                <?php esc_html_e( 'Email', 'woocommerce' ); ?>
+                <?php esc_html_e( 'E-Mail', 'aleandbread' ); ?>
               </label>
               <input
                 class="w-full border p-2 rounded"
@@ -61,7 +61,7 @@ do_action('woocommerce_before_lost_password_form');
             <?php wp_nonce_field('lost_password', 'woocommerce-lost-password-nonce'); ?>
 
             <button type="submit" class="btn btn-secondary mb-6 w-full">
-              <?php esc_html_e( 'Submit', 'woocommerce' ); ?>
+              <?php esc_html_e( 'Einreichen', 'aleandbread' ); ?>
             </button>
 
             <?php do_action('woocommerce_lostpassword_form_end'); ?>

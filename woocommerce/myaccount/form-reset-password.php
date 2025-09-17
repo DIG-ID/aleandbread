@@ -27,12 +27,12 @@ do_action('woocommerce_before_reset_password_form');
       <div class="col-span-2 md:col-span-4 xl:col-span-4 md:col-start-2 xl:col-start-2">
         <div>
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="inline-flex items-center gap-2 mb-4 text-sm hover:underline">
-            ← Back to login
+            <?php esc_html_e( '← Zurück zur Anmeldung', 'aleandbread' ); ?>
           </a>
 
-          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Set a new password', 'woocommerce' ); ?></h2>
+          <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Set a new password', 'aleandbread' ); ?></h2>
           <p class="text-sm text-gray-500 mb-6">
-            <?php echo esc_html__( 'Enter a new password below.', 'woocommerce' ); ?>
+            <?php echo esc_html__( 'Geben Sie unten ein neues Passwort ein.', 'aleandbread' ); ?>
           </p>
 
           <?php wc_print_notices(); ?>
@@ -40,7 +40,7 @@ do_action('woocommerce_before_reset_password_form');
           <form method="post" class="space-y-4 woocommerce-ResetPassword lost_reset_password">
             <div class="flex flex-col">
               <label for="password_1" class="mb-3">
-                <?php esc_html_e( 'New password', 'woocommerce' ); ?>
+                <?php esc_html_e( 'Neues Passwort', 'aleandbread' ); ?>
               </label>
               <input
                 type="password"
@@ -54,7 +54,7 @@ do_action('woocommerce_before_reset_password_form');
 
             <div class="flex flex-col">
               <label for="password_2" class="mb-3">
-                <?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?>
+                <?php esc_html_e( 'Neues Passwort bestätigen', 'aleandbread' ); ?>
               </label>
               <input
                 type="password"
@@ -75,7 +75,7 @@ do_action('woocommerce_before_reset_password_form');
             <?php wp_nonce_field('reset_password', 'woocommerce-reset-password-nonce'); ?>
 
             <button type="submit" class="btn btn-secondary mb-6 w-full">
-              <?php esc_html_e( 'Save', 'woocommerce' ); ?>
+              <?php esc_html_e( 'Speichern', 'aleandbread' ); ?>
             </button>
           </form>
 		  <?php wc_print_notices(); ?>
