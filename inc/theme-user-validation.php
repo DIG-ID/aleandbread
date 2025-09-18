@@ -17,7 +17,7 @@ add_action( 'template_redirect', function() {
 			}
 		}
 		// Also allow the standalone login page itself
-		if ( is_page( array( 'login', 'signup' ) ) ) {
+		if ( is_page( array( 'login', 'registrieren' ) ) ) {
 			return; // allow
 		}
 		// Otherwise, redirect to your login
