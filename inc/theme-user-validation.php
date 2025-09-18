@@ -244,24 +244,52 @@ add_action('admin_init', function(){
 	exit;
 });
 
+//Woocommerce default password strength meter
+add_action('wp_enqueue_scripts', function(){
+    if (is_page('registrieren') || is_page('login')) {
+        wp_enqueue_script('wc-password-strength-meter');
+    }
+});
+
 // Validate custom fields during registration.
 add_action('woocommerce_register_post', 'aleandbread_validate_extra_register_fields', 10, 3);
 function aleandbread_validate_extra_register_fields($username, $email, $validation_errors) {
-	if (isset($_POST['first_name']) && empty($_POST['first_name'])) {
-		$validation_errors->add('first_name_error', __('Der Vorname ist erforderlich.', 'aleandbread'));
-	}
-	if (isset($_POST['last_name']) && empty($_POST['last_name'])) {
-		$validation_errors->add('last_name_error', __('Der Nachname ist erforderlich.', 'aleandbread'));
-	}
-	if (isset($_POST['password']) && isset($_POST['password2']) && $_POST['password'] !== $_POST['password2']) {
-		$validation_errors->add('password_mismatch', __('Die Passwörter stimmen nicht überein.', 'aleandbread'));
-	}
-	if (!isset($_POST['terms'])) {
-		$validation_errors->add('terms_error', __('Sie müssen die Geschäftsbedingungen und die Datenschutzrichtlinie akzeptieren.', 'aleandbread'));
-	}
 
-	return $validation_errors;
+    // Required names
+    if (isset($_POST['first_name']) && empty($_POST['first_name'])) {
+        $validation_errors->add('first_name_error', __('Der Vorname ist erforderlich.', 'aleandbread'));
+    }
+    if (isset($_POST['last_name']) && empty($_POST['last_name'])) {
+        $validation_errors->add('last_name_error', __('Der Nachname ist erforderlich.', 'aleandbread'));
+    }
+
+    // Terms checkbox
+    if (!isset($_POST['terms'])) {
+        $validation_errors->add('terms_error', __('Sie müssen die Geschäftsbedingungen und die Datenschutzrichtlinie akzeptieren.', 'aleandbread'));
+    }
+
+    // Passwords
+    $pass1 = isset($_POST['password'])   ? (string) $_POST['password']   : '';
+    $pass2 = isset($_POST['password_2']) ? (string) $_POST['password_2'] : '';
+
+    // Match
+    if ($pass1 !== $pass2) {
+        $validation_errors->add('password_mismatch', __('Die Passwörter stimmen nicht überein.', 'aleandbread'));
+    }
+
+    // Minimum length (standard baseline = 8)
+    if (strlen($pass1) < 8) {
+        $validation_errors->add('password_too_short', __('Das Passwort muss mindestens 8 Zeichen lang sein.', 'aleandbread'));
+    }
+
+    // Optional: basic complexity (at least one letter & one Zahl)
+    if (!preg_match('/[A-Za-z]/', $pass1) || !preg_match('/\d/', $pass1)) {
+        $validation_errors->add('password_weak', __('Das Passwort muss mindestens einen Buchstaben und eine Zahl enthalten.', 'aleandbread'));
+    }
+
+    return $validation_errors;
 }
+
 
 
 /**

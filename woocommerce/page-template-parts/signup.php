@@ -46,12 +46,22 @@
 
 						<div class="flex flex-col !mt-6">
 							<label for="reg_password"><?php esc_html_e( 'Passwort', 'aleandbread' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'woocommerce' ); ?></span></label>
-							<input type="password" class="woocommerce-Input woocommerce-Input--text input-text w-full border p-2" name="password" id="reg_password" placeholder="<?php esc_html_e('Passwort', 'aleandbread'); ?>" autocomplete="new-password" required aria-required="true" />
+							<input type="password"
+							class="woocommerce-Input woocommerce-Input--text input-text w-full border p-2"
+							name="password" id="reg_password"
+							placeholder="<?php esc_html_e('Passwort', 'aleandbread'); ?>"
+							autocomplete="new-password" required aria-required="true"
+							minlength="8" />
 						</div>
 
 						<div class="flex flex-col !mt-6">
 							<label for="reg_password2"><?php esc_html_e( 'Passwort bestätigen', 'aleandbread' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'woocommerce' ); ?></span></label>
-							<input type="password" class="woocommerce-Input woocommerce-Input--text input-text w-full border p-2" name="password_2" id="reg_password2" placeholder="<?php esc_html_e( 'Passwort bestätigen', 'aleandbread' ); ?>" autocomplete="new-password" required aria-required="true" />
+							<input type="password"
+							class="woocommerce-Input woocommerce-Input--text input-text w-full border p-2"
+							name="password_2" id="reg_password2"
+							placeholder="<?php esc_html_e( 'Passwort bestätigen', 'aleandbread' ); ?>"
+							autocomplete="new-password" required aria-required="true"
+							minlength="8" />
 						</div>
 
 						<div class="flex items-start lg:items-center !mt-6 space-x-2">
