@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 if ( ! WC()->cart || WC()->cart->is_empty() ) { return; }
 ?>
 <div class="ab-summary bg-formFields border-blockTextLight shadow-sm p-5">
-  <p class="font-barlow text-[16px] leading-[26px] font-semibold text-dark mb-4"><?php esc_html_e( 'Cart summary', 'woocommerce' ); ?></p>
+  <p class="font-barlow text-[16px] leading-[26px] font-semibold text-dark mb-4"><?php esc_html_e( 'Warenkorbübersicht', 'aleandbread' ); ?></p>
 
   <div class="space-y-3 font-barlow text-[16px] leading-[26px] font-semibold text-dark">
     <div class="flex justify-between">

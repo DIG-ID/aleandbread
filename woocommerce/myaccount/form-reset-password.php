@@ -32,7 +32,7 @@ do_action('woocommerce_before_reset_password_form');
 
           <h2 class="text-3xl font-bold mb-4"><?php esc_html_e( 'Neues Passwort festlegen', 'aleandbread' ); ?></h2>
           <p class="text-sm text-gray-500 mb-6">
-            <?php echo esc_html__( 'Geben Sie unten ein neues Passwort ein.', 'aleandbread' ); ?>
+            <?php echo esc_html__( 'Gib unten ein neues Passwort ein.', 'aleandbread' ); ?>
           </p>
 
           <?php wc_print_notices(); ?>

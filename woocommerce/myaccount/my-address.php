@@ -43,7 +43,7 @@ $col    = 1;
 ?>
 
 <p>
-	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Die folgenden Adressen werden standardmäßig auf der Kassenseite verwendet.', 'aleandbread' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Die folgenden Adressen werden für deine Bestellungen verwendet.', 'aleandbread' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </p>
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
@@ -75,11 +75,11 @@ $col    = 1;
 			?>
 		</address>
 		<div class="footer-address">
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="edit">
+			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="edit normal-case">
 				<?php
 					printf(
 						/* translators: %s: Address title */
-						$address ? esc_html__( 'Anpassen %s', 'aleandbread' ) : esc_html__( 'Hinzufügen %s', 'aleandbread' ),
+						$address ? esc_html__( 'Anpassen %s', 'aleandbread' ) : esc_html__( '%s hinzufügen', 'aleandbread' ),
 						esc_html( $address_title )
 					);
 				?>
