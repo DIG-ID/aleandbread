@@ -56,17 +56,14 @@
           <p class="text-dark block-text pt-4"><?php echo get_field('events_cpt_small_description'); ?></p>
 
           <!-- Link -->
-          <a href="<?php the_permalink(); ?>" class="group text-dark font-semibold text-sm flex items-center gap-2 pt-6 md:pt-12">
-            <span class="block-text-bold !text-xs md:!text-[18px] !font-semibold md:!font-bold uppercase group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
+          <a href="<?php the_permalink(); ?>" class="group flex items-center gap-3 pt-6 md:pt-12">
+            <span class="text-dark font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase flex items-center group-hover:underline"><?php esc_html_e('Mehr Erfahren', 'aleandbread'); ?></span>
             <div class="ml-1 mt-[2px] md:mt-1 w-3 md:w-6">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 25 16" 
-                fill="none"
-                class="w-full h-auto"
-              >
-                <path d="M24.7071 8.70711C25.0976 8.31658 25.0976 7.68342 24.7071 7.29289L18.3431 0.928932C17.9526 0.538408 17.3195 0.538408 16.9289 0.928932C16.5384 1.31946 16.5384 1.95262 16.9289 2.34315L22.5858 8L16.9289 13.6569C16.5384 14.0474 16.5384 14.6805 16.9289 15.0711C17.3195 15.4616 17.9526 15.4616 18.3431 15.0711L24.7071 8.70711ZM0 8V9H24V8V7H0V8Z" fill="#0D0D0D"/>
-              </svg>
+             <span class="inline-block mt-1 w-8 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16" fill="none" class="w-full h-full">
+                  <path d="M31.7061 8.3741C32.0966 7.98357 32.0966 7.35041 31.7061 6.95989L25.3421 0.595924C24.9516 0.2054 24.3184 0.2054 23.9279 0.595924C23.5374 0.986449 23.5374 1.61961 23.9279 2.01014L29.5848 7.66699L23.9279 13.3238C23.5374 13.7144 23.5374 14.3475 23.9279 14.7381C24.3184 15.1286 24.9516 15.1286 25.3421 14.7381L31.7061 8.3741ZM0.203125 7.66699V8.66699H30.999V7.66699V6.66699H0.203125V7.66699Z" fill="#0D0D0D"/>
+                  </svg>
+              </span>
             </div>
           </a>
         </div>

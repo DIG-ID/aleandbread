@@ -63,9 +63,15 @@
 
                         <!-- Read More bottom -->
                         <div class="mt-auto">
-                            <a href="<?php the_permalink(); ?>" class="group block-text text-dark font-semibold text-sm flex items-center">
-                                <span class="uppercase hover:underline"><?php esc_html_e('Weiterlesen', 'aleandbread'); ?></span>
-                                <span class="ml-1">→</span>
+                            <a href="<?php the_permalink(); ?>" class="group text-[#0D0D0D] font-barlow text-[16px] not-italic font-semibold leading-[13px] uppercase flex items-center gap-3">
+                            <span class="uppercase group-hover:underline">
+                                <?php esc_html_e('Weiterlesen', 'aleandbread'); ?>
+                            </span>
+                            <span class="inline-block mt-1 w-8 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16" fill="none" class="w-full h-full">
+                                <path d="M31.7061 8.3741C32.0966 7.98357 32.0966 7.35041 31.7061 6.95989L25.3421 0.595924C24.9516 0.2054 24.3184 0.2054 23.9279 0.595924C23.5374 0.986449 23.5374 1.61961 23.9279 2.01014L29.5848 7.66699L23.9279 13.3238C23.5374 13.7144 23.5374 14.3475 23.9279 14.7381C24.3184 15.1286 24.9516 15.1286 25.3421 14.7381L31.7061 8.3741ZM0.203125 7.66699V8.66699H30.999V7.66699V6.66699H0.203125V7.66699Z" fill="#0D0D0D"/>
+                                </svg>
+                            </span>
                             </a>
                         </div>
                     </div>
