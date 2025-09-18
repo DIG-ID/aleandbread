@@ -79,7 +79,7 @@ $col    = 1;
 				<?php
 					printf(
 						/* translators: %s: Address title */
-						$address ? esc_html__( 'Anpassen %s', 'aleandbread' ) : esc_html__( '%s hinzufügen', 'aleandbread' ),
+						$address ? esc_html__( '%s anpassen', 'aleandbread' ) : esc_html__( '%s hinzufügen', 'aleandbread' ),
 						esc_html( $address_title )
 					);
 				?>
