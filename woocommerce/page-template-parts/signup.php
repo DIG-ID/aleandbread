@@ -60,7 +60,26 @@
 
                         <div class="flex items-start lg:items-center !mt-6 space-x-2">
                             <input type="checkbox" name="terms" class="mt-1 lg:mt-0" required>
-                            <span class="text-[14px] text-dark"><?php esc_html_e('Ich stimme allen', 'aleandbread'); ?>&nbsp;<a href="/agb/" class="text-[#CC332E]"><?php esc_html_e('Geschäftsbedingungen', 'aleandbread'); ?></a>&nbsp;<?php esc_html_e('und', 'aleandbread'); ?>&nbsp;<a href="/datenschutzerklaerung/" class="text-[#CC332E]"><?php esc_html_e('Datenschutzbestimmungen zu', 'aleandbread'); ?></a></span>
+                            <?php
+                            // Obter URLs dinâmicos (respeitam WPML e definições do site)
+                            $terms_url    = wc_get_page_permalink( 'agb' );       // WooCommerce -> Termos e condições
+                            $privacy_url  = get_privacy_policy_url();               // WordPress -> Política de Privacidade
+
+                            // Construir a frase com placeholders de <a> (boa prática de i18n)
+                            $text = sprintf(
+                                /* translators: 1: opening <a> tag for Terms, 2: closing </a>, 3: opening <a> tag for Privacy, 4: closing </a> */
+                                esc_html__( 'Ich stimme allen %1$sGeschäftsbedingungen%2$s und %3$sDatenschutzbestimmungen%4$s zu', 'aleandbread' ),
+                                '<a href="' . esc_url( $terms_url )   . '" class="text-[#CC332E]">',
+                                '</a>',
+                                '<a href="' . esc_url( $privacy_url ) . '" class="text-[#CC332E]">',
+                                '</a>'
+                            );
+
+                            // Render com sanitização a permitir apenas <a> com href/class
+                            echo '<span class="text-[14px] text-dark">' . wp_kses( $text, [
+                                'a' => [ 'href' => [], 'class' => [] ],
+                            ] ) . '</span>';
+                            ?>
                     </div>
 
                         <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
