@@ -156,7 +156,7 @@ function ab_send_verification_email( $user_id, $raw_token ) {
         <p><a href="' . esc_url( $confirm_url ) . '" style="display:inline-block;padding-top:10px; padding-bottom:10px; padding-left:16px; padding-right:16px; text-decoration:none;border-radius:6px;background:#c7a04a;color:#0D0D0D;margim-bottom:24px;">' .
             esc_html__( 'Mein Konto bestätigen', 'aleandbread' ) . '</a></p>
         <p>' . esc_html__( 'Falls die Schaltfläche nicht funktioniert, kopiere bitte diesen Link und füge ihn in deinen Browser ein:', 'aleandbread' ) . '<br>
-            <span style="word-break:break-all;">' . esc_url( $confirm_url ) . '</span></p>
+            <span style="word-break:break-all;color:#FFFFFF;">' . esc_url( $confirm_url ) . '</span></p>
         <p>' . sprintf(
             /* translators: %d: hours */
             esc_html__( 'Dieser Link läuft in %d Stunden ab.', 'aleandbread' ),
