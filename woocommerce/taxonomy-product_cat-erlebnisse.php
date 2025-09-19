@@ -69,12 +69,47 @@ else :
 		</div>
 	</section>
 
+	<section class="section-voucher-example mb-28">
+		<div class="theme-container">
+			<div class="theme-grid">
+				<div class="col-span-12">
+					<h2 class="mb-12 md:mb-16 xl:mb-24"><?php the_field( 'voucher_title', 'option' ); ?></h2>
+				</div>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 grid-rows-2 gap-4">
+				<div class="col-span-2 md:col-span-3 xl:col-span-8 md:row-span-2">
+					<?php
+					$image1 = get_field( 'voucher_images_1', 'option' );
+					$image2 = get_field( 'voucher_images_2', 'option' );
+					$image3 = get_field( 'voucher_images_3', 'option' );
+					if ( $image1 ) :
+						echo wp_get_attachment_image( $image1, 'full', false, array( 'class' => 'w-full h-auto' ) );
+					endif;
+					?>
+				</div>
+				<div class="col-span-1 md:col-span-3 xl:col-span-4 md:row-span-1">
+					<?php
+					if ( $image2 ) :
+						echo wp_get_attachment_image( $image2, 'full', false, array( 'class' => 'w-full h-auto' ) );
+					endif;
+					?>
+				</div>
+				<div class="col-span-1 md:col-span-3 xl:col-span-4 md:row-span-1">
+					<?php
+					if ( $image3 ) :
+						echo wp_get_attachment_image( $image3, 'full', false, array( 'class' => 'w-full h-auto' ) );
+					endif;
+					?>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section id="events" class="events relative overflow-hidden bg-dark xl:bg-transparent">
 		<?php
 			$image_id = get_field('experiences_events_background_image', 'option');
 			$image_url = wp_get_attachment_image_url($image_id, 'full');
 		?>
-		
 		<?php if ($image_url): ?>
 			<figure class="xl:absolute inset-0 xl:w-full xl:h-full xl:z-0 relative w-auto h-auto z-auto pointer-events-none img-overlay img-overlay--horizontal-right-2">
 				<img 
@@ -85,7 +120,6 @@ else :
 				/>
 			</figure>
 		<?php endif; ?>
-
 		<div class="theme-container !max-w-full relative z-10">
 			<div class="theme-grid">
 				<div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 xl:pt-[130px]">
