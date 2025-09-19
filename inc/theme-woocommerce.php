@@ -104,7 +104,7 @@ function aleandbread_shop_custom_breadcrumbs() {
 		woocommerce_breadcrumb(
 			array(
 				'delimiter'   => ' / ',
-				'wrap_before' => '<div class="theme-grid"><div class="col-start-1 col-span-1 md:col-span-3 xl:col-start-2 xl:col-span-4 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
+				'wrap_before' => '<div class="theme-grid"><div class="col-start-1 col-span-2 md:col-span-3 xl:col-start-2 xl:col-span-4 pb-[30px] md:pb-[56px] xl:pb-[58px] w-full"><nav class="woocommerce-breadcrumb">',
 				'wrap_after'  => '</nav></div></div>',
 				'before'      => '',
 				'after'       => '',
@@ -452,3 +452,45 @@ add_filter( 'body_class', function( array $classes ) {
 
 	return array_values( array_unique( $classes ) );
 }, 10 );
+
+
+
+add_action( 'woocommerce_single_product_summary', 'aleandbread_product_back_button', 4 );
+
+function aleandbread_product_back_button() {
+	global $product;
+	if ( ! $product ) {
+		$product = wc_get_product( get_the_ID() );
+	}
+
+	$target_url = '';
+	$label      = '';
+
+	if ( $product instanceof WC_Product ) {
+		$cat_ids = $product->get_category_ids();
+
+		if ( ! empty( $cat_ids ) ) {
+			$term = get_term( (int) $cat_ids[0], 'product_cat' );
+			if ( $term && ! is_wp_error( $term ) ) {
+				$target_url = get_term_link( $term, 'product_cat' );
+				$label      = sprintf( __( 'Zur Kategorie %s', 'aleandbread' ), $term->name );
+			}
+		}
+	}
+
+	if ( empty( $target_url ) ) {
+		// Fallback to Shop page.
+		$target_url = wc_get_page_permalink( 'shop' );
+		$label      = __( 'Zum Shop', 'aleandbread' );
+	}
+	?>
+	<div class="flex items-center gap-3 mb-2">
+		<a href="<?php echo esc_url( $target_url ); ?>" class="flex items-center gap-2 text-[#0D0D0D] font-barlow text-sm md:text-[16px] not-italic font-semibold md:leading-[13px] uppercase mb-4">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" viewBox="0 0 32 16" fill="none" class="inline-block max-w-4 md:max-w-8">
+				<path d="M0.497044 6.96965C0.10652 7.36017 0.10652 7.99334 0.497044 8.38386L6.86101 14.7478C7.25153 15.1383 7.88469 15.1383 8.27522 14.7478C8.66574 14.3573 8.66574 13.7241 8.27522 13.3336L2.61836 7.67676L8.27522 2.0199C8.66574 1.62938 8.66574 0.996212 8.27522 0.605688C7.8847 0.215164 7.25153 0.215163 6.86101 0.605688L0.497044 6.96965ZM32 7.67676L32 6.67676L1.20415 6.67676L1.20415 7.67676L1.20415 8.67676L32 8.67676L32 7.67676Z" fill="#0D0D0D"/>
+			</svg>
+			<span class="md:mb-1"><?php echo esc_html( $label ); ?></span>
+		</a>
+	</div>
+	<?php
+}

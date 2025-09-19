@@ -37,7 +37,7 @@ body.woocommerce.single-product
       .single_add_to_cart_button
         @extend .btn
         @extend .btn-secondary
-        @apply rounded-none flex items-center justify-center text-center px-16 py-[0.375rem] text-base ml-5 font-semibold
+        @apply rounded-none flex items-center justify-center text-center px-8 md:px-16 py-2 md:py-[0.375rem] ml-5 font-semibold text-xs md:text-base
       .button.button.disabled
         @extend .single_add_to_cart_button
         @apply py-[0.375rem] !important
@@ -80,7 +80,7 @@ body.woocommerce.single-product
       .ab-qty
         @apply col-span-1
       .single_add_to_cart_button
-        @apply col-span-3 w-full ml-0 font-medium text-base
+        @apply col-span-3 w-full ml-0 font-medium text-xs md:text-base
         
   div.product-type-variable.product_cat-essentials,
   div.product-type-variable.product_cat-gutscheine
