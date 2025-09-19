@@ -349,7 +349,7 @@ add_filter( 'woocommerce_variable_price_html', 'aleandbread_lid_from_price_only'
 add_filter( 'woocommerce_variable_sale_price_html', 'aleandbread_lid_from_price_only', 10, 2 );
 
 
-
+// Conditionally hide "Product Series Menu" widget on parent product category pages without children in the menu.
 add_filter('widget_display_callback', function ($instance, $widget) {
   if ($widget->id_base !== 'nav_menu' || ! is_product_category()) return $instance;
 
@@ -384,4 +384,71 @@ add_filter('widget_display_callback', function ($instance, $widget) {
 }, 10, 2);
 
 
+// Disable zoom, lightbox and slider on products in the "Erlebnisse" category tree.
+add_filter( 'woocommerce_single_product_zoom_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
+add_filter( 'woocommerce_single_product_photoswipe_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
+add_filter( 'woocommerce_single_product_flexslider_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
 
+function ab_disable_zoom_for_erlebnisse( $enabled ) {
+	// Only on single product pages
+	if ( ! is_product() ) {
+		return $enabled;
+	}
+
+	global $product;
+	if ( ! $product instanceof WC_Product ) {
+		return $enabled;
+	}
+
+	// 1) Get the top category by slug
+	$top = get_term_by( 'slug', 'erlebnisse', 'product_cat' );
+	if ( ! $top || is_wp_error( $top ) ) {
+		return $enabled;
+	}
+
+	// 2) Collect all descendant term IDs (plus the top itself), once per request
+	static $erlebnisse_tree_ids = null;
+	if ( $erlebnisse_tree_ids === null ) {
+		$children = get_terms( [
+			'taxonomy'   => 'product_cat',
+			'child_of'   => $top->term_id,
+			'fields'     => 'ids',
+			'hide_empty' => false,
+		] );
+		$erlebnisse_tree_ids = array_unique( array_merge( [ $top->term_id ], (array) $children ) );
+	}
+
+	// 3) If product has any of those terms, disable zoom/lightbox/slider
+	if ( has_term( $erlebnisse_tree_ids, 'product_cat', $product->get_id() ) ) {
+		return false;
+	}
+
+	return $enabled;
+}
+
+
+// Add parent category slug as body class on single product pages.
+add_filter( 'body_class', function( array $classes ) {
+	// Só em páginas de produto
+	if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+		return $classes;
+	}
+
+	$terms = get_the_terms( get_the_ID(), 'product_cat' );
+	if ( empty( $terms ) || is_wp_error( $terms ) ) {
+		return $classes;
+	}
+
+	foreach ( $terms as $t ) {
+		$ancestors = get_ancestors( $t->term_id, 'product_cat' );
+		if ( ! empty( $ancestors ) ) {
+			$top_id = end( $ancestors ); // último = topo da árvore
+			$top    = get_term( (int) $top_id, 'product_cat' );
+			if ( $top && ! is_wp_error( $top ) ) {
+				$classes[] = 'parent_cat-' . sanitize_html_class( $top->slug );
+			}
+		}
+	}
+
+	return array_values( array_unique( $classes ) );
+}, 10 );

@@ -88,8 +88,7 @@ function ab_render_order_thumbs( $order ) {
       <div class="max-w-3xl mx-auto">
         <div class="ab-card bg-white shadow-[0_1px_2px_rgba(0,0,0,.04),0_12px_40px_rgba(0,0,0,.06)] px-12 py-10 md:px-24 md:py-20 text-center">
           <div class="ty-msg-wrapper mb-7 flex flex-row items-center justify-center">
-          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mr-1"><?php esc_html_e('Thank you!','aleandbread'); ?></p>
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/imgs/ty.png" alt="Visual" title="Visual" />
+          <p class="text-[#6C7275] font-barlow text-[28px] font-medium tracking-[-0.6px] mr-1"><?php esc_html_e('Danke!','aleandbread'); ?></p>
           </div>
           <p class="text-[22px] md:text-[40px] leading-tight font-medium text-dark mb-12 max-w-[492px] mx-auto"><?php esc_html_e('Ihre Bestellung ist eingegangen','aleandbread'); ?></p>
 
