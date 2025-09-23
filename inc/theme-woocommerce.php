@@ -386,8 +386,6 @@ add_filter('widget_display_callback', function ($instance, $widget) {
 
 // Disable zoom, lightbox and slider on products in the "Erlebnisse" category tree.
 add_filter( 'woocommerce_single_product_zoom_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
-add_filter( 'woocommerce_single_product_photoswipe_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
-add_filter( 'woocommerce_single_product_flexslider_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
 
 function ab_disable_zoom_for_erlebnisse( $enabled ) {
 	// Only on single product pages
