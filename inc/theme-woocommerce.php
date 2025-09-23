@@ -492,3 +492,14 @@ function aleandbread_product_back_button() {
 	</div>
 	<?php
 }
+
+
+// Abrir o wrapper antes do input de quantidade
+add_action( 'woocommerce_before_add_to_cart_quantity', function () {
+	echo '<div class="ab-addtocart-wrapper">'; // Tailwind opcional
+}, 0 );
+
+// Fechar o wrapper depois do botão
+add_action( 'woocommerce_after_add_to_cart_button', function () {
+	echo '</div>';
+}, 5 );
