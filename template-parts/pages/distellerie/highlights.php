@@ -1,7 +1,7 @@
 <section class="distellerie-highlights highlight theme-container pt-20 xl:pt-28 pb-20 xl:pb-36">
   <div class="theme-grid">
     <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-6 mb-14 md:mb-16 xl:mb-24">
-      <h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Distillerie Highlights','aleandbread' ); ?></h2>
+      <h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Destillerie Highlights', 'aleandbread' ); ?></h2>
     </div>
 
     <div class="col-span-2 md:col-span-6 xl:col-span-12">
