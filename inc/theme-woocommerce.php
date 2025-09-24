@@ -494,12 +494,31 @@ function aleandbread_product_back_button() {
 }
 
 
-// Abrir o wrapper antes do input de quantidade
+// Abrir o wrapper antes do input de quantidade.
 add_action( 'woocommerce_before_add_to_cart_quantity', function () {
 	echo '<div class="ab-addtocart-wrapper">'; // Tailwind opcional
 }, 0 );
 
-// Fechar o wrapper depois do botão
+// Fechar o wrapper depois do botão.
 add_action( 'woocommerce_after_add_to_cart_button', function () {
 	echo '</div>';
 }, 5 );
+
+
+// Exemplo: mudar tamanho da miniatura do catálogo.
+add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {
+	return array(
+		'width'  => 830,
+		'height' => 1000,
+		'crop'   => 0, // 1 = recorte forçado, 0 = proporcional
+	);
+});
+
+// Exemplo: mudar tamanho da imagem principal da página de produto.
+add_filter( 'woocommerce_get_image_size_single', function( $size ) {
+	return array(
+		'width'  => 1360,
+		'height' => 1400,
+		'crop'   => 0, // 1 = recorte forçado, 0 = proporcional
+	);
+});
