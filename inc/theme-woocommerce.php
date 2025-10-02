@@ -255,33 +255,12 @@ function aleandbread_is_giftcard_voucher( $product ): bool {
 		return false;
 	}
 
-	// 1) Direct product types (cover common plugins' slugs if they exist)
-	$known_types = array(
-		'wgm_gift_card',  // exemplo do teu snippet.
-		'pw_gift_card',   // PW Woo Gift Cards (comum).
-		'yith_gift_card', // YITH.
-		'alg_gift_card',  // AlgolPlus.
-		'gift_card',       // fallback genérico.
-	);
-	if ( $product->is_type( $known_types ) ) {
-		return true;
-	}
-
 	// 2) Taxonomy markers via category/tag (recomendado: cria uma categoria/tag "gift-card" ou "voucher")
 	$id           = $product->get_id();
 	$marker_terms = array( 'voucher', 'vouchers', 'gift-card', 'gift-cards', 'giftcard', 'gutschein', 'gutscheine' );
 
 	if ( has_term( $marker_terms, 'product_cat', $id ) || has_term( $marker_terms, 'product_tag', $id ) ) {
 		return true;
-	}
-
-	// 3) Plugin meta keys heuristic (leve e suficiente em páginas single)
-	// Nota: get_post_meta($id) retorna [ meta_key => array(values) ].
-	$all_meta_keys = array_keys( get_post_meta( $id ) );
-	foreach ( $all_meta_keys as $key ) {
-		if ( preg_match( '/(wgm|gift[_-]?card|voucher|pw_gift|ywgc|alg_gift)/i', $key ) ) {
-			return true;
-		}
 	}
 
 	return false;
