@@ -248,13 +248,68 @@ add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) {
 
 
 /**
+ * Heuristic: detect gift-card / voucher products without relying on IDs.
+ */
+function aleandbread_is_giftcard_voucher( $product ): bool {
+	if ( ! ( $product instanceof WC_Product ) ) {
+		return false;
+	}
+
+	// 1) Direct product types (cover common plugins' slugs if they exist)
+	$known_types = array(
+		'wgm_gift_card',  // exemplo do teu snippet.
+		'pw_gift_card',   // PW Woo Gift Cards (comum).
+		'yith_gift_card', // YITH.
+		'alg_gift_card',  // AlgolPlus.
+		'gift_card',       // fallback genérico.
+	);
+	if ( $product->is_type( $known_types ) ) {
+		return true;
+	}
+
+	// 2) Taxonomy markers via category/tag (recomendado: cria uma categoria/tag "gift-card" ou "voucher")
+	$id           = $product->get_id();
+	$marker_terms = array( 'voucher', 'vouchers', 'gift-card', 'gift-cards', 'giftcard', 'gutschein', 'gutscheine' );
+
+	if ( has_term( $marker_terms, 'product_cat', $id ) || has_term( $marker_terms, 'product_tag', $id ) ) {
+		return true;
+	}
+
+	// 3) Plugin meta keys heuristic (leve e suficiente em páginas single)
+	// Nota: get_post_meta($id) retorna [ meta_key => array(values) ].
+	$all_meta_keys = array_keys( get_post_meta( $id ) );
+	foreach ( $all_meta_keys as $key ) {
+		if ( preg_match( '/(wgm|gift[_-]?card|voucher|pw_gift|ywgc|alg_gift)/i', $key ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
  * Simple shipping note after the Add to Cart area.
  */
 function aleandbread_shipping_note() {
 	global $product;
-	// Only show if product is not virtual and not downloadable.
-	console_log( $product );
-	if ( $product && ! $product->is_virtual() && ! $product->is_downloadable() && ! $product->is_type( 'wgm_gift_card' ) ) {
+
+	if ( ! ( $product instanceof WC_Product ) ) {
+		return;
+	}
+
+	// Hide/change note for: virtual, downloadable, or voucher/gift-card detected by our helper.
+	if ( $product->is_virtual() || $product->is_downloadable() || aleandbread_is_giftcard_voucher( $product ) ) {
+		?>
+		<div class="flex flex-col gap-y-2 my-8">
+			<div class="flex items-center gap-x-2">
+				<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9.5 13V8M9.5 5V4.5M1.625 8.875C1.625 9.90916 1.82869 10.9332 2.22445 11.8886C2.6202 12.8441 3.20027 13.7122 3.93153 14.4435C4.6628 15.1747 5.53093 15.7548 6.48637 16.1506C7.44181 16.5463 8.46584 16.75 9.5 16.75C10.5342 16.75 11.5582 16.5463 12.5136 16.1506C13.4691 15.7548 14.3372 15.1747 15.0685 14.4435C15.7997 13.7122 16.3798 12.8441 16.7756 11.8886C17.1713 10.9332 17.375 9.90916 17.375 8.875C17.375 6.78642 16.5453 4.78338 15.0685 3.30653C13.5916 1.82969 11.5886 1 9.5 1C7.41142 1 5.40838 1.82969 3.93153 3.30653C2.45469 4.78338 1.625 6.78642 1.625 8.875Z" stroke="#6C7275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<p class="taxes-note block-text text-[#6C7275] !text-base"><?php esc_html_e( 'inkl. MwSt.', 'aleandbread' ); ?></p>
+			</div>
+		</div>
+		<?php
+	} else {
 		?>
 		<div class="flex flex-col gap-y-2 my-8">
 			<div class="flex items-center gap-x-2">
@@ -341,7 +396,7 @@ function aleandbread_lid_from_price_only( $price_html, $product ) {
 	// Caso contrário, mostra "Von {min}".
 	return sprintf(
 		'<span class="from-label">%s</span> %s',
-		esc_html__( 'Von', 'aleandbread' ),
+		esc_html__( 'Ab', 'aleandbread' ),
 		wc_price( $min ) // formata com moeda/decimais da loja
 	);
 }
