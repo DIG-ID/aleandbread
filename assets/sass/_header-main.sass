@@ -11,31 +11,12 @@ body.archive, body.woocommerce-page
     #header-main
         @apply fixed top-0 left-0 right-0 z-50 
         transition: backdrop-filter 0.4s ease, background-color 0.4s ease, fill 0.4s ease
-        //@apply transition-all duration-700 ease-in-out
-        //transition-property: background-color background-image border-color backdrop-filter opacity transform
-        //opacity: 1
-        //transform: translateY(0)
-        //position: fixed
-        //will-change: opacity, transform
-
-        //&::before
-            //content: ''
-            //position: absolute
-            //inset: 0
-            //z-index: -1
-            //opacity: 0
-            //pointer-events: none
-            //transition: opacity 0.7s ease-in-out
-            //background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3))
-
-        //&.sticky::before
-            //opacity: 1
         .menu-label
             @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-dark
             @apply transition-colors duration-300 ease-in-out
         &.sticky
             .menu-label
-                @apply text-dark 
+                @apply text-background
         &.mega-menu-open
             .menu-label
                 @apply text-background
@@ -57,9 +38,26 @@ body.archive, body.woocommerce-page
 #header-main.no-transition
     transition: none !important
 #header-main
-    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
-    backdrop-filter: blur(0px)
-    background-color: rgba(255, 255, 255, 0)
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
+    transition: backdrop-filter 0.4s ease, background-color 0.4s ease, fill 0.4s ease
+    transition-property: background-color background-image border-color backdrop-filter opacity transform
+    opacity: 1
+    transform: translateY(0)
+    position: fixed
+    will-change: opacity, transform
+
+    &::before
+        content: ''
+        position: absolute
+        inset: 0
+        z-index: -1
+        opacity: 0
+        pointer-events: none
+        transition: opacity 0.7s ease-in-out
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3))
+
+    &.sticky::before
+        opacity: 1
     .menu-label
         @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-background
     .menu-toggle
@@ -71,8 +69,7 @@ body.archive, body.woocommerce-page
             .bar
                 @apply block w-[38px] h-[2px] bg-accent rounded-full transition-all duration-500 ease-out
                 &:not(:last-child)
-                    @apply mb-[13px] // spacing between bars
-            // Spacing: 13px total → 6.5px between each bar
+                    @apply mb-[13px] 
             & .bar--top
                 @apply translate-y-0 rotate-0 mb-[6.5px]
             & .bar--middle
@@ -133,20 +130,9 @@ body.archive, body.woocommerce-page
     backdrop-filter: blur(15px)
     background-color: bg-transparent
     fill: rgba(0, 0, 0, 0.05)
-    //@apply backdrop-blur-md border-b-4 border-accent
-    //@apply transition-all duration-700 ease-in-out
-    //background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 100%)
-    //background-color: rgba(0,0,0,0.1)
-    //opacity: 1
-    //transform: translateY(0)
-
-    //.menu-label
-        //@apply text-background
         
     nav.navigation-main
         @apply py-8 xl:py-6
-    //.mega-menu-wrapper
-        //@apply xl:top-[76px]
 
 #header-main.mega-menu-open
     @apply bg-dark
