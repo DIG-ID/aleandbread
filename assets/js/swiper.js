@@ -38,65 +38,128 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Events Swiper (mobile, tablet, desktop)
-  if (document.querySelector('.events-unified-swiper')) {
-    new Swiper('.events-unified-swiper', {
-      loop: false,
-      spaceBetween: 20,
-      navigation: {
-        nextEl: '.swiper-button-next-2',
-        prevEl: '.swiper-button-prev-2',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-          grid: {
-            rows: 3,
-            fill: 'row',
-          },
-        },
-        768: {
-          slidesPerView: 1.25,
-          grid: {
-            rows: 1,
-          },
-        },
-        1280: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-          grid: {
-            rows: 1,
-          },
-          pagination: {
-            el: '.events-pagination',
-            type: 'custom',
-            clickable: true,
-            renderCustom: function (swiper, current, total) {
-              let output = '';
-              if (current > 1) output += pageButton(current - 1, current);
-              output += pageButton(current, current);
-              if (current < total) output += pageButton(current + 1, current);
-              return output;
-            }
-          }
-        }
-      }
-    });
+  // Events Swiper (mobile, tablet, desktop)// Events Swiper (mobile, tablet, desktop)
+if (document.querySelector('.events-unified-swiper')) {
+  const swiper = new Swiper('.events-unified-swiper', {
+    loop: false,
+    spaceBetween: 20,
 
-    // Pagination bullet helper
-    function pageButton(index, current) {
-      const padded = index.toString().padStart(2, '0');
-      const isActive = index === current;
-      const baseClass = 'swiper-pagination-bullet';
-      const activeClass = isActive ? 'swiper-pagination-bullet-active' : '';
-      return `<span class="${baseClass} ${activeClass}">${padded}</span>`;
+    navigation: {
+      nextEl: '.swiper-button-next-2',
+      prevEl: '.swiper-button-prev-2',
+    },
+
+    // ONE pagination element for every breakpoint
+    pagination: {
+      el: '.events-pagination',
+      type: 'custom',          // use custom everywhere
+      clickable: true,         // we'll delegate clicks below
+      renderCustom: function (swiper, current, total) {
+        const pages = pageWindow(current, total, 3); // always show 3 numbers (or fewer if total<3)
+        return pages.map(p => pageButton(p, current)).join('');
+      }
+    },
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        grid: { rows: 3, fill: 'row' },   // vertical grid on mobile
+        // slidesPerGroup defaults to 1 → "page" = 1 snap/slide
+      },
+      768: {
+        slidesPerView: 1.25,
+        grid: { rows: 1 },
+      },
+      1280: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,                // desktop: page = group of 3
+        grid: { rows: 1 },
+      }
+    },
+
+    on: {
+      init(sw) { updateArrows(sw); },
+      afterInit(sw) { updateArrows(sw); },
+      slideChange(sw) { updateArrows(sw); },
+      resize(sw) { updateArrows(sw); },
     }
+  });
+
+  // ---------- Helpers ----------
+
+  // fixed-size window (scales to any total). center current; clamp to edges.
+  function pageWindow(current, total, size = 3) {
+    if (total <= size) return Array.from({ length: total }, (_, i) => i + 1);
+    let start = current - Math.floor(size / 2);
+    if (start < 1) start = 1;
+    const maxStart = Math.max(1, total - size + 1); // ensures last window shows [n-2,n-1,n]
+    if (start > maxStart) start = maxStart;
+    return Array.from({ length: size }, (_, i) => start + i);
   }
 
+  // pagination bullet HTML (keeps swiper classes for your styling)
+  function pageButton(page, current) {
+    const padded = page.toString().padStart(2, '0');
+    const isActive = page === current;
+    return `<button class="swiper-pagination-bullet ${isActive ? 'swiper-pagination-bullet-active' : ''}"
+                    type="button"
+                    data-page="${page}"
+                    ${isActive ? 'aria-current="page"' : ''}>${padded}</button>`;
+  }
+
+  // arrow visibility based on snap pages (robust with short last groups)
+  function updateArrows(sw) {
+    const prev = document.querySelector('.swiper-button-prev-2');
+    const next = document.querySelector('.swiper-button-next-2');
+    if (!prev || !next) return;
+
+    const totalPages = sw.snapGrid.length;
+    const currentPage = sw.snapIndex + 1;
+
+    prev.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+    next.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+  }
+
+  // robust mapping: page -> slide index
+  // special-case last page (may be a short group): jump to final slide.
+  function targetSlideIndexForPage(sw, page) {
+    const lastPage = sw.snapGrid.length;
+    if (page >= lastPage) return sw.slides.length - 1; // last page = last slide
+
+    const snapIdx = Math.min(page - 1, lastPage - 1);
+    const snap = sw.snapGrid[snapIdx];
+
+    // resolve slidesPerView (handles 'auto')
+    const perView = typeof sw.params.slidesPerView === 'number'
+      ? sw.params.slidesPerView
+      : Math.max(1, Math.round(sw.slidesPerViewDynamic()));
+    const lastStartIdx = Math.max(0, sw.slides.length - perView);
+
+    // find first slide whose grid pos is >= snap (with epsilon)
+    const EPS = 1e-3;
+    let idx = -1;
+    for (let i = 0; i < sw.slidesGrid.length; i++) {
+      if (sw.slidesGrid[i] + EPS >= snap) { idx = i; break; }
+    }
+    if (idx === -1) idx = lastStartIdx;
+    if (idx > lastStartIdx) idx = lastStartIdx;
+    return idx;
+  }
+
+  // click-to-navigate for custom pagination (all breakpoints)
+  const pagEl = document.querySelector('.events-pagination');
+  if (pagEl) {
+    pagEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.swiper-pagination-bullet');
+      if (!btn) return;
+      const page = Number(btn.dataset.page);
+      if (!page) return;
+
+      const slideIndex = targetSlideIndexForPage(swiper, page);
+      swiper.slideTo(slideIndex);
+    });
+  }
+}
   // Our Experience Swiper
   if (document.querySelector('.our-experience-swiper')) {
     new Swiper('.our-experience-swiper', {
