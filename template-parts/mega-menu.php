@@ -2,7 +2,7 @@
   <div class="theme-container pb-12 xl:pb-0">
     <div class="mega-menu-content theme-grid gap-y-10 pt-12 md:pt-12 xl:pt-40 pb-20 px-[10%] xl:px-0">
       <!-- LEFT COLUMN -->
-      <div class="col-span-2 md:col-span-6 xl:col-span-4 xl:col-start-3">
+      <div class="col-span-2 md:col-span-6 xl:col-span-4 xl:col-start-3 xl:-ml-14">
         <h2 class="text-[#CBCBCB]">
         <?php
         wp_nav_menu([
