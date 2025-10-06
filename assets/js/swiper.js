@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Events Swiper (mobile, tablet, desktop)// Events Swiper (mobile, tablet, desktop)
+  // Events Swiper (mobile, tablet, desktop)
   if (document.querySelector('.events-unified-swiper')) {
     const swiper = new Swiper('.events-unified-swiper', {
       loop: false,
@@ -49,13 +49,13 @@ window.addEventListener("load", () => {
         prevEl: '.swiper-button-prev-2',
       },
 
-      // ONE pagination element across all breakpoints
+      // ONE pagination element for all breakpoints
       pagination: {
         el: '.events-pagination',
         type: 'custom',
-        clickable: true,   // we'll delegate clicks below
+        clickable: true, // we'll handle clicks below
         renderCustom: function (swiper, current, total) {
-          const pages = pageWindow(current, total, 3); // always show 3 numbers (or fewer if total<3)
+          const pages = pageWindow(current, total, 3); // always 3 numbers (or fewer if total<3)
           return pages.map(p => pageButton(p, current)).join('');
         }
       },
@@ -63,7 +63,8 @@ window.addEventListener("load", () => {
       breakpoints: {
         0: {
           slidesPerView: 1,
-          grid: { rows: 3, fill: 'row' },  // mobile "page" is 3 items tall
+          grid: { rows: 3, fill: 'row' },   // mobile: 3 rows per "page"
+          // slidesPerGroup defaults to 1
         },
         768: {
           slidesPerView: 1.25,
@@ -71,7 +72,7 @@ window.addEventListener("load", () => {
         },
         1280: {
           slidesPerView: 3,
-          slidesPerGroup: 3,               // desktop "page" = 3 slides
+          slidesPerGroup: 3,                // desktop: page = 3 slides
           grid: { rows: 1 },
         }
       },
@@ -86,7 +87,7 @@ window.addEventListener("load", () => {
 
     // ---------- Helpers ----------
 
-    // fixed-size window (scales to any total). center current; clamp to edges.
+    // Fixed-size window (scales to any total). Center current; clamp to edges.
     function pageWindow(current, total, size = 3) {
       if (total <= size) return Array.from({ length: total }, (_, i) => i + 1);
       let start = current - Math.floor(size / 2);
@@ -96,7 +97,7 @@ window.addEventListener("load", () => {
       return Array.from({ length: size }, (_, i) => start + i);
     }
 
-    // pagination bullet HTML (keeps swiper classes for your styling)
+    // Pagination bullet HTML (keeps Swiper classes for styling)
     function pageButton(page, current) {
       const padded = page.toString().padStart(2, '0');
       const isActive = page === current;
@@ -106,42 +107,36 @@ window.addEventListener("load", () => {
                       ${isActive ? 'aria-current="page"' : ''}>${padded}</button>`;
     }
 
-    // arrow visibility + hide entire nav/pagination when only one page
+    // Arrow/pagination visibility + single-page handling
     function updateUI(sw) {
       const prev = document.querySelector('.swiper-button-prev-2');
       const next = document.querySelector('.swiper-button-next-2');
       const pagEl = document.querySelector('.events-pagination');
 
-      const totalPages = sw.snapGrid.length;         // true number of pages
+      const totalPages = sw.snapGrid.length;  // true number of pages
       const currentPage = sw.snapIndex + 1;
       const multiPage = totalPages > 1;
 
-      // Hide/show entire controls if there's less than a page
-      if (pagEl) {
-        pagEl.style.display = multiPage ? '' : 'none';
-        pagEl.setAttribute('aria-hidden', multiPage ? 'false' : 'true');
-      }
-      if (prev) {
-        prev.style.display = multiPage ? '' : 'none';
-        prev.setAttribute('aria-hidden', multiPage ? 'false' : 'true');
-      }
-      if (next) {
-        next.style.display = multiPage ? '' : 'none';
-        next.setAttribute('aria-hidden', multiPage ? 'false' : 'true');
-      }
+      // Hide/show whole controls when only one page
+      pagEl?.classList.toggle('is-hidden', !multiPage);
+      prev?.classList.toggle('is-hidden', !multiPage);
+      next?.classList.toggle('is-hidden', !multiPage);
 
-      // Disable swipe if single page (nice UX)
+      // Disable swipe when single page (nice UX)
       sw.allowTouchMove = multiPage;
 
-      // If we *are* multi-page, also toggle arrows at the edges
+      // If multi-page, also hide arrows at the edges (keep layout stable with visibility)
       if (multiPage && prev && next) {
         prev.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
         next.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+      } else {
+        if (prev) prev.style.visibility = 'hidden';
+        if (next) next.style.visibility = 'hidden';
       }
     }
 
-    // robust mapping: page -> slide index
-    // special-case last page (may be a short group): jump to final slide.
+    // Robust mapping: page -> slide index
+    // Special-case last page (may be a short group): jump to final slide.
     function targetSlideIndexForPage(sw, page) {
       const lastPage = sw.snapGrid.length;
       if (page >= lastPage) return sw.slides.length - 1; // last page = last slide
@@ -149,13 +144,13 @@ window.addEventListener("load", () => {
       const snapIdx = Math.min(page - 1, lastPage - 1);
       const snap = sw.snapGrid[snapIdx];
 
-      // resolve slidesPerView (handles 'auto')
+      // Resolve slidesPerView (handles 'auto')
       const perView = typeof sw.params.slidesPerView === 'number'
         ? sw.params.slidesPerView
         : Math.max(1, Math.round(sw.slidesPerViewDynamic()));
       const lastStartIdx = Math.max(0, sw.slides.length - perView);
 
-      // find first slide whose grid pos is >= snap (with epsilon)
+      // Find first slide whose grid pos is >= snap (with epsilon)
       const EPS = 1e-3;
       let idx = -1;
       for (let i = 0; i < sw.slidesGrid.length; i++) {
@@ -166,7 +161,7 @@ window.addEventListener("load", () => {
       return idx;
     }
 
-    // click-to-navigate for custom pagination (all breakpoints)
+    // Click-to-navigate for custom pagination (all breakpoints)
     const pagEl = document.querySelector('.events-pagination');
     if (pagEl) {
       pagEl.addEventListener('click', (e) => {
@@ -180,7 +175,6 @@ window.addEventListener("load", () => {
       });
     }
   }
-  
   // Our Experience Swiper
   if (document.querySelector('.our-experience-swiper')) {
     new Swiper('.our-experience-swiper', {
