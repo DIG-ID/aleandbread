@@ -9,11 +9,10 @@
         
 body.archive, body.woocommerce-page
     #header-main
-        @apply fixed top-0 left-0 right-0 z-50 
-        transition: backdrop-filter 0.4s ease, background-color 0.4s ease, fill 0.4s ease
+        @apply fixed top-0 left-0 right-0 z-50 transition duration-500 ease-in-out
         .menu-label
             @apply font-barlow text-[14px] md:text-[18px] leading-[21px] md:leading-[27px] font-bold text-dark
-            @apply transition-colors duration-300 ease-in-out
+            @apply transition-colors duration-500 ease-in-out
         &.sticky
             .menu-label
                 @apply text-background
@@ -34,13 +33,11 @@ body.archive, body.woocommerce-page
                         @apply border-x-2 border-accent
                     .wpml-ls-item
                         .wpml-ls-link
-                            @apply font-barlow font-light text-[20px] text-dark tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
+                            @apply font-barlow font-light text-[20px] text-dark tracking-[0.4px] leading-[20px] uppercase transition-all duration-300 ease-out flex
 #header-main.no-transition
     transition: none !important
 #header-main
-    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out
-    transition: backdrop-filter 0.4s ease, background-color 0.4s ease, fill 0.4s ease
-    transition-property: background-color background-image border-color backdrop-filter opacity transform
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out
     opacity: 1
     transform: translateY(0)
     position: fixed
@@ -53,7 +50,7 @@ body.archive, body.woocommerce-page
         z-index: -1
         opacity: 0
         pointer-events: none
-        transition: opacity 0.7s ease-in-out
+        transition: opacity 0.4s ease-in-out
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3))
 
     &.sticky::before
@@ -63,11 +60,11 @@ body.archive, body.woocommerce-page
     .menu-toggle
         @apply flex items-center gap-x-4
         &__text
-            @apply text-accent font-barlow text-[16px] uppercase font-[500] leading-none tracking-[0.32px] transition-all duration-500 ease-out hidden invisible xl:block xl:visible
+            @apply text-accent font-barlow text-[16px] uppercase font-[500] leading-none tracking-[0.32px] transition-all duration-300 ease-out hidden invisible xl:block xl:visible
         &__bars
             @apply relative flex flex-col justify-center items-center overflow-hidden w-[38px] h-[38px]
             .bar
-                @apply block w-[38px] h-[2px] bg-accent rounded-full transition-all duration-500 ease-out
+                @apply block w-[38px] h-[2px] bg-accent rounded-full transition-all duration-300 ease-out
                 &:not(:last-child)
                     @apply mb-[13px] 
             & .bar--top
@@ -95,7 +92,7 @@ body.archive, body.woocommerce-page
                         font-weight: 700 !important
                 .wpml-ls-item
                     .wpml-ls-link
-                        @apply block-text-bold text-background uppercase transition-all duration-500 ease-out flex
+                        @apply block-text-bold text-background uppercase transition-all duration-300 ease-out flex
     .menu-wrapper
         .wpml-ls-legacy-list-horizontal
             a
@@ -110,14 +107,14 @@ body.archive, body.woocommerce-page
                     @apply border-x-2 border-accent
                 .wpml-ls-item
                     .wpml-ls-link
-                        @apply font-barlow font-light text-[20px] text-accent tracking-[0.4px] leading-[20px] uppercase transition-all duration-500 ease-out flex
+                        @apply font-barlow font-light text-[20px] text-accent tracking-[0.4px] leading-[20px] uppercase transition-all duration-200 ease-out flex
 
     #menu-main-menu
         @apply w-full invisible hidden xl:block xl:visible
         li.menu-item
-            @apply transition-all duration-500 ease-in-out translate-y-0
+            @apply transition-all duration-300 ease-in-out translate-y-0
             a
-                @apply font-barlowSemiCondensed text-blockTextLight text-[24px] md:text-[40px] font-bold not-italic uppercase transition-all duration-300 ease-in-out relative
+                @apply font-barlowSemiCondensed text-blockTextLight text-[24px] md:text-[40px] font-bold not-italic uppercase transition-all duration-500 ease-in-out relative
                 &::hover
                     @apply text-accent
         li.menu-item.current-menu-item,
