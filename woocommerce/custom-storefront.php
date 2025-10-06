@@ -136,74 +136,71 @@
 			</a>
 		</div>
 	</div>
-
 </section>
 
 <section class="best-sellers theme-grid pt-20 xl:pt-40">
-	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
-		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller', 'aleandbread' ); ?></h2>
-	</div> 
-	<div class="col-span-2 md:col-span-6 xl:col-span-12">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<?php
-			$best_sellers = new WP_Query(
-				array(
-					'post_type'      => 'product',
-					'posts_per_page' => 2,
-					'tax_query'      => array(
-						array(
-							'taxonomy' => 'product_tag',
-							'field'    => 'slug',
-							'terms'    => 'best-seller',
-						),
-					),
-				)
-			);
-			if ( $best_sellers->have_posts() ) :
-				while ( $best_sellers->have_posts() ) :
-					$best_sellers->the_post();
-					$slogan          = get_field( 'slogan' );
-					$image_highlight = get_field( 'alternate_image' );
+  <div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
+    <h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller', 'aleandbread' ); ?></h2>
+  </div>
+  <div class="col-span-2 md:col-span-6 xl:col-span-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <?php
+      $selected = get_field('best_sellers_shop_product', 'option');
 
-					?>
-					<div class="card-best-sellers">
-						<a href="<?php the_permalink(); ?>">
-							<div class="card-best-sellers--image bg-[#C4C4C4]">
-								<?php
-								if ( $image_highlight ) :
-									echo wp_get_attachment_image( $image_highlight, 'full', false, ['class' => 'w-full h-full object-cover'] );
-								else :
-									echo get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'w-full h-full object-cover' ) );
-								endif;
-								?>
-							</div>
-							<div class="card-best-sellers--content">
-								<span class="overlay"></span>
+      if ( $selected && is_array( $selected ) ) :
 
-								<span class="block-text"><?php the_excerpt(); ?></span>
+        $selected = array_slice( $selected, 0, 2 );
 
-								<div class="card-best-sellers--footer flex justify-between items-center">
-									<div>
-										<h2 class="card-best-sellers--title uppercase"><?php the_title(); ?></h2>
-										<?php if ( ! empty( $slogan ) ) : ?>
-											<h3 class="card-best-sellers--slogan"><?php echo esc_html( $slogan ); ?></h3>
-										<?php endif; ?>
-									</div>
-									<div class="card-best-sellers--arrow"></div>
-								</div>
-								</div>
-						</a>
-					</div>
-					<?php
-				endwhile;
-				wp_reset_postdata();
-			else :
-				echo '<p class="text-gray-600">' . esc_html__( 'Noch keine Bestseller.', 'aleandbread' ) . '</p>';
-			endif;
-			?>
-		</div>
-	</div>
+        foreach ( $selected as $item ) :
+          $post_obj = ( $item instanceof WP_Post ) ? $item : get_post( $item );
+          if ( ! $post_obj ) { continue; }
+
+          setup_postdata( $post_obj );
+
+          $slogan          = get_field( 'slogan', $post_obj->ID );
+          $image_highlight = get_field( 'alternate_image', $post_obj->ID );
+          ?>
+          <div class="card-best-sellers">
+            <a href="<?php echo esc_url( get_permalink( $post_obj ) ); ?>">
+              <div class="card-best-sellers--image bg-[#C4C4C4]">
+                <?php
+                if ( $image_highlight ) {
+                  echo wp_get_attachment_image( $image_highlight, 'full', false, ['class' => 'w-full h-full object-cover'] );
+                } else {
+                  echo get_the_post_thumbnail( $post_obj->ID, 'full', ['class' => 'w-full h-full object-cover'] );
+                }
+                ?>
+              </div>
+              <div class="card-best-sellers--content">
+                <span class="overlay"></span>
+
+                <span class="block-text">
+                  <?php echo has_excerpt( $post_obj ) ? wp_kses_post( get_the_excerpt( $post_obj ) ) : ''; ?>
+                </span>
+
+                <div class="card-best-sellers--footer flex justify-between items-center">
+                  <div>
+                    <h2 class="card-best-sellers--title uppercase"><?php echo esc_html( get_the_title( $post_obj ) ); ?></h2>
+                    <?php if ( ! empty( $slogan ) ) : ?>
+                      <h3 class="card-best-sellers--slogan"><?php echo esc_html( $slogan ); ?></h3>
+                    <?php endif; ?>
+                  </div>
+                  <div class="card-best-sellers--arrow"></div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <?php
+        endforeach;
+        wp_reset_postdata();
+      else :
+        echo '<p class="text-gray-600">' . esc_html__( 'Noch keine Bestseller.', 'aleandbread' ) . '</p>';
+      endif;
+      ?>
+    </div>
+  </div>
 </section>
+
 
 <section class="section-testimonials py-12 md:py-16 xl:py-40">
 	<div class="flex justify-between items-center mb-14 md:mb-16 xl:mb-20">

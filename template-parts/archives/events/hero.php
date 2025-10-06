@@ -74,9 +74,9 @@
  <div class="cmd:col-span-6 xl:col-span-12 flex items-center justify-center">
           <div class="events-controls gap-4 mt-[50px] md:mt-[75px] xl:mt-[90px]">
             <span class="swiper-button-prev-2" aria-label="Previous"></span>
-            <div class="events-pagination "></div>
+            <div class="events-pagination"></div>
             <span class="swiper-button-next-2" aria-label="Next"></span>
-          </div> 
+          </div>
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
   </div>
