@@ -1,4 +1,4 @@
-<section id="hero" class="section-hero relative overflow-hidden">
+<section id="hero" class="section-hero relative h-[100dvh] md:h-screen w-full overflow-hidden">
   <?php 
     $desktop_gallery = get_field('section_hero_gallery');
     $mobile_image_id = get_field('section_hero_background_tablet');
@@ -8,7 +8,7 @@
   <!-- Desktop Swiper -->
   <?php if ($desktop_gallery): ?>
     <div class="hidden xl:block absolute inset-0 z-0">
-      <div class="swiper h-screen w-screen overflow-hidden">
+      <div class="swiper overflow-hidden">
         <div class="swiper-wrapper">
           <?php foreach($desktop_gallery as $image_id): 
             $image_url = wp_get_attachment_image_url($image_id, 'full'); ?>
@@ -22,14 +22,12 @@
   <!-- Tablet/Mobile Static Background Image -->
   <?php if ($mobile_image_url): ?>
     <div class="xl:hidden absolute inset-0 md:h-full z-0 pointer-events-none">
-      <div class="w-screen h-screen overflow-hidden">
         <img 
           src="<?php echo esc_url($mobile_image_url); ?>" 
           alt="<?php echo esc_attr(get_post_meta($mobile_image_id, '_wp_attachment_image_alt', true)); ?>"
           class="w-full h-full object-cover"
           loading="lazy"
         />
-      </div>
     </div>
   <?php endif; ?>
 
