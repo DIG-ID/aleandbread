@@ -21,7 +21,7 @@
 
   <!-- Tablet/Mobile Static Background Image -->
   <?php if ($mobile_image_url): ?>
-    <div class="xl:hidden absolute inset-0 w-full h-screen md:h-full z-0 pointer-events-none">
+    <div class="xl:hidden absolute inset-0 w-full min-h-dvh md:h-full z-0 pointer-events-none">
       <img 
         src="<?php echo esc_url($mobile_image_url); ?>" 
         alt="<?php echo esc_attr(get_post_meta($mobile_image_id, '_wp_attachment_image_alt', true)); ?>"
@@ -32,7 +32,7 @@
   <?php endif; ?>
 
   <!-- Content always visible -->
-  <div class="theme-container relative z-10 h-screen max-h-[670px] md:max-h-none">
+  <div class="theme-container relative z-10 h-screen">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-4 xl:col-span-6 xl:col-start-2 pt-40 md:pt-60 xl:pt-[320px] md:min-h-full xl:min-h-0">
         <h1 class="text-blockTextLight w-[240px] md:w-full">
