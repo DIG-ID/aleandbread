@@ -1,4 +1,4 @@
-<section id="hero" class="section-hero relative h-[100svh] md:h-screen w-full overflow-hidden">
+<section id="hero" class="section-hero relative h-[calc(var(--vh)*100)] w-full overflow-hidden">
   <?php 
     $desktop_gallery = get_field('section_hero_gallery');
     $mobile_image_id = get_field('section_hero_background_tablet');
@@ -32,7 +32,7 @@
   <?php endif; ?>
 
   <!-- Content always visible -->
-  <div class="theme-container relative z-10 h-full md:h-screen">
+  <div class="theme-container relative z-10 h-full">
     <div class="theme-grid">
       <div class="col-span-2 md:col-span-4 xl:col-span-6 xl:col-start-2 pt-40 md:pt-60 xl:pt-[320px] md:min-h-full xl:min-h-0">
         <h1 class="text-blockTextLight w-[240px] md:w-full">
@@ -82,3 +82,31 @@
     });
   });
 </script>
+<script>
+(function () {
+  // Lock at first paint to avoid URL bar animation changing the height
+  const setLockedVH = () => {
+    // visualViewport is more accurate on Android; fall back to innerHeight
+    const h = (window.visualViewport?.height || window.innerHeight) * 0.01;
+    document.documentElement.style.setProperty('--vh', `${h}px`);
+  };
+
+  setLockedVH();
+
+  // Only update on orientation change or page show (bfcache restore)
+  window.addEventListener('orientationchange', () => {
+    // Give it a tick to settle after rotation
+    setTimeout(setLockedVH, 200);
+  });
+
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) setLockedVH();
+  });
+})();
+</script>
+<style>
+  @media (min-width: 1280px) {
+    /* Use dynamic/standard vh on desktop where the URL bar isn't collapsing */
+    .home #hero { height: 100dvh; } /* falls back to 100vh if 100dvh unsupported */
+  }
+</style>
