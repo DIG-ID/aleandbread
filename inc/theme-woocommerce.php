@@ -384,7 +384,6 @@ add_filter( 'woocommerce_variable_sale_price_html', 'aleandbread_lid_from_price_
 
 
 // Conditionally hide "Product Series Menu" widget on parent product category pages without children in the menu.
-/*
 add_filter('widget_display_callback', function ($instance, $widget) {
   if ($widget->id_base !== 'nav_menu' || ! is_product_category()) return $instance;
 
@@ -417,7 +416,6 @@ add_filter('widget_display_callback', function ($instance, $widget) {
   }
   return false;
 }, 10, 2);
-*/
 
 // Disable zoom, lightbox and slider on products in the "Erlebnisse" category tree.
 add_filter( 'woocommerce_single_product_zoom_enabled', 'ab_disable_zoom_for_erlebnisse', 10, 1 );
