@@ -29,7 +29,7 @@ function aleandbread_theme_setup() {
 			'product_grid'          => array(
 				'default_rows'    => 2,
 				'min_rows'        => 1,
-				'max_rows'        => 2,
+				'max_rows'        => 3,
 				'default_columns' => 3,
 				'min_columns'     => 2,
 				'max_columns'     => 3,
