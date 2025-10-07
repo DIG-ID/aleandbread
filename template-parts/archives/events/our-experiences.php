@@ -1,5 +1,5 @@
 <section id="our-experiences" class="our-experiences bg-dark xl:bg-transparent">
-<div class="theme-container !max-w-full !w-full !p-0">
+<div class="theme-container !max-w-full">
     <?php
 // Get image ID from ACF
 $image_id = get_field('our_experience_background_image', 'option');
