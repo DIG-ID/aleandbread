@@ -21,13 +21,15 @@
 
   <!-- Tablet/Mobile Static Background Image -->
   <?php if ($mobile_image_url): ?>
-    <div class="xl:hidden absolute inset-0 w-full h-screen md:h-full z-0 pointer-events-none">
-      <img 
-        src="<?php echo esc_url($mobile_image_url); ?>" 
-        alt="<?php echo esc_attr(get_post_meta($mobile_image_id, '_wp_attachment_image_alt', true)); ?>"
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
+    <div class="xl:hidden absolute inset-0 md:h-full z-0 pointer-events-none">
+      <div class="w-screen h-screen overflow-hidden">
+        <img 
+          src="<?php echo esc_url($mobile_image_url); ?>" 
+          alt="<?php echo esc_attr(get_post_meta($mobile_image_id, '_wp_attachment_image_alt', true)); ?>"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
     </div>
   <?php endif; ?>
 
