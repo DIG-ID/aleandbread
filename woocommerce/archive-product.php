@@ -62,7 +62,7 @@ else :
 			$is_desc         = $target_top ? in_array( $target_top->term_id, get_ancestors( $cat_term->term_id, 'product_cat' ) ) : false;
 		endif;
 	endif;
-	if ( $is_desc ) :
+	if ( ale_is_under_top_slug( 'erlebnisse' ) ) :
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 		?>

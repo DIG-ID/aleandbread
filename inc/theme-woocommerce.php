@@ -556,3 +556,71 @@ add_filter( 'woocommerce_get_image_size_single', function( $size ) {
 		'crop'   => 0, // 1 = recorte forçado, 0 = proporcional
 	);
 });
+
+
+
+
+/**
+ * Helpers para categorias de produto (WooCommerce).
+ * - ale_get_top_term(): devolve o termo de topo (ou o próprio se já for topo)
+ * - ale_is_under_top_slug(): verifica se o termo atual (ou um termo dado) está sob um topo específico (por slug)
+ * - ale_is_under_top_id(): idem, mas por ID
+ */
+
+/**
+ * Devolve o termo de topo para um termo/ID dado numa taxonomia (por omissão, product_cat).
+ *
+ * @param WP_Term|int $term     Termo ou ID do termo.
+ * @param string      $taxonomy Taxonomia (default: 'product_cat').
+ * @return WP_Term|null         Termo de topo ou null em erro.
+ */
+function ale_get_top_term( $term, $taxonomy = 'product_cat' ) {
+	if ( is_numeric( $term ) ) {
+		$term = get_term( (int) $term, $taxonomy );
+	}
+	if ( ! ( $term instanceof WP_Term ) || is_wp_error( $term ) || $taxonomy !== $term->taxonomy ) {
+		return null;
+	}
+
+	$ancestors = get_ancestors( $term->term_id, $taxonomy ); // pai -> avô -> ... -> topo
+	if ( empty( $ancestors ) ) {
+		return $term; // já é topo
+	}
+
+	$top_id  = end( $ancestors ); // ancestral mais distante
+	$top_obj = get_term( $top_id, $taxonomy );
+
+	return ( $top_obj && ! is_wp_error( $top_obj ) ) ? $top_obj : null;
+}
+
+/**
+ * Verifica se o termo (ou o termo consultado) está sob um termo de topo com um slug específico.
+ *
+ * @param string           $top_slug Slug do termo de topo (ex.: 'erlebnisse').
+ * @param WP_Term|int|null $term     Termo/ID. Se null, usa o objeto consultado (página atual).
+ * @param string           $taxonomy Taxonomia (default: 'product_cat').
+ * @return bool
+ */
+function ale_is_under_top_slug( $top_slug, $term = null, $taxonomy = 'product_cat' ) {
+	if ( null === $term ) {
+		$term = get_queried_object();
+	}
+	$top_term = ale_get_top_term( $term, $taxonomy );
+	return ( $top_term && isset( $top_term->slug ) && $top_term->slug === $top_slug );
+}
+
+/**
+ * Variante por ID do topo (útil se preferes comparar por ID).
+ *
+ * @param int              $top_id   ID do termo de topo.
+ * @param WP_Term|int|null $term     Termo/ID. Se null, usa o objeto consultado.
+ * @param string           $taxonomy Taxonomia (default: 'product_cat').
+ * @return bool
+ */
+function ale_is_under_top_id( $top_id, $term = null, $taxonomy = 'product_cat' ) {
+	if ( null === $term ) {
+		$term = get_queried_object();
+	}
+	$top_term = ale_get_top_term( $term, $taxonomy );
+	return ( $top_term && (int) $top_term->term_id === (int) $top_id );
+}
