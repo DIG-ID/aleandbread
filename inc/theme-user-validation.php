@@ -2,29 +2,39 @@
 
 //Make sure the user is logged in
 add_action( 'template_redirect', function() {
-	// Only gatekeep My Account pages for logged-out users
-	if ( is_account_page() && ! is_user_logged_in() ) {
-		// Allow WooCommerce endpoints that must be accessible while logged out
-		$allowed_endpoints = array(
-			'lost-password',
-			'reset-password',
-			'register',
-		);
-		// If we're on any allowed endpoint or on your custom login page, do nothing
-		foreach ( $allowed_endpoints as $ep ) {
-			if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( $ep ) ) {
-				return;
-			}
-		}
-		// Also allow the standalone login page itself
-		if ( is_page( array( 'login', 'registrieren' ) ) ) {
-			return; // allow
-		}
-		// Otherwise, redirect to your login
-		wp_safe_redirect( site_url( '/login/' ) );
-		exit;
-	}
+    // If WooCommerce isn't loaded, bail early to avoid fatal errors.
+    if ( ! function_exists( 'is_account_page' ) ) {
+        return;
+    }
+
+    // Only gatekeep My Account pages for logged-out users
+    if ( is_account_page() && ! is_user_logged_in() ) {
+        // Allow WooCommerce endpoints that must be accessible while logged out
+        $allowed_endpoints = array(
+            'lost-password',
+            'reset-password',
+            'register',
+        );
+
+        // If we're on any allowed endpoint or on your custom login page, do nothing
+        foreach ( $allowed_endpoints as $ep ) {
+            if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( $ep ) ) {
+                return;
+            }
+        }
+
+        // Also allow the standalone login page itself
+        if ( is_page( array( 'login', 'registrieren' ) ) ) {
+            return; // allow
+        }
+
+        // Otherwise, redirect to your login
+        wp_safe_redirect( site_url( '/login/' ) );
+        exit;
+    }
 });
+
+
 
 add_filter('woocommerce_process_login_errors', function($errors){
 	if ( is_wp_error($errors) && in_array('ab_email_not_verified', $errors->get_error_codes(), true) ) {
