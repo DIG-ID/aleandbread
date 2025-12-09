@@ -142,8 +142,8 @@ function ab_render_order_thumbs( $order ) {
                 </a>
               <?php endif; ?>
               <?php
-              //do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
-              //do_action( 'woocommerce_thankyou', $order->get_id() );
+              do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+              do_action( 'woocommerce_thankyou', $order->get_id() );
               ?>
             </div>
           <?php else : ?>
