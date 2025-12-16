@@ -69,7 +69,7 @@ else :
 		</div>
 	</section>
 
-	<section class="section-voucher-example mb-28">
+	<!--<section class="section-voucher-example mb-28">
 		<div class="theme-container">
 			<div class="theme-grid">
 				<div class="col-span-12">
@@ -103,7 +103,7 @@ else :
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 
 	<section id="events" class="events relative overflow-hidden bg-dark xl:bg-transparent">
 		<?php
@@ -126,9 +126,9 @@ else :
 					<p class="over-title text-accent">
 						<?php echo get_field('experiences_events_over_title', 'option'); ?>
 					</p>
-					<h1 class="text-blockTextLight pt-7 md:pt-14 w-[283px] md:w-[561px] xl:w-full">
+					<h2 class="h1 text-blockTextLight pt-7 md:pt-14 w-[283px] md:w-[561px] xl:w-full">
 						<?php echo get_field('experiences_events_title', 'option'); ?>
-					</h1>
+					</h2>
 					<p class="block-text text-blockTextLight pt-10 md:pt-14 w-[276px] md:w-[547px] xl:w-full pb-[27px] md:pb-[53px]">
 						<?php echo get_field('experiences_events_description', 'option'); ?>
 					</p>
