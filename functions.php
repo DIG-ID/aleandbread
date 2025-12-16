@@ -274,6 +274,9 @@ require get_template_directory() . '/inc/theme-user-validation.php';
 // The theme custom functions.
 require get_template_directory() . '/inc/template-functions.php';
 
+// The theme custom shortcodes.
+require get_template_directory() . '/inc/theme-shortcodes.php';
+
 
 /**
  * Console log function for debugging.
