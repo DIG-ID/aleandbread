@@ -2,8 +2,8 @@
 	<div class="theme-container">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-3 xl:col-span-8 flex flex-col items-center gap-y-7 md:gap-y-12 mb-16">
-				<p class="over-title text-accent"><?php echo esc_html( get_field( 'experiences_over_title' ) ); ?></p>
-				<h1 class="text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'experiences_title' ) ); ?></h1>
+				<h2 class="over-title text-accent"><?php echo esc_html( get_field( 'experiences_over_title' ) ); ?></h2>
+				<h3 class="h1 text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'experiences_title' ) ); ?></h3>
 				<div class="text-blockTextLight text-center"><?php echo wp_kses_post( get_field( 'experiences_description' ) ); ?></div>
 			</div>
 		</div>
