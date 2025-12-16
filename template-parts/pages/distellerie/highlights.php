@@ -69,11 +69,11 @@
 									<div class="card-highlight--footer flex justify-between items-center">
 										<div>
 											<?php if ( $title ) : ?>
-												<h3 class="card-highlight--title uppercase"><?php echo esc_html( $title ); ?></h3>
+												<h3 class="h2 card-highlight--title uppercase"><?php echo esc_html( $title ); ?></h3>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $slogan ) ) : ?>
-												<h4 class="card-highlight--slogan"><?php echo esc_html( $slogan ); ?></h4>
+												<h4 class="h3 card-highlight--slogan"><?php echo esc_html( $slogan ); ?></h4>
 											<?php endif; ?>
 										</div>
 										<div class="card-highlight--arrow"></div>
