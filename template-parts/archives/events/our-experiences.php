@@ -21,8 +21,8 @@
 				<?php endif; ?>
 			</div>
 			<div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 pt-1 md:pt-3 xl:pt-[130px] order-2">
-					<p class="over-title text-accent"><?php echo get_field('our_experience_over_title', 'option'); ?>
-					<h1 class="text-blockTextLight pt-5 md:pt-14 "><?php echo get_field('our_experience_title', 'option'); ?></h1>
+					<h2 class="over-title text-accent"><?php echo get_field('our_experience_over_title', 'option'); ?>
+					<h3 class="h1 text-blockTextLight pt-5 md:pt-14 "><?php echo get_field('our_experience_title', 'option'); ?></h3>
 					<p class="block-text text-blockTextLight pt-10 md:pt-14"><?php echo get_field('our_experience_description', 'option'); ?></p>
 					<?php
 						$button = get_field('our_experience_button', 'option');

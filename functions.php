@@ -246,6 +246,16 @@ function aleandbread_archive_title( $title ) {
 add_filter( 'get_the_archive_title', 'aleandbread_archive_title' );
 
 
+add_filter(
+	'mc4wp_form_css_classes',
+	function ( $classes ) {
+		// Add a theme-specific scope class for styling.
+		$classes[] = 'aab-newsletter';
+		return $classes;
+	}
+);
+
+
 // Theme custom template tags.
 require get_template_directory() . '/inc/theme-template-tags.php';
 
