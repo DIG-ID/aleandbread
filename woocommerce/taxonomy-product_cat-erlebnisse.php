@@ -123,12 +123,12 @@ else :
 		<div class="theme-container !max-w-full relative z-10">
 			<div class="theme-grid">
 				<div class="col-span-2 md:col-span-5 xl:col-span-4 xl:col-start-8 xl:pt-[130px]">
-					<p class="over-title text-accent">
+					<h2 class="over-title text-accent">
 						<?php echo get_field('experiences_events_over_title', 'option'); ?>
-					</p>
-					<h2 class="h1 text-blockTextLight pt-7 md:pt-14 w-[283px] md:w-[561px] xl:w-full">
-						<?php echo get_field('experiences_events_title', 'option'); ?>
 					</h2>
+					<h3 class="h1 text-blockTextLight pt-7 md:pt-14 w-[283px] md:w-[561px] xl:w-full">
+						<?php echo get_field('experiences_events_title', 'option'); ?>
+					</h3>
 					<p class="block-text text-blockTextLight pt-10 md:pt-14 w-[276px] md:w-[547px] xl:w-full pb-[27px] md:pb-[53px]">
 						<?php echo get_field('experiences_events_description', 'option'); ?>
 					</p>

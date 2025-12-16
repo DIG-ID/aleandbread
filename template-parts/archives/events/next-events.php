@@ -57,7 +57,7 @@
 									?>
 
 									<!-- Title -->
-									<h4 class="pt-4"><?php the_title(); ?></h4>
+									<h3 class="h4 my-4"><?php the_title(); ?></h3>
 
 									<!-- Date -->
 									<?php aab_event_meta( get_the_ID() ); ?>

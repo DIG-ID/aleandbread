@@ -25,9 +25,9 @@
 				</div>
 
 
-				<h2 class="text-dark font-bold text-[28px] md:text-[32px] xl:text-[36px] leading-tight w-[350px] md:w-[385px] xl:w-[437px] -mt-6">
+				<h1 class="h2 text-dark font-bold text-[28px] md:text-[32px] xl:text-[36px] leading-tight w-[350px] md:w-[385px] xl:w-[437px] -mt-6">
 					<?php echo get_field('events_cpt_title'); ?>
-				</h2>
+				</h1>
 
 				<p class="text-dark block-text w-[345px] md:w-[556px]">
 					<?php echo get_field('events_cpt_description'); ?>
