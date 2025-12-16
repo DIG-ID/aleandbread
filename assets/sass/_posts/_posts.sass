@@ -30,9 +30,15 @@
             @apply bg-dark text-accent
 
     ol
-        @apply list-decimal list-inside pl-2 pb-2 mb-4
+        @apply list-decimal list-inside pl-6 mb-4
         @extend .block-text
+        li
+            @apply pb-1
+        li::marker
+            @apply font-bold
 
     ul
-        @apply list-disc list-inside pl-2 pb-2 mb-4
+        @apply list-disc list-inside pl-6 mb-4
         @extend .block-text
+        li
+            @apply pb-1
