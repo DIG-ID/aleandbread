@@ -261,8 +261,8 @@ require get_template_directory() . '/inc/theme-woocommerce.php';
 // The user validation settings.
 require get_template_directory() . '/inc/theme-user-validation.php';
 
-
-
+// The theme custom functions.
+require get_template_directory() . '/inc/template-functions.php';
 
 
 /**
