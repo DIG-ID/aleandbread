@@ -90,3 +90,22 @@
   });
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", () => {
+  const bar = document.getElementById("sticky-bar-shop");
+  if (!bar) return;
+
+  const showAfter = 40; // px scrolled before showing
+
+  const update = () => {
+    if (window.scrollY > showAfter) {
+      bar.classList.add("is-visible");
+      bar.setAttribute("aria-hidden", "false");
+    } else {
+      bar.classList.remove("is-visible");
+      bar.setAttribute("aria-hidden", "true");
+    }
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+});

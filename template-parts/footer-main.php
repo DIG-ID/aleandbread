@@ -103,3 +103,20 @@
 	</div>
 
 </footer>
+
+</footer>
+
+<?php
+if (
+  function_exists('wc_get_page_id')
+  && wc_get_page_id('shop') > 0
+  && ! is_shop()
+  && ! is_product()
+  && ! is_product_category()
+  && ! is_product_tag()
+) :
+?>
+  <div id="sticky-bar-shop" aria-hidden="true">
+    <a class="sticky-bar-shop__btn" href="<?php echo esc_url( get_permalink( wc_get_page_id('shop') ) ); ?>">ZUM SHOP</a>
+  </div>
+<?php endif; ?>
