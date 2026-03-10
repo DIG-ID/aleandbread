@@ -274,6 +274,9 @@ require get_template_directory() . '/inc/theme-user-validation.php';
 // The theme custom functions.
 require get_template_directory() . '/inc/template-functions.php';
 
+// The theme function to filter past dates in Workshop (products).
+require get_template_directory() . '/inc/theme-workshop-past-dates-filter.php';
+
 // The theme custom shortcodes.
 require get_template_directory() . '/inc/theme-shortcodes.php';
 
