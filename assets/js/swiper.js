@@ -38,7 +38,6 @@ window.addEventListener("load", () => {
     });
   }
 
-
   // Our Experience Swiper
   if (document.querySelector('.our-experience-swiper')) {
     new Swiper('.our-experience-swiper', {
@@ -78,9 +77,6 @@ window.addEventListener("load", () => {
 
   // Events Swiper (mobile, tablet, desktop)
   if (document.querySelector('.events-unified-swiper')) {
-    // ---------- Shared helpers ----------
-
-    // Fixed-size window (scales to any total). Center current; clamp to edges.
     function pageWindow(current, total, size = 3) {
       if (total <= size) return Array.from({ length: total }, (_, i) => i + 1);
       let start = current - Math.floor(size / 2);
@@ -90,7 +86,6 @@ window.addEventListener("load", () => {
       return Array.from({ length: size }, (_, i) => start + i);
     }
 
-    // Pagination bullet HTML (keeps Swiper classes for styling)
     function pageButton(page, current) {
       const padded = page.toString().padStart(2, "0");
       const isActive = page === current;
@@ -100,11 +95,9 @@ window.addEventListener("load", () => {
                       ${isActive ? 'aria-current="page"' : ""}>${padded}</button>`;
     }
 
-    // Arrow/pagination visibility + single-page handling (scoped)
     function updateUI(sw, els) {
       const { prev, next, pagEl } = els;
-
-      const totalPages = sw.snapGrid.length; // true number of pages
+      const totalPages = sw.snapGrid.length;
       const currentPage = sw.snapIndex + 1;
       const multiPage = totalPages > 1;
 
@@ -123,7 +116,6 @@ window.addEventListener("load", () => {
       }
     }
 
-    // Robust mapping: page -> slide index
     function targetSlideIndexForPage(sw, page) {
       const lastPage = sw.snapGrid.length;
       if (page >= lastPage) return sw.slides.length - 1;
@@ -152,7 +144,6 @@ window.addEventListener("load", () => {
       return idx;
     }
 
-    // ---------- Factory: init one swiper inside a scope ----------
     function initEventsUnifiedSwiper(scopeEl) {
       const swiperEl = scopeEl.querySelector(".events-unified-swiper");
       if (!swiperEl) return null;
@@ -166,12 +157,10 @@ window.addEventListener("load", () => {
       const swiper = new Swiper(swiperEl, {
         loop: false,
         spaceBetween: 20,
-
         navigation: {
           nextEl: els.next,
           prevEl: els.prev,
         },
-
         pagination: {
           el: els.pagEl,
           type: "custom",
@@ -181,7 +170,6 @@ window.addEventListener("load", () => {
             return pages.map((p) => pageButton(p, current)).join("");
           },
         },
-
         breakpoints: {
           0: {
             slidesPerView: 1,
@@ -197,7 +185,6 @@ window.addEventListener("load", () => {
             grid: { rows: 1 },
           },
         },
-
         on: {
           init(sw) { updateUI(sw, els); },
           afterInit(sw) { updateUI(sw, els); },
@@ -206,15 +193,12 @@ window.addEventListener("load", () => {
         },
       });
 
-      // Click-to-navigate for custom pagination (scoped)
       if (els.pagEl) {
         els.pagEl.addEventListener("click", (e) => {
           const btn = e.target.closest(".swiper-pagination-bullet");
           if (!btn) return;
-
           const page = Number(btn.dataset.page);
           if (!page) return;
-
           const slideIndex = targetSlideIndexForPage(swiper, page);
           swiper.slideTo(slideIndex);
         });
@@ -223,8 +207,32 @@ window.addEventListener("load", () => {
       return swiper;
     }
 
-    // ---------- Init all instances ----------
     document.querySelectorAll(".events-swiper-scope").forEach(initEventsUnifiedSwiper);
+  }
+
+  // Other Products Swiper (mobile + tablet only)
+  const otherProductsSwiperEl = document.querySelector('.otherProductsSwiper');
+
+  if (otherProductsSwiperEl) {
+    new Swiper(otherProductsSwiperEl, {
+      grabCursor: true,
+      spaceBetween: 28,
+      slidesPerView: 1.2,
+      on: {
+        init(sw) {
+          sw.el.classList.remove('opacity-0');
+        }
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 1.2,
+          spaceBetween: 28,
+        },
+        1280: {
+          enabled: false,
+        }
+      }
+    });
   }
 
 });
