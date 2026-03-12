@@ -349,7 +349,7 @@
 		</div>
 	</div>
 
-	<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
+	<div class="products grid grid-cols-2 xl:flex justify-center gap-6">
 		<?php
 		$args = array(
 			'post_type'      => 'product',
@@ -367,9 +367,11 @@
 			foreach ( $products as $product ) :
 				$post_object = get_post( $product->get_id() );
 				setup_postdata( $post_object );
-				wc_setup_product_data( $post_object );
-
-				wc_get_template_part( 'content', 'product' );
+				wc_setup_product_data( $post_object ); ?>
+				<div class="xl:min-w-[326px] xl:max-w-[326px]">
+					<?php wc_get_template_part( 'content', 'product' ); ?>
+				</div>
+				<?php
 			endforeach;
 			wp_reset_postdata();
 			wc_reset_loop();
