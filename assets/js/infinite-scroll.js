@@ -31,9 +31,10 @@
         $loader.show();
 
         $.post(infiniteScroll.ajaxurl, {
-            action: 'load_more_products',
-            nonce:  infiniteScroll.nonce,
-            page:   currentPage,
+            action:      'load_more_products',
+            nonce:       infiniteScroll.nonce,
+            page:        currentPage,
+            category_id: infiniteScroll.category_id,
         })
         .done(function (response) {
             if (response.success) {

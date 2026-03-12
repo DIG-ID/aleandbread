@@ -94,8 +94,9 @@ add_action( 'wp_ajax_nopriv_load_more_products', 'load_more_products_callback' )
 function load_more_products_callback() {
     check_ajax_referer( 'infinite_scroll_nonce', 'nonce' );
 
-    $page     = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
-    $per_page = 6;
+    $page        = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+    $category_id = isset( $_POST['category_id'] ) ? intval( $_POST['category_id'] ) : 0;
+    $per_page    = 6;
 
     $args = array(
         'post_type'      => 'product',
@@ -103,6 +104,17 @@ function load_more_products_callback() {
         'posts_per_page' => $per_page,
         'paged'          => $page,
     );
+
+    // Filter by category when on a product category archive.
+    if ( $category_id > 0 ) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'term_id',
+                'terms'    => $category_id,
+            ),
+        );
+    }
 
     $query = new WP_Query( $args );
 
@@ -134,10 +146,13 @@ add_action( 'wp_enqueue_scripts', function() {
             '1.0',
             true
         );
+        $category_id = is_product_category() ? get_queried_object_id() : 0;
+
         wp_localize_script( 'infinite-scroll', 'infiniteScroll', array(
-            'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-            'nonce'     => wp_create_nonce( 'infinite_scroll_nonce' ),
-            'max_pages' => wc_get_loop_prop( 'total_pages' ),
+            'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+            'nonce'       => wp_create_nonce( 'infinite_scroll_nonce' ),
+            'max_pages'   => wc_get_loop_prop( 'total_pages' ),
+            'category_id' => $category_id,
         ) );
     }
 } );
