@@ -4,7 +4,7 @@
 
     // Sentinel element — sits below the product grid, triggers load when visible
     const $sentinel = $('<div id="scroll-sentinel" style="height:1px"></div>');
-    const $loader = $('<div id="scroll-loader" class="block-text text-blockText text-center py-8 hidden">Loading...</div>');
+    const $loader = $('<div id="scroll-loader" class="block-text text-blockText text-center py-12 hidden">Loading...</div>');
 
     $('.grid.grid-cols-1.xl\\:grid-cols-3.gap-6').after($sentinel).after($loader);
 
