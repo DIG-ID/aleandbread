@@ -19,6 +19,7 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notice
 remove_action( 'woocommerce_before_customer_login_form', 'wc_print_notices', 10 );
 remove_action( 'woocommerce_before_lost_password_form', 'wc_print_notices', 10 );
 remove_action( 'woocommerce_before_reset_password_form', 'wc_print_notices', 10 );
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 
 // Add Account Default Content.
 if ( false === has_action( 'woocommerce_account_content', 'woocommerce_account_content' ) ) {
@@ -85,6 +86,61 @@ function aleandbread_woocommerce_before_shop_loop_action(){
 	</div>
 	<?php
 }
+
+//AJAX handler for infinite scroll
+add_action( 'wp_ajax_load_more_products', 'load_more_products_callback' );
+add_action( 'wp_ajax_nopriv_load_more_products', 'load_more_products_callback' );
+
+function load_more_products_callback() {
+    check_ajax_referer( 'infinite_scroll_nonce', 'nonce' );
+
+    $page     = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+    $per_page = 6;
+
+    $args = array(
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'posts_per_page' => $per_page,
+        'paged'          => $page,
+    );
+
+    $query = new WP_Query( $args );
+
+    if ( $query->have_posts() ) {
+        ob_start();
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            wc_get_template_part( 'content', 'product' );
+        }
+        $html = ob_get_clean();
+        wp_reset_postdata();
+
+        wp_send_json_success( array(
+            'html'      => $html,
+            'max_pages' => $query->max_num_pages,
+        ) );
+    } else {
+        wp_send_json_error( 'No more products' );
+    }
+}
+
+// Pass data to JS
+add_action( 'wp_enqueue_scripts', function() {
+    if ( is_shop() || is_product_category() ) {
+        wp_enqueue_script(
+            'infinite-scroll',
+            get_template_directory_uri() . '/assets/js/infinite-scroll.js',
+            array( 'jquery' ),
+            '1.0',
+            true
+        );
+        wp_localize_script( 'infinite-scroll', 'infiniteScroll', array(
+            'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+            'nonce'     => wp_create_nonce( 'infinite_scroll_nonce' ),
+            'max_pages' => wc_get_loop_prop( 'total_pages' ),
+        ) );
+    }
+} );
 add_action( 'aleandbread_before_shop_loop_action', 'aleandbread_woocommerce_before_shop_loop_action' );
 
 // Edit the Account Menu Items.

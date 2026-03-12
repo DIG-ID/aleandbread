@@ -14,7 +14,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="theme-grid">
+	<div class="theme-grid !hidden">
 		<div class="col-span-2 md:col-span-6 xl:col-span-12">
 		<?php
 		/**
@@ -89,56 +89,7 @@
 	</div>
 </section>
 
-<section class="experiences-overview bg-background pt-20 xl:pt-40">
-	<div class="theme-grid mb-14 xl:mb-24">
-		<!-- Section Titles -->
-		<div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-5 gap-4 mb-6 md:mb-10 xl:mb-0W">
-			<h2 class="h1 text-dark"><?php the_field( 'experiences_overview_title', 'options' ); ?></h2>
-		</div>
-
-		<div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4	">
-			<p class="block-text text-dark"><?php the_field( 'experiences_overview_subtitle', 'options' ); ?></p>
-		</div>
-	</div>
-	<div class="theme-grid">
-		<?php
-		$image    = get_field( 'experiences_overview_image', 'options' );
-		$img_url  = wp_get_attachment_image_url( $image, 'full', array( 'class' => 'object-cover md:mx-auto' ) );
-		$btn_link = get_field( 'experiences_overview_link', 'options' );
-		?>
-
-		<!-- Image + Overlay + Interactive Elements -->
-		<div class="col-span-2 md:col-span-6 xl:col-span-12">
-			<a href="<?php echo esc_url( $btn_link['url'] ); ?>" class="gin-history-wrapper block">
-				<div class="inner-content h-[343px] md:h-[672px] relative" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
-					<span class="cta-overlay">
-					</span>
-					<div class="gin-history-container p-6 md:p-7 xl:p-16">
-						<div class="flex justify-between items-center w-full">
-							<div>
-								<!-- Description Popup -->
-								<div class="gin-popup w-[645px] mb-[5px] md:mb-[55px] translate-y-[100%] opacity-0 pointer-events-none transition-all duration-700 max-w-[300px] md:max-w-[586px] xl:max-w-full">
-									<?php the_field( 'experiences_overview_image_description', 'options' ); ?>
-								</div>
-								<h3 class="h2 gin-title transition-all duration-700 max-w-[215px] md:max-w-[350px] xl:max-w-full">
-									<?php the_field( 'experiences_overview_image_title', 'options' ); ?>
-								</h3>
-							</div>
-							<!-- Toggle Button bottom-right -->
-							<i class="round-button self-end">
-								<svg width="16" height="25" viewBox="0 0 16 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M8.70711 0.292892C8.31658 -0.0976315 7.68342 -0.0976315 7.29289 0.292892L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292892ZM8 25L9 25L9 1L8 1L7 1L7 25L8 25Z" fill="#CC9933"/>
-								</svg>
-							</i>
-						</div>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
-</section>
-
-<section class="best-sellers theme-grid pt-20 xl:pt-40">
+<section class="best-sellers theme-grid pb-12 md:pb-24 xl:pb-52">
 	<div class="col-start-1 col-span-2 md:col-span-5 xl:col-start-2 xl:col-span-4 mb-14 md:mb-16 xl:mb-24">
 		<h2 class="h1 text-dark uppercase"><?php esc_html_e( 'Bestseller', 'aleandbread' ); ?></h2>
 	</div>
@@ -200,6 +151,285 @@
 		</div>
 	</div>
 </section>
+
+<section id="spirituosen" class="category-section bg-light pb-12 md:pb-24 xl:pb-52">
+	<?php
+	$spirituosen_term = get_term_by( 'slug', 'spirituosen', 'product_cat' );
+	?>
+	<div class="theme-grid woocommerce mb-5 md:mb-14 xl:mb-28">
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-2 flex items-start">
+			<h2 class="h1 font-bold uppercase text-dark mb-5 md:mb-0"><?php esc_html_e( 'Spirituosen', 'aleandbread' ); ?></h2>
+		</div>
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 flex items-center">
+			<p class="block-text text-dark">
+				<?php echo $spirituosen_term->description ? wp_kses_post( $spirituosen_term->description ) : esc_html__( 'Fallback text here.', 'aleandbread' ); ?>
+			</p>
+		</div>
+		<div class="col-span-2 md:col-span-6 xl:col-span-3 mt-6 md:mt-12 xl:mt-0 flex items-center justify-start md:justify-center xl:justify-end">
+			<?php
+			
+			if ( $spirituosen_term ) :
+				$cat_link = get_term_link( $spirituosen_term );
+				?>
+				<a class="btn btn-primary-2" href="<?php echo esc_url( $cat_link ); ?>" target="_self">
+					<?php esc_html_e( 'Zu allen Produkten', 'aleandbread' ); ?>
+				</a>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
+		<?php
+		$args = array(
+			'post_type'      => 'product',
+			'posts_per_page' => 4,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => 'spirituosen',
+				),
+			),
+		);
+		$products = wc_get_products( $args );
+		if ( ! empty( $products ) ) :
+			foreach ( $products as $product ) :
+				$post_object = get_post( $product->get_id() );
+				setup_postdata( $post_object );
+				wc_setup_product_data( $post_object );
+
+				wc_get_template_part( 'content', 'product' );
+			endforeach;
+			wp_reset_postdata();
+			wc_reset_loop();
+		else :
+			echo '<p class="text-gray-600">' . esc_html__( 'Keine Produkte gefunden.', 'aleandbread' ) . '</p>';
+		endif;
+		?>
+	</div>
+</section>
+
+<section id="weine" class="category-section bg-light pb-12 md:pb-24 xl:pb-52">
+	<?php
+	$weine_term = get_term_by( 'slug', 'weine', 'product_cat' );
+	?>
+	<div class="theme-grid woocommerce mb-5 md:mb-14 xl:mb-28">
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-2 flex items-start">
+			<h2 class="h1 font-bold uppercase text-dark mb-5 md:mb-0"><?php esc_html_e( 'Weine', 'aleandbread' ); ?></h2>
+		</div>
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 flex items-center">
+			<p class="block-text text-dark">
+				<?php echo $weine_term->description ? wp_kses_post( $weine_term->description ) : esc_html__( 'Fallback text here.', 'aleandbread' ); ?>
+			</p>
+		</div>
+		<div class="col-span-2 md:col-span-6 xl:col-span-3 mt-6 md:mt-12 xl:mt-0 flex items-center justify-start md:justify-center xl:justify-end">
+			<?php
+			
+			if ( $weine_term ) :
+				$cat_link = get_term_link( $weine_term );
+				?>
+				<a class="btn btn-primary-2" href="<?php echo esc_url( $cat_link ); ?>" target="_self">
+					<?php esc_html_e( 'Zu allen Produkten', 'aleandbread' ); ?>
+				</a>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
+		<?php
+		$args = array(
+			'post_type'      => 'product',
+			'posts_per_page' => 4,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => 'weine',
+				),
+			),
+		);
+		$products = wc_get_products( $args );
+		if ( ! empty( $products ) ) :
+			foreach ( $products as $product ) :
+				$post_object = get_post( $product->get_id() );
+				setup_postdata( $post_object );
+				wc_setup_product_data( $post_object );
+
+				wc_get_template_part( 'content', 'product' );
+			endforeach;
+			wp_reset_postdata();
+			wc_reset_loop();
+		else :
+			echo '<p class="text-gray-600">' . esc_html__( 'Keine Produkte gefunden.', 'aleandbread' ) . '</p>';
+		endif;
+		?>
+	</div>
+</section>
+
+<section id="essentials" class="category-section bg-light pb-12 md:pb-24 xl:pb-52">
+	<?php
+	$essentials_term = get_term_by( 'slug', 'essentials', 'product_cat' );
+	?>
+	<div class="theme-grid woocommerce mb-5 md:mb-14 xl:mb-28">
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-2 flex items-start">
+			<h2 class="h1 font-bold uppercase text-dark mb-5 md:mb-0"><?php esc_html_e( 'Essentials', 'aleandbread' ); ?></h2>
+		</div>
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 flex items-center">
+			<p class="block-text text-dark">
+				<?php echo $essentials_term->description ? wp_kses_post( $essentials_term->description ) : esc_html__( 'Fallback text here.', 'aleandbread' ); ?>
+			</p>
+		</div>
+		<div class="col-span-2 md:col-span-6 xl:col-span-3 mt-6 md:mt-12 xl:mt-0 flex items-center justify-start md:justify-center xl:justify-end">
+			<?php
+			
+			if ( $essentials_term ) :
+				$cat_link = get_term_link( $essentials_term );
+				?>
+				<a class="btn btn-primary-2" href="<?php echo esc_url( $cat_link ); ?>" target="_self">
+					<?php esc_html_e( 'Zu allen Produkten', 'aleandbread' ); ?>
+				</a>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
+		<?php
+		$args = array(
+			'post_type'      => 'product',
+			'posts_per_page' => 4,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => 'essentials',
+				),
+			),
+		);
+		$products = wc_get_products( $args );
+		if ( ! empty( $products ) ) :
+			foreach ( $products as $product ) :
+				$post_object = get_post( $product->get_id() );
+				setup_postdata( $post_object );
+				wc_setup_product_data( $post_object );
+
+				wc_get_template_part( 'content', 'product' );
+			endforeach;
+			wp_reset_postdata();
+			wc_reset_loop();
+		else :
+			echo '<p class="text-gray-600">' . esc_html__( 'Keine Produkte gefunden.', 'aleandbread' ) . '</p>';
+		endif;
+		?>
+	</div>
+</section>
+
+<section id="gutscheine" class="category-section bg-light pb-12 md:pb-24 xl:pb-52">
+	<?php
+	$gutscheine_term = get_term_by( 'slug', 'gutscheine', 'product_cat' );
+	?>
+	<div class="theme-grid woocommerce mb-5 md:mb-14 xl:mb-28">
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 col-start-1 md:col-start-1 xl:col-start-2 flex items-start">
+			<h2 class="h1 font-bold uppercase text-dark mb-5 md:mb-0"><?php esc_html_e( 'Gutscheine', 'aleandbread' ); ?></h2>
+		</div>
+		<div class="col-span-2 md:col-span-3 xl:col-span-4 flex items-center">
+			<p class="block-text text-dark">
+				<?php echo $gutscheine_term->description ? wp_kses_post( $gutscheine_term->description ) : esc_html__( 'Fallback text here.', 'aleandbread' ); ?>
+			</p>
+		</div>
+		<div class="col-span-2 md:col-span-6 xl:col-span-3 mt-6 md:mt-12 xl:mt-0 flex items-center justify-start md:justify-center xl:justify-end">
+			<?php
+			
+			if ( $gutscheine_term ) :
+				$cat_link = get_term_link( $gutscheine_term );
+				?>
+				<a class="btn btn-primary-2" href="<?php echo esc_url( $cat_link ); ?>" target="_self">
+					<?php esc_html_e( 'Zu allen Produkten', 'aleandbread' ); ?>
+				</a>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class="products grid grid-cols-2 xl:grid-cols-4 gap-6">
+		<?php
+		$args = array(
+			'post_type'      => 'product',
+			'posts_per_page' => 4,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => 'gutscheine',
+				),
+			),
+		);
+		$products = wc_get_products( $args );
+		if ( ! empty( $products ) ) :
+			foreach ( $products as $product ) :
+				$post_object = get_post( $product->get_id() );
+				setup_postdata( $post_object );
+				wc_setup_product_data( $post_object );
+
+				wc_get_template_part( 'content', 'product' );
+			endforeach;
+			wp_reset_postdata();
+			wc_reset_loop();
+		else :
+			echo '<p class="text-gray-600">' . esc_html__( 'Keine Produkte gefunden.', 'aleandbread' ) . '</p>';
+		endif;
+		?>
+	</div>
+</section>
+
+<section class="experiences-overview bg-background">
+	<div class="theme-grid mb-14 xl:mb-24">
+		<!-- Section Titles -->
+		<div class="col-start-1 md:col-start-1 xl:col-start-2 col-span-2 md:col-span-5 xl:col-span-5 gap-4 mb-6 md:mb-10 xl:mb-0W">
+			<h2 class="h1 text-dark"><?php the_field( 'experiences_overview_title', 'options' ); ?></h2>
+		</div>
+
+		<div class="col-start-1 md:col-start-1 xl:col-start-8 col-span-2 md:col-span-5 xl:col-span-4	">
+			<p class="block-text text-dark"><?php the_field( 'experiences_overview_subtitle', 'options' ); ?></p>
+		</div>
+	</div>
+	<div class="theme-grid">
+		<?php
+		$image    = get_field( 'experiences_overview_image', 'options' );
+		$img_url  = wp_get_attachment_image_url( $image, 'full', array( 'class' => 'object-cover md:mx-auto' ) );
+		$btn_link = get_field( 'experiences_overview_link', 'options' );
+		?>
+
+		<!-- Image + Overlay + Interactive Elements -->
+		<div class="col-span-2 md:col-span-6 xl:col-span-12">
+			<a href="<?php echo esc_url( $btn_link['url'] ); ?>" class="gin-history-wrapper block">
+				<div class="inner-content h-[343px] md:h-[672px] relative" style="background-image:url(<?php echo esc_url( $img_url ); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+					<span class="cta-overlay">
+					</span>
+					<div class="gin-history-container p-6 md:p-7 xl:p-16">
+						<div class="flex justify-between items-center w-full">
+							<div>
+								<!-- Description Popup -->
+								<div class="gin-popup w-[645px] mb-[5px] md:mb-[55px] translate-y-[100%] opacity-0 pointer-events-none transition-all duration-700 max-w-[300px] md:max-w-[586px] xl:max-w-full">
+									<?php the_field( 'experiences_overview_image_description', 'options' ); ?>
+								</div>
+								<h3 class="h2 gin-title transition-all duration-700 max-w-[215px] md:max-w-[350px] xl:max-w-full">
+									<?php the_field( 'experiences_overview_image_title', 'options' ); ?>
+								</h3>
+							</div>
+							<!-- Toggle Button bottom-right -->
+							<i class="round-button self-end">
+								<svg width="16" height="25" viewBox="0 0 16 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M8.70711 0.292892C8.31658 -0.0976315 7.68342 -0.0976315 7.29289 0.292892L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292892ZM8 25L9 25L9 1L8 1L7 1L7 25L8 25Z" fill="#CC9933"/>
+								</svg>
+							</i>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+
 
 
 <section class="section-testimonials py-12 md:py-16 xl:py-40">
