@@ -106,7 +106,7 @@
 					<div class="recipe-card">
 
 						<?php if ( ! empty( $recipe['ingredients'] ) ) : ?>
-							<h2><?php esc_html_e( 'Rezept', 'aleandbread' ); ?></h2>
+							<h2 class="mt-8"><?php esc_html_e( 'Rezept', 'aleandbread' ); ?></h2>
 
 							<p><strong><?php esc_html_e( 'Zutaten:', 'aleandbread' ); ?></strong></p>
 							<ul class="mb-[40px] md:mb-[60px]">

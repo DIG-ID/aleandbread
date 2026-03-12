@@ -7,64 +7,52 @@
 - PHP 8.0+
 
 ## Custom Post Types
-- `blog` — artigos de blog
+- `blog` — artigos de blog e receitas (distinguidos por campo ACF `blog_post_format`)
 - `event` — eventos com data/hora, local e descrição
 
 ## Plugins usados
-- Atenção Alguns plugins sao apenas usado localmente!
-- +------------------------------------+--------+-----------+---------+----------------+-------------+
-| name                               | status | update    | version | update_version | auto_update |
-+------------------------------------+--------+-----------+---------+----------------+-------------+
-| acf-content-analysis-for-yoast-seo | active | none      | 3.2     |                | off         |
-| acfml                              | active | none      | 2.1.5   |                | off         |
-| advanced-custom-fields-pro         | active | available | 6.7.0.2 | 6.7.1          | off         |
-| age-gate                           | active | none      | 3.7.2   |                | off         |
-| alttext-ai                         | active | available | 1.10.15 | 1.10.30        | off         |
-| contact-form-7                     | active | available | 6.1.4   | 6.1.5          | off         |
-| debug-bar                          | active | available | 1.1.7   | 1.1.8          | off         |
-| flexible-coupons-sending           | active | available | 2.0.7   | 2.0.9          | off         |
-| flexible-coupons-shortcodes        | active | available | 1.0.31  | 1.1.0          | off         |
-| flexible-coupons-pro               | active | available | 2.4.11  | 2.5.1          | off         |
-| google-listings-and-ads            | active | available | 3.5.1   | 3.5.3          | off         |
-| log-deprecated-notices             | active | none      | 0.4.1   |                | off         |
-| wpml-mailchimp-for-wp              | active | none      | 0.1.0   |                | off         |
-| mailchimp-for-wp                   | active | available | 4.10.9  | 4.12.0         | off         |
-| query-monitor                      | active | none      | 3.20.2  |                | off         |
-| regenerate-thumbnails              | active | none      | 3.1.6   |                | off         |
-| safe-svg                           | active | none      | 2.4.0   |                | off         |
-| woo-variation-swatches             | active | available | 2.2.2   | 2.2.3          | off         |
-| woocommerce                        | active | available | 10.4.2  | 10.6.0         | off         |
-| woo-update-manager                 | active | none      | 1.0.3   |                | off         |
-| woocommerce-gateway-stripe         | active | available | 10.2.0  | 10.5.0         | off         |
-| wordpress-importer                 | active | none      | 0.9.5   |                | off         |
-| woocommerce-multilingual           | active | none      | 5.5.3.1 |                | off         |
-| sitepress-multilingual-cms         | active | none      | 4.8.6   |                | off         |
-| contact-form-7-multilingual        | active | none      | 1.3.3   |                | off         |
-| wp-seo-multilingual                | active | none      | 2.2.4   |                | off         |
-| wpml-string-translation            | active | none      | 3.4.1   |                | off         |
-| duplicate-post                     | active | available | 4.5     | 4.6            | off         |
-| wordpress-seo                      | active | available | 26.6    | 27.1.1         | off         |
-+------------------------------------+--------+-----------+---------+----------------+-------------+
+- Atenção: alguns plugins são apenas usados localmente!
+- advanced-custom-fields-pro 6.7.0.2
+- age-gate 3.7.2
+- contact-form-7 6.1.4
+- flexible-coupons-pro 2.4.11
+- mailchimp-for-wp 4.10.9
+- woocommerce 10.4.2
+- woocommerce-gateway-stripe 10.2.0
+- woocommerce-multilingual 5.5.3.1
+- sitepress-multilingual-cms 4.8.6 (WPML)
+- wpml-string-translation 3.4.1
+- wordpress-seo 26.6 (Yoast SEO)
+- acfml 2.1.5
 
 ## ACF Field Groups
 
 ### CPT: `blog` — group `blog_cpt`
-- `blog_cpt.description` (text)
-- `blog_cpt.button` (link, array)
-- `blog_cpt.image` (image, returns id)
+Acesso: `get_field('blog_cpt')` devolve array com todas as sub-fields.
+- `blog_cpt['blog_post_format']` (radio: `'article'` | `'recipe'`)
+- `blog_cpt['description']` (text)
+- `blog_cpt['button']` (link, array)
+- `blog_cpt['image']` (image, returns id)
+- `blog_cpt['recipe']` (group, condicional se `blog_post_format = recipe`):
+  - `['servings']` (text, ex: "1 Cocktail")
+  - `['prep_time']` (number, minutos)
+  - `['ingredients']` (repeater → `['ingredient']` text)
+  - `['steps']` (repeater → `['step']` textarea)
+  - `['set']` (repeater → `['item']` text — guarnição)
+  - `['serving_suggestion']` (textarea)
 
 ### CPT: `event` — group `events_cpt`
-- `events_cpt.title` (text)
-- `events_cpt.description` (textarea)
-- `events_cpt.image` (image, returns id)
-- `events_cpt.time` (text — legado, preferir event_date)
-- `events_cpt.date` (text — legado, preferir event_date)
-- `events_cpt.event_date.start` (date_time_picker, formato `Y-m-d H:i:s`)
-- `events_cpt.event_date.end` (date_time_picker, formato `Y-m-d H:i:s`)
-- `events_cpt.place` (text)
-- `events_cpt.small_description` (textarea)
-- `events_cpt.button` (link, array)
-- `our_experiences.image` / `over_title` / `title` / `description` (group para card de experiências)
+Atenção: campos acedidos com chave achatada (flattened), não via array de grupo.
+- `get_field('events_cpt_title')` (text)
+- `get_field('events_cpt_description')` (textarea)
+- `get_field('events_cpt_image')` (image, returns id)
+- `get_field('events_cpt_event_date_start', $id, false)` (Y-m-d H:i:s)
+- `get_field('events_cpt_event_date_end', $id, false)` (Y-m-d H:i:s)
+- `get_field('events_cpt_place')` (text)
+- `get_field('events_cpt_small_description')` (textarea)
+- `get_field('events_cpt_button')` (link, array)
+- `get_field('events_cpt_time')` / `get_field('events_cpt_date')` — legado, não usar
+- `our_experiences` group: image, over_title, title, description
 
 ### Page Template: `page-templates/page-faq.php` — FAQ CF
 - `title` (text)
@@ -84,17 +72,48 @@
 - `events` group: background_image, over_title, title, description
 
 ## Schema / SEO
-- Plugin instalado: **Yoast SEO** (`wordpress-seo` v26.6)
-- Para schema customizado usar a **Yoast Schema API** (filtros `wpseo_schema_graph_pieces` e `wpseo_schema_*`)
-- Referências:
-  - https://yoast.com/help/implementing-schema-with-yoast-seo/
-  - https://yoast.com/features/structured-data/
-- Schema por contexto:
-  - CPT `event` → `schema.org/Event` (usar `event_date.start`, `event_date.end`, `place`)
-  - CPT `blog` → `schema.org/Article` (já coberto pelo Yoast por omissão)
-  - Page FAQ → `schema.org/FAQPage` (mapear repeater `faq` → `faq_accordion` → `question`/`response`)
+- Schema injectado via JSON-LD no `wp_head` (ficheiros dedicados em `inc/`), NÃO via Yoast Schema API
+- Ficheiros de schema:
+  - `inc/schema-blog.php` → CPT `blog`: Recipe (se `blog_post_format = recipe`); Article coberto pelo Yoast
+  - `inc/schema-faq.php` → Page FAQ: FAQPage (todas as perguntas de todos os grupos achatadas)
+  - `inc/schema-event.php` → CPT `event`: Event com startDate, endDate, location, organizer
+- Para receitas, Yoast é instruído a usar `WebPage` em vez de `Article` via filtro `wpseo_schema_webpage_type`
+
+## PHPDoc — Padrão obrigatório
+
+Todo o ficheiro PHP deve ter file-level docblock e docblocks em todas as funções.
+
+**File header:**
+```php
+<?php
+/**
+ * Breve descrição do ficheiro.
+ *
+ * @package AleanBread
+ */
+```
+
+**Função:**
+```php
+/**
+ * Breve descrição do que a função faz.
+ *
+ * @param int    $post_id The post ID.
+ * @param array  $fields  The ACF field group values.
+ * @return array The schema array ready for JSON encoding.
+ */
+function aleandbread_example( $post_id, $fields ) {}
+```
+
+**Tags mais usadas:** `@param type $name desc`, `@return type desc`, `@since 1.0.0`, `@see function_name()`
+
+Tipos PHP válidos: `int`, `string`, `bool`, `float`, `array`, `null`, `void`, `WP_Post`, `WP_Query`
 
 ## Convenções
-- Responder sempre em português de portugal no chat, mas comentários em codigo pode e devem ser em ingles(en-en)
-- Não usar plugins desnecessários, preferir código no tema ou plugins já instalados.
-- Responder sempre que a resposta for codigo escrever o codigo seguindo PHP Coding Standarts https://github.com/PHPCSStandards/PHP_CodeSniffer/ e Wordpress Coding Standarts: https://github.com/WordPress/WordPress-Coding-Standards
+- Responder sempre em português de portugal no chat; comentários em código em inglês (en-GB)
+- Não usar plugins desnecessários; preferir código no tema ou plugins já instalados
+- Seguir PHP Coding Standards: https://github.com/PHPCSStandards/PHP_CodeSniffer/
+- Seguir WordPress Coding Standards: https://github.com/WordPress/WordPress-Coding-Standards
+- Prefixo de funções: `aleandbread_` (ex: `aleandbread_build_recipe_schema`)
+- Usar `array()` em vez de `[]` em código PHP puro (WCS)
+- Sanitizar outputs: `esc_html()`, `esc_url()`, `wp_kses_post()`, `sanitize_text_field()`

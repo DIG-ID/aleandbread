@@ -2,6 +2,8 @@
 /**
  * Schema.org structured data for the Blog CPT.
  *
+ * @package AleanBread
+ *
  * Outputs JSON-LD for:
  *  - Recipe posts  → schema.org/Recipe  (rich snippets: ingredients, steps, times)
  *  - Article posts → Yoast handles this by default; no duplicate output here.

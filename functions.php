@@ -280,8 +280,10 @@ require get_template_directory() . '/inc/theme-workshop-past-dates-filter.php';
 // The theme custom shortcodes.
 require get_template_directory() . '/inc/theme-shortcodes.php';
 
-// Schema.org structured data for Blog CPT (Article & Recipe).
+// Schema.org structured data.
 require get_template_directory() . '/inc/schema-blog.php';
+require get_template_directory() . '/inc/schema-faq.php';
+require get_template_directory() . '/inc/schema-event.php';
 
 
 /**
