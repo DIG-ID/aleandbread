@@ -62,17 +62,96 @@
 	
 	<!-- LEFT CONTENT -->
 	<div class="col-start-1 col-span-2 md:col-span-6 xl:col-span-9 order-1 xl:order-none">
+		<?php
+		$blog_fields = get_field( 'blog_cpt' );
+		$post_format = isset( $blog_fields['blog_post_format'] ) ? $blog_fields['blog_post_format'] : 'article';
+		$is_recipe   = 'recipe' === $post_format;
+		$recipe      = ( $is_recipe && isset( $blog_fields['recipe'] ) ) ? $blog_fields['recipe'] : array();
+		?>
+
 		<?php if ( has_post_thumbnail() ) : ?>
-			<?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover rounded-none']); ?>
+			<?php the_post_thumbnail( 'full', array( 'class' => 'w-full h-auto object-cover rounded-none' ) ); ?>
 		<?php endif; ?>
 
 		<h1 class="xl:max-w-[706px] pt-[15px] md:pt-[23px] xl:pt-[27px]"><?php the_title(); ?></h1>
 
-		<p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date('d. M Y'); ?></p>
+		<?php if ( $is_recipe ) : ?>
+			<!-- Recipe meta bar (prep time + servings) -->
+			<div class="flex flex-wrap gap-4 pt-[20px] md:pt-[30px] font-barlow not-italic font-normal leading-[34px]text-base  uppercase text-[#0D0D0D] ">
+				<?php if ( ! empty( $recipe['prep_time'] ) ) : ?>
+					<p>
+						<span class="text-accent font-semibold"><?php esc_html_e( 'Vorbereitung', 'aleandbread' ); ?>:</span>
+						<span><?php echo esc_html( absint( $recipe['prep_time'] ) ); ?></span>
+						<span><?php esc_html_e( 'min', 'aleandbread' ); ?></span>
+					</p>
+				<?php endif; ?>
+				<?php if ( ! empty( $recipe['servings'] ) ) : ?>
+					<p>
+						<span class="text-accent font-semibold"><?php esc_html_e( 'Portionen', 'aleandbread' ); ?>:</span>
+						<span><?php echo esc_html( $recipe['servings'] ); ?></span>
+					</p>
+				<?php endif; ?>
+			</div>
+		<?php else : ?>
+			<p class="text-accent font-barlow text-[20px] not-italic font-normal leading-[34px] pt-[29px] md:pt-[41px] xl:pt-[50px]"><?php echo get_the_date( 'd. M Y' ); ?></p>
+		<?php endif; ?>
 
+		<!-- Main editorial content (intro, flavour notes, etc.) -->
 		<div class="pt-[25px] md:pt-[35px] xl:max-w-[1142px] pb-[66px] md:pb-[117px] xl:pb-[198px]">
-			<div class="blog-content max-w-[1142px]"><?php the_content(); ?></div>
+			<div class="blog-content max-w-[1142px]">
+				<?php the_content(); ?>
+
+				<?php if ( $is_recipe ) : ?>
+					<!-- Structured recipe card from ACF fields -->
+					<div class="recipe-card">
+
+						<?php if ( ! empty( $recipe['ingredients'] ) ) : ?>
+							<h2><?php esc_html_e( 'Rezept', 'aleandbread' ); ?></h2>
+
+							<p><strong><?php esc_html_e( 'Zutaten:', 'aleandbread' ); ?></strong></p>
+							<ul class="mb-[40px] md:mb-[60px]">
+								<?php foreach ( $recipe['ingredients'] as $row ) : ?>
+									<?php if ( ! empty( $row['ingredient'] ) ) : ?>
+										<li><?php echo esc_html( $row['ingredient'] ); ?></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+
+						<?php if ( ! empty( $recipe['set'] ) ) : ?>
+							<p><strong><?php esc_html_e( 'Garnitur:', 'aleandbread' ); ?></strong></p>
+							<ul class="mb-[40px] md:mb-[60px]">
+								<?php foreach ( $recipe['set'] as $row ) : ?>
+									<?php if ( ! empty( $row['item'] ) ) : ?>
+										<li><?php echo esc_html( $row['item'] ); ?></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+
+						<?php if ( ! empty( $recipe['steps'] ) ) : ?>
+							<p><strong><?php esc_html_e( 'Zubereitung:', 'aleandbread' ); ?></strong></p>
+							<ol class="mb-[40px] md:mb-[60px]">
+								<?php foreach ( $recipe['steps'] as $row ) : ?>
+									<?php if ( ! empty( $row['step'] ) ) : ?>
+										<li><?php echo esc_html( $row['step'] ); ?></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</ol>
+						<?php endif; ?>
+
+						<?php if ( ! empty( $recipe['serving_suggestion'] ) ) : ?>
+							<p><strong><?php esc_html_e( 'Serviervorschläge', 'aleandbread' ); ?></strong></p>
+							<p><?php echo esc_html( $recipe['serving_suggestion'] ); ?></p>
+						<?php endif; ?>
+
+					</div>
+				<?php endif; ?>
+			</div>
 		</div>
+
+
+
 	</div>
 
 	<!-- RIGHT SIDEBAR -->
