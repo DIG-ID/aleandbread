@@ -277,6 +277,73 @@ function aleandbread_shop_experiences_categories() {
 add_action( 'shop_experiences_categories', 'aleandbread_shop_experiences_categories', 10 );
 
 /**
+ * Renders all experience products grouped by subcategory.
+ * Used on the "archive experiences" (erlebnisse) parent category page.
+ */
+function aleandbread_experiences_products_by_category() {
+	$parent_cat_id = get_queried_object_id();
+	if ( ! $parent_cat_id ) {
+		return;
+	}
+
+	$children_cats = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'parent'     => $parent_cat_id,
+			'hide_empty' => true,
+			'orderby'    => 'menu_order',
+			'order'      => 'ASC',
+		)
+	);
+
+	if ( empty( $children_cats ) || is_wp_error( $children_cats ) ) {
+		return;
+	}
+
+	foreach ( $children_cats as $cat ) {
+		$products = new WP_Query(
+			array(
+				'post_type'      => 'product',
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
+				'tax_query'      => array(
+					array(
+						'taxonomy'         => 'product_cat',
+						'field'            => 'term_id',
+						'terms'            => $cat->term_id,
+						'include_children' => false,
+					),
+				),
+			)
+		);
+
+		if ( ! $products->have_posts() ) {
+			continue;
+		}
+		?>
+		<div class="experiences-category-group mb-16 md:mb-24 xl:mb-32">
+			<div class="theme-grid mb-8 md:mb-12 xl:mb-16">
+				<h2 class="text-dark pb-5 xl:pb-0 col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-4"><?php echo esc_html( $cat->name ); ?></h2>
+				<?php if ( $cat->description ) : ?>
+					<p class="block-text col-span-2 md:col-span-6 xl:col-start-6 xl:col-span-5"><?php echo wp_kses_post( $cat->description ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="grid grid-cols-1 gap-y-12 md:gap-y-16 xl:gap-y-24">
+				<?php
+				while ( $products->have_posts() ) {
+					$products->the_post();
+					wc_get_template_part( 'content', 'product-experiences' );
+				}
+				wp_reset_postdata();
+				?>
+			</div>
+		</div>
+		<?php
+	}
+}
+add_action( 'shop_experiences_products_by_category', 'aleandbread_experiences_products_by_category', 10 );
+
+/**
  * Customize the product image gallery.
  *
  * @param array $opts The default options.

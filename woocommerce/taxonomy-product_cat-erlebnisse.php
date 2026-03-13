@@ -58,14 +58,18 @@ else :
 
 	<section id="shop-experiences-categories" class="shop-experiences-categories mb-14 md:mb-32 xl:mb-56">
 		<div class="theme-container">
-			<?php
-			/**
-			 * Hook: aleandbread_shop_categories.
-			 * 
-			 * @hooked aleandbread_shop_categories - 10
-			 */
-			do_action( 'shop_experiences_categories' );
-			?>
+			<div class="experiences-cards theme-grid">
+				<div class="col-span-2 md:col-span-6 xl:col-span-12">
+					<?php
+					/**
+					 * Hook: aleandbread_experiences_products_by_category.
+					 *
+					 * @hooked aleandbread_experiences_products_by_category - 10
+					 */
+					do_action( 'shop_experiences_products_by_category' );
+					?>
+				</div>
+			</div>
 		</div>
 	</section>
 
