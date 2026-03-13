@@ -87,6 +87,19 @@ function aleandbread_woocommerce_before_shop_loop_action(){
 	<?php
 }
 
+/**
+ * Remove the reviews tab from single product pages.
+ *
+ * @param array $tabs The product tabs array.
+ * @return array The filtered tabs array without the reviews tab.
+ */
+function aleandbread_remove_reviews_tab( $tabs ) {
+    unset( $tabs['reviews'] );
+    return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'aleandbread_remove_reviews_tab', 999 );
+
+
 //AJAX handler for infinite scroll
 add_action( 'wp_ajax_load_more_products', 'load_more_products_callback' );
 add_action( 'wp_ajax_nopriv_load_more_products', 'load_more_products_callback' );
