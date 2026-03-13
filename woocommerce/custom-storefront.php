@@ -182,12 +182,19 @@
 		<?php
 		$args = array(
 			'post_type'      => 'product',
+			'status'         => 'publish',
 			'posts_per_page' => 4,
 			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug',
 					'terms'    => 'spirituosen',
+				),
+				array(
+					'taxonomy' => 'product_tag',
+					'field'    => 'slug',
+					'terms'    => 'shopfront',
 				),
 			),
 		);
@@ -239,12 +246,19 @@
 		<?php
 		$args = array(
 			'post_type'      => 'product',
+			'status'         => 'publish',
 			'posts_per_page' => 4,
 			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug',
 					'terms'    => 'weine',
+				),
+				array(
+					'taxonomy' => 'product_tag',
+					'field'    => 'slug',
+					'terms'    => 'shopfront',
 				),
 			),
 		);
@@ -296,12 +310,19 @@
 		<?php
 		$args = array(
 			'post_type'      => 'product',
+			'status'         => 'publish',
 			'posts_per_page' => 4,
 			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug',
 					'terms'    => 'essentials',
+				),
+				array(
+					'taxonomy' => 'product_tag',
+					'field'    => 'slug',
+					'terms'    => 'shopfront',
 				),
 			),
 		);
@@ -353,12 +374,19 @@
 		<?php
 		$args = array(
 			'post_type'      => 'product',
+			'status'         => 'publish',
 			'posts_per_page' => 4,
 			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug',
 					'terms'    => 'gutscheine',
+				),
+				array(
+					'taxonomy' => 'product_tag',
+					'field'    => 'slug',
+					'terms'    => 'shopfront',
 				),
 			),
 		);
