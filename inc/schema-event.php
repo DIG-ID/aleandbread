@@ -2,7 +2,8 @@
 /**
  * Schema.org structured data for the Event CPT.
  *
- * @package AleanBread
+ * @package    AleanBread
+ * @subpackage Schema
  *
  * Outputs JSON-LD Event schema on single event posts.
  *

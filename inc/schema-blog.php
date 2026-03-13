@@ -2,7 +2,8 @@
 /**
  * Schema.org structured data for the Blog CPT.
  *
- * @package AleanBread
+ * @package    AleanBread
+ * @subpackage Schema
  *
  * Outputs JSON-LD for:
  *  - Recipe posts  → schema.org/Recipe  (rich snippets: ingredients, steps, times)

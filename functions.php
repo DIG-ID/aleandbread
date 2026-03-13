@@ -284,6 +284,8 @@ require get_template_directory() . '/inc/theme-shortcodes.php';
 require get_template_directory() . '/inc/schema-blog.php';
 require get_template_directory() . '/inc/schema-faq.php';
 require get_template_directory() . '/inc/schema-event.php';
+require get_template_directory() . '/inc/schema-pages.php';
+require get_template_directory() . '/inc/schema-distillery.php';
 
 
 /**

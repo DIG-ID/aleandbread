@@ -2,7 +2,8 @@
 /**
  * Schema.org structured data for the FAQ page template.
  *
- * @package AleanBread
+ * @package    AleanBread
+ * @subpackage Schema
  *
  * Outputs JSON-LD FAQPage schema by flattening all question/answer pairs
  * from both ACF repeater groups into a single mainEntity array.

@@ -89,9 +89,19 @@ Todo o ficheiro PHP deve ter file-level docblock e docblocks em todas as funçõ
 /**
  * Breve descrição do ficheiro.
  *
- * @package AleanBread
+ * @package    AleanBread
+ * @subpackage NomeDoMódulo
  */
 ```
+
+**Subpackages usados no tema:**
+- `Schema` — ficheiros em `inc/schema-*.php`
+- `Templates` — page templates em `page-templates/` e `single-*.php`, `archive-*.php`
+- `Sections` — secções específicas de uma página em `template-parts/pages/*/` e `template-parts/archives/*/` e `template-parts/posts/*/`; cada ficheiro representa uma secção visual de um template pai
+- `Modules` — módulos reutilizáveis entre páginas em `template-parts/modules/`; não pertencem a um template específico
+- `WooCommerce` — ficheiros em `inc/theme-woocommerce.php` e `woocommerce/`
+- `Admin` — ficheiros de configuração do admin (`inc/theme-admin-settings.php`)
+- `Shortcodes` — `inc/theme-shortcodes.php`
 
 **Função:**
 ```php
