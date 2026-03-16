@@ -109,13 +109,15 @@ function load_more_products_callback() {
 
     $page        = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
     $category_id = isset( $_POST['category_id'] ) ? intval( $_POST['category_id'] ) : 0;
-    $per_page    = 6;
+    $per_page    = isset( $_POST['per_page'] ) ? intval( $_POST['per_page'] ) : wc_get_default_products_per_row() * wc_get_default_product_rows_per_page();
 
     $args = array(
         'post_type'      => 'product',
         'post_status'    => 'publish',
         'posts_per_page' => $per_page,
         'paged'          => $page,
+        'orderby'        => 'menu_order title',
+        'order'          => 'ASC',
     );
 
     // Filter by category when on a product category archive.
@@ -165,6 +167,7 @@ add_action( 'wp_enqueue_scripts', function() {
             'ajaxurl'     => admin_url( 'admin-ajax.php' ),
             'nonce'       => wp_create_nonce( 'infinite_scroll_nonce' ),
             'max_pages'   => wc_get_loop_prop( 'total_pages' ),
+            'per_page'    => wc_get_loop_prop( 'per_page' ),
             'category_id' => $category_id,
         ) );
     }

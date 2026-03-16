@@ -34,6 +34,7 @@
             action:      'load_more_products',
             nonce:       infiniteScroll.nonce,
             page:        currentPage,
+            per_page:    infiniteScroll.per_page,
             category_id: infiniteScroll.category_id,
         })
         .done(function (response) {
