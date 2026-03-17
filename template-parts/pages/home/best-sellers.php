@@ -1,4 +1,4 @@
-<section id="best-sellers" class="best-sellers bg-dark pt-0 md:pt-0 xl:pt-36 pb-28 -mt-1">
+<section id="best-sellers" class="best-sellers bg-dark pt-28 xl:pt-36 pb-28 -mt-1">
 	<div class="theme-container woocommerce">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-4 xl:col-span-6 flex flex-col items-center gap-y-7 md:gap-y-12 mb-16">
