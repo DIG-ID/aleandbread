@@ -93,12 +93,8 @@ function aleandbread_theme_enqueue_styles() {
 	$the_theme     = wp_get_theme();
 	$theme_version = $the_theme->get( 'Version' );
 
-	// Register Theme main style.
-	wp_register_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array(), $theme_version );
-	// Add styles inline.
-	wp_add_inline_style( 'theme-styles', aleandbread_get_font_face_styles() );
 	// Enqueue theme stylesheet.
-	wp_enqueue_style( 'theme-styles' );
+	wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array(), $theme_version );
 
 	wp_enqueue_style( 'theme-fonts', 'https://use.typekit.net/ccj8tei.css', array(), $theme_version );
 
@@ -140,7 +136,7 @@ add_filter( 'style_loader_tag', 'aleandbread_theme_typekit_non_blocking_loader',
  * @param string $relation_type The relation type (preconnect, dns-prefetch, etc.).
  * @return array
  */
-function aleandbread_theme_theme_resource_hints( array $hints, string $relation_type ): array {
+function aleandbread_theme_resource_hints( array $hints, string $relation_type ): array {
 	if ( 'preconnect' === $relation_type ) {
 		$hints[] = array(
 			'href'        => 'https://use.typekit.net',
@@ -154,7 +150,7 @@ function aleandbread_theme_theme_resource_hints( array $hints, string $relation_
 
 	return $hints;
 }
-add_filter( 'wp_resource_hints', 'aleandbread_theme_theme_resource_hints', 10, 2 );
+add_filter( 'wp_resource_hints', 'aleandbread_theme_resource_hints', 10, 2 );
 
 /**
  * Fixes Yoast breadcrumb for pages with a parent.
