@@ -84,26 +84,6 @@ function aleandbread_theme_footer_widgets_init() {
 }
 add_action( 'widgets_init', 'aleandbread_theme_footer_widgets_init' );
 
-/**
- * Enqueue styles and scripts
- */
-function aleandbread_theme_enqueue_styles() {
-
-	// Get the theme data.
-	$the_theme     = wp_get_theme();
-	$theme_version = $the_theme->get( 'Version' );
-
-	// Enqueue theme stylesheet.
-	wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array(), $theme_version );
-
-	wp_enqueue_style( 'theme-fonts', 'https://use.typekit.net/ccj8tei.css', array(), $theme_version );
-
-	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
-	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
-	wp_enqueue_script( 'alpine-js', 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', array(), $theme_version, true );
-}
-add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
-
 
 /**
  * Load Typekit fonts asynchronously to avoid render-blocking.
@@ -121,7 +101,7 @@ function aleandbread_theme_typekit_non_blocking_loader( string $html, string $ha
 		return $html;
 	}
 
-	return '<link rel="preload" href="https://use.typekit.net/ccj8tei.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n"
+	return '<link rel="preload" href="https://use.typekit.net/ccj8tei.css" as="style" crossorigin onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n"
 		. '<noscript><link rel="stylesheet" href="https://use.typekit.net/ccj8tei.css"></noscript>' . "\n";
 }
 add_filter( 'style_loader_tag', 'aleandbread_theme_typekit_non_blocking_loader', 10, 2 );
@@ -151,6 +131,29 @@ function aleandbread_theme_resource_hints( array $hints, string $relation_type )
 	return $hints;
 }
 add_filter( 'wp_resource_hints', 'aleandbread_theme_resource_hints', 10, 2 );
+
+/**
+ * Enqueue styles and scripts
+ */
+function aleandbread_theme_enqueue_styles() {
+
+	// Get the theme data.
+	$the_theme     = wp_get_theme();
+	$theme_version = $the_theme->get( 'Version' );
+
+		wp_enqueue_style( 'typekit-fonts', 'https://use.typekit.net/ccj8tei.css', array(), $theme_version );
+
+	// Enqueue theme stylesheet.
+	wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array( 'typekit-fonts' ), $theme_version );
+
+	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
+	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
+	wp_enqueue_script( 'alpine-js', 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', array(), $theme_version, true );
+}
+add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
+
+
+
 
 /**
  * Fixes Yoast breadcrumb for pages with a parent.

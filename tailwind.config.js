@@ -14,8 +14,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        barlow: ['Barlow', 'sans-serif'],
-        barlowSemiCondensed: ['barlow-semi-condensed', 'sans-serif'],
+        barlow: ['Barlow', 'ui-sans-serif', 'system-ui', '-apple-system', 'Arial', 'sans-serif'],
+        barlowSemiCondensed: ['barlow-semi-condensed', 'ui-sans-serif', 'system-ui', '-apple-system', 'Arial Narrow', 'sans-serif'],
       },
       spacing: {
         'pt-combo-sm': '130px', // 48 + 82

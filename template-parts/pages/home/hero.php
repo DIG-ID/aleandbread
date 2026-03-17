@@ -12,7 +12,7 @@
 				<div class="swiper-wrapper">
 					<?php foreach($desktop_gallery as $image_id): 
 						$image_url = wp_get_attachment_image_url($image_id, 'full'); ?>
-						<div class="swiper-slide bg-cover bg-center" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
+						<div class="swiper-slide bg-cover bg-center" fetchpriority="high" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
 					<?php endforeach; ?>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 					src="<?php echo esc_url($mobile_image_url); ?>" 
 					alt="<?php echo esc_attr(get_post_meta($mobile_image_id, '_wp_attachment_image_alt', true)); ?>"
 					class="w-full h-full object-cover"
-					loading="lazy"
+					fetchpriority="high"
 				/>
 		</div>
 	<?php endif; ?>
