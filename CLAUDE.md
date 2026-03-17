@@ -77,7 +77,12 @@ Atenção: campos acedidos com chave achatada (flattened), não via array de gru
   - `inc/schema-blog.php` → CPT `blog`: Recipe (se `blog_post_format = recipe`); Article coberto pelo Yoast
   - `inc/schema-faq.php` → Page FAQ: FAQPage (todas as perguntas de todos os grupos achatadas)
   - `inc/schema-event.php` → CPT `event`: Event com startDate, endDate, location, organizer
+  - `inc/schema-pages.php` → Overrides Yoast WebPage type: ContactPage, AboutPage via `wpseo_schema_webpage_type`
+  - `inc/schema-distillery.php` → LocalBusiness para Distillery Aktienmühle (morada + contacto)
 - Para receitas, Yoast é instruído a usar `WebPage` em vez de `Article` via filtro `wpseo_schema_webpage_type`
+- Referências Yoast Schema API: https://developer.yoast.com/features/schema/api/
+- Yoast Schema Aggregation (v27.1): https://yoast.com/yoast-seo-march-3-2026/
+- Nota: os nossos JSON-LD separados NÃO são incluídos no Schema Aggregation endpoint do Yoast; migrar para `wpseo_schema_graph_pieces` seria a forma de os integrar no grafo do Yoast (melhoria futura)
 
 ## PHPDoc — Padrão obrigatório
 
@@ -127,3 +132,4 @@ Tipos PHP válidos: `int`, `string`, `bool`, `float`, `array`, `null`, `void`, `
 - Prefixo de funções: `aleandbread_` (ex: `aleandbread_build_recipe_schema`)
 - Usar `array()` em vez de `[]` em código PHP puro (WCS)
 - Sanitizar outputs: `esc_html()`, `esc_url()`, `wp_kses_post()`, `sanitize_text_field()`
+
