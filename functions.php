@@ -148,7 +148,6 @@ function aleandbread_theme_enqueue_styles() {
 
 	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
 	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
-	wp_enqueue_script( 'alpine-js', 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', array(), $theme_version, true );
 }
 add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
 

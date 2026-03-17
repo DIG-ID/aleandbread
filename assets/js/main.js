@@ -1,5 +1,6 @@
-import './accordions';
 import "./gsap";
-import './navigation';
 import './swiper';
+import './alpine';
+import './navigation';
+import './accordions';
 import './woocommerce';
