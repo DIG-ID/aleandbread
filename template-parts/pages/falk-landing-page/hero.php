@@ -1,4 +1,4 @@
-<section id="hero" class="hero relative overflow-hidden pt-96 md:pt-[360px] xl:pt-72">
+<section id="hero" class="hero relative overflow-hidden pt-96 md:pt-[360px] xl:pt-52">
 
 	<?php
 	$desktop_bg    = get_field( 'hero_background' );
@@ -8,21 +8,21 @@
 
 	<!-- Desktop background -->
 	<?php if ( $desktop_bg ) : ?>
-		<figure class="img-overlay img-overlay--vertical absolute inset-0 w-full h-full object-cover z-0 pointer-events-none hidden xl:block">
+		<figure class="img-overlay img-overlay--vertical-3 absolute inset-0 w-full h-full object-cover z-0 pointer-events-none hidden xl:block">
 			<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url( $desktop_bg, 'full' ) ); ?>');"></div>
 		</figure>
 	<?php endif; ?>
 
 	<!-- Tablet/Mobile background -->
 	<?php if ( $tablet_bg ) : ?>
-		<figure class="img-overlay img-overlay--vertical absolute inset-0 w-full h-full object-cover z-0 pointer-events-none block xl:hidden">
+		<figure class="img-overlay img-overlay--vertical-3 absolute inset-0 w-full h-full object-cover z-0 pointer-events-none block xl:hidden">
 			<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('<?php echo esc_url( $tablet_bg ); ?>');"></div>
 		</figure>
 	<?php endif; ?>
 
 	<!-- Content Container -->
 	<div class="theme-container relative z-10 h-full md:h-auto">
-		<div class="theme-grid h-full md:h-auto items-end pb-12 md:pb-20 xl:pb-56">
+		<div class="theme-grid h-full md:h-auto items-end pb-12 md:pb-20 xl:pb-40">
 			<div class="col-start-1 col-span-2 md:col-start-1 md:col-span-4 xl:col-start-9 xl:col-span-4">
 				<h1 class="text-blockTextLight">
 					<?php echo get_field( 'hero_title' ); ?>
