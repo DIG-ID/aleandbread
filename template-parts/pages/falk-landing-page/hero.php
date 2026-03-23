@@ -1,4 +1,4 @@
-<section id="hero" class="hero relative overflow-hidden pt-96 md:pt-[360px] xl:pt-52">
+<section id="hero" class="hero relative overflow-hidden pt-28 md:pt-[360px] xl:pt-52">
 
 	<?php
 	$desktop_bg    = get_field( 'hero_background' );

@@ -1847,9 +1847,6 @@ video {
 .h-full{
   height: 100%;
 }
-.h-\[500px\]{
-  height: 500px;
-}
 .max-h-0{
   max-height: 0px;
 }
@@ -2102,6 +2099,9 @@ video {
 .max-w-\[370px\]{
   max-width: 370px;
 }
+.max-w-\[379px\]{
+  max-width: 379px;
+}
 .max-w-\[492px\]{
   max-width: 492px;
 }
@@ -2113,24 +2113,6 @@ video {
 }
 .max-w-xl{
   max-width: 36rem;
-}
-.max-w-\[549px\]{
-  max-width: 549px;
-}
-.max-w-\[530px\]{
-  max-width: 530px;
-}
-.max-w-\[500px\]{
-  max-width: 500px;
-}
-.max-w-\[480-px\]{
-  max-width: 480-px;
-}
-.max-w-\[480px\]{
-  max-width: 480px;
-}
-.max-w-\[379px\]{
-  max-width: 379px;
 }
 .flex-1{
   flex: 1 1 0%;
@@ -2906,9 +2888,6 @@ video {
 }
 .pt-9{
   padding-top: 2.25rem;
-}
-.pt-96{
-  padding-top: 24rem;
 }
 .pt-\[100px\]{
   padding-top: 100px;
@@ -8477,6 +8456,9 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   .md\:col-start-2{
     grid-column-start: 2;
   }
+  .md\:col-start-4{
+    grid-column-start: 4;
+  }
   .md\:col-start-5{
     grid-column-start: 5;
   }
@@ -9051,6 +9033,9 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   .md\:pt-3{
     padding-top: 0.75rem;
   }
+  .md\:pt-32{
+    padding-top: 8rem;
+  }
   .md\:pt-36{
     padding-top: 9rem;
   }
@@ -9105,9 +9090,6 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   .md\:pt-\[35px\]{
     padding-top: 35px;
   }
-  .md\:pt-\[360px\]{
-    padding-top: 360px;
-  }
   .md\:pt-\[41px\]{
     padding-top: 41px;
   }
@@ -9143,6 +9125,9 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   }
   .md\:pt-pt-combo-md{
     padding-top: 168px;
+  }
+  .md\:pt-\[360px\]{
+    padding-top: 360px;
   }
   .md\:text-center{
     text-align: center;
@@ -9423,9 +9408,6 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   }
   .xl\:h-full{
     height: 100%;
-  }
-  .xl\:h-96{
-    height: 24rem;
   }
   .xl\:max-h-\[500px\]{
     max-height: 500px;
@@ -9793,6 +9775,9 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   .xl\:pl-12{
     padding-left: 3rem;
   }
+  .xl\:pl-14{
+    padding-left: 3.5rem;
+  }
   .xl\:pl-16{
     padding-left: 4rem;
   }
@@ -9846,9 +9831,6 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   }
   .xl\:pt-60{
     padding-top: 15rem;
-  }
-  .xl\:pt-72{
-    padding-top: 18rem;
   }
   .xl\:pt-\[130px\]{
     padding-top: 130px;
@@ -9915,15 +9897,6 @@ nav.woocommerce-pagination ul.page-numbers li .page-numbers.current{
   }
   .xl\:pt-pt-combo-xl{
     padding-top: 202px;
-  }
-  .xl\:pl-14{
-    padding-left: 3.5rem;
-  }
-  .xl\:pl-28{
-    padding-left: 7rem;
-  }
-  .xl\:pl-24{
-    padding-left: 6rem;
   }
   .xl\:text-right{
     text-align: right;

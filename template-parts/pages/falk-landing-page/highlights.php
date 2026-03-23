@@ -1,4 +1,4 @@
-<section id="highlights" class="highlights bg-white pt-24 md:pt-20 pb-24 md:pb-64">
+<section id="highlights" class="highlights bg-white pt-12 md:pt-20 pb-24 md:pb-64">
 	<div class="theme-container woocommerce">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-4 xl:pb-24">
