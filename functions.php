@@ -146,7 +146,6 @@ function aleandbread_theme_enqueue_styles() {
 	// Enqueue theme stylesheet.
 	wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/dist/css/main.css', array( 'typekit-fonts' ), $theme_version );
 
-	wp_enqueue_script( 'jquery', false, array(), $theme_version, true );
 	wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/dist/js/main.js', array( 'jquery' ), $theme_version, true );
 }
 add_action( 'wp_enqueue_scripts', 'aleandbread_theme_enqueue_styles' );
