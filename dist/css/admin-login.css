@@ -1,1 +1,7 @@
-.login h1.wp-login-logo a{background-size:200px;height:72px;width:250px}
+.login h1.wp-login-logo a {
+  height: 72px;
+  width: 250px;
+  background-size: 200px;
+}
+
+/*# sourceMappingURL=admin-login.css.map*/

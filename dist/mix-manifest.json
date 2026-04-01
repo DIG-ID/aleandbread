@@ -1,5 +1,8 @@
 {
-    "/js/main.js": "/js/main.js?id=8c4a1ab674d2cadb35f53239216cb936",
-    "/css/main.css": "/css/main.css?id=f9a095d48bbf721552b03045d846bb19",
-    "/css/admin-login.css": "/css/admin-login.css?id=aa50d7f1af0151f1fecfab3c021f07af"
+    "/js/main.js": "/js/main.js",
+    "/js/main.js.map": "/js/main.js.map",
+    "/css/main.css": "/css/main.css",
+    "/css/main.css.map": "/css/main.css.map",
+    "/css/admin-login.css": "/css/admin-login.css",
+    "/css/admin-login.css.map": "/css/admin-login.css.map"
 }

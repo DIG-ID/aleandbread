@@ -8,15 +8,15 @@
 
 	<!-- Desktop background -->
 	<?php if ( $desktop_bg ) : ?>
-		<figure class="img-overlay img-overlay--vertical-3 absolute inset-0 w-full h-full object-cover z-0 pointer-events-none hidden xl:block">
-			<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url( $desktop_bg, 'full' ) ); ?>');"></div>
+		<figure class="img-overlay img-overlay--vertical-3 absolute inset-0 w-full h-full z-0 pointer-events-none hidden xl:block">
+			<?php echo wp_get_attachment_image( $desktop_bg, 'full', false, array( 'class' => 'absolute inset-0 w-full h-full object-cover', 'alt' => '' ) ); ?>
 		</figure>
 	<?php endif; ?>
 
 	<!-- Tablet/Mobile background -->
 	<?php if ( $tablet_bg ) : ?>
-		<figure class="img-overlay img-overlay--vertical-3 absolute inset-0 w-full h-full object-cover z-0 pointer-events-none block xl:hidden">
-			<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('<?php echo esc_url( $tablet_bg ); ?>');"></div>
+		<figure class="img-overlay img-overlay--vertical absolute inset-0 w-full h-full z-0 pointer-events-none block xl:hidden">
+			<?php echo wp_get_attachment_image( $tablet_bg_id, 'full', false, array( 'class' => 'absolute inset-0 w-full h-full object-cover', 'alt' => '' ) ); ?>
 		</figure>
 	<?php endif; ?>
 
