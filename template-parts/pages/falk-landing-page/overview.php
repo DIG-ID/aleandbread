@@ -3,13 +3,13 @@
 		<div class="theme-grid">
 			
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-8 pb-12 md:pb-24">
-				<h1 class="text-blockText">
+				<h2 class="h1 text-blockText">
 					<?php echo wp_kses_post( get_field( 'overview_title' ) ); ?>
-				</h1>
+				</h2>
 			</div>
             <div class="col-span-2 md:col-start-1 md:col-span-3 xl:col-start-2 xl:col-span-3 max-w-[379px]">
-                <h2 class="text-blockText"><?php echo get_field( 'overview_flandria_title' ); ?></h2>
-                <h3 class="text-blockText pt-4"><?php echo get_field( 'overview_flandria_subtitle' ); ?></h3>
+                <h3 class="h2 text-blockText"><?php echo get_field( 'overview_flandria_title' ); ?></h3>
+                <h4 class="h3 text-blockText pt-4"><?php echo get_field( 'overview_flandria_subtitle' ); ?></h4>
                 <p class="text-blockText pb-14 pt-4"><?php echo get_field( 'overview_flandria_description' ); ?></p>
                 <?php
 						$button = get_field('overview_flandria_button');
@@ -24,8 +24,8 @@
 					<?php endif; ?>
             </div>
             <div class="col-span-2 md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-3 xl:pl-16">
-                <h2 class="text-blockText"><?php echo get_field( 'overview_classic_title' ); ?></h2>
-                <h3 class="text-blockText pt-4"><?php echo get_field( 'overview_classic_subtitle' ); ?></h3>
+                <h3 class="h2 text-blockText"><?php echo get_field( 'overview_classic_title' ); ?></h3>
+                <h4 class="h3 text-blockText pt-4"><?php echo get_field( 'overview_classic_subtitle' ); ?></h3>
                 <p class="text-blockText pb-14 pt-4"><?php echo get_field( 'overview_classic_description' ); ?></p>
                 <?php
 						$button = get_field('overview_classic_button');
@@ -40,8 +40,8 @@
 					<?php endif; ?>
             </div>
             <div class="col-span-2 md:col-span-3 xl:col-start-8 xl:col-span-3 xl:pl-14">
-                <h2 class="text-blockText"><?php echo get_field( 'overview_signature_title' ); ?></h2>
-                <h3 class="text-blockText pt-4"><?php echo get_field( 'overview_signature_subtitle' ); ?></h3>
+                <h3 class="h2 text-blockText"><?php echo get_field( 'overview_signature_title' ); ?></h3>
+                <h4 class="h3 text-blockText pt-4"><?php echo get_field( 'overview_signature_subtitle' ); ?></h4>
                 <p class="text-blockText pb-20 pt-4"><?php echo get_field( 'overview_signature_description' ); ?></p>
                 <?php
 						$button = get_field('overview_signature_button');

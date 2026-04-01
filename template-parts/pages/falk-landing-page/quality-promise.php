@@ -8,7 +8,8 @@
 				</h1>
 			</div>
 
-			<div class="col-span-2 md:col-span-6 xl:col-start-3 xl:col-span-9 pb-28 md:pb-64">
+			<?php // pb-28 md:pb-64 — removed temporarily ?>
+				<div class="col-span-2 md:col-span-6 xl:col-start-3 xl:col-span-9">
 				<?php if ( have_rows( 'quality_promise_items' ) ) : ?>
 					<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-12 md:gap-y-16 md:gap-x-12 xl:gap-x-28">
 						
@@ -41,13 +42,14 @@
 					</div>
 				<?php endif; ?>
 			</div>
+			<?php /* 
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-4 xl:pb-24">
 				<h1 class="text-blockText"><?php echo wp_kses_post( get_field( 'quality_promise_title_2' ) ); ?></h1>
-            </div>
-            <div class="col-span-2 md:col-span-4 xl:col-start-6 xl:col-span-4 pt-7 md:pt-14 xl:pt-0">
+			</div>
+			<div class="col-span-2 md:col-span-4 xl:col-start-6 xl:col-span-4 pt-7 md:pt-14 xl:pt-0">
 				<p class="text-blockText"><?php echo wp_kses_post( get_field( 'quality_promise_description_2' ) ); ?></p>
-            </div>
-
+			</div>
+			*/ ?>
 		</div>
 	</div>
 </section>
