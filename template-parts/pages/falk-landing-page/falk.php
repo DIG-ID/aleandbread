@@ -42,7 +42,7 @@
 	<div class="theme-container woocommerce pt-24 md:pt-64">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-4 xl:pb-24">
-				<h1 class="text-blockText"><?php echo wp_kses_post( get_field( 'falk_classic_title' ) ); ?></h1>
+				<h2 class="h1 text-blockText"><?php echo wp_kses_post( get_field( 'falk_classic_title' ) ); ?></h2>
             </div>
             <div class="col-span-2 md:col-span-4 xl:col-start-6 xl:col-span-4 pt-7 md:pt-14 xl:pt-0">
 				<p class="text-blockText"><?php echo wp_kses_post( get_field( 'falk_classic_description' ) ); ?></p>
@@ -82,7 +82,7 @@
 		<div class="theme-container woocommerce pt-24 md:pt-64">
 		<div class="theme-grid">
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-4 xl:pb-24">
-				<h1 class="text-blockText"><?php echo wp_kses_post( get_field( 'falk_signature_title' ) ); ?></h1>
+				<h2 class="h1 text-blockText"><?php echo wp_kses_post( get_field( 'falk_signature_title' ) ); ?></h2>
             </div>
             <div class="col-span-2 md:col-span-4 xl:col-start-6 xl:col-span-4 pt-7 md:pt-14 xl:pt-0">
 				<p class="text-blockText"><?php echo wp_kses_post( get_field( 'falk_signature_description' ) ); ?></p>
