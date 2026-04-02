@@ -3,9 +3,7 @@
 		<div class="theme-grid">
 			
 			<div class="col-span-2 md:col-span-6 xl:col-start-2 xl:col-span-6 pb-12 md:pb-24">
-				<h1 class="text-blockText">
-					<?php echo wp_kses_post( get_field( 'quality_promise_title' ) ); ?>
-				</h1>
+				<h2 class="h1text-blockText">	<?php echo wp_kses_post( get_field( 'quality_promise_title' ) ); ?></h2>
 			</div>
 
 			<?php // pb-28 md:pb-64 — removed temporarily ?>
