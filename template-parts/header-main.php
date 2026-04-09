@@ -1,4 +1,4 @@
-<a class="skip-link" href="#main-content"><?php esc_html_e( 'Skip to main content', 'aleandbread' ); ?></a>
+<!-- <a class="skip-link" href="#main-content">Skip to main content</a> -->
 
 <header id="header-main" class="header-main transition-all duration-300 relative w-full z-50 pt-7 xl:border-b-[3px] xl:border-accent" itemscope itemtype="http://schema.org/WebSite">
 	<nav class="navbar relative z-40" role="navigation" aria-label="<?php esc_attr_e( 'Main menu', 'aleandbread' ); ?>">
