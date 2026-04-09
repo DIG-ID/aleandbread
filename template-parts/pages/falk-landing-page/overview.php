@@ -1,4 +1,4 @@
-<section id="overview" class="overview bg-white pb-24 md:pb-64">
+<section id="overview-section" class="overview-section bg-white pb-24 md:pb-64">
 	<div class="theme-container">
 		<div class="theme-grid">
 			
@@ -23,7 +23,7 @@
 						</a>
 					<?php endif; ?>
             </div>
-            <div class="col-span-2 md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-3 xl:pl-16">
+            <div class="col-span-2 md:col-start-4 md:col-span-3 xl:col-start-5 xl:col-span-3 xl:pl-14">
                 <h3 class="h2 text-blockText"><?php echo get_field( 'overview_classic_title' ); ?></h3>
                 <h4 class="h3 text-blockText pt-4"><?php echo get_field( 'overview_classic_subtitle' ); ?></h3>
                 <p class="text-blockText pb-14 pt-4"><?php echo get_field( 'overview_classic_description' ); ?></p>
