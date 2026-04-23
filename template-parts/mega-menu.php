@@ -34,8 +34,8 @@
 <!-- RIGHT COLUMN (account section, with standalone divider) -->
 <div class="col-span-2 md:col-span-6 xl:col-span-4 xl:col-start-9 flex -ml-5 xl:ml-0">
 	
-	<!-- Divider -->
-	<div class="block mt-[10px] md:mt-[19px] w-[3px] h-[71px] md:h-[106px] bg-accent"></div>
+	<!-- Divider — height adapts to number of visible menu items -->
+	<div class="block mt-[10px] md:mt-[19px] w-[3px] bg-accent <?php echo is_user_logged_in() ? 'h-[66px] md:h-[106px]' : 'h-[21px] md:h-[30px]'; ?>"></div>
 	
 	<!-- Menu content -->
 	<div class="pl-4 border-accent">
