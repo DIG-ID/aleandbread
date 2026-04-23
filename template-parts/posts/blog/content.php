@@ -108,7 +108,7 @@
 						<?php if ( ! empty( $recipe['ingredients'] ) ) : ?>
 							<h2 class="mt-8"><?php esc_html_e( 'Rezept', 'aleandbread' ); ?></h2>
 
-							<p><strong><?php esc_html_e( 'Zutaten:', 'aleandbread' ); ?></strong></p>
+							<h3><strong><?php esc_html_e( 'Zutaten:', 'aleandbread' ); ?></strong></h3>
 							<ul class="mb-[40px] md:mb-[60px]">
 								<?php foreach ( $recipe['ingredients'] as $row ) : ?>
 									<?php if ( ! empty( $row['ingredient'] ) ) : ?>
@@ -119,7 +119,7 @@
 						<?php endif; ?>
 
 						<?php if ( ! empty( $recipe['set'] ) ) : ?>
-							<p><strong><?php esc_html_e( 'Garnitur:', 'aleandbread' ); ?></strong></p>
+							<h3><strong><?php esc_html_e( 'Garnitur:', 'aleandbread' ); ?></strong></h3>
 							<ul class="mb-[40px] md:mb-[60px]">
 								<?php foreach ( $recipe['set'] as $row ) : ?>
 									<?php if ( ! empty( $row['item'] ) ) : ?>
@@ -130,7 +130,7 @@
 						<?php endif; ?>
 
 						<?php if ( ! empty( $recipe['steps'] ) ) : ?>
-							<p><strong><?php esc_html_e( 'Zubereitung:', 'aleandbread' ); ?></strong></p>
+							<h3><strong><?php esc_html_e( 'Zubereitung:', 'aleandbread' ); ?></strong></h3>
 							<ol class="mb-[40px] md:mb-[60px]">
 								<?php foreach ( $recipe['steps'] as $row ) : ?>
 									<?php if ( ! empty( $row['step'] ) ) : ?>
@@ -141,8 +141,24 @@
 						<?php endif; ?>
 
 						<?php if ( ! empty( $recipe['serving_suggestion'] ) ) : ?>
-							<p><strong><?php esc_html_e( 'Serviervorschläge', 'aleandbread' ); ?></strong></p>
+							<h3><strong><?php esc_html_e( 'Serviervorschläge', 'aleandbread' ); ?></strong></h3>
 							<p><?php echo esc_html( $recipe['serving_suggestion'] ); ?></p>
+						<?php endif; ?>
+
+						<?php if ( ! empty( $recipe['show_equipment'] ) && ! empty( $recipe['equipment'] ) ) : ?>
+							<?php $equipment = $recipe['equipment']; ?>
+							<?php if ( ! empty( $equipment['title'] ) ) : ?>
+								<h2 class="pt-2 xl:pt-4"><strong><?php echo esc_html( $equipment['title'] ); ?></strong></h2>
+							<?php endif; ?>
+							<?php if ( ! empty( $equipment['text'] ) ) : ?>
+								<p><?php echo wp_kses_post( $equipment['text'] ); ?></p>
+							<?php endif; ?>
+							<?php if ( ! empty( $equipment['button'] ) && ! empty( $equipment['button']['url'] ) ) : ?>
+								<?php $btn = $equipment['button']; ?>
+								<a href="<?php echo esc_url( $btn['url'] ); ?>"<?php echo ! empty( $btn['target'] ) ? ' target="' . esc_attr( $btn['target'] ) . '"' : ''; ?> class="mt-6 btn btn-primary-2">
+									<?php echo esc_html( $btn['title'] ); ?>
+								</a>
+							<?php endif; ?>
 						<?php endif; ?>
 
 					</div>
